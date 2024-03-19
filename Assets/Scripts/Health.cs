@@ -36,7 +36,7 @@ public class Health
 
     public int SegmentCount { get; private set; }
 
-    public Health(int maxHealth, int segmentCount)
+    public Health(float maxHealth, int segmentCount)
     {
         MaxHealth = maxHealth;
         SegmentCount = segmentCount;

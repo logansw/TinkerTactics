@@ -42,6 +42,6 @@ public class Enemy : Unit
 
     public virtual void Move()
     {
-        transform.Translate(Vector3.forward * MovementSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
     }
 }

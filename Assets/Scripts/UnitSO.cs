@@ -6,8 +6,8 @@ using UnityEngine;
 public class UnitSO : ScriptableObject
 {
     public string Name;
-    public int MaxHealth;
+    public float MaxHealth;
     public int SegmentCount;
-    public int MovementSpeed;
-    public int Armor;
+    public float MovementSpeed;
+    public float Armor;
 }

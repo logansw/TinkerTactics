@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Slime
   MaxHealth: 10
-  SegmentCount: 3
+  SegmentCount: 2
   MovementSpeed: 1
   Armor: 0

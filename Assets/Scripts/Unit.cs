@@ -8,7 +8,7 @@ public abstract class Unit : MonoBehaviour
     public Health Health;
     private Healthbar _healthbar;
     [HideInInspector] public float MovementSpeed;
-    [HideInInspector] public int Armor;
+    [HideInInspector] public float Armor;
 
     public delegate void UnitAction(Unit unit);
     public UnitAction e_OnUnitDeath;
@@ -21,7 +21,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Initialize()
     {
-        int maxHealth = UnitSO.MaxHealth;
+        float maxHealth = UnitSO.MaxHealth;
         int breakpointCount = UnitSO.SegmentCount;
         Health = new Health(UnitSO.MaxHealth, UnitSO.SegmentCount);
         MovementSpeed = UnitSO.MovementSpeed;
