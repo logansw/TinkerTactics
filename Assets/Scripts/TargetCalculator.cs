@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class TargetCalculator : MonoBehaviour
 {
     public abstract List<Enemy> PrioritizeTargets(List<Enemy> enemies);
+    public abstract Enemy GetHighestPriorityTarget(List<Enemy> enemies);
 }

@@ -6,6 +6,7 @@ public class TargetTracker : MonoBehaviour
 {
     public List<Enemy> EnemiesInRange;
     public float Range;
+    public TargetCalculator TargetCalculator;
 
     public virtual void Start()
     {
@@ -47,5 +48,16 @@ public class TargetTracker : MonoBehaviour
         } else {
             throw new System.Exception("Unit is not an Enemy");
         }
+    }
+
+    public bool HasEnemiesInRange()
+    {
+        return EnemiesInRange.Count > 0;
+    }
+
+    public Enemy GetHighestPriorityTarget()
+    {
+        EnemiesInRange = TargetCalculator.PrioritizeTargets(EnemiesInRange);
+        return TargetCalculator.GetHighestPriorityTarget(EnemiesInRange);
     }
 }

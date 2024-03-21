@@ -33,11 +33,11 @@ public class Enemy : Unit
         e_OnUnitBreak?.Invoke(this);
     }
 
-    public virtual void TakeDamage(int incomingDamage)
+    public virtual void ReceiveDamage(float incomingDamage)
     {
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
-        Health.TakeDamage((int)postMitigationDamage);
+        Health.TakeDamage((float)postMitigationDamage);
     }
 
     public virtual void Move()

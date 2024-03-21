@@ -46,7 +46,7 @@ public class Health
         CurrentHealth = maxHealth;
     }
 
-    public void TakeDamage(int postMitigationDamage)
+    public void TakeDamage(float postMitigationDamage)
     {
         CurrentHealth -= postMitigationDamage;
         e_OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
@@ -63,7 +63,7 @@ public class Health
         }
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         CurrentHealth += amount;
     }
