@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Effect : MonoBehaviour
 {
     public float Duration;
+    public Unit Unit;
     private Coroutine _durationCoroutine;
 
     public virtual void Start()
@@ -19,7 +20,7 @@ public abstract class Effect : MonoBehaviour
         Remove();
     }
 
-    public void Remove()
+    public virtual void Remove()
     {
         Destroy(this);
     }

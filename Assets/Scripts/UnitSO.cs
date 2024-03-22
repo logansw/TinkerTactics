@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UnitSO", menuName = "ScriptableObjects/Unit")]
 public class UnitSO : ScriptableObject
 {
-    public string Name;
     public float MaxHealth;
     public int SegmentCount;
     public float MovementSpeed;

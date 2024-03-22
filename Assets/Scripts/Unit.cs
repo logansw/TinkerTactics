@@ -9,6 +9,7 @@ public abstract class Unit : MonoBehaviour
     private Healthbar _healthbar;
     [HideInInspector] public float MovementSpeed;
     [HideInInspector] public float Armor;
+    [HideInInspector] public List<float> DamageMultipliers;
 
     public delegate void UnitAction(Unit unit);
     public UnitAction e_OnUnitDeath;
@@ -28,5 +29,6 @@ public abstract class Unit : MonoBehaviour
         Armor = UnitSO.Armor;
         _healthbar = GetComponentInChildren<Healthbar>();
         _healthbar.Initialize(Health);
+        DamageMultipliers = new List<float>();
     }
 }

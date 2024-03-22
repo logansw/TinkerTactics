@@ -21,6 +21,11 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Transform enemyTransform = _target.gameObject.transform;
         Vector2 differenceVector = enemyTransform.position - transform.position;
         if (differenceVector.magnitude < 0.1f)

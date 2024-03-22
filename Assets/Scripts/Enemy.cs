@@ -30,11 +30,16 @@ public class Enemy : Unit
 
     public virtual void OnBreak()
     {
+        gameObject.AddComponent<EffectBreak>();
         e_OnUnitBreak?.Invoke(this);
     }
 
     public virtual void ReceiveDamage(float incomingDamage)
     {
+        foreach (float multiplier in DamageMultipliers)
+        {
+            incomingDamage *= multiplier;
+        }
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);

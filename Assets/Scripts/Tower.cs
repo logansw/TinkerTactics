@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+[RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker)), RequireComponent(typeof(TargetCalculator))]
+public class Tower : MonoBehaviour, ISelectable
 {
-    public ProjectileLauncher ProjectileLauncher;
-    public TargetTracker TargetTracker;
-    public TargetCalculator TargetCalculator;
+    [HideInInspector] public ProjectileLauncher ProjectileLauncher;
+    [HideInInspector] public TargetTracker TargetTracker;
+    [HideInInspector] public TargetCalculator TargetCalculator;
+
+    void Awake()
+    {
+        ProjectileLauncher = GetComponent<ProjectileLauncher>();
+        TargetTracker = GetComponent<TargetTracker>();
+        TargetCalculator = GetComponent<TargetCalculator>();
+    }
 
     public virtual void Update()
     {
@@ -25,5 +33,15 @@ public class Tower : MonoBehaviour
     private void Attack()
     {
         ProjectileLauncher.LaunchProjectile(TargetTracker.GetHighestPriorityTarget());
+    }
+
+    public void OnSelect()
+    {
+        TargetTracker.DisplayRange(true);
+    }
+
+    public void OnDeselect()
+    {
+        TargetTracker.DisplayRange(false);
     }
 }

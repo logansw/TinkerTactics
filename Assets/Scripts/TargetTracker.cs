@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TargetCalculator))]
 public class TargetTracker : MonoBehaviour
 {
     public List<Enemy> EnemiesInRange;
     public float Range;
-    public TargetCalculator TargetCalculator;
+    [HideInInspector] public TargetCalculator TargetCalculator;
+    [SerializeField] private GameObject _rangeIndicator;
+
+    public virtual void Awake()
+    {
+        TargetCalculator = GetComponent<TargetCalculator>();
+    }
 
     public virtual void Start()
     {
@@ -59,5 +66,11 @@ public class TargetTracker : MonoBehaviour
     {
         EnemiesInRange = TargetCalculator.PrioritizeTargets(EnemiesInRange);
         return TargetCalculator.GetHighestPriorityTarget(EnemiesInRange);
+    }
+
+    public void DisplayRange(bool active)
+    {
+        _rangeIndicator.transform.localScale = new Vector3(Range * 2f, Range * 2f, 1f);
+        _rangeIndicator.SetActive(active);
     }
 }

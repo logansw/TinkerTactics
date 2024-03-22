@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08d297e4f32ee4bc48555bba86021557, type: 3}
-  m_Name: Slime
+  m_Name: Slime Orange
   m_EditorClassIdentifier: 
-  Name: Green Slime
-  MaxHealth: 10
-  SegmentCount: 2
-  MovementSpeed: 1
+  MaxHealth: 100
+  SegmentCount: 4
+  MovementSpeed: 0.5
   Armor: 0
