@@ -181,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6251621671188648149}
   - component: {fileID: 1090324393960362734}
-  - component: {fileID: 2895862567796479362}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -256,18 +255,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!210 &2895862567796479362
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7507034444920509749}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &8106107250784829053
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5218500566165849038}
   - component: {fileID: 4605752454509213282}
+  - component: {fileID: 7360349396264285905}
   m_Layer: 0
   m_Name: Placeholder Entity
   m_TagString: Untagged
@@ -318,3 +306,15 @@ MonoBehaviour:
   _color: {r: 1, g: 1, b: 1, a: 1}
   _name: "\U0001F642"
   _textLabel: {fileID: 4664396803635747886}
+--- !u!210 &7360349396264285905
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106107250784829053}
+  m_Enabled: 1
+  m_SortingLayerID: -483520047
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

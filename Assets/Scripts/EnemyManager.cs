@@ -6,7 +6,7 @@ public class EnemyManager : Singleton<EnemyManager>
 {
     public List<Enemy> Enemies;
 
-    public void AddEnemyToList(Enemy enemy)
+    public void AddEnemy(Enemy enemy)
     {
         Enemies.Add(enemy);
     }

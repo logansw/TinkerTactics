@@ -5,11 +5,21 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
+    public TilePath NextTilePath { get; set;}
+
     public virtual void Start()
     {
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
-        EnemyManager.s_Instance.AddEnemyToList(this);
+        EnemyManager.s_Instance.AddEnemy(this);
+        StartCoroutine(TempDelayedStart());
+    }
+
+    // TODO: Remove this once a proper wave spawning system is implemented. Assign the enemy to the path then.
+    private IEnumerator TempDelayedStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        NextTilePath = MapGenerator.s_Instance.StartTilePath;
     }
 
     public virtual void OnDisable()
@@ -47,6 +57,14 @@ public class Enemy : Unit
 
     public virtual void Move()
     {
-        transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
+        // transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
+        if (NextTilePath != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, NextTilePath.transform.position, MovementSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, NextTilePath.transform.position) < 0.1f)
+            {
+                NextTilePath.OnEnemyEnter(this);
+            }
+        }
     }
 }
