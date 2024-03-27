@@ -6,13 +6,13 @@ using UnityEngine;
 public class TilePlot : Tile
 {
     public Tower Tower { get; set; }
-    public bool IsPurchased { get; set; }
-    public bool IsActivated { get; set; }
+    public bool IsPurchased { get; set; } = true;
+    public bool IsActivated { get; set; } = false;
     public bool IsOccupied => Tower != null;
 
-    void Start()
+    public void Initialize(bool isPurchased, bool isActivated)
     {
-        IsPurchased = true;
-        IsActivated = true;
+        IsPurchased = isPurchased;
+        IsActivated = isActivated;
     }
 }

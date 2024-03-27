@@ -26,10 +26,10 @@ public class MapGenerator : Singleton<MapGenerator>
         string mapData = @"
         00000E0000
         0PPP0PPPP0
-        0P0P0000P0
+        0PTP0000P0
         SP0P00PPP0
-        000P00P000
-        000P00PPP0
+        000P00PT00
+        00TPT0PPP0
         0PPP0000P0
         0P000000P0
         0PPPPPPPP0
@@ -89,6 +89,7 @@ public class MapGenerator : Singleton<MapGenerator>
                 {
                     TilePlot tilePlot = Instantiate(_tilePlotPrefab, tilePosition, Quaternion.identity, transform);
                     tilePlot.Initialize(x, y);
+                    tilePlot.Initialize(true, true);
                     newTile = tilePlot;
                 }
                 else
