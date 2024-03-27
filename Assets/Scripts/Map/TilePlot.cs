@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class TilePlot : Tile
 {
-    // Start is called before the first frame update
+    public Tower Tower { get; set; }
+    public bool IsPurchased { get; set; }
+    public bool IsActivated { get; set; }
+    public bool IsOccupied => Tower != null;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        IsPurchased = true;
+        IsActivated = true;
     }
 }
