@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class BuyState : State
 {
+    void Awake()
+    {
+        StateType = StateType.BuyState;
+    }
+
     public override void OnEnter(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 
     public override void UpdateState(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 
     public override void OnExit(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 }

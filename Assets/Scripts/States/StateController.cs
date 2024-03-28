@@ -9,20 +9,20 @@ using UnityEngine.UI;
 /// </summary>
 public class StateController : Singleton<StateController>
 {
-    // Internal
-    public State CurrentState;
+    public StateType CurrentState { get; private set; } = StateType.None;
     // States
-    public State PreStartState;
-    public State BattleState;
-    public State BuyState;
-    public State VictoryState;
-    public State LossState;
+    [SerializeField] private State PreStartState;
+    [SerializeField] private State BuyState;
+    [SerializeField] private State BattleState;
+    [SerializeField] private State VictoryState;
+    [SerializeField] private State LossState;
 
+    // Internal
     private StateType _previousState;
 
     void Update()
     {
-        CurrentState.UpdateState(this);
+        GetState(CurrentState).UpdateState(this);
     }
 
     /// <summary>
@@ -31,24 +31,19 @@ public class StateController : Singleton<StateController>
     /// <param name="newState">The new state to change to.</param>
     public void ChangeState(StateType stateType)
     {
-        State newState = GetState(stateType);
-        if (CurrentState != null) {
-            CurrentState.OnExit(this);
+        if (CurrentState != StateType.None) {
+            GetState(CurrentState).OnExit(this);
         }
-        _previousState = CurrentState.StateType;
-        CurrentState = newState;
-        CurrentState.OnEnter(this);
-    }
-
-    public static StateType GetCurrentState() {
-        return s_Instance.CurrentState.StateType;
+        _previousState = CurrentState;
+        CurrentState = stateType;
+        GetState(CurrentState).OnEnter(this);
     }
 
     public void ChangeToPreviousState() {
         ChangeState(_previousState);
     }
 
-    public State GetState(StateType stateType)
+    private State GetState(StateType stateType)
     {
         switch (stateType)
         {

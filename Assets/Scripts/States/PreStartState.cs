@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PreStartState : State
 {
+    void Awake()
+    {
+        StateType = StateType.PreStartState;
+    }
+
     public override void OnEnter(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Load random list of enemies and towers
     }
 
     public override void UpdateState(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing.
     }
 
     public override void OnExit(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing.
     }
 }

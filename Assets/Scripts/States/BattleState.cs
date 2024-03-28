@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class BattleState : State
 {
+    void Awake()
+    {
+        StateType = StateType.BattleState;
+    }
+
     public override void OnEnter(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 
     public override void UpdateState(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 
     public override void OnExit(StateController stateController)
     {
-        throw new System.NotImplementedException();
+        // Do nothing
     }
 }

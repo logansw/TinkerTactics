@@ -34,8 +34,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     private bool CanAttack()
     {
-        return TilePlot.IsActivated && ProjectileLauncher.CanAttack() && TargetTracker.HasEnemiesInRange();
-    }
+        return TilePlot.IsActivated && 
+                StateController.s_Instance.CurrentState == StateType.BattleState &&
+                ProjectileLauncher.CanAttack() &&
+                TargetTracker.HasEnemiesInRange();
+        }
 
     private void Attack()
     {

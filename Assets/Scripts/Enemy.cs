@@ -29,6 +29,7 @@ public class Enemy : Unit
 
     public virtual void Update()
     {
+        if (StateController.s_Instance.CurrentState != StateType.BattleState) { return; }
         Move();
     }
 

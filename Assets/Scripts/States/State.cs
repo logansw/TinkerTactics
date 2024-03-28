@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    public StateType StateType;
+    [HideInInspector] public StateType StateType;
     public abstract void OnEnter(StateController stateController);
     public abstract void UpdateState(StateController stateController);
     public abstract void OnExit(StateController stateController);
@@ -12,6 +12,7 @@ public abstract class State : MonoBehaviour
 
 [System.Serializable]
 public enum StateType {
+    None,
     PreStartState,
     BattleState,
     BuyState,
