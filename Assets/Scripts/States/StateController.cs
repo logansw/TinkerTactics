@@ -22,7 +22,11 @@ public class StateController : Singleton<StateController>
 
     void Update()
     {
-        GetState(CurrentState).UpdateState(this);
+        State _currentState = GetState(CurrentState);
+        if (_currentState != null)
+        {
+            GetState(CurrentState).UpdateState(this);
+        }
     }
 
     /// <summary>

@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyManager : Singleton<EnemyManager>
 {
     public List<Enemy> Enemies;
+    public Transform LeftSpawnAnchor;
+    public Transform RightSpawnAnchor;
 
     public void AddEnemy(Enemy enemy)
     {
@@ -19,5 +21,12 @@ public class EnemyManager : Singleton<EnemyManager>
         } else {
             throw new System.Exception("Unit is not an Enemy");
         }
+    }
+
+    public void RecycleEnemy(Enemy enemy)
+    {
+        float randomX = Random.Range(LeftSpawnAnchor.position.x, RightSpawnAnchor.position.x);
+        enemy.transform.position = new Vector3(randomX, LeftSpawnAnchor.position.y, 0);
+        enemy.Rigidbody2D.velocity = Vector2.zero;
     }
 }

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleState : State
 {
+    public static Action e_OnBattleStart;
+
     void Awake()
     {
         StateType = StateType.BattleState;
@@ -11,7 +14,7 @@ public class BattleState : State
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        e_OnBattleStart?.Invoke();
     }
 
     public override void UpdateState(StateController stateController)

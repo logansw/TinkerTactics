@@ -3,23 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Unit
+[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Collider2D))]
+public class Enemy : Unit, ICollectable
 {
     public TilePath NextTilePath { get; set;}
+    public Rigidbody2D Rigidbody2D { get; private set; }
+    public Collider2D Collider2D { get; private set; }
+    public SpriteRenderer SpriteRenderer { get; private set; }
+
+    public override void Awake()
+    {
+        base.Awake();
+        Rigidbody2D = GetComponent<Rigidbody2D>();
+        Collider2D = GetComponent<Collider2D>();
+    }
 
     public virtual void Start()
     {
+        Rigidbody2D.bodyType = RigidbodyType2D.Static;
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
         EnemyManager.s_Instance.AddEnemy(this);
-        StartCoroutine(TempDelayedStart());
     }
 
-    // TODO: Remove this once a proper wave spawning system is implemented. Assign the enemy to the path then.
-    private IEnumerator TempDelayedStart()
+    void OnEnable()
     {
-        yield return new WaitForSeconds(0.1f);
-        NextTilePath = MapGenerator.s_Instance.StartTilePath;
+        BattleState.e_OnBattleStart += OnBattleStart;
     }
 
     public virtual void OnDisable()
@@ -30,7 +39,11 @@ public class Enemy : Unit
     public virtual void Update()
     {
         if (StateController.s_Instance.CurrentState != StateType.BattleState) { return; }
-        Move();
+    }
+
+    public virtual void OnBattleStart()
+    {
+        Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public virtual void OnDeath()
@@ -51,21 +64,12 @@ public class Enemy : Unit
         {
             incomingDamage *= multiplier;
         }
-        float physicalFactor = 100f / (100f + Armor);
-        float postMitigationDamage = incomingDamage * physicalFactor;
+        float postMitigationDamage = incomingDamage;
         Health.TakeDamage((float)postMitigationDamage);
     }
 
-    public virtual void Move()
+    public void Collect()
     {
-        // transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
-        if (NextTilePath != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, NextTilePath.transform.position, MovementSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, NextTilePath.transform.position) < 0.1f)
-            {
-                NextTilePath.OnEnemyEnter(this);
-            }
-        }
+        EnemyManager.s_Instance.RecycleEnemy(this);
     }
 }

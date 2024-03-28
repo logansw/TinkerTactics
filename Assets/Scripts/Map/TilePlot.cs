@@ -10,6 +10,11 @@ public class TilePlot : Tile
     public bool IsActivated { get; set; } = false;
     public bool IsOccupied => Tower != null;
 
+    void Start()
+    {
+        Initialize(true, true);
+    }
+
     public void Initialize(bool isPurchased, bool isActivated)
     {
         IsPurchased = isPurchased;
