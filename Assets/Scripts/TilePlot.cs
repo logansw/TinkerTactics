@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class TilePlot : Tile
+public class TilePlot : MonoBehaviour
 {
     public Tower Tower { get; set; }
     public bool IsPurchased { get; set; } = true;

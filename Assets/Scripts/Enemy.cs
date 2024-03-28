@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Collider2D))]
 public class Enemy : Unit, ICollectable
 {
-    public TilePath NextTilePath { get; set;}
     public Rigidbody2D Rigidbody2D { get; private set; }
     public Collider2D Collider2D { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
@@ -49,6 +48,9 @@ public class Enemy : Unit, ICollectable
     public virtual void OnDeath()
     {
         e_OnUnitDeath?.Invoke(this);
+        for (int i = 0; i < Value; i++) {
+            Coin.Create(transform.position, Rigidbody2D.velocity, 1);
+        }
         Destroy(gameObject);
     }
 
@@ -71,5 +73,6 @@ public class Enemy : Unit, ICollectable
     public void Collect()
     {
         EnemyManager.s_Instance.RecycleEnemy(this);
+        BattleManager.s_Instance.ChangeHealth(-1);
     }
 }

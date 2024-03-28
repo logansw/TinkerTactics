@@ -197,6 +197,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -441,6 +457,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -791,6 +823,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -954,6 +1002,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1023,6 +1087,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1091,6 +1171,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1304,6 +1400,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1372,6 +1484,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2116,6 +2244,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2243,7 +2387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e5fd26ff951448abb17ae1a91034e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 1
+  AttackSpeed: 4
   Damage: 1
   ProjectileSpeed: 10
   ProjectilePrefab: {fileID: 8293293817691982412, guid: 95ff45a0572164ec984def26ae9a4957, type: 3}
@@ -2309,6 +2453,140 @@ Transform:
   - {fileID: 635802284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &719119249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719119250}
+  - component: {fileID: 719119252}
+  - component: {fileID: 719119251}
+  m_Layer: 5
+  m_Name: Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &719119250
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719119249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1797990082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 320, y: 179.7}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &719119251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719119249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u2764\uFE0F: 100"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &719119252
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719119249}
+  m_CullTransparentMesh: 1
 --- !u!4 &771457593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2939258093072707424, guid: 904768361503e477ca94d62232fb8f53, type: 3}
@@ -2536,6 +2814,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2604,6 +2898,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2838,6 +3148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3607e28c602441aab46e6129eaaec85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthText: {fileID: 719119251}
+  _moneyText: {fileID: 1626631849}
+  CoinPrefab: {fileID: 4119771796741016364, guid: 5c694aa4246f74e73b4681103b7388c1, type: 3}
 --- !u!4 &952884967
 Transform:
   m_ObjectHideFlags: 0
@@ -3006,6 +3319,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3075,6 +3404,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3143,6 +3488,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3373,6 +3734,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3581,6 +3958,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4044,6 +4437,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4112,6 +4521,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4241,7 +4666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackSpeed: 1
-  Damage: 1
+  Damage: 10
   ProjectileSpeed: 10
   ProjectilePrefab: {fileID: 8293293817691982412, guid: 95ff45a0572164ec984def26ae9a4957, type: 3}
 --- !u!114 &1475946888
@@ -4518,6 +4943,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4586,6 +5027,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4789,6 +5246,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4867,6 +5340,140 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2939258093072707424, guid: 904768361503e477ca94d62232fb8f53, type: 3}
   m_PrefabInstance: {fileID: 1371539198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1626631847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626631848}
+  - component: {fileID: 1626631850}
+  - component: {fileID: 1626631849}
+  m_Layer: 5
+  m_Name: Money
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1626631848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626631847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1797990082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 320, y: 238}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1626631849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626631847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\U0001F4B0: 50"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1626631850
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626631847}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1641764981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4930,6 +5537,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4999,6 +5622,22 @@ PrefabInstance:
     - target: {fileID: 7358881381078329818, guid: 904768361503e477ca94d62232fb8f53, type: 3}
       propertyPath: m_Name
       value: TilePlot (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5259,6 +5898,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1591287352}
+  - {fileID: 1626631848}
+  - {fileID: 719119250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5377,11 +6018,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilePlot (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010990399139734254, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 904768361503e477ca94d62232fb8f53, type: 3}
+--- !u!1 &1874913950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874913951}
+  m_Layer: 0
+  m_Name: --------------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874913951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874913950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2091961, y: 8.426169, z: -0.13807459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1898748382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2939258093072707424, guid: 904768361503e477ca94d62232fb8f53, type: 3}
@@ -5740,8 +6428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e5fd26ff951448abb17ae1a91034e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 1
-  Damage: 1
+  AttackSpeed: 2
+  Damage: 2
   ProjectileSpeed: 10
   ProjectilePrefab: {fileID: 8293293817691982412, guid: 95ff45a0572164ec984def26ae9a4957, type: 3}
 --- !u!114 &2007489555
@@ -6139,12 +6827,13 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 113898048}
-  - {fileID: 1797990082}
-  - {fileID: 1600484609}
   - {fileID: 2132269923}
   - {fileID: 1808290511}
   - {fileID: 952884967}
   - {fileID: 497128689}
+  - {fileID: 1797990082}
+  - {fileID: 1600484609}
+  - {fileID: 1874913951}
   - {fileID: 1309103531}
   - {fileID: 1401321417}
   - {fileID: 1948984674}
