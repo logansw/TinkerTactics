@@ -5,13 +5,11 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [HideInInspector] public float Damage;
-    [HideInInspector] public float ProjectileSpeed;
     private Enemy _target;
 
-    public void Initialize(float damage, float projectileSpeed) 
+    public void Initialize(float damage) 
     {
         Damage = damage;
-        ProjectileSpeed = projectileSpeed;
     }
 
     public void Launch(Enemy target)
@@ -34,7 +32,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         Vector2 direction = differenceVector.normalized;
-        transform.Translate(direction * Time.deltaTime * ProjectileSpeed);
+        transform.Translate(direction * Time.deltaTime);
     }
 
     public void OnImpact()

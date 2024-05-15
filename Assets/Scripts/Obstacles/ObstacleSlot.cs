@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class TilePlot : MonoBehaviour
+public class ObstacleSlot : MonoBehaviour
 {
-    public Tower Tower { get; set; }
+    public Obstacle Obstacle { get; set; }
     public bool IsPurchased { get; set; } = true;
     public bool IsActivated { get; set; } = false;
-    public bool IsOccupied => Tower != null;
+    public bool IsOccupied => Obstacle != null;
 
     void Start()
     {

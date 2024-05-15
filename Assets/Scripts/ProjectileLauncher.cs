@@ -18,7 +18,7 @@ public class ProjectileLauncher : MonoBehaviour
     public void LaunchProjectile(Enemy target)
     {
         Projectile projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-        projectile.Initialize(Damage, ProjectileSpeed);
+        projectile.Initialize(Damage);
         projectile.Launch(target);
         _reloaded = false;
         StartCoroutine(Reload());

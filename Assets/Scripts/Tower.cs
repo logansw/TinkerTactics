@@ -4,20 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker)), RequireComponent(typeof(TargetCalculator))]
-public class Tower : MonoBehaviour, ISelectable, ILiftable
+public class Tower : MonoBehaviour//, ISelectable, ILiftable
 {
-    [HideInInspector] public ProjectileLauncher ProjectileLauncher;
-    [HideInInspector] public TargetTracker TargetTracker;
-    [HideInInspector] public TargetCalculator TargetCalculator;
+    /*
     public TilePlot TilePlot;
-
-    void Awake()
-    {
-        ProjectileLauncher = GetComponent<ProjectileLauncher>();
-        TargetTracker = GetComponent<TargetTracker>();
-        TargetCalculator = GetComponent<TargetCalculator>();
-    }
 
     void Start()
     {
@@ -125,4 +115,5 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         // Do nothing
     }
+    */
 }
