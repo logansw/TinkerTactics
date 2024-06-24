@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// High-level component for a tower. Contains the core logic for attacking enemies.
+/// </summary>
 [RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker)), RequireComponent(typeof(TargetCalculator))]
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {

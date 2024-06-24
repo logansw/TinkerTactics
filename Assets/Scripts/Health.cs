@@ -65,6 +65,9 @@ public class Health
 
     public void Heal(float amount)
     {
-        CurrentHealth += amount;
+        if (CurrentHealth > 0)
+        {
+            CurrentHealth += amount;
+        }
     }
 }

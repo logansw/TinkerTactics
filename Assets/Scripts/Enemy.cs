@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : Unit
 {
     public TilePath NextTilePath { get; set;}
+    public bool IsDead => Health.CurrentHealth <= 0;
 
     public virtual void Start()
     {
@@ -33,10 +34,15 @@ public class Enemy : Unit
         Move();
     }
 
+    /// <summary>
+    /// Called when the enemy's health reaches 0.
+    /// </summary>
+    /// Enemy is not destroyed immediately so that damage and kill statistics can be recorded,
+    /// and so that the death animation can be played.
     public virtual void OnDeath()
     {
         e_OnUnitDeath?.Invoke(this);
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 
     public virtual void OnBreak()
@@ -45,7 +51,7 @@ public class Enemy : Unit
         e_OnUnitBreak?.Invoke(this);
     }
 
-    public virtual void ReceiveDamage(float incomingDamage)
+    public virtual DamageData OnImpact(float incomingDamage)
     {
         foreach (float multiplier in DamageMultipliers)
         {
@@ -54,11 +60,12 @@ public class Enemy : Unit
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
+        DamageData damageData = new DamageData(this, postMitigationDamage);
+        return damageData;
     }
 
     public virtual void Move()
     {
-        // transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
         if (NextTilePath != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, NextTilePath.transform.position, MovementSpeed * Time.deltaTime);

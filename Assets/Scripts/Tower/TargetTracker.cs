@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Keeps track of enemies that can be targetted by the tower this component is attached to.
+/// </summary>
 [RequireComponent(typeof(TargetCalculator))]
 public class TargetTracker : MonoBehaviour
 {
