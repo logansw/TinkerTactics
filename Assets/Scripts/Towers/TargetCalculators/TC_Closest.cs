@@ -13,9 +13,4 @@ public class TC_Closest : TargetCalculator
 
         return enemies;
     }
-
-    public override Enemy GetHighestPriorityTarget(List<Enemy> enemies)
-    {
-        return enemies[0];
-    }
 }

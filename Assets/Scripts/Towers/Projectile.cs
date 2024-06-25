@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Component attached to projectiles. Handles movement towards target and effect application on impact.
 /// </summary>
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     public ProjectileLauncher SourceLauncher;
     [HideInInspector] public float Damage;

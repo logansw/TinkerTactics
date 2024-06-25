@@ -7,19 +7,17 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
-[RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker)), RequireComponent(typeof(TargetCalculator))]
-public class Tower : MonoBehaviour, ISelectable, ILiftable
+[RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker))]
+public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     [HideInInspector] public ProjectileLauncher ProjectileLauncher;
     [HideInInspector] public TargetTracker TargetTracker;
-    [HideInInspector] public TargetCalculator TargetCalculator;
     public TilePlot TilePlot;
 
     void Awake()
     {
         ProjectileLauncher = GetComponent<ProjectileLauncher>();
         TargetTracker = GetComponent<TargetTracker>();
-        TargetCalculator = GetComponent<TargetCalculator>();
     }
 
     void Start()

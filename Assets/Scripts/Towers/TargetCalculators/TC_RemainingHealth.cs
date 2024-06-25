@@ -12,9 +12,4 @@ public class TC_RemainingHealth : TargetCalculator
 
         return enemies;
     }
-
-    public override Enemy GetHighestPriorityTarget(List<Enemy> enemies)
-    {
-        return enemies[0];
-    }
 }

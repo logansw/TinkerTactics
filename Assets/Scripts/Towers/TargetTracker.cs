@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Keeps track of enemies that can be targetted by the tower this component is attached to.
+/// It also determines which enemy to target based on the TargetCalculator component attached to the tower.
 /// </summary>
 [RequireComponent(typeof(TargetCalculator))]
 public class TargetTracker : MonoBehaviour
@@ -48,6 +49,7 @@ public class TargetTracker : MonoBehaviour
     {
         EnemiesInRange.Add(enemy);
         enemy.e_OnUnitDeath += RemoveEnemyFromList;
+        EnemiesInRange = TargetCalculator.PrioritizeTargets(EnemiesInRange);
     }
 
     public void RemoveEnemyFromList(Unit unit)
@@ -55,6 +57,7 @@ public class TargetTracker : MonoBehaviour
         if (unit is Enemy enemy) {
             EnemiesInRange.Remove(enemy);
             enemy.e_OnUnitDeath -= RemoveEnemyFromList;
+            EnemiesInRange = TargetCalculator.PrioritizeTargets(EnemiesInRange);
         } else {
             throw new System.Exception("Unit is not an Enemy");
         }
@@ -67,8 +70,7 @@ public class TargetTracker : MonoBehaviour
 
     public Enemy GetHighestPriorityTarget()
     {
-        EnemiesInRange = TargetCalculator.PrioritizeTargets(EnemiesInRange);
-        return TargetCalculator.GetHighestPriorityTarget(EnemiesInRange);
+        return EnemiesInRange[0];
     }
 
     public void DisplayRange(bool active)
