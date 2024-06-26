@@ -12,9 +12,10 @@ public abstract class Projectile : MonoBehaviour
     [HideInInspector] public float Damage;
     [HideInInspector] public float ProjectileSpeed;
     private Enemy _target;
-    public delegate void OnImpactDelegate();
+    public delegate void OnImpactDelegate(Enemy hit);
     public OnImpactDelegate e_OnImpact;
     private Vector3 _targetPosition;
+    public Action e_OnDestroyed;
 
     public void Initialize(float damage, float projectileSpeed, ProjectileLauncher source) 
     {
@@ -49,10 +50,15 @@ public abstract class Projectile : MonoBehaviour
         if (_target != null)
         {
             DamageData damageData = _target.OnImpact(Damage);
-            e_OnImpact?.Invoke();
+            e_OnImpact?.Invoke(_target);
             SourceLauncher.UpdateLauncherStatistics(damageData);
         }
         gameObject.SetActive(false);
         Destroy(gameObject, 1f);
+    }
+
+    protected virtual void OnKill(Enemy killedEnemy)
+    {
+        // No implementation by default.
     }
 }

@@ -7,6 +7,7 @@ public class Enemy : Unit
 {
     public TilePath NextTilePath { get; set;}
     public bool IsDead => Health.CurrentHealth <= 0;
+    public int GoldValue;
 
     public virtual void Start()
     {
@@ -30,7 +31,7 @@ public class Enemy : Unit
 
     public virtual void Update()
     {
-        if (StateController.s_Instance.CurrentState != StateType.BattleState) { return; }
+        if (!StateController.CurrentState.Equals(StateType.Battle)) { return; }
         Move();
     }
 
@@ -42,6 +43,7 @@ public class Enemy : Unit
     public virtual void OnDeath()
     {
         e_OnUnitDeath?.Invoke(this);
+        gameObject.SetActive(false);
         Destroy(gameObject, 3f);
     }
 

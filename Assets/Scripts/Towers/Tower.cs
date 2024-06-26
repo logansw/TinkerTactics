@@ -12,48 +12,52 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     [HideInInspector] public ProjectileLauncher ProjectileLauncher;
     [HideInInspector] public TargetTracker TargetTracker;
-    public TilePlot TilePlot;
+    private TilePlot _tilePlot;
+    [HideInInspector] public List<List<Upgrade>> Upgrades;
+    [HideInInspector] public List<Upgrade> SelectedUpgrades;
+    [HideInInspector] public int Tier;
 
-    void Awake()
+    protected virtual void Awake()
     {
         ProjectileLauncher = GetComponent<ProjectileLauncher>();
         TargetTracker = GetComponent<TargetTracker>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         AssignTowerToTilePlot();
+        Tier = 0;
     }
 
     public virtual void Update()
     {
-        if (CanAttack())
+        if (StateController.CurrentState.Equals(StateType.Battle) && CanAttack())
         {
             Attack();
         }
     }
 
-    private bool CanAttack()
+    protected bool CanAttack()
     {
-        return TilePlot.IsActivated && 
-                StateController.s_Instance.CurrentState == StateType.BattleState &&
+        return _tilePlot.IsActivated && 
+                StateController.CurrentState.Equals(StateType.Battle) &&
                 ProjectileLauncher.CanAttack() &&
                 TargetTracker.HasEnemiesInRange();
         }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         ProjectileLauncher.LaunchProjectile(TargetTracker.GetHighestPriorityTarget());
     }
 
     public void OnSelect()
     {
-        // TargetTracker.DisplayRange(true);
+        HUDManager.s_Instance.DisplayTowerInformation(this);
     }
 
     public void OnDeselect()
     {
-        TargetTracker.DisplayRange(false);
+        HUDManager.s_Instance.HideTowerInformation(this);
     }
 
     /// <summary>
@@ -73,15 +77,15 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
                 if (otherPlot.IsOccupied)
                 {
                     Tower otherTower = otherPlot.Tower;
-                    TilePlot thisTowerOldPlot = TilePlot;
+                    TilePlot thisTowerOldPlot = _tilePlot;
 
                     // Swap the towers
                     otherPlot.Tower = this;
                     thisTowerOldPlot.Tower = otherTower;
 
                     // Update the _tilePlot references
-                    this.TilePlot = otherPlot;
-                    otherTower.TilePlot = thisTowerOldPlot;
+                    this._tilePlot = otherPlot;
+                    otherTower._tilePlot = thisTowerOldPlot;
 
                     // Return the towers to their new plots
                     otherTower.ReturnToPlot();
@@ -90,8 +94,9 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
                 }
                 else
                 {
-                    TilePlot.Tower = null;
-                    TilePlot = otherPlot;
+                    _tilePlot ??= otherPlot;
+                    _tilePlot.Tower = null;
+                    _tilePlot = otherPlot;
                     otherPlot.Tower = this;
                     ReturnToPlot();
                     return;
@@ -104,7 +109,7 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     private void ReturnToPlot()
     {
-        transform.position = TilePlot.transform.position;
+        transform.position = _tilePlot.transform.position;
     }
 
     public void OnLift()

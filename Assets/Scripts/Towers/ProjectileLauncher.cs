@@ -5,26 +5,30 @@ using UnityEngine;
 /// <summary>
 /// Launches projectiles at enemies. Handles reload and tracks stats for the tower.
 /// </summary>
-public class ProjectileLauncher : MonoBehaviour
+public abstract class ProjectileLauncher : MonoBehaviour
 {
+    public float BaseAttackSpeed;
     public float AttackSpeed; // APS (attacks per second)
+    public float BaseDamage;
     public float Damage;
     public float ProjectileSpeed;
     private bool _reloaded;
     public Projectile ProjectilePrefab;
+    protected Projectile LoadedProjectile;
     private LauncherStatistics _launcherStatistics;
 
-    void Start()
+    protected void Start()
     {
         _launcherStatistics = new LauncherStatistics();
         _reloaded = true;
     }
 
+    public abstract void LoadProjectile();
+
     public void LaunchProjectile(Enemy target)
     {
-        Projectile projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-        projectile.Initialize(Damage, ProjectileSpeed, this);
-        projectile.Launch(target);
+        LoadProjectile();
+        LoadedProjectile.Launch(target);
         _reloaded = false;
         StartCoroutine(Reload());
     }

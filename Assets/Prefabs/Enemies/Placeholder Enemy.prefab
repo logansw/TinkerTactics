@@ -129,6 +129,7 @@ MonoBehaviour:
   MovementSpeed: 0
   Armor: 0
   DamageMultipliers: []
+  GoldValue: 0
 --- !u!1001 &5911578400389425987
 PrefabInstance:
   m_ObjectHideFlags: 0
