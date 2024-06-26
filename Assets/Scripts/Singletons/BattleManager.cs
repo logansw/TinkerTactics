@@ -6,28 +6,28 @@ public class BattleManager : MonoBehaviour
 {
     void Start()
     {
-        StateController.s_Instance.ChangeState(StateType.BuyState);
+        StateController.s_Instance.ChangeState(StateType.Buy);
     }
     
     public void Continue()
     {
-        if (StateController.s_Instance.CurrentState == StateType.PreStartState)
+        if (StateController.CurrentState.Equals(StateType.PreStart))
         {
             // TODO:
         }
-        else if (StateController.s_Instance.CurrentState == StateType.BuyState)
+        else if (StateController.CurrentState.Equals(StateType.Buy))
         {
-            StateController.s_Instance.ChangeState(StateType.BattleState);
+            StateController.s_Instance.ChangeState(StateType.Battle);
         }
-        else if (StateController.s_Instance.CurrentState == StateType.BattleState)
+        else if (StateController.CurrentState.Equals(StateType.Battle))
         {
-            StateController.s_Instance.ChangeState(StateType.BuyState);
+            StateController.s_Instance.ChangeState(StateType.Buy);
         }
-        else if (StateController.s_Instance.CurrentState == StateType.VictoryState)
+        else if (StateController.CurrentState.Equals(StateType.Victory))
         {
             // TODO: Move to the next level
         }
-        else if (StateController.s_Instance.CurrentState == StateType.LossState)
+        else if (StateController.CurrentState.Equals(StateType.Loss))
         {
             // TODO: Restart the level
         }

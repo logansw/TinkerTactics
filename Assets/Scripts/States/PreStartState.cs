@@ -6,7 +6,7 @@ public class PreStartState : State
 {
     void Awake()
     {
-        StateType = StateType.PreStartState;
+        StateType = StateType.PreStart;
     }
 
     public override void OnEnter(StateController stateController)

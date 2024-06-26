@@ -6,7 +6,7 @@ public class BuyState : State
 {
     void Awake()
     {
-        StateType = StateType.BuyState;
+        StateType = StateType.Buy;
     }
 
     public override void OnEnter(StateController stateController)

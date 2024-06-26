@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class StateController : Singleton<StateController>
 {
-    public StateType CurrentState { get; private set; } = StateType.None;
+    public static StateType CurrentState { get; private set; } = StateType.None;
     // States
     [SerializeField] private State PreStartState;
     [SerializeField] private State BuyState;
@@ -47,15 +47,15 @@ public class StateController : Singleton<StateController>
     {
         switch (stateType)
         {
-            case StateType.PreStartState:
+            case StateType.PreStart:
                 return PreStartState;
-            case StateType.BattleState:
+            case StateType.Battle:
                 return BattleState;
-            case StateType.BuyState:
+            case StateType.Buy:
                 return BuyState;
-            case StateType.VictoryState:
+            case StateType.Victory:
                 return VictoryState;
-            case StateType.LossState:
+            case StateType.Loss:
                 return LossState;
             default:
                 return null;

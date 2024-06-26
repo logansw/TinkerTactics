@@ -6,7 +6,7 @@ public class VictoryState : State
 {
     void Awake()
     {
-        StateType = StateType.VictoryState;
+        StateType = StateType.Victory;
     }
 
     public override void OnEnter(StateController stateController)
