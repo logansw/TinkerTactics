@@ -57,7 +57,7 @@ public class Penny : Tower
     {
         base.Start();
         GoldCollectionCapacity = 50;
-        GoldCollectionRate = 0.1f;
+        GoldCollectionRate = 10f;
     }
 
     protected override void Attack()
@@ -81,5 +81,12 @@ public class Penny : Tower
         int MoneyStacks = (int)GoldCollected / _moneyStacksGoldThreshold;
         pennyLauncher.Damage = pennyLauncher.BaseDamage + MoneyStacks * _moneyStacksADBonusRate;
         pennyLauncher.AttackSpeed = pennyLauncher.BaseAttackSpeed + (MoneyStacks * _moneyStacksAttackSpeedBonusRate * pennyLauncher.BaseAttackSpeed);
+    }
+
+    public void ApplyUpgrade(Upgrade upgrade)
+    {
+        upgrade.UpgradeEffect();
+        SelectedUpgrades.Add(upgrade);
+        Tier += 1;
     }
 }

@@ -446,7 +446,7 @@ MonoBehaviour:
   AttackSpeed: 1
   BaseDamage: 5
   Damage: 5
-  ProjectileSpeed: 5
+  ProjectileSpeed: 10
   ProjectilePrefab: {fileID: 3224674732360852319, guid: 614a368aa4a2240a3b7398de50d41a75, type: 3}
 --- !u!1 &8441707009904547786
 GameObject:
