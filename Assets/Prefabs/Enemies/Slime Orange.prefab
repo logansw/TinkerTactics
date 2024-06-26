@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: UnitSO
       value: 
       objectReference: {fileID: 11400000, guid: f2c4c3401b3a4419ba2239ffc8a4b216, type: 2}
+    - target: {fileID: 2709231604010494696, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: GoldValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3620811638928851442, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.89
