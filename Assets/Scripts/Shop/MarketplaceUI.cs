@@ -1,18 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MarketplaceUI : Singleton<MarketplaceUI>
 {
     public ItemUI itemUIPrefab;
     public Transform itemContainer;
     [SerializeField] private Canvas canvas;
+    private List<ItemUI> itemUIs = new List<ItemUI>();
 
     public void ShowShop(bool show)
     {
         canvas.gameObject.SetActive(show);
     }
 
-    public void UpdateAvailableItems()
+    public void RenderNewItems()
     {
         int row = 0;
         int column = 0;
@@ -31,6 +33,7 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
                 }
                 ItemUI itemUI = Instantiate(itemUIPrefab, itemContainer);
                 itemUI.gameObject.transform.parent = canvas.transform;
+                itemUIs.Add(itemUI);
                 RectTransform itemRectTransform = itemUI.GetComponent<RectTransform>();
                 itemRectTransform.anchoredPosition = new Vector2((column-1) * (itemWidth + padding), (row-1) * (itemHeight + padding));
 
@@ -44,5 +47,14 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
                 }
             }
         }
+    }
+
+    public void ResetItemUIs()
+    {
+        foreach (ItemUI itemUI in itemUIs)
+        {
+            Destroy(itemUI.gameObject);
+        }
+        itemUIs.Clear();
     }
 }

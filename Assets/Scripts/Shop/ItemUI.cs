@@ -48,7 +48,6 @@ public class ItemUI : MonoBehaviour
         if (item.CanAfford())
         {
             item.Purchase();
-            MarketplaceManager.s_Instance.RemoveItemFromAvailableItems(item);
         }
         gameObject.SetActive(false);
     }
