@@ -48,7 +48,7 @@ public class ItemUI : MonoBehaviour
         if (item.CanAfford())
         {
             item.Purchase();
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
     }
 }

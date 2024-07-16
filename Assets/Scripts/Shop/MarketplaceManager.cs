@@ -14,7 +14,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         // Initialization code goes here
         AvailableItems = new TowerItemSO[3][];
         LoadTowerItems();
-        MarketplaceUI.s_Instance.RenderNewItems();
+        PopulateAvailableItems();
     }
 
     void OnEnable()
@@ -37,7 +37,6 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
         TowerItemsByTier = towerItems.GroupBy(item => item.Tier)
                                      .ToDictionary(group => group.Key, group => group.ToList());
-        PopulateAvailableItems();
     }
 
     private void PopulateAvailableItems()
