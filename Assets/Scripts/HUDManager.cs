@@ -9,8 +9,6 @@ public class HUDManager : Singleton<HUDManager>
     public void DisplayTowerInformation(Tower tower)
     {
         tower.TargetTracker.DisplayRange(true);
-        DisplayAppliedUpgrades(tower);
-        DisplayAvailableUpgrades(tower);
     }
 
     public void HideTowerInformation(Tower tower)
