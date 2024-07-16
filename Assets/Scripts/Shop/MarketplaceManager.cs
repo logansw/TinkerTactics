@@ -67,5 +67,6 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
                 }
             }
         }
+        MarketplaceUI.s_Instance.UpdateAvailableItems();
     }
 }
