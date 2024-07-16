@@ -7,13 +7,13 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 {
     // Declare any variables or references here
     public Dictionary<int, List<TowerItemSO>> TowerItemsByTier;
-    public TowerItemSO[,] AvailableItems;
+    public TowerItemSO[][] AvailableItems; // Changed to jagged array
 
     private void Start()
     {
         // Initialization code goes here
         LoadTowerItems();
-        AvailableItems = new TowerItemSO[3, 3];
+        AvailableItems = new TowerItemSO[3][];
         PopulateAvailableItems();
         MarketplaceUI.s_Instance.UpdateAvailableItems();
     }
@@ -45,24 +45,21 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
             List<TowerItemSO> selectedItems = towerItems.Take(3).ToList();
 
             // Populate the AvailableItems array with the selected items
-            for (int i = 0; i < selectedItems.Count; i++)
-            {
-                AvailableItems[tier - 1, i] = selectedItems[i];
-            }
+            AvailableItems[tier - 1] = selectedItems.ToArray();
         }
     }
 
     public void RemoveItemFromAvailableItems(TowerItemSO item)
     {
         // Find the item in the AvailableItems array
-        for (int i = 0; i < AvailableItems.GetLength(0); i++)
+        for (int i = 0; i < AvailableItems.Length; i++)
         {
-            for (int j = 0; j < AvailableItems.GetLength(1); j++)
+            for (int j = 0; j < AvailableItems[i].Length; j++)
             {
-                if (AvailableItems[i, j] == item)
+                if (AvailableItems[i][j] == item)
                 {
                     // Remove the item from the AvailableItems array
-                    AvailableItems[i, j] = null;
+                    AvailableItems[i][j] = null;
                     return;
                 }
             }

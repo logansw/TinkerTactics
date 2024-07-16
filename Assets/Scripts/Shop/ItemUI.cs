@@ -50,5 +50,6 @@ public class ItemUI : MonoBehaviour
             item.Purchase();
             MarketplaceManager.s_Instance.RemoveItemFromAvailableItems(item);
         }
+        gameObject.SetActive(false);
     }
 }

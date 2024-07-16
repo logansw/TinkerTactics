@@ -20,24 +20,28 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
         float itemHeight = itemUIPrefab.GetComponent<RectTransform>().rect.height;
         float padding = 10f;
 
-        foreach (TowerItemSO itemData in MarketplaceManager.s_Instance.AvailableItems)
+        for (int i = 0; i < MarketplaceManager.s_Instance.AvailableItems.Length; i++)
         {
-            if (itemData == null)
+            for (int j = 0; j < MarketplaceManager.s_Instance.AvailableItems[0].Length; j++)
             {
-                continue;
-            }
-            ItemUI itemUI = Instantiate(itemUIPrefab, itemContainer);
-            itemUI.gameObject.transform.parent = canvas.transform;
-            RectTransform itemRectTransform = itemUI.GetComponent<RectTransform>();
-            itemRectTransform.anchoredPosition = new Vector2((column-1) * (itemWidth + padding), (row-1) * (itemHeight + padding));
+                TowerItemSO itemData = MarketplaceManager.s_Instance.AvailableItems[i][j];
+                if (itemData == null)
+                {
+                    continue;
+                }
+                ItemUI itemUI = Instantiate(itemUIPrefab, itemContainer);
+                itemUI.gameObject.transform.parent = canvas.transform;
+                RectTransform itemRectTransform = itemUI.GetComponent<RectTransform>();
+                itemRectTransform.anchoredPosition = new Vector2((column-1) * (itemWidth + padding), (row-1) * (itemHeight + padding));
 
-            itemUI.PopulateFields(itemData);
+                itemUI.PopulateFields(itemData);
 
-            column++;
-            if (column >= 3)
-            {
-                column = 0;
-                row++;
+                column++;
+                if (column >= 3)
+                {
+                    column = 0;
+                    row++;
+                }
             }
         }
     }
