@@ -7,7 +7,7 @@ public class Singleton<T> : MonoBehaviour
 {
     public static T s_Instance { get; private set; }
 
-    void Awake() {
+    protected virtual void Awake() {
         if (s_Instance == null) {
             s_Instance = FindObjectOfType<T>();
         } else {

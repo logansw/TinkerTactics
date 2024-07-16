@@ -35,4 +35,21 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         // Test run to fill up the first element of the matrix
         AvailableItems[0, 0] = TowerItemsByTier[1][0];
     }
+
+    public void RemoveItemFromAvailableItems(TowerItemSO item)
+    {
+        // Find the item in the AvailableItems array
+        for (int i = 0; i < AvailableItems.GetLength(0); i++)
+        {
+            for (int j = 0; j < AvailableItems.GetLength(1); j++)
+            {
+                if (AvailableItems[i, j] == item)
+                {
+                    // Remove the item from the AvailableItems array
+                    AvailableItems[i, j] = null;
+                    return;
+                }
+            }
+        }
+    }
 }

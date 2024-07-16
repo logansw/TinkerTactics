@@ -13,11 +13,12 @@ public class CurrencyManager : Singleton<CurrencyManager>
     public Currency YellowDiscount { get; private set; }
     public Currency BlueDiscount { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
-        RedCurrency = new Currency("Red", 0);
-        YellowCurrency = new Currency("Yellow", 0);
-        BlueCurrency = new Currency("Blue", 0);
+        base.Awake();
+        RedCurrency = new Currency("Red", 10);
+        YellowCurrency = new Currency("Yellow", 10);
+        BlueCurrency = new Currency("Blue", 10);
         RedDiscount = new Currency("Red", 0);
         YellowDiscount = new Currency("Yellow", 0);
         BlueDiscount = new Currency("Blue", 0);

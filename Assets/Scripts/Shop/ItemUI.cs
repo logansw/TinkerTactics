@@ -11,9 +11,11 @@ public class ItemUI : MonoBehaviour
     public TMP_Text BlueCost;
     public TMP_Text YellowCost;
     public GameObject Border;
+    private TowerItemSO item;
 
     public void PopulateFields(TowerItemSO item)
     {
+        this.item = item;
         Name.text = item.Name;
         Description.text = item.Description;
         RedCost.text = item.RedCost.ToString();
@@ -38,6 +40,15 @@ public class ItemUI : MonoBehaviour
         foreach (Image childImage in childImages)
         {
             childImage.color = borderColor;
+        }
+    }
+
+    public void Purchase()
+    {
+        if (item.CanAfford())
+        {
+            item.Purchase();
+            MarketplaceManager.s_Instance.RemoveItemFromAvailableItems(item);
         }
     }
 }
