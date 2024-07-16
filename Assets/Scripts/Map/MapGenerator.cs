@@ -12,6 +12,13 @@ public class MapGenerator : Singleton<MapGenerator>
     [SerializeField] private Sprite _pathEndSprite;
     [SerializeField] private Sprite _pathStraightSprite;
     [SerializeField] private Sprite _pathTurnSprite;
+    /*
+        0- Empty Space
+        S- Start
+        P- Path
+        E- End
+        T- Tile Plot
+    */
     private Tile[,] _tiles; // (0,0) refers to the bottom left corner.
 
     void Start()
@@ -26,14 +33,14 @@ public class MapGenerator : Singleton<MapGenerator>
         string mapData = @"
         00000E0000
         0PPP0PPPP0
-        0PTP0000P0
+        0PTP00T0P0
         SP0P00PPP0
-        000P00PT00
+        000P0TPT00
         00TPT0PPP0
         0PPP0000P0
-        0P000000P0
+        0PTT000TP0
         0PPPPPPPP0
-        0000000000";
+        000T0T0000";
         mapData = CleanMapData(mapData);
         GenerateMap(mapData);
     }

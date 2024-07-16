@@ -54,7 +54,18 @@
         "ProjectSettings/": true,
         "UserSettings/": true,
         "temp/": true,
-        "Temp/": true
+        "Temp/": true,
+        "Assets/Prefabs": true,
+        "Assets/Scenes": true,
+        "Assets/Settings": true,
+        "Assets/Sprites": true,
+        "Assets/TextMesh Pro": true,
+        "Assets/ScriptableObjects": true,
+        "Assets/Scripts": false,
+        ".vscode/": true,
+        "**/*.otf": true,
+        "Packages/": true,
+        ".gitignore": true
     },
     "dotnet.defaultSolution": "WildwoodWarriors.sln"
 }
