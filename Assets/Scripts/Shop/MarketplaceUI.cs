@@ -29,7 +29,7 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
             ItemUI itemUI = Instantiate(itemUIPrefab, itemContainer);
             itemUI.gameObject.transform.parent = canvas.transform;
             RectTransform itemRectTransform = itemUI.GetComponent<RectTransform>();
-            itemRectTransform.anchoredPosition = new Vector2(column * (itemWidth + padding), -row * (itemHeight + padding));
+            itemRectTransform.anchoredPosition = new Vector2((column-1) * (itemWidth + padding), (row-1) * (itemHeight + padding));
 
             itemUI.PopulateFields(itemData);
 

@@ -32,8 +32,24 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
     private void PopulateAvailableItems()
     {
-        // Test run to fill up the first element of the matrix
-        AvailableItems[0, 0] = TowerItemsByTier[1][0];
+        // Iterate through each tier
+        foreach (int tier in TowerItemsByTier.Keys)
+        {
+            // Get the tower items for the current tier
+            List<TowerItemSO> towerItems = TowerItemsByTier[tier];
+
+            // Shuffle the tower items randomly
+            towerItems = towerItems.OrderBy(item => Guid.NewGuid()).ToList();
+
+            // Take the first 3 tower items from the shuffled list
+            List<TowerItemSO> selectedItems = towerItems.Take(3).ToList();
+
+            // Populate the AvailableItems array with the selected items
+            for (int i = 0; i < selectedItems.Count; i++)
+            {
+                AvailableItems[tier - 1, i] = selectedItems[i];
+            }
+        }
     }
 
     public void RemoveItemFromAvailableItems(TowerItemSO item)
