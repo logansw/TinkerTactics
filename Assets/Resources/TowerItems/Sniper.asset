@@ -18,7 +18,7 @@ MonoBehaviour:
   RedCost: 7
   YellowCost: 7
   BlueCost: 0
-  TowerPrefab: {fileID: 0}
+  TowerPrefab: {fileID: -4587408933377243058, guid: f9f245f0f4e644b418357620133eb8c4, type: 3}
   RedDiscount: 0
   YellowDiscount: 1
   BlueDiscount: 0
