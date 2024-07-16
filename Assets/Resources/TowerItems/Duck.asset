@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Duck
   m_EditorClassIdentifier: 
   Name: Duck
-  Description: Attacks have a chance to stun
+  Description: Attacks cause slow
   Tier: 2
   RedCost: 0
   YellowCost: 0
   BlueCost: 6
-  TowerPrefab: {fileID: 1626949983139978225, guid: 6bcc0eedcae694241b7189c2c46bbd72, type: 3}
+  TowerPrefab: {fileID: 0}
   RedDiscount: 0
   YellowDiscount: 1
   BlueDiscount: 0

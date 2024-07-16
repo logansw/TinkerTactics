@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Penny
   m_EditorClassIdentifier: 
   Name: Penny
-  Description: Pig that makes money when it kills
+  Description: Makes money on kill
   Tier: 1
   RedCost: 1
   YellowCost: 2

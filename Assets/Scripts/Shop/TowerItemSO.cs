@@ -31,5 +31,6 @@ public class TowerItemSO : ScriptableObject
         CurrencyManager.s_Instance.YellowDiscount.AddAmount(YellowDiscount);
         CurrencyManager.s_Instance.BlueDiscount.AddAmount(BlueDiscount);
         CurrencyUI.s_Instance.UpdateCurrency();
+        Instantiate(TowerPrefab);
     }
 }
