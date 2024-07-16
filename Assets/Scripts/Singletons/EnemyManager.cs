@@ -45,4 +45,10 @@ public class EnemyManager : Singleton<EnemyManager>
             throw new System.Exception("Unit is not an Enemy");
         }
     }
+
+    public void SpawnEnemy(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(true);
+        enemy.transform.position = MapGenerator.s_Instance.StartTilePath.transform.position;
+    }
 }
