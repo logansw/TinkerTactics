@@ -31,16 +31,16 @@ public class MapGenerator : Singleton<MapGenerator>
         // 0000E";
 
         string mapData = @"
-        TTTTTETTTT
-        TPPPPTPPPT
-        TPTTTTTTPT
-        SPPTTTPPPT
-        TTTPTTPTTT
-        TTTPPTPPPT
-        TPPPTTTTPT
-        TPTTTTTTPP
-        TPPPPPPPPP
-        TTTTTTTTTT";
+        00000E0000
+        0PPPTPPPP0
+        TPTP00TTPT
+        SP0P00PPPT
+        000P0TPTTT
+        00TPT0PPP0
+        0PPPTT00P0
+        0PTT000TP0
+        0PPPPPPPP0
+        000T0T0000";
         mapData = CleanMapData(mapData);
         GenerateMap(mapData);
     }

@@ -11,7 +11,7 @@ public abstract class Projectile : MonoBehaviour
     public ProjectileLauncher SourceLauncher;
     [HideInInspector] public float Damage;
     [HideInInspector] public float ProjectileSpeed;
-    private Enemy _target;
+    protected Enemy _target;
     public delegate void OnImpactDelegate(Enemy hit);
     public OnImpactDelegate e_OnImpact;
     private Vector3 _targetPosition;
@@ -45,7 +45,7 @@ public abstract class Projectile : MonoBehaviour
         transform.Translate(direction * Time.deltaTime * ProjectileSpeed);
     }
 
-    public void OnImpact()
+    public virtual void OnImpact()
     {
         if (_target != null)
         {
