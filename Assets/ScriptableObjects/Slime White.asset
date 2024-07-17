@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Slime White
   m_EditorClassIdentifier: 
   MaxHealth: 40
-  SegmentCount: 2
+  SegmentCount: 1
   MovementSpeed: 3
   Armor: 0

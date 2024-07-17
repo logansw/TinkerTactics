@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Slime Pink
   m_EditorClassIdentifier: 
   MaxHealth: 9
-  SegmentCount: 3
+  SegmentCount: 1
   MovementSpeed: 5
   Armor: 0

@@ -40,7 +40,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
             for (int j = 0; j < subWave.enemyCounts[i]; j++)
             {
                 SpawnEnemy(subWave.enemies[i].enemyPrefab);
-                yield return new WaitForSeconds(Random.Range(SUBWAVE_DELAY_MAX_MIN, SUBWAVE_DELAY_MAX)); // Time between individual enemy spawns, adjust as needed
+                yield return new WaitForSeconds(Random.Range(SUBWAVE_DELAY_MIN, SUBWAVE_DELAY_MAX)); // Time between individual enemy spawns, adjust as needed
             }
         }
     }

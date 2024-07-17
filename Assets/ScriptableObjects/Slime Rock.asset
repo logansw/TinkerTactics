@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Slime Rock
   m_EditorClassIdentifier: 
   MaxHealth: 5
-  SegmentCount: 5
+  SegmentCount: 1
   MovementSpeed: 0.5
   Armor: 0
