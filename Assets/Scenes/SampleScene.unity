@@ -501,6 +501,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a13df0a4308542049ca95df60898a70, type: 2}
   - {fileID: 11400000, guid: 4c1eb90f53ae14582a6ad54f20278579, type: 2}
   - {fileID: 11400000, guid: fb95c495ed6d643d3bf2449799521cd5, type: 2}
+  - {fileID: 11400000, guid: 039313fa77663486da94ea0493f2204b, type: 2}
+  - {fileID: 11400000, guid: 81dab06ff57504eeeaf56de1fd496528, type: 2}
+  - {fileID: 11400000, guid: 4b82d94af263440adbf221c47bc2a25c, type: 2}
+  - {fileID: 11400000, guid: 41152bacd5d1243339634af9f0e8cb90, type: 2}
+  - {fileID: 11400000, guid: e04e8c99147ce46b3aa03ea964d96a93, type: 2}
   spawnPoints:
   - {fileID: 1979200830}
 --- !u!4 &354844413

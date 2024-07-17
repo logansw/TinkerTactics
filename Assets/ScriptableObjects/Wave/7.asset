@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50798df62fb5c4f9c9d02517706a60cb, type: 3}
-  m_Name: 2
+  m_Name: 7
   m_EditorClassIdentifier: 
-  waveName: 2
+  waveName: 5
   subWaves:
+  - {fileID: 11400000, guid: 296fe235f9ca0458cad1a64d34b2a82f, type: 2}
+  - {fileID: 11400000, guid: eb6e6617022e141e0889701b01803b3f, type: 2}
+  - {fileID: 11400000, guid: 296fe235f9ca0458cad1a64d34b2a82f, type: 2}
   - {fileID: 11400000, guid: d83a459be31d14f0baf09ae37803397e, type: 2}

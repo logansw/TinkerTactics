@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50798df62fb5c4f9c9d02517706a60cb, type: 3}
-  m_Name: 2
+  m_Script: {fileID: 11500000, guid: 78a6e7bf2b033452d8976722c48ae559, type: 3}
+  m_Name: White Pair
   m_EditorClassIdentifier: 
-  waveName: 2
-  subWaves:
-  - {fileID: 11400000, guid: d83a459be31d14f0baf09ae37803397e, type: 2}
+  subWaveName: White Pair
+  enemies:
+  - enemyPrefab: {fileID: 3941458878597235671, guid: 14a8c5a1310754260a269cfbd58f20e1, type: 3}
+  enemyCounts: 02000000
