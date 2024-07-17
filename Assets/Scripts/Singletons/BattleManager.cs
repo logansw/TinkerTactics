@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
         else if (StateController.CurrentState.Equals(StateType.Buy))
         {
             StateController.s_Instance.ChangeState(StateType.Battle);
+            WaveSpawner.s_Instance.BeginWave();
         }
         else if (StateController.CurrentState.Equals(StateType.Battle))
         {

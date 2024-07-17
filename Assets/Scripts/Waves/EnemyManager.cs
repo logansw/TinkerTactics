@@ -19,13 +19,12 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             yield return new WaitForSeconds(2f); // Wait for 2 seconds
             // Add your code here to check/update enemies
-            if (StateController.CurrentState.Equals(StateType.Battle))
+            if (StateController.CurrentState.Equals(StateType.Battle) && WaveSpawner.s_Instance.finishedSpawning)
             {
                 if (Enemies.Count == 0)
                 {
                     StateController.s_Instance.ChangeState(StateType.Buy);
                     e_OnWaveCleared?.Invoke();
-                    break;
                 }
             }
         }
