@@ -15,10 +15,10 @@ MonoBehaviour:
   Name: BOB
   Description: Long range bombs
   Tier: 2
-  RedCost: 2
+  RedCost: 4
   YellowCost: 3
-  BlueCost: 2
+  BlueCost: 3
   TowerPrefab: {fileID: 4451264719896630161, guid: 0aae06ca435234c3690e6b4e827fccfa, type: 3}
-  RedDiscount: 0
-  YellowDiscount: 0
-  BlueDiscount: 1
+  RedProduction: 0
+  YellowProduction: 0
+  BlueProduction: 1

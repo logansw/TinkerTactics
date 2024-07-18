@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c99ffe5fa91148cb92f58b8996ef977, type: 3}
-  m_Name: Duck
+  m_Name: Minibomb
   m_EditorClassIdentifier: 
-  Name: Duck
-  Description: Attacks cause slow
+  Name: Minibomb
+  Description: Rapid fire weak bombs
   Tier: 2
   RedCost: 0
   YellowCost: 0
   BlueCost: 6
-  TowerPrefab: {fileID: 0}
-  RedDiscount: 0
-  YellowDiscount: 1
-  BlueDiscount: 0
+  TowerPrefab: {fileID: 4451264719896630161, guid: 9a05b9de4994b40bc8492ff1b8b63db3, type: 3}
+  RedProduction: 0
+  YellowProduction: 1
+  BlueProduction: 0

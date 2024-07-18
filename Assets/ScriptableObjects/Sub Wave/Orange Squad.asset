@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50798df62fb5c4f9c9d02517706a60cb, type: 3}
-  m_Name: 4
+  m_Script: {fileID: 11500000, guid: 78a6e7bf2b033452d8976722c48ae559, type: 3}
+  m_Name: Orange Squad
   m_EditorClassIdentifier: 
-  waveName: 4
-  subWaves:
-  - {fileID: 11400000, guid: 504a292dcdce54d378289f7a517bbd58, type: 2}
-  - {fileID: 11400000, guid: 504a292dcdce54d378289f7a517bbd58, type: 2}
+  subWaveName: Orange Squad
+  enemies:
+  - enemyPrefab: {fileID: 414574627610645957, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+  enemyCounts: 03000000

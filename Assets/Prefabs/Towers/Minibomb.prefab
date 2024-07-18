@@ -183,7 +183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\U0001F385"
+  m_text: "\U0001F4A3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c05820595a0d426e994b51f6fc12d89, type: 2}
   m_sharedMaterial: {fileID: -8368455912388479675, guid: 4c05820595a0d426e994b51f6fc12d89, type: 2}
@@ -270,10 +270,10 @@ GameObject:
   - component: {fileID: 5008652143454603010}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
-  - component: {fileID: -2983637888601071969}
-  - component: {fileID: -4587408933377243058}
+  - component: {fileID: 5455919878972343349}
+  - component: {fileID: 4451264719896630161}
   m_Layer: 0
-  m_Name: Santa
+  m_Name: Minibomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7221335315480308286}
-  _color: {r: 0.9607843, g: 0.2941177, b: 0.53293616, a: 1}
-  _name: "\U0001F385"
+  _color: {r: 0.2941177, g: 0.6520418, b: 0.9607843, a: 1}
+  _name: "\U0001F4A3"
   _textLabel: {fileID: 7002278847893667439}
 --- !u!210 &1543775326421220504
 SortingGroup:
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesInRange: []
-  Range: 7
+  Range: 6
   TargetCalculator: {fileID: 5008652143454603010}
   _rangeIndicator: {fileID: 1202223727500461092}
 --- !u!114 &5008652143454603010
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
---- !u!114 &-2983637888601071969
+--- !u!114 &5455919878972343349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,16 +420,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581560088763616516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b580cd754a9cf474ca9f0c3d1cd2851f, type: 3}
+  m_Script: {fileID: 11500000, guid: 70831f653edc84a3ba9f483f9f60cd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseAttackSpeed: 5
-  AttackSpeed: 5
-  BaseDamage: 10
-  Damage: 10
-  ProjectileSpeed: 40
-  ProjectilePrefab: {fileID: -8254248236329441761, guid: 0ac492d7516b74f2db66ac3065f5c878, type: 3}
---- !u!114 &-4587408933377243058
+  BaseAttackSpeed: 1.5
+  AttackSpeed: 1.5
+  BaseDamage: 5
+  Damage: 1
+  ProjectileSpeed: 10
+  ProjectilePrefab: {fileID: 5739757680594696537, guid: a6b7c4c92081840d2a59b913f8c9c4f0, type: 3}
+--- !u!114 &4451264719896630161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581560088763616516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a00e4afc18e04781abeeda76c7843e1, type: 3}
+  m_Script: {fileID: 11500000, guid: da4ce00dc664d457b9a247028ce2a777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileLauncher: {fileID: 0}
@@ -519,7 +519,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
-  m_Color: {r: 0.9607843, g: 0.2941177, b: 0.53293616, a: 1}
+  m_Color: {r: 0.2941177, g: 0.6520418, b: 0.9607843, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

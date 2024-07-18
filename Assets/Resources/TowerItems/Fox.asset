@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Fox
   m_EditorClassIdentifier: 
   Name: Fox
-  Description: Range increases over time
+  Description: Short range but very powerful
   Tier: 2
-  RedCost: 4
-  YellowCost: 2
-  BlueCost: 1
-  TowerPrefab: {fileID: 0}
-  RedDiscount: 1
-  YellowDiscount: 0
-  BlueDiscount: 0
+  RedCost: 7
+  YellowCost: 0
+  BlueCost: 0
+  TowerPrefab: {fileID: -4587408933377243058, guid: f2bae9d98371a4b16876d9b21bff1720, type: 3}
+  RedProduction: 0
+  YellowProduction: 0
+  BlueProduction: 1

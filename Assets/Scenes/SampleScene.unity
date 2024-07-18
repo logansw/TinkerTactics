@@ -775,7 +775,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.51
+  orthographic size: 6.54
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -800,7 +800,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.98, y: 6.15, z: -10}
+  m_LocalPosition: {x: 4.83, y: 4.65, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2019,9 +2019,9 @@ MonoBehaviour:
   RedCurrency: {fileID: 1756042218}
   YellowCurrency: {fileID: 421584182}
   BlueCurrency: {fileID: 1217004900}
-  RedDiscount: {fileID: 240524721}
-  YellowDiscount: {fileID: 1162898124}
-  BlueDiscount: {fileID: 1775999687}
+  RedProduction: {fileID: 240524721}
+  YellowProduction: {fileID: 1162898124}
+  BlueProduction: {fileID: 1775999687}
 --- !u!1 &1322892328
 GameObject:
   m_ObjectHideFlags: 0

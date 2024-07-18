@@ -15,10 +15,10 @@ MonoBehaviour:
   Name: Red Archer
   Description: Basic single target tower
   Tier: 1
-  RedCost: 3
-  YellowCost: 0
-  BlueCost: 0
+  RedCost: 1
+  YellowCost: 1
+  BlueCost: 1
   TowerPrefab: {fileID: -4587408933377243058, guid: dcb612cb2373744cabdc5030f793e782, type: 3}
-  RedDiscount: 1
-  YellowDiscount: 0
-  BlueDiscount: 0
+  RedProduction: 1
+  YellowProduction: 0
+  BlueProduction: 0

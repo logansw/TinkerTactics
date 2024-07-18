@@ -15,3 +15,5 @@ MonoBehaviour:
   waveName: 5
   subWaves:
   - {fileID: 11400000, guid: 296fe235f9ca0458cad1a64d34b2a82f, type: 2}
+  - {fileID: 11400000, guid: 988f0d9aad32f4149b30454716b9ea45, type: 2}
+  - {fileID: 11400000, guid: 296fe235f9ca0458cad1a64d34b2a82f, type: 2}

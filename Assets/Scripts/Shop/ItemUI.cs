@@ -23,13 +23,13 @@ public class ItemUI : MonoBehaviour
         YellowCost.text = item.YellowCost.ToString();
 
         Color borderColor;
-        if (item.RedDiscount > 0)
+        if (item.RedProduction > 0)
         {
             borderColor = Color.red;
-        } else if (item.YellowDiscount > 0)
+        } else if (item.YellowProduction > 0)
         {
             borderColor = Color.yellow;
-        } else if (item.BlueDiscount > 0)
+        } else if (item.BlueProduction > 0)
         {
             borderColor = Color.blue;
         } else

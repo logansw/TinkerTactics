@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesInRange: []
-  Range: 6
+  Range: 3
   TargetCalculator: {fileID: 5008652143454603010}
   _rangeIndicator: {fileID: 1202223727500461092}
 --- !u!114 &5008652143454603010
@@ -426,7 +426,7 @@ MonoBehaviour:
   BaseAttackSpeed: 0.5
   AttackSpeed: 0.5
   BaseDamage: 5
-  Damage: 3
+  Damage: 2
   ProjectileSpeed: 10
   ProjectilePrefab: {fileID: 5739757680594696537, guid: a6b7c4c92081840d2a59b913f8c9c4f0, type: 3}
 --- !u!114 &4451264719896630161
