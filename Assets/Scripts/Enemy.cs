@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    public TilePath NextTilePath { get; set;}
+    public TilePath NextTilePath { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
     public int GoldValue;
 
@@ -21,7 +21,7 @@ public class Enemy : Unit
     private IEnumerator TempDelayedStart()
     {
         yield return new WaitForSeconds(0.1f);
-        NextTilePath = MapGenerator.s_Instance.StartTilePath;
+        NextTilePath = MapManager.s_Instance.StartTile;
     }
 
     public virtual void OnDisable()

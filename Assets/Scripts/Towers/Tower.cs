@@ -25,7 +25,6 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     protected virtual void Start()
     {
-        AssignTowerToTilePlot();
         Tier = 0;
     }
 

@@ -3,62 +3,31 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class MapGenerator : Singleton<MapGenerator>
+/// <summary>
+/// Renders the map model to the screen.
+/// </summary>
+public class MapView : MonoBehaviour
 {
-    public TilePath StartTilePath { get; private set; }
-    public TilePath EndTilePath { get; private set; }
     [SerializeField] private TilePath _tilePathPrefab;
     [SerializeField] private TilePlot _tilePlotPrefab;
     [SerializeField] private Sprite _pathEndSprite;
     [SerializeField] private Sprite _pathStraightSprite;
     [SerializeField] private Sprite _pathTurnSprite;
-    /*
-        0- Empty Space
-        S- Start
-        P- Path
-        E- End
-        T- Tile Plot
-    */
-    private Tile[,] _tiles; // (0,0) refers to the bottom left corner.
 
-    void Start()
+    void OnEnable()
     {
-        // string mapData = @"
-        // 00000
-        // SPP00
-        // 00P00
-        // 00PPP
-        // 0000E";
-
-        string mapData = @"
-        00000E0000
-        0PPPTPPPP0
-        TPTP00TTPT
-        SP0P00PPPT
-        000P0TPTTT
-        00TPT0PPP0
-        0PPPTT00P0
-        0PTT000TP0
-        0PPPPPPPP0
-        000T0T0000";
-        mapData = CleanMapData(mapData);
-        GenerateMap(mapData);
+        MapManager.e_OnMapUpdated += RenderMap;
     }
 
-    public void GenerateMap(string mapData)
+    void OnDisable()
     {
-        string[] mapDataLines = mapData.Split('\n');
-        int r = mapDataLines.Length;
-        int c = mapDataLines[0].Length;
-        _tiles = new Tile[r, c];
-        SpawnTiles(mapData);
-        StitchTiles(_tiles);
-        RenderTiles(_tiles);
+        MapManager.e_OnMapUpdated -= RenderMap;
     }
-
-    private void SpawnTiles(string mapData)
+    
+    public Tile[,] SpawnTiles(string mapData)
     {
         string[] mapDataLines = mapData.Split('\n');
+        Tile[,] tiles = new Tile[mapDataLines[0].Length, mapDataLines.Length];
 
         for (int y = 0; y < mapDataLines.Length; y++)
         {
@@ -74,7 +43,6 @@ public class MapGenerator : Singleton<MapGenerator>
                     TilePath tilePath = Instantiate(_tilePathPrefab, tilePosition, Quaternion.identity, transform);
                     tilePath.Initialize(x, y);
                     tilePath.PathType = PathType.Start;
-                    StartTilePath = tilePath;
                     newTile = tilePath;
                 }
                 else if (tileType == 'E')
@@ -82,7 +50,6 @@ public class MapGenerator : Singleton<MapGenerator>
                     TilePath tilePath = Instantiate(_tilePathPrefab, tilePosition, Quaternion.identity, transform);
                     tilePath.Initialize(x, y);
                     tilePath.PathType = PathType.End;
-                    EndTilePath = tilePath;
                     newTile = tilePath;
                 }
                 else if (tileType == 'P')
@@ -107,104 +74,14 @@ public class MapGenerator : Singleton<MapGenerator>
                 {
                     newTile.gameObject.name = $"TilePath ({x}, {y})";
                 }
-                _tiles[x, y] = newTile;
-            }
-        }
-    }
-
-    private void StitchTiles(Tile[,] tiles)
-    {
-        // Find the starting tile
-        TilePath currentTile = null;
-        for (int y = 0; y < tiles.GetLength(1); y++)
-        {
-            for (int x = 0; x < tiles.GetLength(0); x++)
-            {
-                Tile tile = tiles[x, y];
-                if (tile is TilePath tilePath && tilePath.PathType == PathType.Start)
-                {
-                    currentTile = tilePath;
-                    break;
-                }
+                tiles[x, y] = newTile;
             }
         }
 
-        // Stitch path from Start to End
-        while (currentTile != null && currentTile.PathType != PathType.End)
-        {
-            List<Direction> adjacentPathDirections = FindAdjacentPaths(currentTile, tiles);
-            foreach (Direction direction in adjacentPathDirections)
-            {
-                TilePath adjacentTilePath = GetTilePathInDirection(direction, currentTile);
-                if (adjacentTilePath != null && adjacentTilePath != currentTile.PreviousTilePath)
-                {
-                    currentTile.NextTilePath = adjacentTilePath;
-                    currentTile.NextTilePath.PreviousTilePath = currentTile;
-                }
-            }
-            currentTile = currentTile.NextTilePath;
-        }
+        return tiles;
     }
 
-    private TilePath GetTilePathInDirection(Direction direction, TilePath currentPath)
-    {
-        TilePath adjacentTilePath = null;
-        switch (direction)
-        {
-            case Direction.Down:
-                if (currentPath.Position.Y > 0)
-                {
-                    adjacentTilePath = (TilePath)_tiles[currentPath.Position.X, currentPath.Position.Y - 1];
-                }
-                break;
-            case Direction.Left:
-                if (currentPath.Position.X > 0)
-                {
-                    adjacentTilePath = (TilePath)_tiles[currentPath.Position.X - 1, currentPath.Position.Y];
-                }
-                break;
-            case Direction.Up:
-                if (currentPath.Position.Y < _tiles.GetLength(1) - 1)
-                {
-                    adjacentTilePath = (TilePath)_tiles[currentPath.Position.X, currentPath.Position.Y + 1];
-                }
-                break;
-            case Direction.Right:
-                if (currentPath.Position.X < _tiles.GetLength(0) - 1)
-                {
-                    adjacentTilePath = (TilePath)_tiles[currentPath.Position.X + 1, currentPath.Position.Y];
-                }
-                break;
-        }
-        return adjacentTilePath;
-    }
-
-    private List<Direction> FindAdjacentPaths(TilePath tilePath, Tile[,] tiles)
-    {
-        List<Direction> adjacentPathDirections = new List<Direction>();
-        int x = tilePath.Position.X;
-        int y = tilePath.Position.Y;
-        if (x > 0 && tiles[x - 1, y] != null && tiles[x - 1, y] is TilePath)
-        {
-            adjacentPathDirections.Add(Direction.Left);
-        }
-        if (x < tiles.GetLength(0) - 1 && tiles[x + 1, y] != null && tiles[x + 1, y] is TilePath)
-        {
-            adjacentPathDirections.Add(Direction.Right);
-        }
-        if (y > 0 && tiles[x, y + 1] != null && tiles[x, y + 1] is TilePath)
-        {
-            adjacentPathDirections.Add(Direction.Up);
-        }
-        if (y < tiles.GetLength(1) - 1 && tiles[x, y - 1] != null && tiles[x, y - 1] is TilePath)
-        {
-            adjacentPathDirections.Add(Direction.Down);
-        }
-
-        return adjacentPathDirections;
-    }
-
-    private void RenderTiles(Tile[,] tiles)
+    private void RenderMap(Tile[,] tiles)
     {
         for (int y = 0; y < tiles.GetLength(1); y++)
         {
@@ -299,11 +176,5 @@ public class MapGenerator : Singleton<MapGenerator>
                 }
             }
         }
-    }
-
-    private string CleanMapData(string mapData)
-    {
-        mapData = mapData[1..];
-        return mapData.Replace(" ", "");
     }
 }

@@ -48,6 +48,6 @@ public class EnemyManager : Singleton<EnemyManager>
     public void SpawnEnemy(Enemy enemy)
     {
         enemy.gameObject.SetActive(true);
-        enemy.transform.position = MapGenerator.s_Instance.StartTilePath.transform.position;
+        enemy.transform.position = MapManager.s_Instance.StartTile.transform.position;
     }
 }
