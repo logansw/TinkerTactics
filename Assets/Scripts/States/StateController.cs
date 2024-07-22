@@ -22,7 +22,6 @@ public class StateController : Singleton<StateController>
     void Update()
     {
         GetState(CurrentState).UpdateState(this);
-        Debug.Log(CurrentState);
     }
 
     /// <summary>

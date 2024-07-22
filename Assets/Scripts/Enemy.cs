@@ -11,14 +11,23 @@ public class Enemy : Unit
 
     public virtual void Start()
     {
+        EnemyManager.s_Instance.AddEnemy(this);
+        NextTilePath = MapManager.s_Instance.StartTile.NextTilePath;
+    }
+
+    public virtual void OnEnable()
+    {
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
-        EnemyManager.s_Instance.AddEnemy(this);
+        BattleManager.e_OnPlayerTurnEnd += Move;
     }
 
     public virtual void OnDisable()
     {
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
+        Health.e_OnHealthBreak -= OnBreak;
+        Health.e_OnHealthDepleted -= OnDeath;
+        BattleManager.e_OnPlayerTurnEnd -= Move;
     }
 
     /// <summary>
@@ -54,6 +63,32 @@ public class Enemy : Unit
 
     public virtual void Move()
     {
-        
+        if (GetComponent<EffectStun>() != null)
+        {
+            return;
+        }
+        StartCoroutine(AnimateMove());
+    }
+
+    private IEnumerator AnimateMove()
+    {
+        for (int i = 0; i < MovementSpeed; i++)
+        {
+            Vector3 startPosition = transform.position;
+            Vector3 endPosition = NextTilePath.transform.position;
+            float t = 0;
+            while (t < 1)
+            {
+                t += Time.deltaTime;
+                transform.position = Vector3.Lerp(startPosition, endPosition, t);
+                yield return null;
+            }
+            if (NextTilePath.NextTilePath == null)
+            {
+                OnDeath();
+                yield break;
+            }
+            NextTilePath = NextTilePath.NextTilePath;
+        }
     }
 }

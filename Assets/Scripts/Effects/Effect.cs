@@ -4,20 +4,26 @@ using UnityEngine;
 
 public abstract class Effect : MonoBehaviour
 {
-    public float Duration;
+    public int Duration;
     public Unit Unit;
-    private Coroutine _durationCoroutine;
 
-    public virtual void Start()
+    void OnEnable()
     {
-        _durationCoroutine = StartCoroutine(DurationCoroutine());
+        BattleManager.e_OnEnemyTurnEnd += OnEnemyTurnEnd;
     }
 
-    // Removes the effect from the target after the duration has expired
-    protected virtual IEnumerator DurationCoroutine()
+    public void OnDisable()
     {
-        yield return new WaitForSeconds(Duration);
-        Remove();
+        BattleManager.e_OnEnemyTurnEnd -= OnEnemyTurnEnd;
+    }
+
+    public virtual void OnEnemyTurnEnd()
+    {
+        Duration--;
+        if (Duration <= 0)
+        {
+            Remove();
+        }
     }
 
     public virtual void Remove()
@@ -25,11 +31,4 @@ public abstract class Effect : MonoBehaviour
         Destroy(this);
     }
 
-    public void OnDisable()
-    {
-        if (_durationCoroutine != null)
-        {
-            StopCoroutine(_durationCoroutine);
-        }
-    }
 }

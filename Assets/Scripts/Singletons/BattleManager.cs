@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
+    public static Action e_OnPlayerTurnEnd;
+    public static Action e_OnEnemyTurnEnd;
+
     void Start()
     {
         StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
@@ -17,7 +21,13 @@ public class BattleManager : MonoBehaviour
     {
         if (StateController.CurrentState.Equals(StateType.PlayerTurnState))
         {
+            e_OnPlayerTurnEnd?.Invoke();
             StateController.s_Instance.ChangeState(StateType.EnemyTurnState);
+        }
+        else if (StateController.CurrentState.Equals(StateType.EnemyTurnState))
+        {
+            e_OnEnemyTurnEnd?.Invoke();
+            StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
         }
     }
 }

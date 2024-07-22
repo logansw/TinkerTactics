@@ -7,7 +7,7 @@ public abstract class Unit : MonoBehaviour
     public UnitSO UnitSO;
     public Health Health;
     private Healthbar _healthbar;
-    [HideInInspector] public float MovementSpeed;
+    [HideInInspector] public int MovementSpeed;
     [HideInInspector] public float Armor;
     [HideInInspector] public List<float> DamageMultipliers;
 

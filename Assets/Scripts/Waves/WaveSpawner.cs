@@ -6,48 +6,39 @@ public class WaveSpawner : Singleton<WaveSpawner>
 {
     public bool finishedSpawning = false;
     public WaveSO[] waves;
-    public Transform[] spawnPoints;
     private int currentWaveIndex = 0;
     private int currentSubWaveIndex = 0;
-    private const float WAVE_DELAY = 1.5f;
-    private const float SUBWAVE_DELAY_MIN = 0.1f;
-    private const float SUBWAVE_DELAY_MAX = 0.5f;
+    private int currentEnemyIndex = 0;
 
-    public void BeginWave()
+    void OnEnable()
     {
-        StartCoroutine(SpawnSubWaves());
+        BattleManager.e_OnPlayerTurnEnd += ContinueWave;
     }
 
-    private IEnumerator SpawnSubWaves()
+    void OnDisable()
     {
-        finishedSpawning = false;
-        currentSubWaveIndex = 0;
+        BattleManager.e_OnPlayerTurnEnd -= ContinueWave;
+    }
+
+    public void ContinueWave()
+    {
         WaveSO currentWave = waves[currentWaveIndex];
-        while (currentSubWaveIndex < currentWave.subWaves.Length)
+        SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+        currentEnemyIndex++;
+        if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
         {
-            yield return StartCoroutine(SpawnSubWave(currentWave.subWaves[currentSubWaveIndex]));
-            yield return new WaitForSeconds(WAVE_DELAY); // Time between waves, adjust as needed
             currentSubWaveIndex++;
+            currentEnemyIndex = 0;
         }
-        finishedSpawning = true;
-        currentWaveIndex++;
-    }
-
-    private IEnumerator SpawnSubWave(SubWaveSO subWave)
-    {
-        for (int i = 0; i < subWave.enemies.Length; i++)
+        if (currentSubWaveIndex >= currentWave.subWaves.Length)
         {
-            for (int j = 0; j < subWave.enemyCounts[i]; j++)
-            {
-                SpawnEnemy(subWave.enemies[i].enemyPrefab);
-                yield return new WaitForSeconds(Random.Range(SUBWAVE_DELAY_MIN, SUBWAVE_DELAY_MAX)); // Time between individual enemy spawns, adjust as needed
-            }
+            currentWaveIndex++;
         }
     }
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Transform spawnPoint = MapManager.s_Instance.StartTile.transform;
+        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
     }
 }

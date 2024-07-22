@@ -7,6 +7,6 @@ public class UnitSO : ScriptableObject
 {
     public float MaxHealth;
     public int SegmentCount;
-    public float MovementSpeed;
+    public int MovementSpeed;
     public float Armor;
 }

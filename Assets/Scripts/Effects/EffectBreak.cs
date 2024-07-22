@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EffectBreak : Effect
 {
-    void Awake()
+    public void Initialize(int duration)
     {
         Unit = GetComponent<Unit>();
-        Duration = 1.0f;
-        Unit.DamageMultipliers.Add(3f);
-        Unit.MovementSpeed = 0f;
+        Duration = duration;
+        Unit.DamageMultipliers.Add(2f);
+        EffectStun stun = Unit.AddComponent<EffectStun>();
+        stun.Initialize(1);
     }
 
     public override void Remove()

@@ -816,11 +816,10 @@ GameObject:
   m_Component:
   - component: {fileID: 520271626}
   - component: {fileID: 520271625}
-  - component: {fileID: 520271624}
-  - component: {fileID: 520271622}
-  - component: {fileID: 520271623}
   - component: {fileID: 520271621}
   - component: {fileID: 520271620}
+  - component: {fileID: 520271628}
+  - component: {fileID: 520271627}
   m_Layer: 0
   m_Name: StateController
   m_TagString: Untagged
@@ -854,45 +853,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateType: 0
---- !u!114 &520271622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520271619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c433c4d20438433590d0cb3e52a007d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StateType: 0
---- !u!114 &520271623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520271619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f962d52e66e4ca2a5e86a680386604, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StateType: 0
---- !u!114 &520271624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520271619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96b327c837504d50ac24ca273693bbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StateType: 0
 --- !u!114 &520271625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,9 +865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4b9e9bdf6cd4b37b3eaabb999d3653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PreStartState: {fileID: 520271624}
-  BuyState: {fileID: 520271622}
-  BattleState: {fileID: 520271623}
+  PlayerTurnState: {fileID: 520271628}
+  EnemyTurnState: {fileID: 520271627}
   VictoryState: {fileID: 520271621}
   LossState: {fileID: 520271620}
 --- !u!4 &520271626
@@ -925,6 +884,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &520271627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520271619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c041b4a0e842ca89d09addfe232bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateType: 0
+--- !u!114 &520271628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520271619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978fbb25e04de47c39b04ae1cf069263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateType: 0
 --- !u!1 &593746123
 GameObject:
   m_ObjectHideFlags: 0
