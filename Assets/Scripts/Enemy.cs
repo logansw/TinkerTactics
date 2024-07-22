@@ -76,13 +76,16 @@ public class Enemy : Unit
         {
             Vector3 startPosition = transform.position;
             Vector3 endPosition = NextTilePath.transform.position;
-            float t = 0;
-            while (t < 1)
+            float timeElapsed = 0;
+            float duration = 0.5f / MovementSpeed;
+            while (timeElapsed < duration)
             {
-                t += Time.deltaTime;
+                timeElapsed += Time.deltaTime;
+                float t = timeElapsed / duration;
                 transform.position = Vector3.Lerp(startPosition, endPosition, t);
                 yield return null;
             }
+            transform.position = endPosition;
             if (NextTilePath.NextTilePath == null)
             {
                 OnDeath();

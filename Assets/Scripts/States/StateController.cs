@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class StateController : Singleton<StateController>
     [SerializeField] private State EnemyTurnState;
     [SerializeField] private State VictoryState;
     [SerializeField] private State LossState;
+    [SerializeField] private TMP_Text StateText;
 
     // Internal
     private StateType _previousState;
@@ -36,6 +38,7 @@ public class StateController : Singleton<StateController>
         _previousState = CurrentState;
         CurrentState = stateType;
         GetState(CurrentState).OnEnter(this);
+        StateText.text = CurrentState.ToString();
     }
 
     public void ChangeToPreviousState() {

@@ -20,8 +20,20 @@ public class WaveSpawner : Singleton<WaveSpawner>
         BattleManager.e_OnPlayerTurnEnd -= ContinueWave;
     }
 
+    public void BeginWave()
+    {
+        finishedSpawning = false;
+        currentSubWaveIndex = 0;
+        currentEnemyIndex = 0;
+        ContinueWave();
+    }
+
     public void ContinueWave()
     {
+        if (finishedSpawning)
+        {
+            return;
+        }
         WaveSO currentWave = waves[currentWaveIndex];
         SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
         currentEnemyIndex++;
@@ -29,10 +41,11 @@ public class WaveSpawner : Singleton<WaveSpawner>
         {
             currentSubWaveIndex++;
             currentEnemyIndex = 0;
-        }
-        if (currentSubWaveIndex >= currentWave.subWaves.Length)
-        {
-            currentWaveIndex++;
+            if (currentSubWaveIndex >= currentWave.subWaves.Length)
+            {
+                currentWaveIndex++;
+                finishedSpawning = true;
+            }
         }
     }
 

@@ -14,7 +14,7 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
+        StateController.s_Instance.ChangeState(StateType.Victory);
     }
     
     public void Continue()
@@ -27,7 +27,19 @@ public class BattleManager : MonoBehaviour
         else if (StateController.CurrentState.Equals(StateType.EnemyTurnState))
         {
             e_OnEnemyTurnEnd?.Invoke();
-            StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
+            if (EnemyManager.s_Instance.Enemies.Count == 0)
+            {
+                StateController.s_Instance.ChangeState(StateType.Victory);
+            }
+            else
+            {
+                StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
+            }
+        }
+        else if (StateController.CurrentState.Equals(StateType.Victory))
+        {
+            WaveSpawner.s_Instance.BeginWave();
+            StateController.s_Instance.ChangeState(StateType.EnemyTurnState);
         }
     }
 }

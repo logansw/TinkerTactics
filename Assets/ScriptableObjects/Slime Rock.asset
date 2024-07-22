@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5
   SegmentCount: 1
-  MovementSpeed: 0.5
+  MovementSpeed: 1
   Armor: 0

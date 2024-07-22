@@ -13,18 +13,6 @@ public class TilePath : Tile
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnEnemyEnter(Enemy enemy)
-    {
-        if (PathType == PathType.End)
-        {
-            enemy.OnDeath();
-        }
-        else
-        {
-            enemy.NextTilePath = NextTilePath;
-        }
-    }
-
     public Direction GetNextPathDirection()
     {
         if (NextTilePath.Position.X > Position.X)
