@@ -14,25 +14,11 @@ public class Enemy : Unit
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
         EnemyManager.s_Instance.AddEnemy(this);
-        StartCoroutine(TempDelayedStart());
-    }
-
-    // TODO: Remove this once a proper wave spawning system is implemented. Assign the enemy to the path then.
-    private IEnumerator TempDelayedStart()
-    {
-        yield return new WaitForSeconds(0.1f);
-        NextTilePath = MapManager.s_Instance.StartTile;
     }
 
     public virtual void OnDisable()
     {
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
-    }
-
-    public virtual void Update()
-    {
-        if (!StateController.CurrentState.Equals(StateType.Battle)) { return; }
-        Move();
     }
 
     /// <summary>
@@ -68,13 +54,6 @@ public class Enemy : Unit
 
     public virtual void Move()
     {
-        if (NextTilePath != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, NextTilePath.transform.position, MovementSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, NextTilePath.transform.position) < 0.1f)
-            {
-                NextTilePath.OnEnemyEnter(this);
-            }
-        }
+        
     }
 }

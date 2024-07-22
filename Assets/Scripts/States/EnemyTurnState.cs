@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyState : State
+public class EnemyTurnState : State
 {
     void Awake()
     {
-        StateType = StateType.Buy;
+        StateType = StateType.EnemyTurnState;
     }
 
     public override void OnEnter(StateController stateController)

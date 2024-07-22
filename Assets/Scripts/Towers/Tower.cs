@@ -28,18 +28,9 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
         Tier = 0;
     }
 
-    public virtual void Update()
-    {
-        if (StateController.CurrentState.Equals(StateType.Battle) && CanAttack())
-        {
-            Attack();
-        }
-    }
-
     protected bool CanAttack()
     {
         return _tilePlot.IsActivated && 
-                StateController.CurrentState.Equals(StateType.Battle) &&
                 ProjectileLauncher.CanAttack() &&
                 TargetTracker.HasEnemiesInRange();
         }

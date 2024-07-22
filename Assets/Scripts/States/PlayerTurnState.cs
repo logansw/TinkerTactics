@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PreStartState : State
+public class PlayerTurnState : State
 {
     void Awake()
     {
-        StateType = StateType.PreStart;
+        StateType = StateType.PlayerTurnState;
     }
 
     public override void OnEnter(StateController stateController)
     {
-        // Load random list of enemies and towers
+        // Do nothing
     }
 
     public override void UpdateState(StateController stateController)
     {
-        // Do nothing.
+        // Do nothing
     }
 
     public override void OnExit(StateController stateController)
     {
-        // Do nothing.
+        // Do nothing
     }
 }
