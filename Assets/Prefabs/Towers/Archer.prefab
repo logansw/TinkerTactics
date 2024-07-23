@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 7502078493677376242}
   - component: {fileID: -4587408933377243058}
   - component: {fileID: 7426141197121485279}
-  - component: {fileID: 7458319259637067329}
+  - component: {fileID: 5444761819876556568}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Energy: 0
-  BasicAttack: {fileID: 7426141197121485279}
-  Ability: {fileID: 7458319259637067329}
+  MaxEnergy: 3
+  Name: Archer
 --- !u!114 &7426141197121485279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,12 +439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5969f7214a3d44dea9dd34610d47046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 3
-  Name: Arrow
-  EnergyCost: 1
-  Icon: {fileID: 0}
-  Damage: 2
---- !u!114 &7458319259637067329
+  _name: Pew Pew
+  _energyCost: 1
+  _range: 3
+  BaseDamage: 2
+--- !u!114 &5444761819876556568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -453,14 +452,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581560088763616516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5969f7214a3d44dea9dd34610d47046, type: 3}
+  m_Script: {fileID: 11500000, guid: 71d4a5d1b6ddd4194b2c03bd20ca053b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 6
-  Name: Super Arrow
-  EnergyCost: 2
-  Icon: {fileID: 0}
-  Damage: 4
+  _name: Focus
+  _energyCost: 3
+  _range: 0
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0

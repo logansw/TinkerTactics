@@ -38,7 +38,7 @@ public class TowerInfoPanel : MonoBehaviour
 
     public void Render()
     {
-        _energyText.text = $"{_tower.Energy}/3";
+        _energyText.text = $"{_tower.Energy}/{_tower.MaxEnergy}";
         _abilityOneIcon.text = $"{_tower.BasicAttack.Name} ({_tower.BasicAttack.EnergyCost})";
         _abilityTwoIcon.text = $"{_tower.Ability.Name} ({_tower.Ability.EnergyCost})";
     }
@@ -49,7 +49,7 @@ public class TowerInfoPanel : MonoBehaviour
     /// <param name="ability"></param>
     public void DisplayBasicAttackTooltip()
     {
-        Ability ability = _tower.BasicAttack;
+        IAbility ability = _tower.BasicAttack;
         ShowRangeIndicator(true, ability.Range);
         _abilityToolTip.text = ability.GetTooltipText();
         _abilityToolTip.gameObject.SetActive(true);
@@ -57,7 +57,7 @@ public class TowerInfoPanel : MonoBehaviour
 
     public void DisplayAbilityTooltip()
     {
-        Ability ability = _tower.Ability;
+        IAbility ability = _tower.Ability;
         ShowRangeIndicator(true, ability.Range);
         _abilityToolTip.text = ability.GetTooltipText();
         _abilityToolTip.gameObject.SetActive(true);

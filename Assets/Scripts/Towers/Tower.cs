@@ -11,8 +11,12 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
     [HideInInspector] public int Energy;
-    public Ability BasicAttack;
-    public Ability Ability;
+    public int MaxEnergy;
+    public IAbility BasicAttack;
+    public IAbility Ability;
+    public string Name;
+
+    public abstract string GetTooltipText();
 
     protected virtual void OnEnable()
     {
@@ -27,9 +31,9 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     protected void RechargeEnergy()
     {
         Energy += 1;
-        if (Energy > 3)
+        if (Energy > MaxEnergy)
         {
-            Energy = 3;
+            Energy = MaxEnergy;
         }
     }
 
@@ -43,7 +47,7 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
         Cast(Ability);
     }
 
-    private void Cast(Ability ability)
+    private void Cast(IAbility ability)
     {
         if (Energy >= ability.EnergyCost)
         {
