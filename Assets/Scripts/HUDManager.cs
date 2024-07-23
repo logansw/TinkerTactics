@@ -36,4 +36,20 @@ public class HUDManager : Singleton<HUDManager>
         }
         _towerInfoPanels[tower].gameObject.SetActive(false);
     }
+
+    public void DisplayAllTowerInfo()
+    {
+        foreach (Tower tower in _towerInfoPanels.Keys)
+        {
+            DisplayTowerInformation(tower);
+        }
+    }
+
+    public void HideAllTowerInfo()
+    {
+        foreach (Tower tower in _towerInfoPanels.Keys)
+        {
+            HideTowerInformation(tower);
+        }
+    }
 }

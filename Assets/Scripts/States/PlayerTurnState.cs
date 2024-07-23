@@ -11,7 +11,7 @@ public class PlayerTurnState : State
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        HUDManager.s_Instance.DisplayAllTowerInfo();
     }
 
     public override void UpdateState(StateController stateController)
@@ -21,6 +21,6 @@ public class PlayerTurnState : State
 
     public override void OnExit(StateController stateController)
     {
-        // Do nothing
+        HUDManager.s_Instance.HideAllTowerInfo();
     }
 }
