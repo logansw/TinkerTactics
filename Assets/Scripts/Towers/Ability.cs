@@ -9,9 +9,4 @@ public abstract class Ability : MonoBehaviour
     public Sprite Icon;
 
     public abstract void Activate();
-
-    public void Display(Tower tower)
-    {
-
-    }
 }

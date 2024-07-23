@@ -22,10 +22,11 @@ public class HUDManager : Singleton<HUDManager>
             towerInfoPanel = Instantiate(TowerInfoPanelPrefab);
             towerInfoPanel.transform.SetParent(_HUDCanvas.transform);
             _towerInfoPanels.Add(tower, towerInfoPanel);
+            towerInfoPanel.Initialize(tower);
         }
         towerInfoPanel.gameObject.SetActive(true);
         towerInfoPanel.transform.position = Camera.main.WorldToScreenPoint(tower.transform.position);
-        towerInfoPanel.Render(tower);
+        towerInfoPanel.Render();
     }
 
     public void HideTowerInformation(Tower tower)

@@ -441,6 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _energyText: {fileID: 2286821185210550220}
+  _abilityOneButton: {fileID: 147400357828919160}
+  _abilityTwoButton: {fileID: 1436109833783615724}
+  _abilityThreeButton: {fileID: 0}
   _abilityOneIcon: {fileID: 5948782505142788528}
   _abilityTwoIcon: {fileID: 5672777189479224010}
   _abilityThreeIcon: {fileID: 0}
