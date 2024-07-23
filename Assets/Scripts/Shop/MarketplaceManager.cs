@@ -5,14 +5,13 @@ using System.Linq;
 
 public class MarketplaceManager : Singleton<MarketplaceManager>
 {
-    // Declare any variables or references here
-    public Dictionary<int, List<TowerItemSO>> TowerItemsByTier;
-    public TowerItemSO[][] AvailableItems; // Changed to jagged array
+    public TowerItemSO[] AvailableItems;
+    List<TowerItemSO> towerItems;
 
     private void Start()
     {
         // Initialization code goes here
-        AvailableItems = new TowerItemSO[3][];
+        AvailableItems = new TowerItemSO[3];
         LoadTowerItems();
         PopulateAvailableItems();
     }
@@ -30,32 +29,23 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     private void LoadTowerItems()
     {
         // Get all TowerItemSO objects from a folder
-        TowerItemSO[] towerItemObjects = Resources.LoadAll<TowerItemSO>("TowerItems");
+        TowerItemSO[] towerItemObjects = Resources.LoadAll<TowerItemSO>("TowerItems/_Prod");
 
         // Convert the array to a list
-        List<TowerItemSO> towerItems = new List<TowerItemSO>(towerItemObjects);
-
-        TowerItemsByTier = towerItems.GroupBy(item => item.Tier)
-                                     .ToDictionary(group => group.Key, group => group.ToList());
+        towerItems = new List<TowerItemSO>(towerItemObjects);
     }
 
     private void PopulateAvailableItems()
     {
         MarketplaceUI.s_Instance.ResetItemUIs();
-        // Iterate through each tier
-        foreach (int tier in TowerItemsByTier.Keys)
+
+        towerItems = towerItems.OrderBy(item => Guid.NewGuid()).ToList();
+
+        // Take the first 3 tower items from the shuffled list
+        List<TowerItemSO> selectedItems = towerItems.Take(3).ToList();
+        for (int i = 0; i < AvailableItems.Length; i++)
         {
-            // Get the tower items for the current tier
-            List<TowerItemSO> towerItems = TowerItemsByTier[tier];
-
-            // Shuffle the tower items randomly
-            towerItems = towerItems.OrderBy(item => Guid.NewGuid()).ToList();
-
-            // Take the first 3 tower items from the shuffled list
-            List<TowerItemSO> selectedItems = towerItems.Take(3).ToList();
-
-            // Populate the AvailableItems array with the selected items
-            AvailableItems[tier - 1] = selectedItems.ToArray();
+            AvailableItems[i] = selectedItems[i];
         }
         MarketplaceUI.s_Instance.RenderNewItems();
     }

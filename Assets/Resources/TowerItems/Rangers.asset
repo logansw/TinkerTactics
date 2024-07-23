@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rangers
   Description: Better Archer
-  Tier: 3
-  RedCost: 9
-  YellowCost: 3
-  BlueCost: 3
+  YellowCost: 15
   TowerPrefab: {fileID: -4587408933377243058, guid: 13c65a553431a475db3987557280d0c5, type: 3}
-  RedDiscount: 1
-  YellowDiscount: 0
-  BlueDiscount: 0

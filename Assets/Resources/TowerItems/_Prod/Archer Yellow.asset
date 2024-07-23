@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Yellow Archer
   Description: Basic single target tower
-  Tier: 1
-  RedCost: 0
-  YellowCost: 3
-  BlueCost: 0
+  YellowCost: 5
   TowerPrefab: {fileID: -4587408933377243058, guid: dcb612cb2373744cabdc5030f793e782, type: 3}
-  RedDiscount: 0
-  YellowDiscount: 1
-  BlueDiscount: 0

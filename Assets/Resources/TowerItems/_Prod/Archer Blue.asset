@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c99ffe5fa91148cb92f58b8996ef977, type: 3}
-  m_Name: Archer Red
+  m_Name: Archer Blue
   m_EditorClassIdentifier: 
-  Name: Red Archer
+  Name: Blue Archer
   Description: Basic single target tower
-  Tier: 1
-  RedCost: 3
-  YellowCost: 0
-  BlueCost: 0
+  YellowCost: 5
   TowerPrefab: {fileID: -4587408933377243058, guid: dcb612cb2373744cabdc5030f793e782, type: 3}
-  RedDiscount: 1
-  YellowDiscount: 0
-  BlueDiscount: 0

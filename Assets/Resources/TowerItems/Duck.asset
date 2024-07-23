@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Duck
   Description: Attacks cause slow
-  Tier: 2
-  RedCost: 0
-  YellowCost: 0
-  BlueCost: 6
+  YellowCost: 10
   TowerPrefab: {fileID: 0}
-  RedDiscount: 0
-  YellowDiscount: 1
-  BlueDiscount: 0

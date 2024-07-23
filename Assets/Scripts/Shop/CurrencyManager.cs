@@ -6,12 +6,7 @@ using UnityEngine;
 /// </summary>
 public class CurrencyManager : Singleton<CurrencyManager>
 {    
-    public Currency RedCurrency { get; private set; }
     public Currency YellowCurrency { get; private set; }
-    public Currency BlueCurrency { get; private set; }
-    public Currency RedDiscount { get; private set; }
-    public Currency YellowDiscount { get; private set; }
-    public Currency BlueDiscount { get; private set; }
 
     void OnEnable()
     {
@@ -26,20 +21,13 @@ public class CurrencyManager : Singleton<CurrencyManager>
     protected override void Awake()
     {
         base.Awake();
-        RedCurrency = new Currency("Red", 30);
-        YellowCurrency = new Currency("Yellow", 30);
-        BlueCurrency = new Currency("Blue", 30);
-        RedDiscount = new Currency("Red", 0);
-        YellowDiscount = new Currency("Yellow", 0);
-        BlueDiscount = new Currency("Blue", 0);
+        YellowCurrency = new Currency("Yellow", 15);
     }
 
     void AddPassiveCurrency()
     {
         Debug.Log("Add Passive Currency");
-        RedCurrency.AddAmount(1);
-        YellowCurrency.AddAmount(1);
-        BlueCurrency.AddAmount(1);
+        YellowCurrency.AddAmount(5 + Mathf.Min(5, YellowCurrency.Amount / 10));
         CurrencyUI.s_Instance.UpdateCurrency();
     }
 }

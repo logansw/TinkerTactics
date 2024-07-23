@@ -14,11 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Penny
   Description: Makes money on kill
-  Tier: 1
-  RedCost: 1
-  YellowCost: 2
-  BlueCost: 0
+  YellowCost: 10
   TowerPrefab: {fileID: 1626949983139978225, guid: 6bcc0eedcae694241b7189c2c46bbd72, type: 3}
-  RedDiscount: 0
-  YellowDiscount: 1
-  BlueDiscount: 0
