@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _HUDCanvas: {fileID: 984858593}
-  TowerInfoPanelPrefab: {fileID: 6557655550108515016, guid: 216afdcc843944299a73b118a934ae1b, type: 3}
+  TowerInfoPanelPrefab: {fileID: 3270264493737858106, guid: 216afdcc843944299a73b118a934ae1b, type: 3}
 --- !u!4 &314270327
 Transform:
   m_ObjectHideFlags: 0

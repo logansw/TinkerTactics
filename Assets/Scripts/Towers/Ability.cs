@@ -6,6 +6,7 @@ public abstract class Ability : MonoBehaviour
 {
     public string Name;
     public int EnergyCost;
+    public Sprite Icon;
 
     public abstract void Activate();
 

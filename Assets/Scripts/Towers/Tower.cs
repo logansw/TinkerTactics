@@ -11,8 +11,8 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
     [HideInInspector] public int Energy;
-    [SerializeField] private Ability _basicAttack;
-    [SerializeField] private Ability _ability;
+    public Ability BasicAttack;
+    public Ability Ability;
 
     protected virtual void OnEnable()
     {
@@ -35,12 +35,12 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public virtual void CastBasicAttack()
     {
-        Cast(_basicAttack);
+        Cast(BasicAttack);
     }
 
     public virtual void CastAbility()
     {
-        Cast(_ability);
+        Cast(Ability);
     }
 
     private void Cast(Ability ability)

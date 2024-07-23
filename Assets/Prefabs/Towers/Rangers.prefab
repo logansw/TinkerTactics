@@ -423,8 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Energy: 0
-  _basicAttack: {fileID: 0}
-  _ability: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  Ability: {fileID: 0}
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0

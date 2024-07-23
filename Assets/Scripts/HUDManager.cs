@@ -7,27 +7,33 @@ using UnityEngine.UI;
 public class HUDManager : Singleton<HUDManager>
 {
     [SerializeField] private Canvas _HUDCanvas;
-    [SerializeField] private GameObject TowerInfoPanelPrefab;
-    private Dictionary<Tower, GameObject> _towerInfoPanels = new Dictionary<Tower, GameObject>();
+    [SerializeField] private TowerInfoPanel TowerInfoPanelPrefab;
+    private Dictionary<Tower, TowerInfoPanel> _towerInfoPanels = new Dictionary<Tower, TowerInfoPanel>();
 
     public void DisplayTowerInformation(Tower tower)
     {
+        TowerInfoPanel towerInfoPanel;
         if (_towerInfoPanels.ContainsKey(tower))
         {
-            GameObject towerHUD = _towerInfoPanels[tower];
-            towerHUD.SetActive(true);
-            towerHUD.transform.position = Camera.main.WorldToScreenPoint(tower.transform.position);
+            towerInfoPanel = _towerInfoPanels[tower];
         }
         else
         {
-            GameObject towerInfoPanel = Instantiate(TowerInfoPanelPrefab, Camera.main.WorldToScreenPoint(tower.transform.position), Quaternion.identity);
+            towerInfoPanel = Instantiate(TowerInfoPanelPrefab);
             towerInfoPanel.transform.SetParent(_HUDCanvas.transform);
             _towerInfoPanels.Add(tower, towerInfoPanel);
         }
+        towerInfoPanel.gameObject.SetActive(true);
+        towerInfoPanel.transform.position = Camera.main.WorldToScreenPoint(tower.transform.position);
+        towerInfoPanel.Render(tower);
     }
 
     public void HideTowerInformation(Tower tower)
     {
-        _towerInfoPanels[tower].SetActive(false);
+        if (!_towerInfoPanels.ContainsKey(tower))
+        {
+            return;
+        }
+        _towerInfoPanels[tower].gameObject.SetActive(false);
     }
 }
