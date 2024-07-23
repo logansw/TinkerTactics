@@ -16,8 +16,8 @@ public class TowerInfoPanel : MonoBehaviour
     public void Initialize(Tower tower)
     {
         _tower = tower;
-        _abilityOneButton.onClick.AddListener(_tower.BasicAttack.Activate);
-        _abilityTwoButton.onClick.AddListener(_tower.Ability.Activate);
+        _abilityOneButton.onClick.AddListener(_tower.CastBasicAttack);
+        _abilityTwoButton.onClick.AddListener(_tower.CastAbility);
         Render();
     }
 
