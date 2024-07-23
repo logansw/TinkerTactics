@@ -7,37 +7,49 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
-[RequireComponent(typeof(ProjectileLauncher)), RequireComponent(typeof(TargetTracker))]
 public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
-    [HideInInspector] public ProjectileLauncher ProjectileLauncher;
-    [HideInInspector] public TargetTracker TargetTracker;
     private TilePlot _tilePlot;
-    [HideInInspector] public List<List<Upgrade>> Upgrades;
-    [HideInInspector] public List<Upgrade> SelectedUpgrades;
-    [HideInInspector] public int Tier;
+    [HideInInspector] public int Energy;
+    [SerializeField] private Ability _basicAttack;
+    [SerializeField] private Ability _ability;
 
-    protected virtual void Awake()
+    protected virtual void OnEnable()
     {
-        ProjectileLauncher = GetComponent<ProjectileLauncher>();
-        TargetTracker = GetComponent<TargetTracker>();
+        BattleManager.e_OnEnemyTurnEnd += RechargeEnergy;
     }
 
-    protected virtual void Start()
+    protected virtual void OnDisable()
     {
-        Tier = 0;
+        BattleManager.e_OnEnemyTurnEnd -= RechargeEnergy;
     }
 
-    protected bool CanAttack()
+    protected void RechargeEnergy()
     {
-        return _tilePlot.IsActivated && 
-                ProjectileLauncher.CanAttack() &&
-                TargetTracker.HasEnemiesInRange();
+        Energy += 1;
+        if (Energy > 3)
+        {
+            Energy = 3;
         }
+    }
 
-    protected virtual void Attack()
+    public virtual void CastBasicAttack()
     {
-        ProjectileLauncher.LaunchProjectile(TargetTracker.GetHighestPriorityTarget());
+        Cast(_basicAttack);
+    }
+
+    public virtual void CastAbility()
+    {
+        Cast(_ability);
+    }
+
+    private void Cast(Ability ability)
+    {
+        if (Energy >= ability.EnergyCost)
+        {
+            ability.Activate();
+            Energy -= ability.EnergyCost;
+        }
     }
 
     public void OnSelect()
@@ -47,7 +59,7 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnDeselect()
     {
-        HUDManager.s_Instance.HideTowerInformation(this);
+        
     }
 
     /// <summary>
@@ -104,12 +116,13 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnLift()
     {
-        // Do nothing
+        HUDManager.s_Instance.HideTowerInformation(this);
     }
 
     public void OnDrop()
     {
         AssignTowerToTilePlot();
+        HUDManager.s_Instance.DisplayTowerInformation(this);
     }
 
     public void OnHover()

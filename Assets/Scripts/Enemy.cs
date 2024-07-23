@@ -8,6 +8,7 @@ public class Enemy : Unit
     public TilePath NextTilePath { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
     public int GoldValue;
+    public int DistanceTraveled;
 
     public virtual void Start()
     {
@@ -48,7 +49,7 @@ public class Enemy : Unit
         e_OnUnitBreak?.Invoke(this);
     }
 
-    public virtual DamageData OnImpact(float incomingDamage)
+    public virtual void OnImpact(float incomingDamage)
     {
         foreach (float multiplier in DamageMultipliers)
         {
@@ -57,8 +58,6 @@ public class Enemy : Unit
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
-        DamageData damageData = new DamageData(this, postMitigationDamage);
-        return damageData;
     }
 
     public virtual void Move()
@@ -68,6 +67,7 @@ public class Enemy : Unit
             return;
         }
         StartCoroutine(AnimateMove());
+        DistanceTraveled += MovementSpeed;
     }
 
     private IEnumerator AnimateMove()

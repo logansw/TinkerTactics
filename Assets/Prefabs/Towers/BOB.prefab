@@ -270,8 +270,6 @@ GameObject:
   - component: {fileID: 5008652143454603010}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
-  - component: {fileID: 5455919878972343349}
-  - component: {fileID: 4451264719896630161}
   m_Layer: 0
   m_Name: BOB
   m_TagString: Untagged
@@ -411,40 +409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
---- !u!114 &5455919878972343349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70831f653edc84a3ba9f483f9f60cd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseAttackSpeed: 0.5
-  AttackSpeed: 0.5
-  BaseDamage: 5
-  Damage: 10
-  ProjectileSpeed: 10
-  ProjectilePrefab: {fileID: 5739757680594696537, guid: a6b7c4c92081840d2a59b913f8c9c4f0, type: 3}
---- !u!114 &4451264719896630161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4ce00dc664d457b9a247028ce2a777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectileLauncher: {fileID: 0}
-  TargetTracker: {fileID: 0}
-  SelectedUpgrades: []
-  Tier: 0
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0

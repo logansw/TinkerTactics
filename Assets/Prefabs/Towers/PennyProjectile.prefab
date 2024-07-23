@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3150642443094489680}
-  - component: {fileID: 3224674732360852319}
   - component: {fileID: 7167305194767559901}
   m_Layer: 0
   m_Name: PennyProjectile
@@ -33,21 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3224674732360852319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7833528111474742025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3c9e487c6674bcf914505334b46fbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceLauncher: {fileID: 0}
-  Damage: 0
-  ProjectileSpeed: 0
 --- !u!212 &7167305194767559901
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -49,9 +49,7 @@ public abstract class Projectile : MonoBehaviour
     {
         if (_target != null)
         {
-            DamageData damageData = _target.OnImpact(Damage);
             e_OnImpact?.Invoke(_target);
-            SourceLauncher.UpdateLauncherStatistics(damageData);
         }
         gameObject.SetActive(false);
         Destroy(gameObject, 1f);

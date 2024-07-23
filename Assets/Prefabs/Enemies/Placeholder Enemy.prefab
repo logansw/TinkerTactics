@@ -133,6 +133,7 @@ MonoBehaviour:
   Armor: 0
   DamageMultipliers: []
   GoldValue: 0
+  DistanceTraveled: 0
 --- !u!61 &2718904459053297639
 BoxCollider2D:
   m_ObjectHideFlags: 0

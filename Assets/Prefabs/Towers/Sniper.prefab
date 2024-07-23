@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 5008652143454603010}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
-  - component: {fileID: -2983637888601071969}
   - component: {fileID: -4587408933377243058}
   m_Layer: 0
   m_Name: Sniper
@@ -411,24 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
---- !u!114 &-2983637888601071969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b580cd754a9cf474ca9f0c3d1cd2851f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseAttackSpeed: 0.3
-  AttackSpeed: 0.3
-  BaseDamage: 10
-  Damage: 10
-  ProjectileSpeed: 20
-  ProjectilePrefab: {fileID: -8254248236329441761, guid: 0ac492d7516b74f2db66ac3065f5c878, type: 3}
 --- !u!114 &-4587408933377243058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,10 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a00e4afc18e04781abeeda76c7843e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileLauncher: {fileID: 0}
-  TargetTracker: {fileID: 0}
-  SelectedUpgrades: []
-  Tier: 0
+  Energy: 0
+  _basicAttack: {fileID: 0}
+  _ability: {fileID: 0}
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0

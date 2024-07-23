@@ -270,8 +270,6 @@ GameObject:
   - component: {fileID: 5008652143454603010}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
-  - component: {fileID: 1626949983139978225}
-  - component: {fileID: 5302608427686024903}
   m_Layer: 0
   m_Name: Penny
   m_TagString: Untagged
@@ -411,43 +409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
---- !u!114 &1626949983139978225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3201e48ffc6e94b3bbb54865f05c1a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectileLauncher: {fileID: 0}
-  TargetTracker: {fileID: 0}
-  SelectedUpgrades: []
-  Tier: 0
-  GoldCollected: 0
-  GoldCollectionCapacity: 0
-  GoldCollectionRate: 0
---- !u!114 &5302608427686024903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51bd8efb3edae4a77a4a04634e3731b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseAttackSpeed: 1
-  AttackSpeed: 1
-  BaseDamage: 5
-  Damage: 5
-  ProjectileSpeed: 10
-  ProjectilePrefab: {fileID: 3224674732360852319, guid: 614a368aa4a2240a3b7398de50d41a75, type: 3}
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0
