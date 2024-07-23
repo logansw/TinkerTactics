@@ -26,9 +26,9 @@ public class CurrencyManager : Singleton<CurrencyManager>
     protected override void Awake()
     {
         base.Awake();
-        RedCurrency = new Currency("Red", 3);
-        YellowCurrency = new Currency("Yellow", 3);
-        BlueCurrency = new Currency("Blue", 3);
+        RedCurrency = new Currency("Red", 30);
+        YellowCurrency = new Currency("Yellow", 30);
+        BlueCurrency = new Currency("Blue", 30);
         RedDiscount = new Currency("Red", 0);
         YellowDiscount = new Currency("Yellow", 0);
         BlueDiscount = new Currency("Blue", 0);

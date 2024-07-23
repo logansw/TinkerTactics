@@ -439,10 +439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5969f7214a3d44dea9dd34610d47046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Range: 3
   Name: Arrow
   EnergyCost: 1
   Icon: {fileID: 0}
-  Range: 3
   Damage: 2
 --- !u!114 &7458319259637067329
 MonoBehaviour:
@@ -456,10 +456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5969f7214a3d44dea9dd34610d47046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Range: 6
   Name: Super Arrow
   EnergyCost: 2
   Icon: {fileID: 0}
-  Range: 6
   Damage: 4
 --- !u!1 &8441707009904547786
 GameObject:

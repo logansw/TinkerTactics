@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class ArcherBasicAttack : Ability
 {
-    [SerializeField] private int Range;
     [SerializeField] private int Damage;
 
     public override void Activate()
@@ -27,5 +26,10 @@ public class ArcherBasicAttack : Ability
             }
         }
         target.OnImpact(Damage);
+    }
+
+    public override string GetTooltipText()
+    {
+        return $"{Name}: Deals {Damage} damage to the most travleled enemy within {Range} range.";
     }
 }

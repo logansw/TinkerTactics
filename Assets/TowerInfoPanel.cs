@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class TowerInfoPanel : MonoBehaviour
 {
     [SerializeField] private Tower _tower;
+    [SerializeField] private GameObject _rangeIndicator;
+    [SerializeField] private GameObject _rangeIndicatorPrefab;
     [SerializeField] private TMP_Text _energyText;
     [SerializeField] private Button _abilityOneButton;
     [SerializeField] private Button _abilityTwoButton;
     [SerializeField] private TMP_Text _abilityOneIcon;
     [SerializeField] private TMP_Text _abilityTwoIcon;
+    [SerializeField] private TMP_Text _abilityToolTip;
 
     public void Initialize(Tower tower)
     {
@@ -38,5 +41,44 @@ public class TowerInfoPanel : MonoBehaviour
         _energyText.text = $"{_tower.Energy}/3";
         _abilityOneIcon.text = $"{_tower.BasicAttack.Name} ({_tower.BasicAttack.EnergyCost})";
         _abilityTwoIcon.text = $"{_tower.Ability.Name} ({_tower.Ability.EnergyCost})";
+    }
+
+    /// <summary>
+    /// Display a tooltip for the ability and display its range.
+    /// </summary>
+    /// <param name="ability"></param>
+    public void DisplayBasicAttackTooltip()
+    {
+        Ability ability = _tower.BasicAttack;
+        ShowRangeIndicator(true, ability.Range);
+        _abilityToolTip.text = ability.GetTooltipText();
+        _abilityToolTip.gameObject.SetActive(true);
+    }
+
+    public void DisplayAbilityTooltip()
+    {
+        Ability ability = _tower.Ability;
+        ShowRangeIndicator(true, ability.Range);
+        _abilityToolTip.text = ability.GetTooltipText();
+        _abilityToolTip.gameObject.SetActive(true);
+    }
+
+    public void HideToolTip()
+    {
+        ShowRangeIndicator(false, 0);
+        _abilityToolTip.gameObject.SetActive(false);
+    }
+
+    public void ShowRangeIndicator(bool active, float range)
+    {
+        if (_rangeIndicator == null)
+        {
+            _rangeIndicator = Instantiate<GameObject>(_rangeIndicatorPrefab);
+        }
+        
+        _rangeIndicator.transform.position = _tower.transform.position;
+        _rangeIndicator.transform.localScale = new Vector3(range * 2f, range * 2f, 1f);
+        _rangeIndicator.SetActive(active);
+
     }
 }
