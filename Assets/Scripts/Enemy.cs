@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
         BattleManager.e_OnPlayerTurnEnd -= TakeAction;
-        BattleManager.e_OnEnemyTurnEnd += ChooseIntent;
+        BattleManager.e_OnEnemyTurnEnd -= ChooseIntent;
     }
 
     /// <summary>

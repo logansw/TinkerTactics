@@ -32,13 +32,19 @@ public class CannonAbility : MonoBehaviour, IAbility
         enemies = TargetCalculator.GetMostTraveled(enemies);
         enemies[0].OnImpact(BaseDamage);
 
+        List<Enemy> enemiesInSplash = new List<Enemy>();
         foreach (Enemy enemy in EnemyManager.s_Instance.Enemies)
         {
             if(enemy == enemies[0]) { continue; }
             if (Vector2.Distance(enemies[0].transform.position, enemy.transform.position) <= SplashRange)
             {
-                enemy.OnImpact(SplashDamage);
+                enemiesInSplash.Add(enemy);
             }
+        }
+
+        for (int i = 0; i < enemiesInSplash.Count; i++)
+        {
+            enemiesInSplash[i].OnImpact(SplashDamage);
         }
     }
 
