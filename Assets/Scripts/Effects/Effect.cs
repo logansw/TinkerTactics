@@ -5,7 +5,12 @@ using UnityEngine;
 public abstract class Effect : MonoBehaviour
 {
     public int Duration;
-    public Unit Unit;
+    public Enemy Enemy;
+
+    public virtual void Initialize(int duration)
+    {
+        Enemy = GetComponent<Enemy>();
+    }
 
     void OnEnable()
     {
@@ -28,7 +33,7 @@ public abstract class Effect : MonoBehaviour
 
     public virtual void Remove()
     {
+        Enemy.EffectTracker.RemoveEffect(this);
         Destroy(this);
     }
-
 }

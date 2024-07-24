@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EffectStun : Effect
 {
-    public void Initialize(int duration)
+    public override void Initialize(int duration)
     {
+        base.Initialize(duration);
+        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+        {
+            Remove();
+        }
         Duration = duration;
-    }
-
-    void Awake()
-    {
-        Unit = GetComponent<Unit>();
-        Duration = 1;
     }
 
     public override void Remove()

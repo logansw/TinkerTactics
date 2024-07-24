@@ -105,6 +105,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8106107250784829053, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2718904459053297639}
+    - targetCorrespondingSourceObject: {fileID: 8106107250784829053, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 221225998377451207}
   m_SourcePrefab: {fileID: 100100000, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
 --- !u!4 &6028158788439687459 stripped
 Transform:
@@ -129,11 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitSO: {fileID: 0}
-  MovementSpeed: 0
   Armor: 0
-  DamageMultipliers: []
-  GoldValue: 0
   DistanceTraveled: 0
+  EffectTracker: {fileID: 0}
 --- !u!61 &2718904459053297639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,6 +180,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &221225998377451207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763406961363270800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885ad7bbbbca04ad687a76e4b6bcb546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5911578400389425987
 PrefabInstance:
   m_ObjectHideFlags: 0

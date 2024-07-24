@@ -13,14 +13,10 @@ public class EnemyManager : Singleton<EnemyManager>
         Enemies.Add(enemy);
     }
 
-    public void RemoveEnemyFromList(Unit unit)
+    public void RemoveEnemyFromList(Enemy enemy)
     {
-        if (unit is Enemy enemy) {
-            Enemies.Remove(enemy);
-            enemy.e_OnUnitDeath -= RemoveEnemyFromList;
-        } else {
-            throw new System.Exception("Unit is not an Enemy");
-        }
+        Enemies.Remove(enemy);
+        enemy.e_OnEnemyDeath -= RemoveEnemyFromList;
     }
 
     public void SpawnEnemy(Enemy enemy)

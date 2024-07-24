@@ -3,12 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Unit
+[RequireComponent(typeof(EffectTracker))]
+public class Enemy : MonoBehaviour
 {
+    public EnemySO UnitSO;
+    public Health Health;
+    private Healthbar _healthbar;
+    public int MovementSpeed
+    {
+        get
+        {
+            int movementSpeed = BaseMovementSpeed;
+            if (EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
+            {
+                return 0;
+            }
+            if (EffectTracker.HasEffect<EffectChill>(out EffectChill effectChill))
+            {
+                movementSpeed = (int)(movementSpeed * effectChill.GetSpeedMultiplier());
+            }
+            if (EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+            {
+                return Mathf.Max(movementSpeed, 1);
+            }
+            return movementSpeed;
+        }
+    }
+    [HideInInspector] public int BaseMovementSpeed { get; private set; }
+    [HideInInspector] public float Armor;
     public TilePath NextTilePath { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
-    public int GoldValue;
     public int DistanceTraveled;
+    [HideInInspector] public EffectTracker EffectTracker;
+
+    public delegate void EnemyAction(Enemy enemy);
+    public EnemyAction e_OnEnemyDeath;
+    public EnemyAction e_OnEnemyBreak;
+
+
+    public virtual void Awake()
+    {
+        float maxHealth = UnitSO.MaxHealth;
+        int breakpointCount = UnitSO.SegmentCount;
+        Health = new Health(UnitSO.MaxHealth, UnitSO.SegmentCount);
+        BaseMovementSpeed = UnitSO.MovementSpeed;
+        Armor = UnitSO.Armor;
+        _healthbar = GetComponentInChildren<Healthbar>();
+        _healthbar.Initialize(Health);
+        EffectTracker = GetComponent<EffectTracker>();
+    }
 
     public virtual void Start()
     {
@@ -38,22 +81,22 @@ public class Enemy : Unit
     /// and so that the death animation can be played.
     public virtual void OnDeath()
     {
-        e_OnUnitDeath?.Invoke(this);
+        e_OnEnemyDeath?.Invoke(this);
         gameObject.SetActive(false);
         Destroy(gameObject, 3f);
     }
 
     public virtual void OnBreak()
     {
-        gameObject.AddComponent<EffectBreak>();
-        e_OnUnitBreak?.Invoke(this);
+        EffectTracker.AddEffect<EffectBreak>(1);
+        e_OnEnemyBreak?.Invoke(this);
     }
 
     public virtual void OnImpact(float incomingDamage)
     {
-        foreach (float multiplier in DamageMultipliers)
+        if (EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
         {
-            incomingDamage *= multiplier;
+            incomingDamage *= effectVulnerable.GetDamageMultiplier();
         }
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitSO", menuName = "ScriptableObjects/Unit")]
-public class UnitSO : ScriptableObject
+[CreateAssetMenu(fileName = "EnemySO", menuName = "Enemy")]
+public class EnemySO : ScriptableObject
 {
     public float MaxHealth;
     public int SegmentCount;
