@@ -6,6 +6,7 @@ public abstract class Effect : MonoBehaviour
 {
     public int Duration;
     public Enemy Enemy;
+    public Color32 IconColor;
 
     public virtual void Initialize(int duration)
     {
@@ -36,4 +37,7 @@ public abstract class Effect : MonoBehaviour
         Enemy.EffectTracker.RemoveEffect(this);
         Destroy(this);
     }
+
+    public abstract string GetStackText();
+    public abstract string GetAbbreviationText();
 }

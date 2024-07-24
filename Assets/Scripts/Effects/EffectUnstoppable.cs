@@ -10,4 +10,14 @@ public class EffectUnstoppable : Effect
         base.Initialize(duration);
         Duration = duration;
     }
+
+    public override string GetStackText()
+    {
+        return Duration.ToString();
+    }
+
+    public override string GetAbbreviationText()
+    {
+        return "UNST";
+    }
 }

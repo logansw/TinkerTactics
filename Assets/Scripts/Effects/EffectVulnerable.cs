@@ -9,10 +9,21 @@ public class EffectVulnerable : Effect
     {
         base.Initialize(duration);
         Duration = duration;
+        IconColor = new Color32(255, 128, 170, 255);
     }
 
     public float GetDamageMultiplier()
     {
         return 2f;
+    }
+
+    public override string GetStackText()
+    {
+        return Duration.ToString();
+    }
+
+    public override string GetAbbreviationText()
+    {
+        return "VUL";
     }
 }

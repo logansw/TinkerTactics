@@ -12,10 +12,21 @@ public class EffectChill : Effect
         base.Initialize(duration);
         Duration = duration;
         Stacks = 1;
+        IconColor = new Color32(128, 249, 255, 255);
     }
 
     public float GetSpeedMultiplier()
     {
         return 0.5f;
+    }
+
+    public override string GetStackText()
+    {
+        return Stacks.ToString();
+    }
+
+    public override string GetAbbreviationText()
+    {
+        return "CHL";
     }
 }

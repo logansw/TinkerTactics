@@ -12,10 +12,16 @@ public class EffectStun : Effect
             Remove();
         }
         Duration = duration;
+        IconColor = new Color32(255, 240, 128, 255);
     }
 
-    public override void Remove()
+    public override string GetStackText()
     {
-        base.Remove();
+        return Duration.ToString();
+    }
+
+    public override string GetAbbreviationText()
+    {
+        return "STN";
     }
 }
