@@ -38,7 +38,7 @@ public static class TargetCalculator
     public static List<Enemy> GetFastest(List<Enemy> enemies)
     {
         enemies.Sort((enemy1, enemy2) => 
-            enemy1.MovementSpeed.CompareTo(enemy2.MovementSpeed));
+            enemy2.MovementSpeed.CompareTo(enemy1.MovementSpeed));
         return enemies;
     }
 
