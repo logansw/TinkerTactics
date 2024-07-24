@@ -1,20 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CannonBasicAttack : MonoBehaviour, IAbility
+public class HunterBasicAttack : MonoBehaviour, IAbility
 {
-    private Cannon Cannon;
+    private Hunter Hunter;
     [SerializeField] private string _name;
     public string Name { get; set; }
     [SerializeField] private int _energyCost;
     public int EnergyCost { get; set; }
     [SerializeField] private int _range;
     public float Range { get; set; }
-    [SerializeField] private int BaseDamage;
 
     void Awake()
     {
-        Cannon = GetComponent<Cannon>();
+        Hunter = GetComponent<Hunter>();
     }
 
     void OnEnable()
@@ -28,11 +27,15 @@ public class CannonBasicAttack : MonoBehaviour, IAbility
     {
         List<Enemy> enemies = TargetCalculator.GetEnemiesInRange(transform, Range);
         enemies = TargetCalculator.GetMostTraveled(enemies);
-        enemies[0].OnImpact(BaseDamage);
+        if (enemies[0].Health.CurrentHealth <= Hunter.ExecuteDamage)
+        {
+            enemies[0].OnImpact(enemies[0].Health.CurrentHealth);
+            Hunter.ExecuteDamage++;
+        }
     }
 
     public string GetTooltipText()
     {
-        return $"{Name}: Deal {BaseDamage} damage to the most travleled enemy within {_range} range.";
+        return $"{Name}: Targets the most traveled enemy within {_range} range. Executes enemies with less than {Hunter.ExecuteDamage} health.";
     }
 }

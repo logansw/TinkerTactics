@@ -12,6 +12,7 @@ public static class TargetCalculator
         List<Enemy> enemies = new List<Enemy>();
         foreach (Enemy enemy in EnemyManager.s_Instance.Enemies)
         {
+            if (!enemy.gameObject.activeInHierarchy) { continue; }
             if (Vector3.Distance(transform.position, enemy.transform.position) <= range)
             {
                 enemies.Add(enemy);

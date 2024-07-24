@@ -14,7 +14,7 @@ public class TowerInfoPanel : MonoBehaviour
     [SerializeField] private Button _abilityTwoButton;
     [SerializeField] private TMP_Text _abilityOneIcon;
     [SerializeField] private TMP_Text _abilityTwoIcon;
-    [SerializeField] private TMP_Text _abilityToolTip;
+    [SerializeField] private TMP_Text _tooltipText;
 
     public void Initialize(Tower tower)
     {
@@ -51,22 +51,28 @@ public class TowerInfoPanel : MonoBehaviour
     {
         IAbility ability = _tower.BasicAttack;
         ShowRangeIndicator(true, ability.Range);
-        _abilityToolTip.text = ability.GetTooltipText();
-        _abilityToolTip.gameObject.SetActive(true);
+        _tooltipText.text = ability.GetTooltipText();
+        _tooltipText.transform.parent.gameObject.SetActive(true);
     }
 
     public void DisplayAbilityTooltip()
     {
         IAbility ability = _tower.Ability;
         ShowRangeIndicator(true, ability.Range);
-        _abilityToolTip.text = ability.GetTooltipText();
-        _abilityToolTip.gameObject.SetActive(true);
+        _tooltipText.text = ability.GetTooltipText();
+        _tooltipText.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void DisplayTowerTooltip()
+    {
+        _tooltipText.text = _tower.GetTooltipText();
+        _tooltipText.transform.parent.gameObject.SetActive(true);
     }
 
     public void HideToolTip()
     {
         ShowRangeIndicator(false, 0);
-        _abilityToolTip.gameObject.SetActive(false);
+        _tooltipText.transform.parent.gameObject.SetActive(false);
     }
 
     public void ShowRangeIndicator(bool active, float range)

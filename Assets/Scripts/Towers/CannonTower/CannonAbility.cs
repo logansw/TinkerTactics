@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Cannon))]
 public class CannonAbility : MonoBehaviour, IAbility
 {
     private Cannon Cannon;

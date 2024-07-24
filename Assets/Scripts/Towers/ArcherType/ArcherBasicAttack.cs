@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Archer))]
 public class ArcherBasicAttack : MonoBehaviour, IAbility
 {
     private Archer Archer;
