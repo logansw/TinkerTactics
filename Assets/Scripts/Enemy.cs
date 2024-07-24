@@ -33,13 +33,14 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float Armor;
     public TilePath NextTilePath { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
-    public int DistanceTraveled;
+    [HideInInspector] public int DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
 
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-
+    public Intent Intent;
+    [SerializeField] private IntentUI _intentUI;
 
     public virtual void Awake()
     {
@@ -63,7 +64,8 @@ public class Enemy : MonoBehaviour
     {
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
-        BattleManager.e_OnPlayerTurnEnd += Move;
+        BattleManager.e_OnPlayerTurnEnd += TakeAction;
+        BattleManager.e_OnEnemyTurnEnd += ChooseIntent;
     }
 
     public virtual void OnDisable()
@@ -71,7 +73,8 @@ public class Enemy : MonoBehaviour
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
-        BattleManager.e_OnPlayerTurnEnd -= Move;
+        BattleManager.e_OnPlayerTurnEnd -= TakeAction;
+        BattleManager.e_OnEnemyTurnEnd += ChooseIntent;
     }
 
     /// <summary>
@@ -103,7 +106,7 @@ public class Enemy : MonoBehaviour
         Health.TakeDamage((float)postMitigationDamage);
     }
 
-    public virtual void Move()
+    public virtual void TakeAction()
     {
         if (GetComponent<EffectStun>() != null)
         {
@@ -111,6 +114,14 @@ public class Enemy : MonoBehaviour
         }
         StartCoroutine(AnimateMove());
         DistanceTraveled += MovementSpeed;
+    }
+
+    public void ChooseIntent()
+    {
+        if (!gameObject.activeInHierarchy) { return;}
+        Intent = new IntentMove();
+        Intent.Initialize(MovementSpeed);
+        _intentUI.Render(Intent);
     }
 
     private IEnumerator AnimateMove()
