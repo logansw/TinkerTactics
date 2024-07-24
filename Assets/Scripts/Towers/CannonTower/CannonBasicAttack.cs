@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Archer))]
-public class ArcherBasicAttack : MonoBehaviour, IAbility
+[RequireComponent(typeof(Cannon))]
+public class CannonBasicAttack : MonoBehaviour, IAbility
 {
-    private Archer Archer;
+    private Cannon Cannon;
     [SerializeField] private string _name;
     public string Name { get; set; }
     [SerializeField] private int _energyCost;
@@ -15,7 +15,7 @@ public class ArcherBasicAttack : MonoBehaviour, IAbility
 
     void Awake()
     {
-        Archer = GetComponent<Archer>();
+        Cannon = GetComponent<Cannon>();
     }
 
     void OnEnable()
@@ -29,11 +29,11 @@ public class ArcherBasicAttack : MonoBehaviour, IAbility
     {
         List<Enemy> enemies = TargetCalculator.GetEnemiesInRange(transform, Range);
         enemies = TargetCalculator.GetMostTraveled(enemies);
-        enemies[0].OnImpact(BaseDamage + Archer.Energy);
+        enemies[0].OnImpact(BaseDamage);
     }
 
     public string GetTooltipText()
     {
-        return $"{Name}: Deal {BaseDamage} + ({Archer.Energy}) damage to the most travleled enemy within {_range} range.";
+        return $"{Name}: Deal {BaseDamage} damage to the most travleled enemy within {_range} range.";
     }
 }

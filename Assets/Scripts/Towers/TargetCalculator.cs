@@ -34,7 +34,7 @@ public static class TargetCalculator
     /// <summary>
     /// Prioritizes the targets with the greatest movement speed
     /// </summary>
-    public static List<Enemy> GetFastest(List<Enemy> enemies, Tower tower)
+    public static List<Enemy> GetFastest(List<Enemy> enemies)
     {
         enemies.Sort((enemy1, enemy2) => 
             enemy1.MovementSpeed.CompareTo(enemy2.MovementSpeed));
@@ -44,7 +44,7 @@ public static class TargetCalculator
     /// <summary>
     /// Prioritizes the targets that have traveled the greatest distance
     /// </summary>
-    public static List<Enemy> GetMostTraveled(List<Enemy> enemies, Tower tower)
+    public static List<Enemy> GetMostTraveled(List<Enemy> enemies)
     {
         enemies.Sort((enemy1, enemy2) => 
             enemy2.DistanceTraveled.CompareTo(enemy1.DistanceTraveled));
@@ -54,7 +54,7 @@ public static class TargetCalculator
     /// <summary>
     /// Prioritizes the targets with the lowest remaining health
     /// </summary>
-    public static List<Enemy> GetLeastHealth(List<Enemy> enemies, Tower tower)
+    public static List<Enemy> GetLeastHealth(List<Enemy> enemies)
     {
         enemies.Sort((enemy1, enemy2) => 
             enemy1.Health.CurrentHealth.CompareTo(enemy2.Health.CurrentHealth));

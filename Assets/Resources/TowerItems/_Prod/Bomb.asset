@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Bomb
   Description: Basic AOE tower
   YellowCost: 5
-  TowerPrefab: {fileID: 4451264719896630161, guid: bc5a3b59f6f634bc2b13622c4c9adc55, type: 3}
+  TowerPrefab: {fileID: 8176572304555398131, guid: bc5a3b59f6f634bc2b13622c4c9adc55, type: 3}

@@ -266,8 +266,6 @@ GameObject:
   - component: {fileID: 1154449039375421806}
   - component: {fileID: 3945254401512882376}
   - component: {fileID: 1543775326421220504}
-  - component: {fileID: 6697677250430818351}
-  - component: {fileID: 5008652143454603010}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
   - component: {fileID: -4587408933377243058}
@@ -326,34 +324,6 @@ SortingGroup:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!114 &6697677250430818351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0295449a44f04c45b80af32f09b7038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesInRange: []
-  Range: 8
-  TargetCalculator: {fileID: 5008652143454603010}
-  _rangeIndicator: {fileID: 1202223727500461092}
---- !u!114 &5008652143454603010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24db9f51b691f4351b920f3b2672f263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3263688189079823163
 BoxCollider2D:
   m_ObjectHideFlags: 0
