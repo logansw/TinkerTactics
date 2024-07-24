@@ -11,7 +11,7 @@ public class EnemyTurnState : State
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        StartCoroutine(DelayedContinue());
     }
 
     public override void UpdateState(StateController stateController)
@@ -21,6 +21,19 @@ public class EnemyTurnState : State
 
     public override void OnExit(StateController stateController)
     {
-        // Do nothing
+        BattleManager.e_OnEnemyTurnEnd?.Invoke();
+    }
+
+    private IEnumerator DelayedContinue()
+    {
+        yield return new WaitForSeconds(1f);
+        if (EnemyManager.s_Instance.Enemies.Count == 0)
+        {
+            StateController.s_Instance.ChangeState(StateType.Victory);
+        }
+        else
+        {
+            StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
+        }
     }
 }
