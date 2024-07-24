@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c99ffe5fa91148cb92f58b8996ef977, type: 3}
   m_Name: Archer Yellow
   m_EditorClassIdentifier: 
-  Name: Yellow Archer
+  Name: Archer
   Description: Basic single target tower
   YellowCost: 5
   TowerPrefab: {fileID: -4587408933377243058, guid: dcb612cb2373744cabdc5030f793e782, type: 3}

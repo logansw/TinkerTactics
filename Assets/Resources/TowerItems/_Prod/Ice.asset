@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c99ffe5fa91148cb92f58b8996ef977, type: 3}
-  m_Name: Archer Blue
+  m_Name: Ice
   m_EditorClassIdentifier: 
-  Name: Blue Archer
-  Description: Basic single target tower
-  YellowCost: 5
-  TowerPrefab: {fileID: -4587408933377243058, guid: dcb612cb2373744cabdc5030f793e782, type: 3}
+  Name: Ice
+  Description: Slowing tower
+  YellowCost: 10
+  TowerPrefab: {fileID: 2128510134041400528, guid: 0aae06ca435234c3690e6b4e827fccfa, type: 3}
