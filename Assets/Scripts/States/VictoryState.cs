@@ -11,7 +11,8 @@ public class VictoryState : State
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        CurrencyManager.s_Instance.AddPassiveCurrency();
+        MarketplaceManager.s_Instance.PopulateAvailableItems();
     }
 
     public override void UpdateState(StateController stateController)

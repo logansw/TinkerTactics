@@ -16,16 +16,6 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         PopulateAvailableItems();
     }
 
-    void OnEnable()
-    {
-        EnemyManager.e_OnWaveCleared += PopulateAvailableItems;
-    }
-
-    void OnDisable()
-    {
-        EnemyManager.e_OnWaveCleared -= PopulateAvailableItems;
-    }
-
     private void LoadTowerItems()
     {
         // Get all TowerItemSO objects from a folder
@@ -35,7 +25,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         towerItems = new List<TowerItemSO>(towerItemObjects);
     }
 
-    private void PopulateAvailableItems()
+    public void PopulateAvailableItems()
     {
         MarketplaceUI.s_Instance.ResetItemUIs();
 

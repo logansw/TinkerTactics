@@ -8,23 +8,13 @@ public class CurrencyManager : Singleton<CurrencyManager>
 {    
     public Currency YellowCurrency { get; private set; }
 
-    void OnEnable()
-    {
-        EnemyManager.e_OnWaveCleared += AddPassiveCurrency;
-    }
-
-    void OnDisable()
-    {
-        EnemyManager.e_OnWaveCleared -= AddPassiveCurrency;
-    }
-
     protected override void Awake()
     {
         base.Awake();
         YellowCurrency = new Currency("Yellow", 15);
     }
 
-    void AddPassiveCurrency()
+    public void AddPassiveCurrency()
     {
         Debug.Log("Add Passive Currency");
         YellowCurrency.AddAmount(5 + Mathf.Min(5, YellowCurrency.Amount / 10));

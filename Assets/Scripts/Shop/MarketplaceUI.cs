@@ -17,7 +17,6 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
     public void RenderNewItems()
     {
         float itemWidth = itemUIPrefab.GetComponent<RectTransform>().rect.width;
-        float itemHeight = itemUIPrefab.GetComponent<RectTransform>().rect.height;
         float padding = 10f;
 
         for (int i = 0; i < MarketplaceManager.s_Instance.AvailableItems.Length; i++)
