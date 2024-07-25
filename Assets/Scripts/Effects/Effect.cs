@@ -42,4 +42,5 @@ public abstract class Effect : MonoBehaviour
 
     public abstract string GetStackText();
     public abstract string GetAbbreviationText();
+    public abstract string GetDescriptionText();
 }

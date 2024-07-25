@@ -33,4 +33,9 @@ public class EffectBreak : Effect
     {
         return "BRK";
     }
+
+    public override string GetDescriptionText()
+    {
+        return "BREAK: Applies Stun and Vulnerable.";
+    }
 }

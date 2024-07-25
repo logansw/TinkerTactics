@@ -29,4 +29,9 @@ public class EffectStun : Effect
     {
         return "STN";
     }
+
+    public override string GetDescriptionText()
+    {
+        return $"STUN: Enemy cannot act for {Duration} turns.";
+    }
 }

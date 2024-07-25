@@ -427,7 +427,6 @@ MonoBehaviour:
   Energy: 0
   MaxEnergy: 3
   Name: Ice
-  FrostbiteDamage: 10
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0

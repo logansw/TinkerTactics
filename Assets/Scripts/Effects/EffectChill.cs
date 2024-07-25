@@ -46,4 +46,9 @@ public class EffectChill : Effect
     {
         return "CHL";
     }
+
+    public override string GetDescriptionText()
+    {
+        return $"CHILL:\n(1) Reduces speed by 50%\n(2) Applies Stun\n(3+) deals {FrostbiteDamage} damage.";
+    }
 }

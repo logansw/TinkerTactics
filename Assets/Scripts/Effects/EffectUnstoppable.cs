@@ -25,4 +25,9 @@ public class EffectUnstoppable : Effect
     {
         return "UNST";
     }
+
+    public override string GetDescriptionText()
+    {
+        return $"UNSTOPPABLE: Enemy resists Stun and cannot have its Speed reduced.";
+    }
 }

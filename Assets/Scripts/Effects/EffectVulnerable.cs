@@ -31,4 +31,9 @@ public class EffectVulnerable : Effect
     {
         return "VUL";
     }
+
+    public override string GetDescriptionText()
+    {
+        return $"VULNERABLE: Enemy takes double damage for {Duration} turns.";
+    }
 }
