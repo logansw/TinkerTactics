@@ -167,9 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e36560fa5f0e46a6ba4be8918301360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 4782891920833656927}
-  ValueText: {fileID: 9207161178878674728}
-  AbbreviationText: {fileID: 2732433219219179405}
+  _background: {fileID: 6020662252793774945}
+  _icon: {fileID: 4782891920833656927}
+  _valueText: {fileID: 9207161178878674728}
+  _abbreviationText: {fileID: 2732433219219179405}
 --- !u!1 &5839221102355508518
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +807,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8106107250784829053, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6011599554588500216}
+    - targetCorrespondingSourceObject: {fileID: 8106107250784829053, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6715010539807342501}
   m_SourcePrefab: {fileID: 100100000, guid: 7db0a7196265a447086b30fe9ba60a63, type: 3}
 --- !u!4 &6028158788439687459 stripped
 Transform:
@@ -833,7 +837,6 @@ MonoBehaviour:
   Armor: 0
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}
-  _intentUI: {fileID: 1767342660005577634}
 --- !u!61 &2718904459053297639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -908,6 +911,19 @@ MonoBehaviour:
   - {fileID: 4222872748490512677}
   - {fileID: 8616912247929784463}
   - {fileID: 5172925396840852287}
+--- !u!114 &6715010539807342501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763406961363270800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0849a71b5fe514afbaa6e4677c233832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intentUI: {fileID: 1767342660005577634}
 --- !u!1001 &2592958300740754302
 PrefabInstance:
   m_ObjectHideFlags: 0

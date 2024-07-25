@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
@@ -9,6 +10,7 @@ public class EffectTracker : MonoBehaviour
     private Enemy _enemy;
     public List<Effect> EffectsApplied { get; private set; }
     private EffectRenderer _effectRenderer;
+    public Action e_OnEffectsChanged;
 
     void Awake()
     {
@@ -36,11 +38,13 @@ public class EffectTracker : MonoBehaviour
         effect.Initialize(duration);
         EffectsApplied.Add(effect);
         _effectRenderer.RenderEffects();
+        e_OnEffectsChanged?.Invoke();
     }
 
     public void RemoveEffect(Effect effect)
     {
         EffectsApplied.Remove(effect);
         _effectRenderer.RenderEffects();
+        e_OnEffectsChanged?.Invoke();
     }
 }

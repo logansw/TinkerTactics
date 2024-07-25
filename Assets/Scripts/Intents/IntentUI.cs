@@ -4,20 +4,29 @@ using UnityEngine.UI;
 
 public class IntentUI : MonoBehaviour
 {
-    public SpriteRenderer Icon;
-    public TMP_Text ValueText;
-    public TMP_Text AbbreviationText;
+    [SerializeField] private SpriteRenderer _background;
+    [SerializeField] private SpriteRenderer _icon;
+    [SerializeField] private TMP_Text _valueText;
+    [SerializeField] private TMP_Text _abbreviationText;
+
+    void Start()
+    {
+        SetRenderersActive(false);
+    }
 
     public void Render(Intent intent)
     {
-        gameObject.SetActive(true);
-        Icon.color = intent.IconColor;
-        ValueText.text = intent.GetValueText();
-        AbbreviationText.text = intent.GetAbbreviationText();
+        SetRenderersActive(true);
+        _icon.color = intent.IconColor;
+        _valueText.text = intent.GetValueText();
+        _abbreviationText.text = intent.GetAbbreviationText();
     }
 
-    public void Hide()
+    public void SetRenderersActive(bool active)
     {
-        gameObject.SetActive(false);
+        _icon.gameObject.SetActive(active);
+        _valueText.gameObject.SetActive(active);
+        _abbreviationText.gameObject.SetActive(active);
+        _background.gameObject.SetActive(active);
     }
 }

@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class IntentMove : Intent
+public class IntentStun : Intent
 {
     public override void Initialize(Enemy enemy)
     {
-        IconColor = new Color32(92, 152, 224, 255);
-        Value = enemy.MovementSpeed;
+        IconColor = new Color32(255, 240, 128, 255);
+        if (enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
+        {
+            Value = effectStun.Duration;
+        }
     }
 
     public override string GetValueText()
@@ -16,6 +19,6 @@ public class IntentMove : Intent
 
     public override string GetAbbreviationText()
     {
-        return "MOVE";
+        return "STUN";
     }
 }

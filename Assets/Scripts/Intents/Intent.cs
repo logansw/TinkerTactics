@@ -9,8 +9,5 @@ public abstract class Intent
     public abstract string GetValueText();
     public abstract string GetAbbreviationText();
 
-    public virtual void Initialize(int value)
-    {
-        Value = value;
-    }
+    public abstract void Initialize(Enemy enemy);
 }

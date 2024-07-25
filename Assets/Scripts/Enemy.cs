@@ -39,8 +39,6 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-    public Intent Intent;
-    [SerializeField] private IntentUI _intentUI;
 
     public virtual void Awake()
     {
@@ -65,7 +63,6 @@ public class Enemy : MonoBehaviour
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
         BattleManager.e_OnPlayerTurnEnd += TakeAction;
-        BattleManager.e_OnEnemyTurnEnd += ChooseIntent;
     }
 
     public virtual void OnDisable()
@@ -74,7 +71,6 @@ public class Enemy : MonoBehaviour
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
         BattleManager.e_OnPlayerTurnEnd -= TakeAction;
-        BattleManager.e_OnEnemyTurnEnd -= ChooseIntent;
     }
 
     /// <summary>
@@ -114,14 +110,6 @@ public class Enemy : MonoBehaviour
         }
         StartCoroutine(AnimateMove());
         DistanceTraveled += MovementSpeed;
-    }
-
-    public void ChooseIntent()
-    {
-        if (!gameObject.activeInHierarchy) { return;}
-        Intent = new IntentMove();
-        Intent.Initialize(MovementSpeed);
-        _intentUI.Render(Intent);
     }
 
     private IEnumerator AnimateMove()
