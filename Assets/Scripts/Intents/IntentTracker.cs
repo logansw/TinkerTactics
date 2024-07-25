@@ -7,7 +7,6 @@ public class IntentTracker : MonoBehaviour
     [SerializeField] private IntentUI _intentUI;
     private Enemy _enemy;
 
-    // TODO: Update the IntentUI whenever an enemy gains an effect.
     // TODO: Make the Stun effect forcibly change the intent to Stun.
     // TODO: Make sure the next turn's move effect uses the correct MovementSpeed value. This turn's not last turn's.
 

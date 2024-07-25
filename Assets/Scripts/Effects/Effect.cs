@@ -13,6 +13,8 @@ public abstract class Effect : MonoBehaviour
         Enemy = GetComponent<Enemy>();
     }
 
+    public abstract void AddStacks(int count);
+
     void OnEnable()
     {
         BattleManager.e_OnEnemyTurnEnd += OnEnemyTurnEnd;

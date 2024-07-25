@@ -15,6 +15,11 @@ public class EffectStun : Effect
         IconColor = new Color32(255, 240, 128, 255);
     }
 
+    public override void AddStacks(int count)
+    {
+        Duration += count;
+    }
+
     public override string GetStackText()
     {
         return Duration.ToString();

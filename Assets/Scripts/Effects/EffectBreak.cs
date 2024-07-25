@@ -14,6 +14,11 @@ public class EffectBreak : Effect
         IconColor = new Color32(255, 158, 128, 255);
     }
 
+    public override void AddStacks(int count)
+    {
+        // Break does not stack
+    }
+
     public float GetSpeedMultiplier()
     {
         return 0.5f;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class EffectChill : Effect
 {
     public int Stacks;
+    public static int FrostbiteDamage = 10;
 
     public override void Initialize(int duration)
     {
@@ -13,6 +14,22 @@ public class EffectChill : Effect
         Duration = duration;
         Stacks = 1;
         IconColor = new Color32(128, 249, 255, 255);
+    }
+
+    public override void AddStacks(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Stacks++;
+            if (Stacks == 2)
+            {
+                Enemy.EffectTracker.AddEffect<EffectStun>(1);
+            }
+            else if (Stacks >= 3)
+            {
+                Enemy.OnImpact(FrostbiteDamage);
+            }
+        }
     }
 
     public float GetSpeedMultiplier()

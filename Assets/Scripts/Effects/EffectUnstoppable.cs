@@ -11,6 +11,11 @@ public class EffectUnstoppable : Effect
         Duration = duration;
     }
 
+    public override void AddStacks(int count)
+    {
+        Duration += count;
+    }
+
     public override string GetStackText()
     {
         return Duration.ToString();

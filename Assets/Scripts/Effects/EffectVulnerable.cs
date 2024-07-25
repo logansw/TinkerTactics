@@ -12,6 +12,11 @@ public class EffectVulnerable : Effect
         IconColor = new Color32(255, 128, 170, 255);
     }
 
+    public override void AddStacks(int count)
+    {
+        Duration += count;
+    }
+
     public float GetDamageMultiplier()
     {
         return 2f;

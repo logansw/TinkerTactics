@@ -32,11 +32,18 @@ public class EffectTracker : MonoBehaviour
         return false;
     }
 
-    public void AddEffect<T>(int duration) where T : Effect
+    public void AddEffect<T>(int stacks) where T : Effect
     {
-        T effect = gameObject.AddComponent<T>();
-        effect.Initialize(duration);
-        EffectsApplied.Add(effect);
+        if (HasEffect<T>(out T effect))
+        {
+            effect.AddStacks(stacks);
+        }
+        else
+        {
+            T newEffect = gameObject.AddComponent<T>();
+            newEffect.Initialize(stacks);
+            EffectsApplied.Add(newEffect);
+        }
         _effectRenderer.RenderEffects();
         e_OnEffectsChanged?.Invoke();
     }
