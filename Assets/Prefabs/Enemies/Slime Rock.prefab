@@ -84,8 +84,48 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.4061944
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8968760711258328685, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: UnitSO
+      value: 
+      objectReference: {fileID: 11400000, guid: fb870a3465dca48dfa5c80de3916e552, type: 2}
+    m_RemovedComponents:
+    - {fileID: 7613097520309272142, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 732624412162309185, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 6580410719226668030}
   m_SourcePrefab: {fileID: 100100000, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+--- !u!114 &17860510929862882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4370574081667694452, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+  m_PrefabInstance: {fileID: 4366259573358575510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941458878597235671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0849a71b5fe514afbaa6e4677c233832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3941458878597235671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 732624412162309185, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+  m_PrefabInstance: {fileID: 4366259573358575510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6580410719226668030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941458878597235671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41771a78590e2442eb4eb0228b00842e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Armor: 0
+  DistanceTraveled: 0
+  EffectTracker: {fileID: 0}
+  _intentTracker: {fileID: 17860510929862882}

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d297e4f32ee4bc48555bba86021557, type: 3}
-  m_Name: Slime
-  m_EditorClassIdentifier: 
-  MaxHealth: 10
-  SegmentCount: 2
-  MovementSpeed: 2
+  m_Script: {fileID: 11500000, guid: 914cba20f64a54728b47bb2a0a83ec32, type: 3}
+  m_Name: SlimeWhite
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySO
+  MaxHealth: 5
+  SegmentCount: 5
+  MovementSpeed: 1
   Armor: 0

@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2152886801086598844, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: UnitSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c8fdd9bac3d1f47f49358fd842b0f652, type: 2}
+    - target: {fileID: 2152886801086598844, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: Intents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152886801086598844, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: Intents.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 413ceee84d4e547be9317afd5dfbcba1, type: 2}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _name
       value: "\U0001F47E"
@@ -95,5 +107,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 7613097520309272142}
   m_SourcePrefab: {fileID: 100100000, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+--- !u!1 &732624412162309185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+  m_PrefabInstance: {fileID: 7032343857327800529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7613097520309272142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732624412162309185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353be169c6aa740e6aca36705b4216cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Armor: 0
+  DistanceTraveled: 0
+  EffectTracker: {fileID: 0}
+  _intentTracker: {fileID: 4370574081667694452}
+--- !u!114 &4370574081667694452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6715010539807342501, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+  m_PrefabInstance: {fileID: 7032343857327800529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732624412162309185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0849a71b5fe514afbaa6e4677c233832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,22 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "IntentStun", menuName = "Intent/Stun", order = 3)]
-public class IntentStun : Intent
+[CreateAssetMenu(fileName = "IntentDefend", menuName = "Intent/Defend", order = 2)]
+public class IntentDefend : Intent
 {
-    public IntentStun(Enemy enemy, int value) : base(enemy, value)
+    public IntentDefend(Enemy enemy, int value) : base(enemy, value)
     {
-        IconColor = new Color32(255, 240, 128, 255);
+        IconColor = new Color32(83, 191, 237, 255);
     }
 
     public override void Execute()
     {
-        // Do Nothing
+        // TODO:
     }
 
     public override void Calculate()
     {
-        // Do Nothing
+        ValueCurrent = ValueBase;
     }
 
     public override string GetValueText()
@@ -26,6 +26,6 @@ public class IntentStun : Intent
 
     public override string GetAbbreviationText()
     {
-        return "STUN";
+        return "DEF";
     }
 }

@@ -4,31 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EffectTracker))]
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    public EnemySO UnitSO;
+    public EnemySO EnemySO;
     public Health Health;
     private Healthbar _healthbar;
-    public int MovementSpeed
-    {
-        get
-        {
-            int movementSpeed = BaseMovementSpeed;
-            if (EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
-            {
-                return 0;
-            }
-            if (EffectTracker.HasEffect<EffectChill>(out EffectChill effectChill))
-            {
-                movementSpeed = (int)(movementSpeed * effectChill.GetSpeedMultiplier());
-            }
-            if (EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
-            {
-                return Mathf.Max(movementSpeed, 1);
-            }
-            return movementSpeed;
-        }
-    }
+    public int MovementSpeed { get; set; }
     [HideInInspector] public int BaseMovementSpeed { get; private set; }
     [HideInInspector] public float Armor;
     public TilePath NextTilePath { get; set; }
@@ -39,14 +20,15 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
+    [SerializeField] private IntentTracker _intentTracker;
 
     public virtual void Awake()
     {
-        float maxHealth = UnitSO.MaxHealth;
-        int breakpointCount = UnitSO.SegmentCount;
-        Health = new Health(UnitSO.MaxHealth, UnitSO.SegmentCount);
-        BaseMovementSpeed = UnitSO.MovementSpeed;
-        Armor = UnitSO.Armor;
+        float maxHealth = EnemySO.MaxHealth;
+        int breakpointCount = EnemySO.SegmentCount;
+        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount);
+        BaseMovementSpeed = EnemySO.MovementSpeed;
+        Armor = EnemySO.Armor;
         _healthbar = GetComponentInChildren<Healthbar>();
         _healthbar.Initialize(Health);
         EffectTracker = GetComponent<EffectTracker>();
@@ -57,6 +39,8 @@ public class Enemy : MonoBehaviour
         EnemyManager.s_Instance.AddEnemy(this);
         NextTilePath = MapManager.s_Instance.StartTile.NextTilePath;
     }
+
+    public abstract Intent ChooseIntent();
 
     public virtual void OnEnable()
     {
@@ -104,22 +88,23 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeAction()
     {
-        if (GetComponent<EffectStun>() != null)
-        {
-            return;
-        }
-        StartCoroutine(AnimateMove());
-        DistanceTraveled += MovementSpeed;
+        _intentTracker.Intent.Execute();
     }
 
-    private IEnumerator AnimateMove()
+    public void Move(int value)
     {
-        for (int i = 0; i < MovementSpeed; i++)
+        StartCoroutine(AnimateMove(value));
+        DistanceTraveled += value;
+    }
+
+    private IEnumerator AnimateMove(int distance)
+    {
+        for (int i = 0; i < distance; i++)
         {
             Vector3 startPosition = transform.position;
             Vector3 endPosition = NextTilePath.transform.position;
             float timeElapsed = 0;
-            float duration = 0.5f / MovementSpeed;
+            float duration = 0.5f / distance;
             while (timeElapsed < duration)
             {
                 timeElapsed += Time.deltaTime;

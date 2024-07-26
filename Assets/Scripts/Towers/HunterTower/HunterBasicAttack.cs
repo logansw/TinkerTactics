@@ -36,6 +36,6 @@ public class HunterBasicAttack : MonoBehaviour, IAbility
 
     public string GetTooltipText()
     {
-        return $"{Name}: Targets the most traveled enemy within {_range} range. Executes enemies with less than {Hunter.ExecuteDamage} health.";
+        return $"{Name}: Targets the most traveled enemy within {_range} range. Executes enemies with {Hunter.ExecuteDamage} or less health.";
     }
 }

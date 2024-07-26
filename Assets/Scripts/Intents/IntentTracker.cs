@@ -13,15 +13,6 @@ public class IntentTracker : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
-    void Update()
-    {
-        if (_updateQueued)
-        {
-            UpdateIntent();
-            _updateQueued = false;
-        }
-    }
-
     void OnEnable()
     {
         BattleManager.e_OnEnemyTurnEnd += ChooseIntent;
@@ -34,11 +25,20 @@ public class IntentTracker : MonoBehaviour
         _enemy.EffectTracker.e_OnEffectsChanged -= QueueUpdate;
     }
 
+    void Update()
+    {
+        if (_updateQueued)
+        {
+            UpdateIntent();
+            _updateQueued = false;
+        }
+    }
+
     public void ChooseIntent()
     {
         if (!gameObject.activeInHierarchy) { return;}
-        Intent = new IntentMove();
-        Intent.Initialize(_enemy);
+        Intent = _enemy.ChooseIntent();
+        Intent.Calculate();
         _intentUI.Render(Intent);
     }
 
@@ -51,9 +51,9 @@ public class IntentTracker : MonoBehaviour
     {
         if (_enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
         {
-            Intent = new IntentStun();
+            Intent = new IntentStun(_enemy, effectStun.Duration);
         }
-        Intent.Initialize(_enemy);
+        Intent.Calculate();
         _intentUI.Render(Intent);
     }
 }
