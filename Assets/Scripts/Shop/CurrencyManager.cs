@@ -11,13 +11,13 @@ public class CurrencyManager : Singleton<CurrencyManager>
     protected override void Awake()
     {
         base.Awake();
-        YellowCurrency = new Currency("Yellow", 15);
+        YellowCurrency = new Currency("Yellow", 5);
     }
 
     public void AddPassiveCurrency()
     {
         Debug.Log("Add Passive Currency");
-        YellowCurrency.AddAmount(5 + Mathf.Min(5, YellowCurrency.Amount / 10));
+        YellowCurrency.AddAmount(5);
         CurrencyUI.s_Instance.UpdateCurrency();
     }
 }
