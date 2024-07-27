@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RockSingle
   m_EditorClassIdentifier: 
   subWaveName: 
-  enemies: []
-  enemyCounts: 
+  enemies:
+  - enemyPrefab: {fileID: 3941458878597235671, guid: 477df1c90ca7d4f319cff46d7eff73f4, type: 3}
+  enemyCounts: 01000000

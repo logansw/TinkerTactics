@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: 3
   subWaves:
-  - {fileID: 11400000, guid: d83a459be31d14f0baf09ae37803397e, type: 2}
-  - {fileID: 11400000, guid: eb6e6617022e141e0889701b01803b3f, type: 2}
+  - {fileID: 11400000, guid: 504a292dcdce54d378289f7a517bbd58, type: 2}

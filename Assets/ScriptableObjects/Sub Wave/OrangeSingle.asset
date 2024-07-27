@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: OrangeSingle
   m_EditorClassIdentifier: 
   subWaveName: 
-  enemies: []
-  enemyCounts: 
+  enemies:
+  - enemyPrefab: {fileID: 414574627610645957, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+  enemyCounts: 01000000
