@@ -11,7 +11,7 @@ public class IntentDefend : Intent
 
     public override void Execute()
     {
-        // TODO:
+        _enemy.EffectTracker.AddEffect<EffectDefend>(ValueCurrent);
     }
 
     public override void Calculate()

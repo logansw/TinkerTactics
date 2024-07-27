@@ -26,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
     {
         float maxHealth = EnemySO.MaxHealth;
         int breakpointCount = EnemySO.SegmentCount;
-        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount);
+        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount, this);
         BaseMovementSpeed = EnemySO.MovementSpeed;
         Armor = EnemySO.Armor;
         _healthbar = GetComponentInChildren<Healthbar>();
@@ -46,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
     {
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
-        BattleManager.e_OnPlayerTurnEnd += TakeAction;
+        BattleManager.e_OnEnemyTurnStart += TakeAction;
     }
 
     public virtual void OnDisable()
@@ -54,7 +54,7 @@ public abstract class Enemy : MonoBehaviour
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
-        BattleManager.e_OnPlayerTurnEnd -= TakeAction;
+        BattleManager.e_OnEnemyTurnStart -= TakeAction;
     }
 
     /// <summary>
@@ -88,6 +88,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void TakeAction()
     {
+        if (_intentTracker.Intent == null) { return; }
         _intentTracker.Intent.Execute();
     }
 

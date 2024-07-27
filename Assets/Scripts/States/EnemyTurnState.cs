@@ -11,6 +11,7 @@ public class EnemyTurnState : State
 
     public override void OnEnter(StateController stateController)
     {
+        BattleManager.e_OnEnemyTurnStart?.Invoke();
         StartCoroutine(DelayedContinue());
     }
 

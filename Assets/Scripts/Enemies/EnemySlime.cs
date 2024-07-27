@@ -11,7 +11,7 @@ public class EnemySlime : Enemy
         {
             new IntentMove(this, EnemySO.MovementSpeed),
             new IntentDefend(this, 5),
-            new IntentMove(this, EnemySO.MovementSpeed),
+            new IntentMove(this, 1),
         };
     }
 

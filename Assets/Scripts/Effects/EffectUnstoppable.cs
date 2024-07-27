@@ -9,11 +9,17 @@ public class EffectUnstoppable : Effect
     {
         base.Initialize(duration);
         Duration = duration;
+        IconColor = new Color32(201, 195, 177, 255);
     }
 
     public override void AddStacks(int count)
     {
         Duration += count;
+    }
+
+    public override void RemoveStacks(int count)
+    {
+        // Does not stack
     }
 
     public override string GetStackText()

@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41771a78590e2442eb4eb0228b00842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemySO: {fileID: 11400000, guid: 1e11a5619b5934680a9c27875f02b7a3, type: 2}
   Armor: 0
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}

@@ -49,7 +49,8 @@ public class IntentTracker : MonoBehaviour
 
     public void UpdateIntent()
     {
-        if (_enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
+        if (Intent == null) { return; }
+        if (!_enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable) && _enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
         {
             Intent = new IntentStun(_enemy, effectStun.Duration);
         }

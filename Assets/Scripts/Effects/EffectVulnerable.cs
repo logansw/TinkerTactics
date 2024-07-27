@@ -17,6 +17,11 @@ public class EffectVulnerable : Effect
         Duration += count;
     }
 
+    public override void RemoveStacks(int count)
+    {
+        Duration -= count;
+    }
+
     public float GetDamageMultiplier()
     {
         return 2f;

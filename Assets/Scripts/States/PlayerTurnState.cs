@@ -11,6 +11,7 @@ public class PlayerTurnState : State
 
     public override void OnEnter(StateController stateController)
     {
+        BattleManager.e_OnPlayerTurnStart?.Invoke();
         HUDManager.s_Instance.DisplayAllTowerInfo();
     }
 
@@ -21,6 +22,7 @@ public class PlayerTurnState : State
 
     public override void OnExit(StateController stateController)
     {
+        BattleManager.e_OnPlayerTurnEnd?.Invoke();
         HUDManager.s_Instance.HideAllTowerInfo();
     }
 }

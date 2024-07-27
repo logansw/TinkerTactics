@@ -19,6 +19,11 @@ public class EffectBreak : Effect
         // Break does not stack
     }
 
+    public override void RemoveStacks(int count)
+    {
+        // Break does not stack
+    }
+
     public float GetSpeedMultiplier()
     {
         return 0.5f;

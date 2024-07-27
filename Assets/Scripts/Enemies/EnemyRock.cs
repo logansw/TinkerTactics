@@ -10,7 +10,7 @@ public class EnemyRock : Enemy
         EffectTracker.AddEffect<EffectUnstoppable>(99);
         _intents = new List<Intent>()
         {
-            new IntentMove(this, MovementSpeed)
+            new IntentMove(this, EnemySO.MovementSpeed)
         };
     }
 

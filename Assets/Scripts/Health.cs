@@ -12,6 +12,7 @@ public class Health
     public Action e_OnHealthBreak;
     public delegate void HealthAction(float currentHealth, float maxHealth);
     public HealthAction e_OnHealthChanged;
+    private Enemy _enemy;
 
     private float _currentHealth;
     public float CurrentHealth
@@ -31,12 +32,13 @@ public class Health
             {
                 _currentHealth = value;
             }
+            e_OnHealthChanged?.Invoke(_currentHealth, MaxHealth);
         }
     }
 
     public int SegmentCount { get; private set; }
 
-    public Health(float maxHealth, int segmentCount)
+    public Health(float maxHealth, int segmentCount, Enemy enemy)
     {
         MaxHealth = maxHealth;
         SegmentCount = segmentCount;
@@ -44,12 +46,27 @@ public class Health
         _segmentHealth = maxHealth / segmentCount;
         _lowerBreakpoint = _upperBreakpoint - _segmentHealth;
         CurrentHealth = maxHealth;
+        _enemy = enemy;
     }
 
     public void TakeDamage(float postMitigationDamage)
     {
-        CurrentHealth -= postMitigationDamage;
-        e_OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        float remainingDamage = postMitigationDamage;
+        if (_enemy.EffectTracker.HasEffect<EffectDefend>(out EffectDefend effectDefend))
+        {
+            if (remainingDamage < effectDefend.Stacks)
+            {
+                _enemy.EffectTracker.RemoveStacks(effectDefend, (int)remainingDamage);
+                return;
+            }
+            else
+            {
+                remainingDamage -= effectDefend.Stacks;
+                _enemy.EffectTracker.RemoveEffect(effectDefend);
+            }
+        }
+
+        CurrentHealth -= remainingDamage;
         if (CurrentHealth <= 0)
         {
             e_OnHealthDepleted?.Invoke();

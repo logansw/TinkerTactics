@@ -7,20 +7,27 @@ public abstract class Effect : MonoBehaviour
     public int Duration;
     public Enemy Enemy;
     public Color32 IconColor;
+    public int Stacks;
 
-    public virtual void Initialize(int duration)
+    public virtual void Awake()
     {
         Enemy = GetComponent<Enemy>();
     }
 
-    public abstract void AddStacks(int count);
+    public virtual void Initialize(int duration)
+    {
+        // Nothing by default
+    }
 
-    void OnEnable()
+    public abstract void AddStacks(int count);
+    public abstract void RemoveStacks(int count);
+
+    public virtual void OnEnable()
     {
         BattleManager.e_OnEnemyTurnEnd += OnEnemyTurnEnd;
     }
 
-    public void OnDisable()
+    public virtual void OnDisable()
     {
         BattleManager.e_OnEnemyTurnEnd -= OnEnemyTurnEnd;
     }
@@ -38,6 +45,11 @@ public abstract class Effect : MonoBehaviour
     {
         Enemy.EffectTracker.RemoveEffect(this);
         Destroy(this);
+    }
+
+    public virtual bool CheckRules()
+    {
+        return true;
     }
 
     public abstract string GetStackText();

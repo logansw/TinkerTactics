@@ -118,4 +118,15 @@ MonoBehaviour:
   Armor: 0
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}
-  _intentTracker: {fileID: 0}
+  _intentTracker: {fileID: 3140751937286180368}
+--- !u!114 &3140751937286180368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4370574081667694452, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+  m_PrefabInstance: {fileID: 1671210152818438500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097440213771111717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0849a71b5fe514afbaa6e4677c233832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

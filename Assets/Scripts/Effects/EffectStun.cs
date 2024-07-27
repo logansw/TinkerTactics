@@ -9,7 +9,8 @@ public class EffectStun : Effect
         base.Initialize(duration);
         if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
         {
-            Remove();
+            Enemy.EffectTracker.RemoveEffect(this);
+            return;
         }
         Duration = duration;
         IconColor = new Color32(255, 240, 128, 255);
@@ -18,6 +19,20 @@ public class EffectStun : Effect
     public override void AddStacks(int count)
     {
         Duration += count;
+    }
+
+    public override void RemoveStacks(int count)
+    {
+        Duration -= count;
+    }
+
+    public override bool CheckRules()
+    {
+        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+        {
+            return false;
+        }
+        return true;
     }
 
     public override string GetStackText()

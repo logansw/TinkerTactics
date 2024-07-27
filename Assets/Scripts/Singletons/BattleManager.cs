@@ -9,7 +9,9 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
+    public static Action e_OnPlayerTurnStart;
     public static Action e_OnPlayerTurnEnd;
+    public static Action e_OnEnemyTurnStart;
     public static Action e_OnEnemyTurnEnd;
 
     void Start()
@@ -21,7 +23,6 @@ public class BattleManager : MonoBehaviour
     {
         if (StateController.CurrentState.Equals(StateType.PlayerTurnState))
         {
-            e_OnPlayerTurnEnd?.Invoke();
             StateController.s_Instance.ChangeState(StateType.EnemyTurnState);
         }
         else if (StateController.CurrentState.Equals(StateType.Victory))

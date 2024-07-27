@@ -41,8 +41,15 @@ public class EffectTracker : MonoBehaviour
         else
         {
             T newEffect = gameObject.AddComponent<T>();
-            newEffect.Initialize(stacks);
-            EffectsApplied.Add(newEffect);
+            if (newEffect.CheckRules())
+            {
+                newEffect.Initialize(stacks);
+                EffectsApplied.Add(newEffect);
+            }
+            else
+            {
+                Destroy(newEffect);
+            }
         }
         _effectRenderer.RenderEffects();
         e_OnEffectsChanged?.Invoke();
@@ -51,6 +58,13 @@ public class EffectTracker : MonoBehaviour
     public void RemoveEffect(Effect effect)
     {
         EffectsApplied.Remove(effect);
+        _effectRenderer.RenderEffects();
+        e_OnEffectsChanged?.Invoke();
+    }
+
+    public void RemoveStacks(Effect effect, int count)
+    {
+        effect.RemoveStacks(count);
         _effectRenderer.RenderEffects();
         e_OnEffectsChanged?.Invoke();
     }

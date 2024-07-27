@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EffectChill : Effect
 {
-    public int Stacks;
     public static int FrostbiteDamage = 10;
 
     public override void Initialize(int duration)
@@ -30,6 +29,11 @@ public class EffectChill : Effect
                 Enemy.OnImpact(FrostbiteDamage);
             }
         }
+    }
+
+    public override void RemoveStacks(int count)
+    {
+        Stacks -= count;
     }
 
     public float GetSpeedMultiplier()
