@@ -18,8 +18,6 @@ public class TowerInfoPanel : MonoBehaviour
     public void Initialize(Tower tower)
     {
         _tower = tower;
-        _abilityOneButton.onClick.AddListener(_tower.CastBasicAttack);
-        _abilityTwoButton.onClick.AddListener(_tower.CastAbility);
         Render();
     }
 
@@ -37,27 +35,7 @@ public class TowerInfoPanel : MonoBehaviour
 
     public void Render()
     {
-        _energyText.text = $"{_tower.Energy}/{_tower.MaxEnergy}";
-        _abilityOneIcon.text = $"{_tower.BasicAttack.Name} ({_tower.BasicAttack.EnergyCost})";
-        _abilityTwoIcon.text = $"{_tower.Ability.Name} ({_tower.Ability.EnergyCost})";
-    }
-
-    /// <summary>
-    /// Display a tooltip for the ability and display its range.
-    /// </summary>
-    /// <param name="ability"></param>
-    public void DisplayBasicAttackTooltip()
-    {
-        IAbility ability = _tower.BasicAttack;
-        ShowRangeIndicator(true, ability.Range);
-        TooltipManager.s_Instance.DisplayTooltip(ability.GetTooltipText());
-    }
-
-    public void DisplayAbilityTooltip()
-    {
-        IAbility ability = _tower.Ability;
-        ShowRangeIndicator(true, ability.Range);
-        TooltipManager.s_Instance.DisplayTooltip(ability.GetTooltipText());
+        
     }
 
     public void DisplayTowerTooltip()

@@ -10,50 +10,18 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
-    [HideInInspector] public int Energy;
-    public int MaxEnergy;
-    public IAbility BasicAttack;
-    public IAbility Ability;
     public string Name;
 
     public abstract string GetTooltipText();
 
     protected virtual void OnEnable()
     {
-        BattleManager.e_OnEnemyTurnEnd += RechargeEnergy;
+
     }
 
     protected virtual void OnDisable()
     {
-        BattleManager.e_OnEnemyTurnEnd -= RechargeEnergy;
-    }
 
-    protected void RechargeEnergy()
-    {
-        Energy += 1;
-        if (Energy > MaxEnergy)
-        {
-            Energy = MaxEnergy;
-        }
-    }
-
-    public virtual void CastBasicAttack()
-    {
-        Cast(BasicAttack);
-    }
-
-    public virtual void CastAbility()
-    {
-        Cast(Ability);
-    }
-
-    private void Cast(IAbility ability)
-    {
-        if (Energy >= ability.EnergyCost)
-        {
-            ability.Activate();
-            Energy -= ability.EnergyCost;
-        }
     }
 
     public void OnSelect()
