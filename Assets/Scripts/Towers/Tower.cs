@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -11,8 +12,19 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
     public string Name;
+    private LineRenderer _rangeIndicator;
+    protected IAbility attack;
+    protected RangeHandle _rangeHandle;
 
     public abstract string GetTooltipText();
+
+    protected virtual void Awake()
+    {
+        _rangeIndicator = GetComponentInChildren<LineRenderer>();
+        _rangeIndicator.useWorldSpace = false;
+        HideRangeIndicator();
+        _rangeHandle = GetComponentInChildren<RangeHandle>();
+    }
 
     protected virtual void OnEnable()
     {
@@ -26,12 +38,12 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnSelect()
     {
-        HUDManager.s_Instance.DisplayTowerInformation(this);
+        ShowRangeIndicator(attack);
     }
 
     public void OnDeselect()
     {
-        
+        HideRangeIndicator();
     }
 
     /// <summary>
@@ -48,32 +60,13 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
             if (hit.collider != null && hit.collider.GetComponent<TilePlot>() != null)
             {
                 TilePlot otherPlot = hit.collider.GetComponent<TilePlot>();
-                if (otherPlot.IsOccupied)
+                if (otherPlot.AddTower(this))
                 {
-                    Tower otherTower = otherPlot.Tower;
-                    TilePlot thisTowerOldPlot = _tilePlot;
-
-                    // Swap the towers
-                    otherPlot.Tower = this;
-                    thisTowerOldPlot.Tower = otherTower;
-
-                    // Update the _tilePlot references
-                    this._tilePlot = otherPlot;
-                    otherTower._tilePlot = thisTowerOldPlot;
-
-                    // Return the towers to their new plots
-                    otherTower.ReturnToPlot();
-                    ReturnToPlot();
                     return;
                 }
                 else
                 {
-                    _tilePlot ??= otherPlot;
-                    _tilePlot.Tower = null;
-                    _tilePlot = otherPlot;
-                    otherPlot.Tower = this;
                     ReturnToPlot();
-                    return;
                 }
             }
         }
@@ -88,22 +81,47 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnLift()
     {
-        HUDManager.s_Instance.HideTowerInformation(this);
+
     }
 
     public void OnDrop()
     {
         AssignTowerToTilePlot();
-        HUDManager.s_Instance.DisplayTowerInformation(this);
     }
 
     public void OnHover()
     {
-        // Do nothing
+
     }
 
     public void OnHeld()
     {
         // Do nothing
+    }
+
+    private void ShowRangeIndicator(IAbility ability)
+    {
+        _rangeIndicator.enabled = true;
+        int arcPoints = 30;
+        _rangeIndicator.positionCount = arcPoints + 2;
+        // First Point
+        _rangeIndicator.SetPosition(0, Vector2.zero);
+        // Arc Points
+        float angle = ability.Sweep * Mathf.PI / 180f;
+        float startAngle = -angle / 2f;
+        float angleDelta = angle / (arcPoints - 1);
+        for (int i = 0; i < arcPoints; i++)
+        {
+            float x = ability.Range * Mathf.Cos(startAngle + angleDelta * i);
+            float y = ability.Range * Mathf.Sin(startAngle + angleDelta * i);
+            _rangeIndicator.SetPosition(i+1, new Vector3(x, y, 0));
+        }
+        // Last Point
+        _rangeIndicator.SetPosition(_rangeIndicator.positionCount-1, Vector2.zero);
+    }
+
+    private void HideRangeIndicator()
+    {
+        // _rangeIndicator.enabled = false;
     }
 }
