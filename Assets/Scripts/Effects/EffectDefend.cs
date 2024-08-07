@@ -15,12 +15,12 @@ public class EffectDefend : Effect
 
     public override void OnEnable()
     {
-        BattleManager.e_OnPlayerTurnEnd += OnEnemyTurnEnd;
+        
     }
 
     public override void OnDisable()
     {
-        BattleManager.e_OnPlayerTurnEnd -= OnEnemyTurnEnd;
+        
     }
 
     public override void AddStacks(int count)

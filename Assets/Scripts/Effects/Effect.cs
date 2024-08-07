@@ -24,12 +24,10 @@ public abstract class Effect : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        BattleManager.e_OnEnemyTurnEnd += OnEnemyTurnEnd;
     }
 
     public virtual void OnDisable()
     {
-        BattleManager.e_OnEnemyTurnEnd -= OnEnemyTurnEnd;
     }
 
     public virtual void OnEnemyTurnEnd()

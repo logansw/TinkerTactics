@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTurnState : State
+public class IdleState : State
 {
     void Awake()
     {
-        StateType = StateType.PlayerTurnState;
+        StateType = StateType.Idle;
     }
 
     public override void OnEnter(StateController stateController)
     {
-        BattleManager.e_OnPlayerTurnStart?.Invoke();
-        HUDManager.s_Instance.DisplayAllTowerInfo();
+        // Do nothing
     }
 
     public override void UpdateState(StateController stateController)
@@ -22,7 +21,6 @@ public class PlayerTurnState : State
 
     public override void OnExit(StateController stateController)
     {
-        BattleManager.e_OnPlayerTurnEnd?.Invoke();
-        HUDManager.s_Instance.HideAllTowerInfo();
+        // Do nothing
     }
 }

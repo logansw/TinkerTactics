@@ -732,8 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4b9e9bdf6cd4b37b3eaabb999d3653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTurnState: {fileID: 520271628}
-  EnemyTurnState: {fileID: 520271627}
+  IdleState: {fileID: 520271628}
+  PlayingState: {fileID: 520271627}
   VictoryState: {fileID: 520271621}
   LossState: {fileID: 520271620}
   StateText: {fileID: 32358293}
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 520271619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2c041b4a0e842ca89d09addfe232bf, type: 3}
+  m_Script: {fileID: 11500000, guid: be57ed10e5018467d83a2382aeea870b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateType: 0
@@ -775,7 +775,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 520271619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978fbb25e04de47c39b04ae1cf069263, type: 3}
+  m_Script: {fileID: 11500000, guid: ec7c1a5b0dd044612972a4ff8d500345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateType: 0

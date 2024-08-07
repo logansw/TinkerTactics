@@ -12,8 +12,8 @@ public class StateController : Singleton<StateController>
 {
     public static StateType CurrentState { get; private set; } = StateType.None;
     // States
-    [SerializeField] private State PlayerTurnState;
-    [SerializeField] private State EnemyTurnState;
+    [SerializeField] private State IdleState;
+    [SerializeField] private State PlayingState;
     [SerializeField] private State VictoryState;
     [SerializeField] private State LossState;
     [SerializeField] private TMP_Text StateText;
@@ -49,10 +49,10 @@ public class StateController : Singleton<StateController>
     {
         switch (stateType)
         {
-            case StateType.PlayerTurnState:
-                return PlayerTurnState;
-            case StateType.EnemyTurnState:
-                return EnemyTurnState;
+            case StateType.Idle:
+                return IdleState;
+            case StateType.Playing:
+                return PlayingState;
             case StateType.Victory:
                 return VictoryState;
             case StateType.Loss:

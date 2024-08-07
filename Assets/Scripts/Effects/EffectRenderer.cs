@@ -14,12 +14,12 @@ public class EffectRenderer : MonoBehaviour
 
     void OnEnable()
     {
-        BattleManager.e_OnEnemyTurnEnd += RenderEffects;
+        
     }
 
     void OnDisable()
     {
-        BattleManager.e_OnEnemyTurnEnd -= RenderEffects;
+        
     }
 
     public void RenderEffects()

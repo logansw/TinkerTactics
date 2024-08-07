@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class WaveSpawner : Singleton<WaveSpawner>
 {
     public bool finishedSpawning = false;
@@ -12,12 +11,10 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     void OnEnable()
     {
-        BattleManager.e_OnPlayerTurnEnd += ContinueWave;
     }
 
     void OnDisable()
     {
-        BattleManager.e_OnPlayerTurnEnd -= ContinueWave;
     }
 
     public void BeginWave()
@@ -25,33 +22,37 @@ public class WaveSpawner : Singleton<WaveSpawner>
         finishedSpawning = false;
         currentSubWaveIndex = 0;
         currentEnemyIndex = 0;
-        ContinueWave();
+        StartCoroutine(SpawnEnemies());
     }
 
-    public void ContinueWave()
+    public IEnumerator SpawnEnemies()
     {
-        if (finishedSpawning)
+        while (!finishedSpawning)
         {
-            return;
-        }
-        WaveSO currentWave = waves[currentWaveIndex];
-        SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-        currentEnemyIndex++;
-        if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
-        {
-            currentSubWaveIndex++;
-            currentEnemyIndex = 0;
-            if (currentSubWaveIndex >= currentWave.subWaves.Length)
+            WaveSO currentWave = waves[currentWaveIndex];
+            SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+            currentEnemyIndex++;
+            if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
             {
-                currentWaveIndex++;
-                finishedSpawning = true;
+                currentSubWaveIndex++;
+                currentEnemyIndex = 0;
+                if (currentSubWaveIndex >= currentWave.subWaves.Length)
+                {
+                    currentWaveIndex++;
+                    finishedSpawning = true;
+                }
             }
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
-        Transform spawnPoint = MapManager.s_Instance.StartTile.transform;
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        // Spawn enemy at a random point in a circle around the spawn point
+        float distance = Random.Range(10, 15);
+        float theta = Random.Range(0, 360);
+        float thetaRad = theta * Mathf.Deg2Rad;
+        Vector2 spawnPoint = new Vector2(distance * Mathf.Cos(thetaRad), distance * Mathf.Sin(thetaRad));
+        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
     }
 }

@@ -9,26 +9,16 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
-    public static Action e_OnPlayerTurnStart;
-    public static Action e_OnPlayerTurnEnd;
-    public static Action e_OnEnemyTurnStart;
-    public static Action e_OnEnemyTurnEnd;
-
     void Start()
     {
-        StateController.s_Instance.ChangeState(StateType.PlayerTurnState);
+        StateController.s_Instance.ChangeState(StateType.Idle);
     }
     
     public void Continue()
     {
-        if (StateController.CurrentState.Equals(StateType.PlayerTurnState))
+        if (StateController.CurrentState == StateType.Idle)
         {
-            StateController.s_Instance.ChangeState(StateType.EnemyTurnState);
-        }
-        else if (StateController.CurrentState.Equals(StateType.Victory))
-        {
-            WaveSpawner.s_Instance.BeginWave();
-            StateController.s_Instance.ChangeState(StateType.EnemyTurnState);
+            StateController.s_Instance.ChangeState(StateType.Playing);
         }
     }
 }
