@@ -6,14 +6,15 @@ public class Cannon : Tower
     protected override void Awake()
     {
         base.Awake();
-        attack = new CannonAttack();
-        attack.Initialize();
-        _rangeHandle.Initialize(attack.Range);
+        Attack = new CannonAttack();
+        Attack.Initialize();
+        _rangeIndicator = GetComponentInChildren<RangeIndicator>();
+        _rangeIndicator.Initialize(this);
     }
 
     void Update()
     {
-        attack.Initialize();
+        Attack.Initialize();
     }
 
     public override string GetTooltipText()
