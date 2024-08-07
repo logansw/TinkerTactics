@@ -22,12 +22,7 @@ public class MapManager : Singleton<MapManager>
     */
     private string[] _mapData = new string[] {
         @"
-        TTTTTT
-        SPPPPT
-        TTTTPT
-        TPPPPT
-        TPTTTT
-        TETTTT"
+        T"
     };
     private MapModel _mapModel;
     private MapView _mapView;
