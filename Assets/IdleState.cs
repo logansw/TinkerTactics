@@ -11,7 +11,7 @@ public class IdleState : State
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        
     }
 
     public override void UpdateState(StateController stateController)

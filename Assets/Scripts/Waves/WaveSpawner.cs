@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WaveSpawner : Singleton<WaveSpawner>
 {
-    public bool finishedSpawning = false;
+    public bool FinishedSpawning = false;
     public WaveSO[] waves;
     private int currentWaveIndex = 0;
     private int currentSubWaveIndex = 0;
@@ -19,7 +19,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     public void BeginWave()
     {
-        finishedSpawning = false;
+        FinishedSpawning = false;
         currentSubWaveIndex = 0;
         currentEnemyIndex = 0;
         StartCoroutine(SpawnEnemies());
@@ -27,7 +27,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     public IEnumerator SpawnEnemies()
     {
-        while (!finishedSpawning)
+        while (!FinishedSpawning)
         {
             WaveSO currentWave = waves[currentWaveIndex];
             SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
@@ -39,7 +39,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
                 if (currentSubWaveIndex >= currentWave.subWaves.Length)
                 {
                     currentWaveIndex++;
-                    finishedSpawning = true;
+                    FinishedSpawning = true;
                 }
             }
             yield return new WaitForSeconds(0.2f);

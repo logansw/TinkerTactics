@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   MaxHealth: 10
   SegmentCount: 2
-  MovementSpeed: 2
+  MovementSpeed: 5
   Armor: 0

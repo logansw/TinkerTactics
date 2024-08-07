@@ -16,11 +16,14 @@ public class PlayingState : State
 
     public override void UpdateState(StateController stateController)
     {
-        // Do nothing
+        if (EnemyManager.s_Instance.Enemies.Count == 0 && WaveSpawner.s_Instance.FinishedSpawning)
+        {
+            stateController.ChangeState(StateType.Idle);
+        }
     }
 
     public override void OnExit(StateController stateController)
     {
-        // Do nothing
+        
     }
 }

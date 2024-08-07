@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EffectTracker))]
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public EnemySO EnemySO;
     public Health Health;
@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour
     public int MovementSpeed { get; set; }
     [HideInInspector] public int BaseMovementSpeed { get; private set; }
     [HideInInspector] public float Armor;
-    public TilePath NextTilePath { get; set; }
+    public Tile TileTarget { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
     [HideInInspector] public int DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
@@ -36,7 +36,13 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Start()
     {
         EnemyManager.s_Instance.AddEnemy(this);
-        NextTilePath = MapManager.s_Instance.StartTile.NextTilePath;
+        TileTarget = MapManager.s_Instance.TileTarget;
+        MovementSpeed = BaseMovementSpeed;
+    }
+
+    void Update()
+    {
+        Move();
     }
 
     public virtual void OnEnable()
@@ -61,7 +67,7 @@ public abstract class Enemy : MonoBehaviour
     {
         e_OnEnemyDeath?.Invoke(this);
         gameObject.SetActive(false);
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1f);
     }
 
     public virtual void OnBreak()
@@ -81,34 +87,13 @@ public abstract class Enemy : MonoBehaviour
         Health.TakeDamage((float)postMitigationDamage);
     }
 
-    public void Move(int value)
+    public void Move()
     {
-        StartCoroutine(AnimateMove(value));
-        DistanceTraveled += value;
-    }
-
-    private IEnumerator AnimateMove(int distance)
-    {
-        for (int i = 0; i < distance; i++)
+        Vector2 direction = (TileTarget.transform.position - transform.position).normalized;
+        transform.Translate(direction * Time.deltaTime * MovementSpeed);
+        if (Vector2.Distance(transform.position, TileTarget.transform.position) < 0.1f)
         {
-            Vector3 startPosition = transform.position;
-            Vector3 endPosition = NextTilePath.transform.position;
-            float timeElapsed = 0;
-            float duration = 0.5f / distance;
-            while (timeElapsed < duration)
-            {
-                timeElapsed += Time.deltaTime;
-                float t = timeElapsed / duration;
-                transform.position = Vector3.Lerp(startPosition, endPosition, t);
-                yield return null;
-            }
-            transform.position = endPosition;
-            if (NextTilePath.NextTilePath == null)
-            {
-                OnDeath();
-                yield break;
-            }
-            NextTilePath = NextTilePath.NextTilePath;
+            Health.TakeDamage(Health.CurrentHealth);
         }
     }
 }
