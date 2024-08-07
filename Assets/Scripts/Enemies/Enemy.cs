@@ -20,7 +20,6 @@ public abstract class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-    [SerializeField] private IntentTracker _intentTracker;
 
     public virtual void Awake()
     {
@@ -40,13 +39,10 @@ public abstract class Enemy : MonoBehaviour
         NextTilePath = MapManager.s_Instance.StartTile.NextTilePath;
     }
 
-    public abstract Intent ChooseIntent();
-
     public virtual void OnEnable()
     {
         Health.e_OnHealthBreak += OnBreak;
         Health.e_OnHealthDepleted += OnDeath;
-        BattleManager.e_OnEnemyTurnStart += TakeAction;
     }
 
     public virtual void OnDisable()
@@ -54,7 +50,6 @@ public abstract class Enemy : MonoBehaviour
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
-        BattleManager.e_OnEnemyTurnStart -= TakeAction;
     }
 
     /// <summary>
@@ -84,12 +79,6 @@ public abstract class Enemy : MonoBehaviour
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
-    }
-
-    public virtual void TakeAction()
-    {
-        if (_intentTracker.Intent == null) { return; }
-        _intentTracker.Intent.Execute();
     }
 
     public void Move(int value)

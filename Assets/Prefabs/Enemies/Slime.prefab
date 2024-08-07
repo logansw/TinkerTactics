@@ -107,41 +107,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 7613097520309272142}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
---- !u!1 &732624412162309185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
-  m_PrefabInstance: {fileID: 7032343857327800529}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7613097520309272142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732624412162309185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353be169c6aa740e6aca36705b4216cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySO: {fileID: 11400000, guid: 007a5164e24224146be9321c35bb9b45, type: 2}
-  Armor: 0
-  DistanceTraveled: 0
-  EffectTracker: {fileID: 0}
-  _intentTracker: {fileID: 4370574081667694452}
---- !u!114 &4370574081667694452 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6715010539807342501, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
-  m_PrefabInstance: {fileID: 7032343857327800529}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732624412162309185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0849a71b5fe514afbaa6e4677c233832, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
