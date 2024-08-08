@@ -9,7 +9,6 @@ public class CannonLauncher : ProjectileLauncher
     {
         ProjectileExplosive projectileExplosive = Instantiate(_projectileExplosivePrefab, transform.position, Quaternion.identity);
         projectileExplosive.Initialize(Damage, ProjectileSpeed, this);
-        projectileExplosive.ExplosionRadius = 1f;
         return projectileExplosive;
     }
 }

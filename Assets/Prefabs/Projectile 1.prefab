@@ -100,5 +100,5 @@ MonoBehaviour:
   SourceLauncher: {fileID: 0}
   Damage: 0
   ProjectileSpeed: 0
-  ExplosionRadius: 1
+  ExplosionRadius: 4
   _explosionPrefab: {fileID: 1203325870010490269, guid: fd49d692095974b5cb62cad3f7680dc3, type: 3}
