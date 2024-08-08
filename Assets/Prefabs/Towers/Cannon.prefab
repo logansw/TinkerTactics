@@ -300,7 +300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\U0001F3F9"
+  m_text: "\U0001F4A3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c05820595a0d426e994b51f6fc12d89, type: 2}
   m_sharedMaterial: {fileID: -8368455912388479675, guid: 4c05820595a0d426e994b51f6fc12d89, type: 2}
@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7221335315480308286}
-  _color: {r: 0.9622642, g: 0.29503384, b: 0.3769744, a: 1}
-  _name: "\U0001F3F9"
+  _color: {r: 0.2941177, g: 0.5809387, b: 0.9607843, a: 1}
+  _name: "\U0001F4A3"
   _textLabel: {fileID: 7002278847893667439}
 --- !u!210 &1543775326421220504
 SortingGroup:
@@ -619,7 +619,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
-  m_Color: {r: 0.9622642, g: 0.29503384, b: 0.3769744, a: 1}
+  m_Color: {r: 0.2941177, g: 0.5809387, b: 0.9607843, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: -5726604151056873364}
   - component: {fileID: -4182310265527064967}
   m_Layer: 0
-  m_Name: Archer
+  m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,10 +527,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _archer: {fileID: -2159050000195690543}
   _launcher: {fileID: -4182310265527064967}
-  RangeBase: 6
-  SweepBase: 180
-  CooldownBase: 0.5
-  Damage: 3
+  RangeBase: 12
+  SweepBase: 30
+  CooldownBase: 2
+  Damage: 20
 --- !u!114 &-4182310265527064967
 MonoBehaviour:
   m_ObjectHideFlags: 0
