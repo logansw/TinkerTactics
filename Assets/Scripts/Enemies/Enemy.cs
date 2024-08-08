@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
     public void Move()
     {
         Vector2 direction = (TileTarget.transform.position - transform.position).normalized;
-        transform.Translate(direction * Time.deltaTime * MovementSpeed);
+        transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
         if (Vector2.Distance(transform.position, TileTarget.transform.position) < 0.1f)
         {
             Health.TakeDamage(Health.CurrentHealth);

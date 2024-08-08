@@ -3,6 +3,7 @@ using UnityEngine;
 public class CannonAttack : MonoBehaviour, IAbility
 {
     [SerializeField] private Cannon _cannon;
+    [SerializeField] private CannonLauncher _launcher;
     public string Name { get; set; }
     public float Range { get; set; }
     public float Sweep { get; set; }
@@ -13,15 +14,14 @@ public class CannonAttack : MonoBehaviour, IAbility
     public void Initialize()
     {
         Name = "Cannon Attack";
-        Range = 3f;
-        Sweep = 180f;
+        Range = 8f;
+        Sweep = 60f;
         Cooldown = 1f;
     }
 
     public void Activate()
     {
-        Debug.Log("Pew!");
-        _cannon.RangeIndicator.GetEnemiesInRange()[0].OnImpact(Damage);
+        _launcher.LaunchProjectile(_cannon.RangeIndicator.GetEnemiesInRange()[0]);
         InternalClock = 0;
     }
 

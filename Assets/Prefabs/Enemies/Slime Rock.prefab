@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: EnemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e11a5619b5934680a9c27875f02b7a3, type: 2}
     - target: {fileID: 732624412162309185, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Name
       value: Slime Rock
