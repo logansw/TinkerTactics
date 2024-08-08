@@ -543,9 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1ea2c5702b24b6e915f0d411605362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseDamage: 3
-  Damage: 3
-  ProjectileSpeed: 10
+  BaseDamage: 20
+  Damage: 20
+  ProjectileSpeed: 20
   ProjectilePrefab: {fileID: 0}
   _projectileArrowPrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
 --- !u!1 &8441707009904547786

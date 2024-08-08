@@ -30,7 +30,12 @@ public class WaveSpawner : Singleton<WaveSpawner>
         while (!FinishedSpawning)
         {
             WaveSO currentWave = waves[currentWaveIndex];
-            SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+            SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
+            for (int i = 0; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
+            {
+                SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+                yield return new WaitForSeconds(1f);
+            }
             currentEnemyIndex++;
             if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
             {
@@ -39,10 +44,14 @@ public class WaveSpawner : Singleton<WaveSpawner>
                 if (currentSubWaveIndex >= currentWave.subWaves.Length)
                 {
                     currentWaveIndex++;
+                    currentSubWaveIndex = 0;
+                    yield return new WaitForSeconds(10f);
+                }
+                if (currentWaveIndex > waves.Length)
+                {
                     FinishedSpawning = true;
                 }
             }
-            yield return new WaitForSeconds(0.2f);
         }
     }
 

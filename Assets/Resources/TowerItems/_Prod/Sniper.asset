@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c99ffe5fa91148cb92f58b8996ef977, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  Name: Cannon
-  Description: Cannon
+  Name: Sniper
+  Description: Sniper
   YellowCost: 0
-  TowerPrefab: {fileID: -5270777138658785136, guid: 21c7e262a71a74aafacc25bff4c3c850, type: 3}
+  TowerPrefab: {fileID: -2159050000195690543, guid: 63cedb9247b8c4f9ab8a549a9096c7c3, type: 3}

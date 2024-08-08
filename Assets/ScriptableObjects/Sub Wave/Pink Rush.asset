@@ -15,4 +15,4 @@ MonoBehaviour:
   subWaveName: Pink Rush
   enemies:
   - enemyPrefab: {fileID: 2097440213771111717, guid: 58014a9a550da4924b682e17ec265378, type: 3}
-  enemyCounts: 08000000
+  enemyCounts: 03000000
