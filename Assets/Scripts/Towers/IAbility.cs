@@ -5,8 +5,18 @@ public interface IAbility
     public string Name { get; set; }
     public float Range { get; set; }
     public float Sweep { get; set; }
+    public float Cooldown { get; set; }
+    public float InternalClock { get; set; }
 
     public abstract void Initialize();
     public abstract void Activate();
     public abstract string GetTooltipText();
+    public virtual bool IsReloaded()
+    {
+        return InternalClock >= Cooldown;
+    }
+    public virtual void Reload()
+    {
+        InternalClock = 0;
+    }
 }

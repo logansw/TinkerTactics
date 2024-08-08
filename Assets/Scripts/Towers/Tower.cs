@@ -12,13 +12,22 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
     public string Name;
-    protected RangeIndicator _rangeIndicator;
+    [HideInInspector] public RangeIndicator RangeIndicator;
     public IAbility Attack;
 
     public abstract string GetTooltipText();
 
     protected virtual void Awake()
     {
+    }
+
+    protected virtual void Update()
+    {
+        if (Attack.IsReloaded())
+        {
+            Attack.Activate();
+        }
+        Attack.InternalClock += Time.deltaTime;
     }
 
     protected virtual void OnEnable()

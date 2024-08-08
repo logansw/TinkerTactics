@@ -6,11 +6,13 @@ using UnityEngine.PlayerLoop;
 [RequireComponent(typeof(LineRenderer)), RequireComponent(typeof(PolygonCollider2D))]
 public class RangeIndicator : MonoBehaviour
 {
+    public List<Enemy> EnemiesInRange;
     private Tower _tower;
     private LineRenderer _rangeIndicator;
     private PolygonCollider2D _collider;
     private bool _isDragging;
     private float _initialAngleOffset;
+    public bool HasEnemyInRange => EnemiesInRange.Count > 0;
 
     public void Initialize(Tower tower)
     {
@@ -19,6 +21,31 @@ public class RangeIndicator : MonoBehaviour
         _tower = tower;
         DrawRangeIndicator(tower.Attack);
         DrawCollider(tower.Attack);
+        EnemiesInRange = new List<Enemy>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Enemy>() != null)
+        {
+            EnemiesInRange.Add(other.GetComponent<Enemy>());
+            other.GetComponent<Enemy>().e_OnEnemyDeath += RemoveEnemyFromList;
+            Debug.Log(EnemiesInRange.Count);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<Enemy>() != null)
+        {
+            RemoveEnemyFromList(other.GetComponent<Enemy>());
+            Debug.Log(EnemiesInRange.Count);
+        }
+    }
+
+    private void RemoveEnemyFromList(Enemy enemy)
+    {
+        EnemiesInRange.Remove(enemy);
     }
 
     private void OnMouseDown()
@@ -84,5 +111,10 @@ public class RangeIndicator : MonoBehaviour
         // Last Point
         points[arcPointCount+1] = Vector2.zero;
         return points;
+    }
+
+    public List<Enemy> GetEnemiesInRange()
+    {
+        return TargetCalculator.GetClosest(EnemiesInRange, _tower);
     }
 }
