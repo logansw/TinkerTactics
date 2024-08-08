@@ -5,7 +5,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
 {
     public bool FinishedSpawning = false;
     public WaveSO[] waves;
-    private int currentWaveIndex = 0;
+    public int currentWaveIndex;
     private int currentSubWaveIndex = 0;
     private int currentEnemyIndex = 0;
 
@@ -34,7 +34,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
             for (int i = 0; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
             {
                 SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(currentSubwave.spawnInterval);
             }
             currentEnemyIndex++;
             if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
@@ -57,11 +57,19 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
+        Vector2 spawnPoint;
         // Spawn enemy at a random point in a circle around the spawn point
-        float distance = Random.Range(10, 15);
-        float theta = Random.Range(0, 360);
-        float thetaRad = theta * Mathf.Deg2Rad;
-        Vector2 spawnPoint = new Vector2(distance * Mathf.Cos(thetaRad), distance * Mathf.Sin(thetaRad));
+        if (PathDrawer.s_PathStart == null)
+        {
+            float distance = Random.Range(10, 15);
+            float theta = Random.Range(0, 360);
+            float thetaRad = theta * Mathf.Deg2Rad;
+            spawnPoint = new Vector2(distance * Mathf.Cos(thetaRad), distance * Mathf.Sin(thetaRad));
+        }
+        else
+        {
+            spawnPoint = PathDrawer.s_PathStart.transform.position;
+        }
         Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
     }
 }

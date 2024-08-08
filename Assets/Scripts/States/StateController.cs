@@ -17,6 +17,7 @@ public class StateController : Singleton<StateController>
     [SerializeField] private State VictoryState;
     [SerializeField] private State LossState;
     [SerializeField] private TMP_Text StateText;
+    [SerializeField] private State PausedState;
 
     // Internal
     private StateType _previousState;
@@ -57,6 +58,8 @@ public class StateController : Singleton<StateController>
                 return VictoryState;
             case StateType.Loss:
                 return LossState;
+            case StateType.Paused:
+                return PausedState;
             default:
                 return null;
         }

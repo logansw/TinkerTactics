@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SlimeGreen
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   MaxHealth: 10
-  SegmentCount: 2
+  SegmentCount: 1
   MovementSpeed: 8
   Armor: 0

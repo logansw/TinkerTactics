@@ -6,17 +6,27 @@ public class CannonAttack : MonoBehaviour, IAbility
     [SerializeField] private CannonLauncher _launcher;
     public string Name { get; set; }
     public float Range { get; set; }
+    public float RangeBase;
     public float Sweep { get; set; }
+    public float SweepBase;
     public float Cooldown { get; set; }
+    public float CooldownBase;
     public float InternalClock { get; set; }
     public float Damage;
 
     public void Initialize()
     {
         Name = "Cannon Attack";
-        Range = 8f;
-        Sweep = 60f;
-        Cooldown = 1f;
+        Range = RangeBase;
+        Sweep = SweepBase;
+        Cooldown = CooldownBase;
+    }
+
+    void Update()
+    {
+        Range = RangeBase;
+        Sweep = SweepBase;
+        Cooldown = CooldownBase;
     }
 
     public void Activate()

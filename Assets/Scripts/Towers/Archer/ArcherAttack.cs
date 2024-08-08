@@ -22,6 +22,13 @@ public class ArcherAttack : MonoBehaviour, IAbility
         Cooldown = CooldownBase;
     }
 
+    void Update()
+    {
+        Range = RangeBase;
+        Sweep = SweepBase;
+        Cooldown = CooldownBase;
+    }
+
     public void Activate()
     {
         _launcher.LaunchProjectile(_archer.RangeIndicator.GetEnemiesInRange()[0]);

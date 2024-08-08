@@ -16,5 +16,6 @@ public enum StateType {
     Idle,
     Playing,
     Victory,
-    Loss
+    Loss,
+    Paused,
 }

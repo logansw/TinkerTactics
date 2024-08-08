@@ -11,8 +11,6 @@ using System;
 [RequireComponent(typeof(MapModel)), RequireComponent(typeof(MapView))]
 public class MapManager : Singleton<MapManager>
 {
-    public Tile TileTarget => _mapModel.CenterTile;
-
     /*
         0- Empty Space
         S- Start

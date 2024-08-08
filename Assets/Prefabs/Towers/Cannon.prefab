@@ -527,7 +527,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cannon: {fileID: -5270777138658785136}
   _launcher: {fileID: -3100587716655632387}
-  Damage: 3
+  RangeBase: 8
+  SweepBase: 60
+  CooldownBase: 1
+  Damage: 5
 --- !u!114 &-3100587716655632387
 MonoBehaviour:
   m_ObjectHideFlags: 0

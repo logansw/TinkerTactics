@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public int MovementSpeed { get; set; }
     [HideInInspector] public int BaseMovementSpeed { get; private set; }
     [HideInInspector] public float Armor;
-    public Tile TileTarget { get; set; }
+    public TilePath TileTarget { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
     [HideInInspector] public int DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
@@ -36,7 +36,14 @@ public class Enemy : MonoBehaviour
     public virtual void Start()
     {
         EnemyManager.s_Instance.AddEnemy(this);
-        TileTarget = MapManager.s_Instance.TileTarget;
+        if (PathDrawer.s_PathStart == null)
+        {
+            TileTarget = null;
+        }
+        else
+        {
+            TileTarget = PathDrawer.s_PathStart;
+        }
         MovementSpeed = BaseMovementSpeed;
     }
 
@@ -89,9 +96,10 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        Vector2 direction = (TileTarget.transform.position - transform.position).normalized;
+        Vector3 destination = TileTarget == null ? Vector3.zero : TileTarget.transform.position;
+        Vector2 direction = (destination - transform.position).normalized;
         transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
-        if (Vector2.Distance(transform.position, TileTarget.transform.position) < 0.1f)
+        if (Vector2.Distance(transform.position, Vector2.zero) < 0.1f)
         {
             Health.TakeDamage(Health.CurrentHealth);
         }

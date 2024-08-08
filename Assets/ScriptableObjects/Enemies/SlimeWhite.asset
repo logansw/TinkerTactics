@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SlimeWhite
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   MaxHealth: 40
-  SegmentCount: 2
+  SegmentCount: 1
   MovementSpeed: 10
   Armor: 0

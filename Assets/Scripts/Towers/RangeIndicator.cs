@@ -24,13 +24,18 @@ public class RangeIndicator : MonoBehaviour
         EnemiesInRange = new List<Enemy>();
     }
 
+    void Update()
+    {
+        DrawRangeIndicator(_tower.Attack);
+        DrawCollider(_tower.Attack);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Enemy>() != null)
         {
             EnemiesInRange.Add(other.GetComponent<Enemy>());
             other.GetComponent<Enemy>().e_OnEnemyDeath += RemoveEnemyFromList;
-            Debug.Log(EnemiesInRange.Count);
         }
     }
 
@@ -39,7 +44,6 @@ public class RangeIndicator : MonoBehaviour
         if (other.GetComponent<Enemy>() != null)
         {
             RemoveEnemyFromList(other.GetComponent<Enemy>());
-            Debug.Log(EnemiesInRange.Count);
         }
     }
 

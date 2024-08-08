@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SlimeRock
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   MaxHealth: 10
-  SegmentCount: 10
+  SegmentCount: 1
   MovementSpeed: 5
   Armor: 0

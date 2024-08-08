@@ -13,6 +13,15 @@ public class TilePath : Tile
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Enemy>() != null)
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.TileTarget = enemy.TileTarget.NextTilePath;
+        }
+    }
+
     public Direction GetNextPathDirection()
     {
         if (NextTilePath.Position.X > Position.X)

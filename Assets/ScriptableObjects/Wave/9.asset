@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a6e7bf2b033452d8976722c48ae559, type: 3}
-  m_Name: RockSingle
+  m_Script: {fileID: 11500000, guid: 50798df62fb5c4f9c9d02517706a60cb, type: 3}
+  m_Name: 9
   m_EditorClassIdentifier: 
-  subWaveName: 
-  enemies:
-  - enemyPrefab: {fileID: 3941458878597235671, guid: 477df1c90ca7d4f319cff46d7eff73f4, type: 3}
-  enemyCounts: 01000000
+  waveName: 5
+  subWaves:
+  - {fileID: 11400000, guid: d536f01d8cbc9409ab3f1d8ddaa2fc3a, type: 2}

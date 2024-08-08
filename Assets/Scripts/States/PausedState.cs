@@ -2,28 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayingState : State
+public class PausedState : State
 {
     void Awake()
     {
-        StateType = StateType.Playing;
+        StateType = StateType.Paused;
     }
 
     public override void OnEnter(StateController stateController)
     {
-        
+        Time.timeScale = 0;
     }
 
     public override void UpdateState(StateController stateController)
     {
-        if (EnemyManager.s_Instance.Enemies.Count == 0 && WaveSpawner.s_Instance.FinishedSpawning)
-        {
-            stateController.ChangeState(StateType.Idle);
-        }
+        // Do nothing
     }
 
     public override void OnExit(StateController stateController)
     {
-        
+        Time.timeScale = 1f;
     }
 }

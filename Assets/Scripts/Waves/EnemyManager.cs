@@ -22,6 +22,5 @@ public class EnemyManager : Singleton<EnemyManager>
     public void SpawnEnemy(Enemy enemy)
     {
         enemy.gameObject.SetActive(true);
-        enemy.transform.position = MapManager.s_Instance.TileTarget.transform.position;
     }
 }

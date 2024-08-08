@@ -21,6 +21,6 @@ public class IdleState : State
 
     public override void OnExit(StateController stateController)
     {
-        // Do nothing
+        WaveSpawner.s_Instance.BeginWave();
     }
 }
