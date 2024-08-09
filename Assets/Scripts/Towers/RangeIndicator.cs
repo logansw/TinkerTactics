@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 [RequireComponent(typeof(LineRenderer)), RequireComponent(typeof(PolygonCollider2D))]
 public class RangeIndicator : MonoBehaviour

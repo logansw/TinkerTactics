@@ -8,6 +8,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
     public int currentWaveIndex;
     private int currentSubWaveIndex = 0;
     private int currentEnemyIndex = 0;
+    public bool AutoPlay;
 
     void OnEnable()
     {
@@ -27,29 +28,56 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     public IEnumerator SpawnEnemies()
     {
-        while (!FinishedSpawning)
+        if (AutoPlay)
         {
-            WaveSO currentWave = waves[currentWaveIndex];
-            SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
-            for (int i = 0; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
+            while (!FinishedSpawning)
             {
-                SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-                yield return new WaitForSeconds(currentSubwave.spawnInterval);
-            }
-            currentEnemyIndex++;
-            if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
-            {
-                currentSubWaveIndex++;
-                currentEnemyIndex = 0;
-                if (currentSubWaveIndex >= currentWave.subWaves.Length)
+                WaveSO currentWave = waves[currentWaveIndex];
+                SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
+                for (int i = 0; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
                 {
-                    currentWaveIndex++;
-                    currentSubWaveIndex = 0;
-                    yield return new WaitForSeconds(10f);
+                    SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+                    yield return new WaitForSeconds(currentSubwave.spawnInterval);
                 }
-                if (currentWaveIndex > waves.Length)
+                currentEnemyIndex++;
+                if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
                 {
-                    FinishedSpawning = true;
+                    currentSubWaveIndex++;
+                    currentEnemyIndex = 0;
+                    if (currentSubWaveIndex >= currentWave.subWaves.Length)
+                    {
+                        currentWaveIndex++;
+                        currentSubWaveIndex = 0;
+                        yield return new WaitForSeconds(10f);
+                    }
+                    if (currentWaveIndex > waves.Length)
+                    {
+                        FinishedSpawning = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            while (!FinishedSpawning)
+            {
+                WaveSO currentWave = waves[currentWaveIndex];
+                SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
+                for (int i = 0 ; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
+                {
+                    SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+                    yield return new WaitForSeconds(currentSubwave.spawnInterval);
+                }
+                currentEnemyIndex++;
+                if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
+                {
+                    currentSubWaveIndex++;
+                    currentEnemyIndex = 0;
+                    if (currentSubWaveIndex >= currentWave.subWaves.Length)
+                    {
+                        currentWaveIndex++;
+                        FinishedSpawning = true;
+                    }
                 }
             }
         }
