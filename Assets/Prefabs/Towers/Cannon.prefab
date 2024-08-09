@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 7502078493677376242}
   - component: {fileID: -5270777138658785136}
   - component: {fileID: 7141040467385420497}
+  - component: {fileID: 1919822722478093665}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -528,11 +529,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cannon: {fileID: -5270777138658785136}
-  RangeBase: 8
-  SweepBase: 60
   CooldownBase: 1
   Damage: 5
   ProjectileSpeed: 10
+  _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
+--- !u!114 &1919822722478093665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581560088763616516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0d4f7c6d94d4b748adac61de21bc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cannon: {fileID: -5270777138658785136}
+  CooldownBase: 10
+  Damage: 10
+  ProjectileSpeed: 4
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
 --- !u!1 &8441707009904547786
 GameObject:

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IAbility
 {
     // TODO: Set this up so that the data is pulled in from a ScriptableObject.

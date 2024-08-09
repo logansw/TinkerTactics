@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Sniper
   Description: Sniper
   YellowCost: 0
-  TowerPrefab: {fileID: -2159050000195690543, guid: 63cedb9247b8c4f9ab8a549a9096c7c3, type: 3}
+  TowerPrefab: {fileID: 7639754348619059722, guid: 63cedb9247b8c4f9ab8a549a9096c7c3, type: 3}

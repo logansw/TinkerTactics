@@ -13,8 +13,7 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     private TilePlot _tilePlot;
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
-    public IAbility Attack;
-    // public IAbility Ability;
+    public List<IAbility> Abilities;
     public float Range;
     public float Sweep;
 
@@ -23,20 +22,25 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     protected virtual void Awake()
     {
+        Abilities = gameObject.GetComponents<IAbility>().ToList();
+        foreach (IAbility ability in Abilities)
+        {
+            ability.Initialize();
+        }
+        RangeIndicator = GetComponentInChildren<RangeIndicator>();
+        RangeIndicator.Initialize(this);
     }
 
     protected virtual void Update()
     {
-        if (Attack.IsReloaded())
+        foreach (IAbility ability in Abilities)
         {
-            Attack.Activate();
+            if (ability.IsReloaded())
+            {
+                ability.Activate();
+            }
+            ability.InternalClock += Time.deltaTime;
         }
-        Attack.InternalClock += Time.deltaTime;
-        // if (Ability.IsReloaded())
-        // {
-        //     Ability.Activate();
-        // }
-        // Ability.InternalClock += Time.deltaTime;
     }
 
     protected virtual void OnEnable()

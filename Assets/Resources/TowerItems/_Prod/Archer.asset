@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Archer
   Description: Archer
   YellowCost: 0
-  TowerPrefab: {fileID: -2159050000195690543, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+  TowerPrefab: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ArcherAbility : MonoBehaviour, IAbility
@@ -10,6 +11,7 @@ public class ArcherAbility : MonoBehaviour, IAbility
     public float Damage;
     [SerializeField] private ProjectileArrow _projectileArrow;
     public float ProjectileSpeed;
+    public int ArrowCount;
 
     public void Initialize()
     {
@@ -24,12 +26,21 @@ public class ArcherAbility : MonoBehaviour, IAbility
 
     public void Activate()
     {
-        Enemy target = _archer.RangeIndicator.GetEnemiesInRange()[0];
-        ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
-        arrow.Initialize(Damage, ProjectileSpeed, _archer);
-        arrow.Launch(target);
-
+        StartCoroutine(Volley());
+        ArrowCount += 3;
         InternalClock = 0;
+    }
+
+    private IEnumerator Volley()
+    {
+        for (int i = 0; i < ArrowCount; i++)
+        {
+            Enemy target = _archer.RangeIndicator.GetEnemiesInRange()[Random.Range(0, _archer.RangeIndicator.GetEnemiesInRange().Count)];
+            ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
+            arrow.Initialize(Damage, ProjectileSpeed, _archer);
+            arrow.Launch(target);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     public string GetTooltipText()

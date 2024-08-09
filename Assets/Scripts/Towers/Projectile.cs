@@ -14,7 +14,7 @@ public abstract class Projectile : MonoBehaviour
     protected Enemy _target;
     public delegate void OnImpactDelegate(Enemy hit);
     public OnImpactDelegate e_OnImpact;
-    private Vector3 _targetPosition;
+    protected Vector3 _targetPosition;
     public Action e_OnDestroyed;
 
     public virtual void Initialize(float damage, float projectileSpeed, Tower source) 
@@ -24,12 +24,12 @@ public abstract class Projectile : MonoBehaviour
         _source = source;
     }
 
-    public void Launch(Enemy target)
+    public virtual void Launch(Enemy target)
     {
         _target = target;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (_target != null)
         {

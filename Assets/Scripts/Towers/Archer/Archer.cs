@@ -1,17 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Archer : Tower
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        Attack = GetComponent<ArcherAttack>();
-        Attack.Initialize();
-        RangeIndicator = GetComponentInChildren<RangeIndicator>();
-        RangeIndicator.Initialize(this);
-    }
-
     protected override void Update()
     {
         base.Update();
