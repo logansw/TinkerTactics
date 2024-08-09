@@ -385,9 +385,8 @@ GameObject:
   - component: {fileID: 1543775326421220504}
   - component: {fileID: 3263688189079823163}
   - component: {fileID: 7502078493677376242}
-  - component: {fileID: -2159050000195690543}
   - component: {fileID: -5726604151056873364}
-  - component: {fileID: -4182310265527064967}
+  - component: {fileID: 7639754348619059722}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -499,7 +498,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
---- !u!114 &-2159050000195690543
+--- !u!114 &-5726604151056873364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581560088763616516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a674ead19504fc6a799b609389f444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _archer: {fileID: 7639754348619059722}
+  CooldownBase: 2
+  Damage: 20
+  _projectileArrow: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
+  ProjectileSpeed: 0
+--- !u!114 &7639754348619059722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,41 +529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   RangeIndicator: {fileID: 0}
---- !u!114 &-5726604151056873364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a674ead19504fc6a799b609389f444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _archer: {fileID: -2159050000195690543}
-  _launcher: {fileID: -4182310265527064967}
-  RangeBase: 12
-  SweepBase: 30
-  CooldownBase: 2
-  Damage: 20
---- !u!114 &-4182310265527064967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581560088763616516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a1ea2c5702b24b6e915f0d411605362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseDamage: 20
-  Damage: 20
-  ProjectileSpeed: 20
-  ProjectilePrefab: {fileID: 0}
-  _projectileArrowPrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
+  Range: 0
+  Sweep: 0
 --- !u!1 &8441707009904547786
 GameObject:
   m_ObjectHideFlags: 0
