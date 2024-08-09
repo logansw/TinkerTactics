@@ -14,6 +14,10 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
     public IAbility Attack;
+    // public IAbility Ability;
+    public float Range;
+    public float Sweep;
+
 
     public abstract string GetTooltipText();
 
@@ -28,6 +32,11 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
             Attack.Activate();
         }
         Attack.InternalClock += Time.deltaTime;
+        // if (Ability.IsReloaded())
+        // {
+        //     Ability.Activate();
+        // }
+        // Ability.InternalClock += Time.deltaTime;
     }
 
     protected virtual void OnEnable()

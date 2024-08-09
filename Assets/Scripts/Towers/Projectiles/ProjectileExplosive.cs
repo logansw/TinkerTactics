@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class ProjectileExplosive : Projectile
 {
-    public float ExplosionRadius;
+    [HideInInspector] public float ExplosionRadius;
     [SerializeField] private GameObject _explosionPrefab;
+
+    public void SetExplosionRadius(float explosionRadius)
+    {
+        ExplosionRadius = explosionRadius;
+    }
 
     public override void OnImpact()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArcherAttack : MonoBehaviour, IAbility
+public class ArcherAbility : MonoBehaviour, IAbility
 {
     [SerializeField] private Archer _archer;
     public string Name { get; set; }
@@ -13,7 +13,7 @@ public class ArcherAttack : MonoBehaviour, IAbility
 
     public void Initialize()
     {
-        Name = "Archer Attack";
+        Name = "Arrow Storm";
         Cooldown = CooldownBase;
     }
 
@@ -34,7 +34,7 @@ public class ArcherAttack : MonoBehaviour, IAbility
 
     public string GetTooltipText()
     {
-        return "Archer Attack";
+        return "Archer Abiilty";
     }
 
     public bool IsReloaded()

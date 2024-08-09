@@ -3,35 +3,33 @@ using UnityEngine;
 public class CannonAttack : MonoBehaviour, IAbility
 {
     [SerializeField] private Cannon _cannon;
-    [SerializeField] private CannonLauncher _launcher;
     public string Name { get; set; }
-    public float Range { get; set; }
-    public float RangeBase;
-    public float Sweep { get; set; }
-    public float SweepBase;
     public float Cooldown { get; set; }
     public float CooldownBase;
     public float InternalClock { get; set; }
     public float Damage;
+    public float ProjectileSpeed;
+    [SerializeField] private ProjectileExplosive _projectileExplosive;
 
     public void Initialize()
     {
         Name = "Cannon Attack";
-        Range = RangeBase;
-        Sweep = SweepBase;
         Cooldown = CooldownBase;
     }
 
     void Update()
     {
-        Range = RangeBase;
-        Sweep = SweepBase;
         Cooldown = CooldownBase;
     }
 
     public void Activate()
     {
-        _launcher.LaunchProjectile(_cannon.RangeIndicator.GetEnemiesInRange()[0]);
+        Enemy target = _cannon.RangeIndicator.GetEnemiesInRange()[0];
+        ProjectileExplosive bomb = Instantiate(_projectileExplosive, _cannon.transform.position, Quaternion.identity);
+        bomb.Initialize(Damage, ProjectileSpeed, _cannon);
+        bomb.SetExplosionRadius(_cannon.ExplosionRadius);
+        bomb.Launch(target);
+        
         InternalClock = 0;
     }
 

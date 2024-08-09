@@ -18,15 +18,15 @@ public class RangeIndicator : MonoBehaviour
         _rangeIndicator = GetComponent<LineRenderer>();
         _collider = GetComponent<PolygonCollider2D>();
         _tower = tower;
-        DrawRangeIndicator(tower.Attack);
-        DrawCollider(tower.Attack);
+        DrawRangeIndicator();
+        DrawCollider();
         EnemiesInRange = new List<Enemy>();
     }
 
     void Update()
     {
-        DrawRangeIndicator(_tower.Attack);
-        DrawCollider(_tower.Attack);
+        DrawRangeIndicator();
+        DrawCollider();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -77,17 +77,17 @@ public class RangeIndicator : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
     }
 
-    private void DrawRangeIndicator(IAbility ability)
+    private void DrawRangeIndicator()
     {
         _rangeIndicator.useWorldSpace = false;
-        Vector3[] points = GetRangePoints(ability);
+        Vector3[] points = GetRangePoints();
         _rangeIndicator.positionCount = points.Length;
         _rangeIndicator.SetPositions(points);
     }
 
-    private void DrawCollider(IAbility ability)
+    private void DrawCollider()
     {
-        Vector3[] points = GetRangePoints(ability);
+        Vector3[] points = GetRangePoints();
         Vector2[] colliderPoints = new Vector2[points.Length];
         for (int i = 0; i < points.Length; i++)
         {
@@ -96,19 +96,19 @@ public class RangeIndicator : MonoBehaviour
         _collider.points = colliderPoints;
     }
 
-    private Vector3[] GetRangePoints(IAbility ability)
+    private Vector3[] GetRangePoints()
     {
         int arcPointCount = 30;
         Vector3[] points = new Vector3[arcPointCount + 2];
         // First Point
         points[0] = Vector2.zero;
-        float angle = ability.Sweep * Mathf.PI / 180f;
+        float angle = _tower.Sweep * Mathf.PI / 180f;
         float startAngle = -angle / 2f;
         float angleDelta = angle / (arcPointCount - 1);
         for (int i = 0; i < arcPointCount; i++)
         {
-            float x = ability.Range * Mathf.Cos(startAngle + angleDelta * i);
-            float y = ability.Range * Mathf.Sin(startAngle + angleDelta * i);
+            float x = _tower.Range * Mathf.Cos(startAngle + angleDelta * i);
+            float y = _tower.Range * Mathf.Sin(startAngle + angleDelta * i);
             points[i+1] = new Vector2(x, y);
         }
         // Last Point

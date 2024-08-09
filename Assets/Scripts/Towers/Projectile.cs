@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Projectile : MonoBehaviour
 {
-    public ProjectileLauncher SourceLauncher;
+    private Tower _source;
     [HideInInspector] public float Damage;
     [HideInInspector] public float ProjectileSpeed;
     protected Enemy _target;
@@ -17,11 +17,11 @@ public abstract class Projectile : MonoBehaviour
     private Vector3 _targetPosition;
     public Action e_OnDestroyed;
 
-    public void Initialize(float damage, float projectileSpeed, ProjectileLauncher source) 
+    public virtual void Initialize(float damage, float projectileSpeed, Tower source) 
     {
         Damage = damage;
         ProjectileSpeed = projectileSpeed;
-        SourceLauncher = source;
+        _source = source;
     }
 
     public void Launch(Enemy target)
