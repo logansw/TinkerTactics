@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4862440e837db47338285239a3abe941, type: 3}
   m_Name: AugmentSO 1
   m_EditorClassIdentifier: 
-  Description: Increase Range of Archer and Sniper by 50%
+  Description: Increase Range of Archer and Sniper by 25%

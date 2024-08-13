@@ -16,6 +16,8 @@ public abstract class Projectile : MonoBehaviour
     public OnImpactDelegate e_OnImpact;
     protected Vector3 _targetPosition;
     public Action e_OnDestroyed;
+    [SerializeField] private SpriteRenderer _renderer;
+    private bool _arrived;
 
     public virtual void Initialize(float damage, float projectileSpeed, Tower source) 
     {
@@ -31,6 +33,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (_arrived) { return; }
         if (_target != null)
         {
             _targetPosition = _target.gameObject.transform.position;
@@ -39,6 +42,7 @@ public abstract class Projectile : MonoBehaviour
         if (differenceVector.magnitude < 0.1f)
         {
             OnImpact();
+            _arrived = true;
             return;
         }
         Vector2 direction = differenceVector.normalized;
@@ -51,7 +55,7 @@ public abstract class Projectile : MonoBehaviour
         {
             e_OnImpact?.Invoke(_target);
         }
-        gameObject.SetActive(false);
+        _renderer.enabled = false;
         Destroy(gameObject, 1f);
     }
 

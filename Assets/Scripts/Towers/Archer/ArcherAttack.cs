@@ -10,6 +10,7 @@ public class ArcherAttack : MonoBehaviour, IAbility
     public float Damage;
     [SerializeField] private ProjectileArrow _projectileArrow;
     public float ProjectileSpeed;
+    [SerializeField] private AudioSource _abilitySound;
 
     public void Initialize()
     {
@@ -28,6 +29,7 @@ public class ArcherAttack : MonoBehaviour, IAbility
         ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
         arrow.Initialize(Damage, ProjectileSpeed, _archer);
         arrow.Launch(target);
+        _abilitySound.Play();
 
         InternalClock = 0;
     }

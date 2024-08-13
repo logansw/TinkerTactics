@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(EffectTracker))]
@@ -20,6 +21,9 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
+    [SerializeField] private AudioSource _deathSound;
+    [SerializeField] private AudioSource _spawnSound;
+    [SerializeField] private Collider2D _collider;
 
     public virtual void Awake()
     {
@@ -36,6 +40,7 @@ public class Enemy : MonoBehaviour
     public virtual void Start()
     {
         EnemyManager.s_Instance.AddEnemy(this);
+        _spawnSound.Play();
         if (PathDrawer.s_PathStart == null)
         {
             TileTarget = null;
@@ -72,9 +77,17 @@ public class Enemy : MonoBehaviour
     /// and so that the death animation can be played.
     public virtual void OnDeath()
     {
+        Health.e_OnHealthDepleted -= OnDeath;
         e_OnEnemyDeath?.Invoke(this);
-        gameObject.SetActive(false);
+        _collider.enabled = false;
         Destroy(gameObject, 1f);
+        _deathSound.Play();
+        Transform[] children = GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+        {
+            if (child == transform) { continue; }
+            child.gameObject.SetActive(false);
+        }
     }
 
     public virtual void OnBreak()

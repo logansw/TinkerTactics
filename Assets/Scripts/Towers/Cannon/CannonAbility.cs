@@ -10,6 +10,7 @@ public class CannonAbility : MonoBehaviour, IAbility
     public float Damage;
     public float ProjectileSpeed;
     [SerializeField] private ProjectileExplosive _projectileExplosive;
+    [SerializeField] private AudioSource _abilitySound;
 
     public void Initialize()
     {
@@ -30,6 +31,7 @@ public class CannonAbility : MonoBehaviour, IAbility
         bomb.Initialize(Damage, ProjectileSpeed, _cannon);
         bomb.SetExplosionRadius(_cannon.ExplosionRadius * 3);
         bomb.Launch(target);
+        _abilitySound.Play();
         
         InternalClock = 0;
     }
