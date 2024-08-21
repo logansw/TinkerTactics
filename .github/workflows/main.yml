@@ -36,3 +36,19 @@ jobs:
         with:
           name: Build
           path: build
+
+      # Set variables for version tagging
+      - name: Set release date
+        run: echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+      - name: Set short hash
+        run: echo "SHORT_HASH=$(git rev-parse --short HEAD)" >> ${GITHUB_ENV}
+
+      # Deploy
+      - name: Upload build to itch.io
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build
+          project: tinkertacticstest
+          channel: webgl
+          api-key: ${{ secrets.BUTLER_CREDENTIALS }}
+          version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
