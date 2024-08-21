@@ -40,6 +40,8 @@ public class StateController : Singleton<StateController>
         CurrentState = stateType;
         GetState(CurrentState).OnEnter(this);
         StateText.text = CurrentState.ToString();
+        Debug.Log(StateText.text);
+        Debug.LogError("Test");
     }
 
     public void ChangeToPreviousState() {
