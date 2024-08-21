@@ -1,21 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EffectBreak : Effect
 {
-    void Awake()
+    public override void Initialize(int duration)
     {
-        Unit = GetComponent<Unit>();
-        Duration = 1.0f;
-        Unit.DamageMultipliers.Add(3f);
-        Unit.MovementSpeed = 0f;
+        base.Initialize(duration);
+        Duration = duration;
+        Enemy.EffectTracker.AddEffect<EffectStun>(duration);
+        Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration);
+        IconColor = new Color32(255, 158, 128, 255);
     }
 
-    public override void Remove()
+    public override void AddStacks(int count)
     {
-        Unit.DamageMultipliers.Remove(3f);
-        Unit.MovementSpeed = Unit.UnitSO.MovementSpeed;
-        base.Remove();
+        // Break does not stack
+    }
+
+    public override void RemoveStacks(int count)
+    {
+        // Break does not stack
+    }
+
+    public float GetSpeedMultiplier()
+    {
+        return 0.5f;
+    }
+
+    public override string GetStackText()
+    {
+        return "";
+    }
+
+    public override string GetAbbreviationText()
+    {
+        return "BRK";
+    }
+
+    public override string GetDescriptionText()
+    {
+        return "BREAK: Applies Stun and Vulnerable.";
     }
 }

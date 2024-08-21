@@ -4,32 +4,53 @@ using UnityEngine;
 
 public abstract class Effect : MonoBehaviour
 {
-    public float Duration;
-    public Unit Unit;
-    private Coroutine _durationCoroutine;
+    public int Duration;
+    public Enemy Enemy;
+    public Color32 IconColor;
+    public int Stacks;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
-        _durationCoroutine = StartCoroutine(DurationCoroutine());
+        Enemy = GetComponent<Enemy>();
     }
 
-    // Removes the effect from the target after the duration has expired
-    protected virtual IEnumerator DurationCoroutine()
+    public virtual void Initialize(int duration)
     {
-        yield return new WaitForSeconds(Duration);
-        Remove();
+        // Nothing by default
+    }
+
+    public abstract void AddStacks(int count);
+    public abstract void RemoveStacks(int count);
+
+    public virtual void OnEnable()
+    {
+    }
+
+    public virtual void OnDisable()
+    {
+    }
+
+    public virtual void OnEnemyTurnEnd()
+    {
+        Duration--;
+        if (Duration <= 0)
+        {
+            Remove();
+        }
     }
 
     public virtual void Remove()
     {
+        Enemy.EffectTracker.RemoveEffect(this);
         Destroy(this);
     }
 
-    public void OnDisable()
+    public virtual bool CheckRules()
     {
-        if (_durationCoroutine != null)
-        {
-            StopCoroutine(_durationCoroutine);
-        }
+        return true;
     }
+
+    public abstract string GetStackText();
+    public abstract string GetAbbreviationText();
+    public abstract string GetDescriptionText();
 }

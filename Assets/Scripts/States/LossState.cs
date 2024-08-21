@@ -6,7 +6,7 @@ public class LossState : State
 {
     void Awake()
     {
-        StateType = StateType.LossState;
+        StateType = StateType.Loss;
     }
 
     public override void OnEnter(StateController stateController)

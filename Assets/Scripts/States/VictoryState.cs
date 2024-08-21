@@ -6,12 +6,13 @@ public class VictoryState : State
 {
     void Awake()
     {
-        StateType = StateType.VictoryState;
+        StateType = StateType.Victory;
     }
 
     public override void OnEnter(StateController stateController)
     {
-        // Do nothing
+        CurrencyManager.s_Instance.AddPassiveCurrency();
+        MarketplaceManager.s_Instance.PopulateAvailableItems();
     }
 
     public override void UpdateState(StateController stateController)

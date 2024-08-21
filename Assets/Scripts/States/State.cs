@@ -13,9 +13,9 @@ public abstract class State : MonoBehaviour
 [System.Serializable]
 public enum StateType {
     None,
-    PreStartState,
-    BattleState,
-    BuyState,
-    VictoryState,
-    LossState
+    Idle,
+    Playing,
+    Victory,
+    Loss,
+    Paused,
 }

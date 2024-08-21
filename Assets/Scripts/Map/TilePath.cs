@@ -13,15 +13,12 @@ public class TilePath : Tile
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnEnemyEnter(Enemy enemy)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (PathType == PathType.End)
+        if (other.GetComponent<Enemy>() != null)
         {
-            enemy.OnDeath();
-        }
-        else
-        {
-            enemy.NextTilePath = NextTilePath;
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.TileTarget = enemy.TileTarget.NextTilePath;
         }
     }
 

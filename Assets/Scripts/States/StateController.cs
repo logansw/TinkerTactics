@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,14 @@ using UnityEngine.UI;
 /// </summary>
 public class StateController : Singleton<StateController>
 {
-    public StateType CurrentState { get; private set; } = StateType.None;
+    public static StateType CurrentState { get; private set; } = StateType.None;
     // States
-    [SerializeField] private State PreStartState;
-    [SerializeField] private State BuyState;
-    [SerializeField] private State BattleState;
+    [SerializeField] private State IdleState;
+    [SerializeField] private State PlayingState;
     [SerializeField] private State VictoryState;
     [SerializeField] private State LossState;
+    [SerializeField] private TMP_Text StateText;
+    [SerializeField] private State PausedState;
 
     // Internal
     private StateType _previousState;
@@ -37,6 +39,7 @@ public class StateController : Singleton<StateController>
         _previousState = CurrentState;
         CurrentState = stateType;
         GetState(CurrentState).OnEnter(this);
+        StateText.text = CurrentState.ToString();
     }
 
     public void ChangeToPreviousState() {
@@ -47,16 +50,16 @@ public class StateController : Singleton<StateController>
     {
         switch (stateType)
         {
-            case StateType.PreStartState:
-                return PreStartState;
-            case StateType.BattleState:
-                return BattleState;
-            case StateType.BuyState:
-                return BuyState;
-            case StateType.VictoryState:
+            case StateType.Idle:
+                return IdleState;
+            case StateType.Playing:
+                return PlayingState;
+            case StateType.Victory:
                 return VictoryState;
-            case StateType.LossState:
+            case StateType.Loss:
                 return LossState;
+            case StateType.Paused:
+                return PausedState;
             default:
                 return null;
         }

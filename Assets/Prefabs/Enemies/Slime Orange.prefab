@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: EnemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 13991449fd0dd44ac8f32f0faf92a495, type: 2}
     - target: {fileID: 732624412162309185, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Name
       value: Slime Orange
@@ -16,6 +20,10 @@ PrefabInstance:
       propertyPath: UnitSO
       value: 
       objectReference: {fileID: 11400000, guid: f2c4c3401b3a4419ba2239ffc8a4b216, type: 2}
+    - target: {fileID: 2709231604010494696, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: GoldValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3620811638928851442, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.89
@@ -68,6 +76,10 @@ PrefabInstance:
       propertyPath: _color.r
       value: 0.8584906
       objectReference: {fileID: 0}
+    - target: {fileID: 7613097520309272142, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: EnemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 13991449fd0dd44ac8f32f0faf92a495, type: 2}
     - target: {fileID: 8463952410731778258, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Color.b
       value: 0.17412782
@@ -80,6 +92,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8584906
       objectReference: {fileID: 0}
+    - target: {fileID: 8968760711258328685, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+      propertyPath: UnitSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f2c4c3401b3a4419ba2239ffc8a4b216, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
