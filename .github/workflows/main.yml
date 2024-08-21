@@ -48,7 +48,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build
-          project: tinkertacticstest
+          project: whaleshark-noises/tinkertacticstest
           channel: webgl
           api-key: ${{ secrets.BUTLER_CREDENTIALS }}
           version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
