@@ -8,7 +8,7 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
-public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
+public abstract class Tower : MonoBehaviour, ISelectable
 {
     private TilePlot _tilePlot;
     public string Name;
