@@ -1,6 +1,9 @@
 name: My CI/CD
 
-on: [push]
+on:
+  push:
+    branches:
+      - spinny_prod
 
 jobs:
   build:
