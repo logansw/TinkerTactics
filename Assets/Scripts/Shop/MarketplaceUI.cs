@@ -27,7 +27,7 @@ public class MarketplaceUI : Singleton<MarketplaceUI>
                 continue;
             }
             ItemUI itemUI = Instantiate(itemUIPrefab, itemContainer);
-            itemUI.gameObject.transform.parent = canvas.transform;
+            itemUI.gameObject.transform.SetParent(canvas.transform);
             itemUIs.Add(itemUI);
             RectTransform itemRectTransform = itemUI.GetComponent<RectTransform>();
             itemRectTransform.anchoredPosition = new Vector2((i-1) * (itemWidth + padding), 0);
