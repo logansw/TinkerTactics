@@ -98,6 +98,14 @@ public class WaveSpawner : Singleton<WaveSpawner>
         {
             spawnPoint = PathDrawer.s_PathStart.transform.position;
         }
-        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        Enemy enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
+        if (PathDrawer.Drawn)
+        {
+            enemy.MovementSpeed = enemy.BaseMovementSpeed * Random.Range(1f, 1.5f);
+        }
+        else
+        {
+            enemy.MovementSpeed = enemy.BaseMovementSpeed * Random.Range(0.75f, 1f);
+        }
     }
 }

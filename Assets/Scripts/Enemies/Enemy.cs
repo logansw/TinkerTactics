@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public EnemySO EnemySO;
     public Health Health;
     private Healthbar _healthbar;
-    public int MovementSpeed { get; set; }
+    public float MovementSpeed { get; set; }
     [HideInInspector] public int BaseMovementSpeed { get; private set; }
     [HideInInspector] public float Armor;
     public TilePath TileTarget { get; set; }
@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
         {
             TileTarget = PathDrawer.s_PathStart;
         }
-        MovementSpeed = BaseMovementSpeed;
     }
 
     void Update()
