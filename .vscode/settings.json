@@ -69,5 +69,8 @@
   },
   "dotnet.defaultSolution": "WildwoodWarriors.sln",
   "editor.formatOnSave": false,
-  "editor.defaultFormatter": null
+  "editor.defaultFormatter": null,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
