@@ -33,13 +33,16 @@ public class PathDrawer : MonoBehaviour
                 if (CurrentPath.Count == 0)
                 {
                     s_PathStart = path;
+                    path.PathType = PathType.Start;
                 }
                 else
                 {
                     CurrentPath[^1].NextTilePath = path;
+                    path.PathType = PathType.Path;
                 }
                 CurrentPath.Add(path);
             }
+            CurrentPath[^1].PathType = PathType.End;
             CurrentPath = new List<TilePath>();
         }
     }
@@ -55,10 +58,12 @@ public class PathDrawer : MonoBehaviour
             if (CurrentPath.Count == 0)
             {
                 s_PathStart = path;
+                path.PathType = PathType.Start;
             }
             else
             {
                 CurrentPath[^1].NextTilePath = path;
+                path.PathType = PathType.Path;
             }
             CurrentPath.Add(path);
         }
