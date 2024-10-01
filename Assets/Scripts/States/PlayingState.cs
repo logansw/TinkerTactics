@@ -11,12 +11,20 @@ public class PlayingState : State
 
     public override void OnEnter(StateController stateController)
     {
-        
+
     }
 
     public override void UpdateState(StateController stateController)
     {
-        if (EnemyManager.s_Instance.Enemies.Count == 0 && WaveSpawner.s_Instance.FinishedSpawning)
+        bool finishedSpawning = true;
+        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        {
+            if (!waveSpawner.FinishedSpawning)
+            {
+                finishedSpawning = false;
+            }
+        }
+        if (EnemyManager.s_Instance.Enemies.Count == 0 && finishedSpawning)
         {
             stateController.ChangeState(StateType.Idle);
         }

@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         int breakpointCount = EnemySO.SegmentCount;
         Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount, this);
         BaseMovementSpeed = EnemySO.MovementSpeed;
+        MovementSpeed = BaseMovementSpeed;
         Armor = EnemySO.Armor;
         _healthbar = GetComponentInChildren<Healthbar>();
         _healthbar.Initialize(Health);

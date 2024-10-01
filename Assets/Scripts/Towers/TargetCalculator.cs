@@ -26,9 +26,24 @@ public static class TargetCalculator
     /// </summary>
     public static List<Enemy> GetClosest(List<Enemy> enemies, Tower tower)
     {
-        enemies.Sort((enemy1, enemy2) => 
-            Vector2.Distance(tower.transform.position, enemy1.transform.position)
-            .CompareTo(Vector2.Distance(tower.transform.position, enemy2.transform.position)));
+        enemies.Sort(CompareDistanceToTower);
+
+        // Comparison function to sort enemies based on distance to tower
+        int CompareDistanceToTower(Enemy enemy1, Enemy enemy2)
+        {
+            if (enemy1 == null)
+            {
+                return 1;
+            }
+            if (enemy2 == null)
+            {
+                return -1;
+            }
+            Vector2 towerPosition = tower.transform.position;
+            float distance1 = Vector2.Distance(towerPosition, enemy1.transform.position);
+            float distance2 = Vector2.Distance(towerPosition, enemy2.transform.position);
+            return distance1.CompareTo(distance2);
+        }
         return enemies;
     }
 

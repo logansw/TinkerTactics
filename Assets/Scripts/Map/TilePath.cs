@@ -18,7 +18,10 @@ public class TilePath : Tile
         if (other.GetComponent<Enemy>() != null)
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.TileTarget = enemy.TileTarget.NextTilePath;
+            if (enemy.TileTarget != null)
+            {
+                enemy.TileTarget = enemy.TileTarget.NextTilePath;
+            }
         }
     }
 

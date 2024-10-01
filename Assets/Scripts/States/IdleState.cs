@@ -21,6 +21,11 @@ public class IdleState : State
 
     public override void OnExit(StateController stateController)
     {
-        WaveSpawner.s_Instance.BeginWave();
+        Debug.Log("Spawning!");
+        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        {
+            Debug.Log(waveSpawner.gameObject.name);
+            waveSpawner.BeginWave();
+        }
     }
 }

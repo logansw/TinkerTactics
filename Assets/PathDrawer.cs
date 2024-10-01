@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PathDrawer : MonoBehaviour
 {
+    public static PathDrawer s_Instance;
     public string FileName;
     [SerializeField] private TilePath _tilePathPrefab;
     public static TilePath s_PathStart;
@@ -12,12 +13,24 @@ public class PathDrawer : MonoBehaviour
     public PathSetData PathSetData;
     public List<TilePath> CurrentPath = new List<TilePath>();
     public List<TilePath> AllTiles = new List<TilePath>();
+    public List<TilePath> StartTiles = new List<TilePath>();
+    public int StartTilesIndex = 0;
+
+    void Awake()
+    {
+        s_Instance = this;
+    }
 
     void Start()
     {
         PathSetData = new PathSetData();
         PathSetData.Paths = new List<PathData>();
         LoadPathData();
+        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        {
+            waveSpawner.SpawnPoint = StartTiles[StartTilesIndex];
+            StartTilesIndex++;
+        }
     }
 
     public void LoadPathData()
@@ -34,6 +47,7 @@ public class PathDrawer : MonoBehaviour
                 {
                     s_PathStart = path;
                     path.PathType = PathType.Start;
+                    StartTiles.Add(path);
                 }
                 else
                 {
@@ -54,6 +68,7 @@ public class PathDrawer : MonoBehaviour
         {
             Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             TilePath path = Instantiate(_tilePathPrefab, position, Quaternion.identity);
+            AllTiles.Add(path);
             path.transform.position = new Vector3(path.transform.position.x, path.transform.position.y, 0);
             if (CurrentPath.Count == 0)
             {

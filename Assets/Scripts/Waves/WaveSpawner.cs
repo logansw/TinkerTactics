@@ -1,21 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class WaveSpawner : Singleton<WaveSpawner>
+public class WaveSpawner : MonoBehaviour
 {
+    public static List<WaveSpawner> s_WaveSpawners = new List<WaveSpawner>();    
     public bool FinishedSpawning = false;
     public WaveSO[] waves;
     public int currentWaveIndex;
     private int currentSubWaveIndex = 0;
     private int currentEnemyIndex = 0;
-    public bool AutoPlay;
+    public TilePath SpawnPoint;
 
-    void OnEnable()
+    void Awake()
     {
-    }
-
-    void OnDisable()
-    {
+        s_WaveSpawners.Add(this);
     }
 
     public void BeginWave()
@@ -28,56 +28,30 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     public IEnumerator SpawnEnemies()
     {
-        if (AutoPlay)
+        while (!FinishedSpawning)
         {
-            while (!FinishedSpawning)
+            WaveSO currentWave = waves[currentWaveIndex];
+            if (currentWave.subWaves.Length == 0)
             {
-                WaveSO currentWave = waves[currentWaveIndex];
-                SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
-                for (int i = 0; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
-                {
-                    SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-                    yield return new WaitForSeconds(currentSubwave.spawnInterval);
-                }
-                currentEnemyIndex++;
-                if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
-                {
-                    currentSubWaveIndex++;
-                    currentEnemyIndex = 0;
-                    if (currentSubWaveIndex >= currentWave.subWaves.Length)
-                    {
-                        currentWaveIndex++;
-                        currentSubWaveIndex = 0;
-                        yield return new WaitForSeconds(10f);
-                    }
-                    if (currentWaveIndex > waves.Length)
-                    {
-                        FinishedSpawning = true;
-                    }
-                }
+                FinishedSpawning = true;
+                currentWaveIndex++;
+                yield break;
             }
-        }
-        else
-        {
-            while (!FinishedSpawning)
+            SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
+            for (int i = 0 ; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
             {
-                WaveSO currentWave = waves[currentWaveIndex];
-                SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
-                for (int i = 0 ; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
+                SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
+                yield return new WaitForSeconds(currentSubwave.spawnInterval);
+            }
+            currentEnemyIndex++;
+            if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
+            {
+                currentSubWaveIndex++;
+                currentEnemyIndex = 0;
+                if (currentSubWaveIndex >= currentWave.subWaves.Length)
                 {
-                    SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-                    yield return new WaitForSeconds(currentSubwave.spawnInterval);
-                }
-                currentEnemyIndex++;
-                if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
-                {
-                    currentSubWaveIndex++;
-                    currentEnemyIndex = 0;
-                    if (currentSubWaveIndex >= currentWave.subWaves.Length)
-                    {
-                        currentWaveIndex++;
-                        FinishedSpawning = true;
-                    }
+                    currentWaveIndex++;
+                    FinishedSpawning = true;
                 }
             }
         }
@@ -85,19 +59,6 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
-        Vector2 spawnPoint;
-        // Spawn enemy at a random point in a circle around the spawn point
-        if (PathDrawer.s_PathStart == null)
-        {
-            float distance = Random.Range(10, 15);
-            float theta = Random.Range(0, 360);
-            float thetaRad = theta * Mathf.Deg2Rad;
-            spawnPoint = new Vector2(distance * Mathf.Cos(thetaRad), distance * Mathf.Sin(thetaRad));
-        }
-        else
-        {
-            spawnPoint = PathDrawer.s_PathStart.transform.position;
-        }
-        Enemy enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
+        Instantiate(enemyPrefab, SpawnPoint.transform.position, Quaternion.identity).GetComponent<Enemy>();
     }
 }
