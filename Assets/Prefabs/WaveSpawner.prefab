@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007ad12514fa94e5888890285453a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
-  _color: {r: 0.7735849, g: 0.46342114, b: 0.46342114, a: 0}
+  _spriteRenderer: {fileID: 7203766623592126458}
+  _color: {r: 0.7735849, g: 0.46342114, b: 0.46342114, a: 1}
   _name: "\u2694"
   _textLabel: {fileID: 1800003468880539857}
 --- !u!61 &4249741820458845378
@@ -369,7 +369,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
-  m_Color: {r: 0.9339623, g: 0.44527397, b: 0.3568441, a: 1}
+  m_Color: {r: 0.7735849, g: 0.46342114, b: 0.46342114, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
