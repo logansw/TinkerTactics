@@ -8,7 +8,6 @@ public class PathDrawer : MonoBehaviour
     public static PathDrawer s_Instance;
     public string FileName;
     [SerializeField] private TilePath _tilePathPrefab;
-    public static TilePath s_PathStart;
 
     public PathSetData PathSetData;
     public List<TilePath> CurrentPath = new List<TilePath>();
@@ -45,7 +44,6 @@ public class PathDrawer : MonoBehaviour
                 path.transform.position = new Vector3(path.transform.position.x, path.transform.position.y, 0);
                 if (CurrentPath.Count == 0)
                 {
-                    s_PathStart = path;
                     path.PathType = PathType.Start;
                     StartTiles.Add(path);
                 }
@@ -72,7 +70,6 @@ public class PathDrawer : MonoBehaviour
             path.transform.position = new Vector3(path.transform.position.x, path.transform.position.y, 0);
             if (CurrentPath.Count == 0)
             {
-                s_PathStart = path;
                 path.PathType = PathType.Start;
             }
             else

@@ -6,15 +6,12 @@ using UnityEngine;
 public class TilePlot : Tile
 {
     public List<Tower> Towers { get; set; }
-    public bool IsPurchased { get; set; } = true;
     public bool IsActivated { get; set; } = false;
     public int Capacity;
 
-    public void Initialize(bool isPurchased, bool isActivated)
+    void Start()
     {
-        IsPurchased = isPurchased;
-        IsActivated = isActivated;
-        Capacity = 10;
+        Capacity = 1;
         Towers = new List<Tower>();
     }
 
@@ -44,6 +41,6 @@ public class TilePlot : Tile
 
     public void RemoveTower(Tower tower)
     {
-
+        Towers.Remove(tower);
     }
 }

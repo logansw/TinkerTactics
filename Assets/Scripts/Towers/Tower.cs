@@ -8,7 +8,7 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
-public abstract class Tower : MonoBehaviour, ISelectable
+public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
     public string Name;
@@ -77,6 +77,7 @@ public abstract class Tower : MonoBehaviour, ISelectable
                 TilePlot otherPlot = hit.collider.GetComponent<TilePlot>();
                 if (otherPlot.AddTower(this))
                 {
+                    _tilePlot = otherPlot;
                     return;
                 }
                 else
@@ -96,7 +97,10 @@ public abstract class Tower : MonoBehaviour, ISelectable
 
     public void OnLift()
     {
-
+        if (_tilePlot != null)
+        {
+            _tilePlot.RemoveTower(this);
+        }
     }
 
     public void OnDrop()

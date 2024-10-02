@@ -85,7 +85,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
-        Instantiate(enemyPrefab, SpawnPoint.transform.position, Quaternion.identity).GetComponent<Enemy>();
+        Enemy enemy = Instantiate(enemyPrefab, SpawnPoint.transform.position, Quaternion.identity).GetComponent<Enemy>();
+        enemy.Initialize(SpawnPoint);
     }
 
     public string PreviewWave()

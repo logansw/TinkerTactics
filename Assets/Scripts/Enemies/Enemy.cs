@@ -41,14 +41,12 @@ public class Enemy : MonoBehaviour
     {
         EnemyManager.s_Instance.AddEnemy(this);
         _spawnSound.Play();
-        if (PathDrawer.s_PathStart == null)
-        {
-            TileTarget = null;
-        }
-        else
-        {
-            TileTarget = PathDrawer.s_PathStart;
-        }
+    }
+
+    public void Initialize(TilePath spawnPoint)
+    {
+        transform.position = spawnPoint.transform.position;
+        TileTarget = spawnPoint;
     }
 
     void Update()
@@ -111,7 +109,7 @@ public class Enemy : MonoBehaviour
         Vector3 destination = TileTarget == null ? Vector3.zero : TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
         transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
-        if (Vector2.Distance(transform.position, Vector2.zero) < 0.1f)
+        if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1f)
         {
             Health.TakeDamage(Health.CurrentHealth);
         }
