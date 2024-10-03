@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Cannon
   Description: Cannon
   YellowCost: 0
-  TowerPrefab: {fileID: -5270777138658785136, guid: 21c7e262a71a74aafacc25bff4c3c850, type: 3}
+  TowerPrefab: {fileID: 6245847875094468277, guid: fe1415b7b0df34da4a1503c1b5fa99f2, type: 3}

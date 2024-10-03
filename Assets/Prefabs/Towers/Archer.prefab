@@ -690,6 +690,8 @@ MonoBehaviour:
   RangeIndicator: {fileID: 0}
   Range: 8
   Sweep: 120
+  Health: {fileID: 8564644054904874592}
+  Active: 0
 --- !u!114 &-5726604151056873364
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,8 +6,10 @@ using UnityEngine;
 public class TilePlot : Tile
 {
     public List<Tower> Towers { get; set; }
-    public bool IsActivated { get; set; } = false;
+    public bool IsActivated;
     public int Capacity;
+    public bool IsTargeted { get; private set; }
+    [SerializeField] private GameObject _targetedIndicator;
 
     void Start()
     {
@@ -18,6 +20,12 @@ public class TilePlot : Tile
     public bool IsOccupied()
     {
         return Towers.Count >= Capacity;
+    }
+
+    public void SetTargeted(bool targeted)
+    {
+        IsTargeted = targeted;
+        _targetedIndicator.gameObject.SetActive(targeted);
     }
 
     /// <summary>

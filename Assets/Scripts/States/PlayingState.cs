@@ -26,7 +26,9 @@ public class PlayingState : State
         }
         if (EnemyManager.s_Instance.Enemies.Count == 0 && finishedSpawning)
         {
-            stateController.ChangeState(StateType.Idle);
+            BattleManager.s_Instance.FinishWave();
+            BattleManager.s_Instance.AttackTilePlots();
+            BattleManager.s_Instance.TargetTilePlots();
         }
     }
 

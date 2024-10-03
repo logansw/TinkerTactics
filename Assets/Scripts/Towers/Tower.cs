@@ -16,6 +16,8 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     public List<IAbility> Abilities;
     public float Range;
     public float Sweep;
+    public TowerHealth Health;
+    public bool Active;
 
 
     public abstract string GetTooltipText();
@@ -31,8 +33,17 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
         RangeIndicator.Initialize(this);
     }
 
+    void Start()
+    {
+        AssignTowerToTilePlot();
+    }
+
     protected virtual void Update()
     {
+        if (!Active)
+        {
+            return;
+        }
         foreach (IAbility ability in Abilities)
         {
             if (ability.IsReloaded())
@@ -82,9 +93,19 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
                 }
                 else
                 {
-                    ReturnToPlot();
+                    // Swap Towers
+                    Tower otherTower = otherPlot.Towers[0];
+                    otherPlot.RemoveTower(otherTower);
+                    otherPlot.AddTower(this);
+                    _tilePlot.RemoveTower(this);
+                    _tilePlot.AddTower(otherTower);
+                    _tilePlot = otherPlot;
                 }
             }
+        }
+        if (_tilePlot != null)
+        {
+            Active = _tilePlot.IsActivated;
         }
         // Return to plot if no tile plot is found
         ReturnToPlot();
@@ -120,6 +141,6 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void SelfDestruct()
     {
-        Debug.Log("Eliminated!");
+        Destroy(gameObject);
     }
 }
