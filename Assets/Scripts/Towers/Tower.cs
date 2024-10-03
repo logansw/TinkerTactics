@@ -117,4 +117,9 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         // Do nothing
     }
+
+    public void SelfDestruct()
+    {
+        Debug.Log("Eliminated!");
+    }
 }
