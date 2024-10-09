@@ -15,10 +15,13 @@ public class WaveSpawner : MonoBehaviour
     private int currentEnemyIndex = 0;
     public TilePath SpawnPoint;
     [SerializeField] private BoxCollider2D _boxCollider2d;
+    public List<Warlord> Warlords = new List<Warlord>();
+    private PlaceholderArt _placeholderArt;
 
     void Awake()
     {
         s_WaveSpawners.Add(this);
+        _placeholderArt = GetComponent<PlaceholderArt>();
     }
 
     private void OnMouseEnter()
@@ -47,13 +50,30 @@ public class WaveSpawner : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            bool hasNextWave = waves[currentWaveIndex].subWaves.Length > 0;
-            child.gameObject.SetActive(active && hasNextWave);
+            child.gameObject.SetActive(active && HasEnemies());
         }
+        if (Warlords.Count > 0)
+        {
+            _placeholderArt.SetColor(new Color(0.6328792f, 0f, 0.8313726f, 1f));
+        }
+        else
+        {
+            _placeholderArt.SetColor(new Color(0.9339623f, 0.4836051f, 0.2423016f, 1f));
+        }
+    }
+
+    public bool HasEnemies()
+    {
+        return waves[currentWaveIndex] != null && (Warlords.Count > 0 || waves[currentWaveIndex].subWaves.Length > 0);
     }
 
     public IEnumerator SpawnEnemies()
     {
+        foreach (Warlord warlord in Warlords)
+        {
+            warlord.Respawn(this);
+            yield return new WaitForSeconds(0.5f);
+        }
         while (!FinishedSpawning)
         {
             WaveSO currentWave = waves[currentWaveIndex];
@@ -91,14 +111,20 @@ public class WaveSpawner : MonoBehaviour
 
     public string PreviewWave()
     {
-        WaveSO nextWave = waves[currentWaveIndex];
-        if (nextWave == null || nextWave.subWaves.Length == 0)
+        if (!HasEnemies())
         {
             return "";
         }
 
+        WaveSO nextWave = waves[currentWaveIndex];
         StringBuilder sb = new StringBuilder();
         Dictionary<SubWaveSO.EnemyType, int> enemyCounts = new Dictionary<SubWaveSO.EnemyType, int>();
+
+        foreach (Warlord warlord in Warlords)
+        {
+            sb.Append($"{warlord.gameObject.name}\n");
+        }
+
         foreach (SubWaveSO subWave in nextWave.subWaves)
         {
             for (int i = 0; i < subWave.enemies.Length; i++)
@@ -120,5 +146,17 @@ public class WaveSpawner : MonoBehaviour
         }
 
         return sb.ToString();
+    }
+
+    public void RegisterWarlord(Warlord warlord)
+    {
+        warlord.e_OnWarlordEnd += UnregisterWarlord;
+        Warlords.Add(warlord);
+    }
+
+    public void UnregisterWarlord(Warlord warlord)
+    {
+        Warlords.Remove(warlord);
+        warlord.e_OnWarlordEnd -= UnregisterWarlord;
     }
 }

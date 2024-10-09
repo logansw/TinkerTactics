@@ -63,6 +63,7 @@ MonoBehaviour:
   currentWaveIndex: 0
   SpawnPoint: {fileID: 0}
   _boxCollider2d: {fileID: 4249741820458845378}
+  Warlords: []
 --- !u!114 &8066635675065709399
 MonoBehaviour:
   m_ObjectHideFlags: 0

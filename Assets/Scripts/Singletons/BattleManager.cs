@@ -16,6 +16,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
         TargetTilePlots();
+        Time.timeScale = 5;
     }
     
     public void Continue()
@@ -43,7 +44,7 @@ public class BattleManager : Singleton<BattleManager>
         _button.text = "Continue";
     }
 
-    public void AttackTilePlots()
+    public void AttackTilePlots(int damage = 1)
     {
         foreach (var tilePlot in _tilePlots)
         {
@@ -51,14 +52,13 @@ public class BattleManager : Singleton<BattleManager>
             {
                 foreach (var tower in tilePlot.Towers)
                 {
-                    tower.Health.ChangeHealth(-1);
-                }
-            }
-            else if (!tilePlot.IsActivated)
-            {
-                foreach (var tower in tilePlot.Towers)
-                {
-                    tower.Health.ChangeHealth(1);
+                    tower.Health.ChangeHealth(-damage);
+                    if (tower.Health.Current <= 0)
+                    {
+                        tilePlot.RemoveTower(tower);
+                        Destroy(tower.gameObject);
+                        break;
+                    }
                 }
             }
         }
@@ -70,7 +70,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             tilePlot.SetTargeted(false);
         }
-        int numberOfTargets = UnityEngine.Random.Range(2, 6);
+        int numberOfTargets = 2;
         int targetedTilePlots = 0;
         while (targetedTilePlots < numberOfTargets)
         {

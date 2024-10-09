@@ -28,7 +28,6 @@ public class PlayingState : State
         {
             BattleManager.s_Instance.FinishWave();
             BattleManager.s_Instance.AttackTilePlots();
-            BattleManager.s_Instance.TargetTilePlots();
         }
     }
 

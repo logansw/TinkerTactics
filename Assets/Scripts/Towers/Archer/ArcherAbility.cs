@@ -38,6 +38,10 @@ public class ArcherAbility : MonoBehaviour, IAbility
     {
         for (int i = 0; i < ArrowCount; i++)
         {
+            if (_archer.RangeIndicator.GetEnemiesInRange().Count == 0)
+            {
+                break;
+            }
             Enemy target = _archer.RangeIndicator.GetEnemiesInRange()[Random.Range(0, _archer.RangeIndicator.GetEnemiesInRange().Count)];
             ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
             arrow.Initialize(Damage, ProjectileSpeed, _archer);

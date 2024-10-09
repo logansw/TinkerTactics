@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioSource _deathSound;
     [SerializeField] private AudioSource _spawnSound;
     [SerializeField] private Collider2D _collider;
+    public bool EndReached;
 
     public virtual void Awake()
     {
@@ -37,22 +38,21 @@ public class Enemy : MonoBehaviour
         EffectTracker = GetComponent<EffectTracker>();
     }
 
-    public virtual void Start()
+    public void Initialize(TilePath spawnPoint)
     {
         EnemyManager.s_Instance.AddEnemy(this);
         _spawnSound.Play();
-    }
-
-    public void Initialize(TilePath spawnPoint)
-    {
         transform.position = spawnPoint.transform.position;
         TileTarget = spawnPoint;
     }
 
     void Update()
     {
-        Move();
-    }
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            Move();
+        }
+   } 
 
     public virtual void OnEnable()
     {
@@ -62,7 +62,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnDisable()
     {
-        EnemyManager.s_Instance.RemoveEnemyFromList(this);
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
     }
@@ -79,12 +78,7 @@ public class Enemy : MonoBehaviour
         _collider.enabled = false;
         Destroy(gameObject, 1f);
         _deathSound.Play();
-        Transform[] children = GetComponentsInChildren<Transform>();
-        foreach (Transform child in children)
-        {
-            if (child == transform) { continue; }
-            child.gameObject.SetActive(false);
-        }
+        Render(false);
     }
 
     public virtual void OnBreak()
@@ -106,12 +100,31 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        Vector3 destination = TileTarget == null ? Vector3.zero : TileTarget.transform.position;
+        if (EndReached)
+        {
+            return;
+        }
+        Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
         transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
-        if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1f)
+        if (!EndReached && TileTarget.PathType.Equals(PathType.End))
         {
-            Health.TakeDamage(Health.CurrentHealth);
+            OnPathEnd();
+        }
+    }
+
+    public virtual void OnPathEnd()
+    {
+        EndReached = true;
+        BattleManager.s_Instance.AttackTilePlots(EnemySO.Damage);
+        Health.TakeDamage(Health.CurrentHealth);
+    }
+
+    protected void Render(bool active)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(active);
         }
     }
 }

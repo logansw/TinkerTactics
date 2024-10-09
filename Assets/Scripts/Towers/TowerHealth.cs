@@ -30,9 +30,5 @@ public class TowerHealth : MonoBehaviour
         Current += change;
         Current = Mathf.Clamp(Current, 0, Max);
         UpdateHealthText();
-        if (Current <= 0)
-        {
-            _tower.SelfDestruct();
-        }
     }
 }

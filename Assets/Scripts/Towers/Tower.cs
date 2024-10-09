@@ -11,6 +11,18 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
+    private TilePlot TilePlot
+    {
+        get
+        {
+            return _tilePlot;
+        }
+        set
+        {
+            _tilePlot = value;
+            Active = _tilePlot.IsActivated;
+        }
+    }
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
     public List<IAbility> Abilities;
@@ -88,7 +100,7 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
                 TilePlot otherPlot = hit.collider.GetComponent<TilePlot>();
                 if (otherPlot.AddTower(this))
                 {
-                    _tilePlot = otherPlot;
+                    TilePlot = otherPlot;
                     return;
                 }
                 else
@@ -97,15 +109,11 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
                     Tower otherTower = otherPlot.Towers[0];
                     otherPlot.RemoveTower(otherTower);
                     otherPlot.AddTower(this);
-                    _tilePlot.RemoveTower(this);
-                    _tilePlot.AddTower(otherTower);
-                    _tilePlot = otherPlot;
+                    TilePlot.RemoveTower(this);
+                    TilePlot.AddTower(otherTower);
+                    TilePlot = otherPlot;
                 }
             }
-        }
-        if (_tilePlot != null)
-        {
-            Active = _tilePlot.IsActivated;
         }
         // Return to plot if no tile plot is found
         ReturnToPlot();
@@ -113,14 +121,14 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 
     private void ReturnToPlot()
     {
-        transform.position = _tilePlot.transform.position;
+        transform.position = TilePlot.transform.position;
     }
 
     public void OnLift()
     {
-        if (_tilePlot != null)
+        if (TilePlot != null)
         {
-            _tilePlot.RemoveTower(this);
+            TilePlot.RemoveTower(this);
         }
     }
 
@@ -137,10 +145,5 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     public void OnHeld()
     {
         // Do nothing
-    }
-
-    public void SelfDestruct()
-    {
-        Destroy(gameObject);
     }
 }

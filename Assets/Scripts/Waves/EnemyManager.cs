@@ -11,6 +11,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public void AddEnemy(Enemy enemy)
     {
         Enemies.Add(enemy);
+        enemy.e_OnEnemyDeath += RemoveEnemyFromList;
     }
 
     public void RemoveEnemyFromList(Enemy enemy)

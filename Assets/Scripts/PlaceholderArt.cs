@@ -17,4 +17,10 @@ public class PlaceholderArt : MonoBehaviour
         }
         _spriteRenderer.color = _color;
     }
+
+    public void SetColor(Color color)
+    {
+        _color = color;
+        _spriteRenderer.color = color;
+    }
 }
