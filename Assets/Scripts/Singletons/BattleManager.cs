@@ -48,7 +48,13 @@ public class BattleManager : Singleton<BattleManager>
     {
         foreach (var tilePlot in _tilePlots)
         {
-            if (tilePlot.IsTargeted)
+            if (!tilePlot.IsTargeted) { continue; }
+
+            if (tilePlot.Towers.Count == 0)
+            {
+                Player.s_Instance.Health.TakeDamage(damage);
+            }
+            else
             {
                 foreach (var tower in tilePlot.Towers)
                 {

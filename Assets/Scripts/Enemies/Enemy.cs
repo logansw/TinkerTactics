@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         float maxHealth = EnemySO.MaxHealth;
         int breakpointCount = EnemySO.SegmentCount;
-        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount, this);
+        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount);
         BaseMovementSpeed = EnemySO.MovementSpeed;
         MovementSpeed = BaseMovementSpeed;
         Armor = EnemySO.Armor;
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
         Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
         transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
-        if (!EndReached && TileTarget.PathType.Equals(PathType.End))
+        if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1 && !EndReached)
         {
             OnPathEnd();
         }

@@ -27,7 +27,6 @@ public class PlayingState : State
         if (EnemyManager.s_Instance.Enemies.Count == 0 && finishedSpawning)
         {
             BattleManager.s_Instance.FinishWave();
-            BattleManager.s_Instance.AttackTilePlots();
         }
     }
 
