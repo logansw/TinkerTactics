@@ -686,7 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9072abe19d7324f35a38555d9515a1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Cost: 2
+  Name: Archer
   RangeIndicator: {fileID: 0}
   Range: 8
   Sweep: 120

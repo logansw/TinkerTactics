@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e517821ab6934a0aaeaaabd9252987a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cost: 2
   Name: Cannon
   RangeIndicator: {fileID: 0}
   Range: 10

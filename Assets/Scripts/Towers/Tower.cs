@@ -10,6 +10,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
 {
+    public int Cost;
     private TilePlot _tilePlot;
     private TilePlot TilePlot
     {

@@ -33,6 +33,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      propertyPath: Name
+      value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: Range
       value: 12
       objectReference: {fileID: 0}

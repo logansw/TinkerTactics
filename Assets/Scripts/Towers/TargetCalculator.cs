@@ -7,13 +7,13 @@ public static class TargetCalculator
     /// <summary>
     /// Return list of enemies within range of the transform position
     /// </summary>
-    public static List<Enemy> GetEnemiesInRange(Transform transform, float range)
+    public static List<Enemy> GetEnemiesInRange(Vector2 position, float range)
     {
         List<Enemy> enemies = new List<Enemy>();
         foreach (Enemy enemy in EnemyManager.s_Instance.Enemies)
         {
             if (!enemy.gameObject.activeInHierarchy) { continue; }
-            if (Vector3.Distance(transform.position, enemy.transform.position) <= range)
+            if (Vector3.Distance(position, enemy.transform.position) <= range)
             {
                 enemies.Add(enemy);
             }
