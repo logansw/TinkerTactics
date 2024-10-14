@@ -13,6 +13,7 @@ public class Warlord : Enemy
         int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Count);
         WaveSpawner.s_WaveSpawners[randomIndex].RegisterWarlord(this);
         Render(false);
+        HealthbarUI.s_Instance.RegisterHealth(Health);
     }
 
     public override void OnPathEnd()

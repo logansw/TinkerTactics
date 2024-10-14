@@ -12,6 +12,8 @@ public class BattleManager : Singleton<BattleManager>
 {
     [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
+    [SerializeField] private Healthbar _warlordHealthbar;
+    
     void Start()
     {
         StateController.s_Instance.ChangeState(StateType.Idle);

@@ -147,7 +147,6 @@ MonoBehaviour:
   RangeIndicator: {fileID: 0}
   Range: 10
   Sweep: 60
-  Health: {fileID: 1340139579302774398}
   Active: 0
   ExplosionRadius: 2
 --- !u!114 &-7607588817295794750
@@ -186,17 +185,6 @@ MonoBehaviour:
   ProjectileSpeed: 4
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
   _abilitySound: {fileID: 7361806556277332116}
---- !u!114 &1340139579302774398 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8564644054904874592, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-  m_PrefabInstance: {fileID: 7224507980481077278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969829730776018202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171c0de64c1f94ddb8c77afcd4d198f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &7361806556277332116 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: -9049702294697674614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
