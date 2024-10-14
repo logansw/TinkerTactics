@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DeckRenderer : MonoBehaviour
 {
-    [SerializeField] private RectTransform _cardPrefab;
     [SerializeField] private RectTransform _drawPileTransform;
     [SerializeField] private RectTransform _handTransform;
     [SerializeField] private RectTransform _discardPileTransform;
     [SerializeField] private RectTransform _exhaustPileTransform;
-    [SerializeField] private RectTransform _shopTransform;
     [SerializeField] private RectTransform _databaseTransform;
     private bool _updateQueued;
 
@@ -21,10 +19,6 @@ public class DeckRenderer : MonoBehaviour
             RenderHand(DeckManager.s_Instance.Hand);
             RenderDrawPile(DeckManager.s_Instance.DrawPile);
             RenderDiscardPile(DeckManager.s_Instance.DiscardPile);
-            // if (StateController.CurrentState is ShopState)
-            // {
-            //     RenderShop();
-            // }
             RenderExhaustPile(DeckManager.s_Instance.ExhaustPile);
             RenderDatabase();
         }
@@ -41,7 +35,7 @@ public class DeckRenderer : MonoBehaviour
             card.RectTransform.anchorMax = new Vector2(0, 0.5f);
             card.RectTransform.pivot = new Vector2(0, 0.5f);
             card.RectTransform.anchoredPosition = new Vector2(cardPositionOffset, 0);
-            cardPositionOffset += _cardPrefab.rect.width + 10;
+            cardPositionOffset += card.RectTransform.rect.width + 10;
         }
     }
 
@@ -62,21 +56,6 @@ public class DeckRenderer : MonoBehaviour
             card.transform.SetParent(_discardPileTransform);
             card.gameObject.SetActive(false);
             card.transform.localPosition = Vector3.zero;
-        }
-    }
-
-    public void RenderShop()
-    {
-        float cardPositionOffset = 0;
-        foreach (Card card in DeckManager.s_Instance.Shop)
-        {
-            card.gameObject.SetActive(true);
-            card.transform.SetParent(_shopTransform);
-            card.RectTransform.anchorMin = new Vector2(0, 0.5f);
-            card.RectTransform.anchorMax = new Vector2(0, 0.5f);
-            card.RectTransform.pivot = new Vector2(0, 0.5f);
-            card.RectTransform.anchoredPosition = new Vector2(cardPositionOffset, 0);
-            cardPositionOffset += _cardPrefab.rect.width + 10;
         }
     }
 

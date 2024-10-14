@@ -7,13 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(DeckRenderer))]
 public class DeckManager : Singleton<DeckManager>
 {
-    public List<Card> Deck { get; private set; }
-    public List<Card> DrawPile { get; private set; }
-    public List<Card> Hand { get; private set; }
-    public List<Card> DiscardPile { get; private set; }
-    public List<Card> ExhaustPile { get; private set; }
-    public List<Card> Database { get; private set; }
-    public List<Card> Shop { get; private set; }
+    public const int CARD_DRAW_COUNT = 5;
+    public List<Card> Deck;
+    public List<Card> DrawPile;
+    public List<Card> Hand;
+    public List<Card> DiscardPile;
+    public List<Card> ExhaustPile;
+    public List<Card> Database;
     [SerializeField] private RectTransform _cardPrefab;
     private DeckRenderer _deckRenderer;
 
@@ -21,6 +21,11 @@ public class DeckManager : Singleton<DeckManager>
     {
         base.Awake();
         _deckRenderer = GetComponent<DeckRenderer>();
+    }
+    
+    void Start()
+    {
+        Initialize();
     }
 
     public void Initialize()
@@ -30,7 +35,6 @@ public class DeckManager : Singleton<DeckManager>
         Hand = new List<Card>();
         ExhaustPile = new List<Card>();
         DiscardPile = new List<Card>();
-        Shop = new List<Card>();
         InitializeDrawPile();
         DrawNewHand();
         InitializeDatabase();
@@ -39,7 +43,14 @@ public class DeckManager : Singleton<DeckManager>
     // Instantiate Card game objects and add them to the Draw pile, shuffled.
     public void InitializeDeck()
     {
-        Deck = new List<Card>();
+        List<Card> tempDeck = new List<Card>();
+        foreach (Card card in Deck)
+        {
+            Card instance = Instantiate(card);
+            tempDeck.Add(instance);
+        }
+        Deck.Clear();
+        Deck = tempDeck;
     }
 
     private void InitializeDatabase()
@@ -90,32 +101,22 @@ public class DeckManager : Singleton<DeckManager>
         Deck.Clear();
     }
 
-    private void AddCardToDatabase<T>(int count) where T : Card
-    {
-        for (int i = 0; i < count; i++)
-        {
-            RectTransform card = Instantiate(_cardPrefab);
-            // T card = card.AddComponent<T>();
-            // Database.Add(card);
-        }
-    }
-
-    public void AddCardToDeck(Card card)
-    {
+    // public void AddCardToDeck(Card card)
+    // {
         // RectTransform card = Instantiate(_cardPrefab);
         // card = card.gameObject.AddComponent(card.GetType()) as Card;
         // Deck.Add(card);
-    }
+    // }
 
-    public void AddCardToDeck<T>(int count) where T : Card
-    {
-        for (int i = 0; i < count; i++)
-        {
-            RectTransform card = Instantiate(_cardPrefab);
-            // T card = card.AddComponent<T>();
-            // Deck.Add(card);
-        }
-    }
+    // public void AddCardToDeck<T>(int count) where T : Card
+    // {
+    //     for (int i = 0; i < count; i++)
+    //     {
+    //         RectTransform card = Instantiate(_cardPrefab);
+    //         T card = card.AddComponent<T>();
+    //         Deck.Add(card);
+    //     }
+    // }
 
     public void DrawNewHand()
     {
@@ -124,7 +125,7 @@ public class DeckManager : Singleton<DeckManager>
             DiscardPile.Add(card);
         }
         Hand.Clear();
-        DrawCards(5);
+        DrawCards(CARD_DRAW_COUNT);
     }
 
     public void DrawCards(int count)
@@ -176,23 +177,6 @@ public class DeckManager : Singleton<DeckManager>
     {
         return Database[Random.Range(0, Database.Count)];
     }
-
-    public void DatabaseToShop(Card card)
-    {
-        MoveCard(card, Database, Shop);
-    }
-
-    public void ShopToDatabase(Card card)
-    {
-        MoveCard(card, Shop, Database);
-    }
-
-    public void ShopToDeck(Card card)
-    {
-        MoveCard(card, Shop, DiscardPile);
-        card.gameObject.SetActive(false);
-    }
-
 
     private void MoveCard(Card card, List<Card> from, List<Card> to)
     {
