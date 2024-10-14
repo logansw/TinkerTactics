@@ -29,7 +29,6 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     public List<IAbility> Abilities;
     public float Range;
     public float Sweep;
-    public TowerHealth Health;
     public bool Active;
 
 

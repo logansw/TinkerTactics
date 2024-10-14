@@ -130,4 +130,7 @@ MonoBehaviour:
   Name: Brick
   Damage: 10
   Range: 1
-  Ammo: 3
+  Ammo:
+    baseValue: 3
+    minValue: 10
+    maxValue: 0

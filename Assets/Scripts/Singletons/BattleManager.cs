@@ -15,7 +15,6 @@ public class BattleManager : Singleton<BattleManager>
     void Start()
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
-        TargetTilePlots();
         Time.timeScale = 5;
     }
     
@@ -44,49 +43,8 @@ public class BattleManager : Singleton<BattleManager>
         _button.text = "Continue";
     }
 
-    public void AttackTilePlots(int damage = 1)
+    public void DamagePlayer(int damage = 1)
     {
-        foreach (var tilePlot in _tilePlots)
-        {
-            if (!tilePlot.IsTargeted) { continue; }
-
-            if (tilePlot.Towers.Count == 0)
-            {
-                Player.s_Instance.Health.TakeDamage(damage);
-            }
-            else
-            {
-                foreach (var tower in tilePlot.Towers)
-                {
-                    tower.Health.ChangeHealth(-damage);
-                    if (tower.Health.Current <= 0)
-                    {
-                        tilePlot.RemoveTower(tower);
-                        Destroy(tower.gameObject);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    public void TargetTilePlots()
-    {
-        foreach (TilePlot tilePlot in _tilePlots)
-        {
-            tilePlot.SetTargeted(false);
-        }
-        int numberOfTargets = 2;
-        int targetedTilePlots = 0;
-        while (targetedTilePlots < numberOfTargets)
-        {
-            int randomTilePlotIndex = UnityEngine.Random.Range(0, _tilePlots.Count);
-            if (!_tilePlots[randomTilePlotIndex].IsActivated || _tilePlots[randomTilePlotIndex].IsTargeted)
-            {
-                continue;
-            }
-            _tilePlots[randomTilePlotIndex].SetTargeted(true);
-            targetedTilePlots++;
-        }
+        Player.s_Instance.Health.TakeDamage(damage);
     }
 }

@@ -9,7 +9,7 @@ public class DamagingSpell : CardEffect
     public string Name;
     public int Damage;
     public float Range;
-    public int Ammo;
+    public Stat Ammo;
 
     public override TargetPreview GetTargetPreview()
     {
@@ -72,8 +72,8 @@ public class DamagingSpell : CardEffect
             enemy.Health.TakeDamage(Damage);
         }
         Player.s_Instance.Energy -= GetCost();
-        Ammo -= 1;
-        if (Ammo <= 0)
+        Ammo.Current -= 1;
+        if (Ammo.Current <= 0)
         {
             _parentCard.Discard();
         }
@@ -88,5 +88,6 @@ public class DamagingSpell : CardEffect
     {
         Cost.Current = Cost.Base;
         _parentCard.Render(true);
+        Ammo.Current = Ammo.Base;
     }
 }

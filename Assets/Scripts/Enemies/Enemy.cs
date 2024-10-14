@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
     public virtual void OnPathEnd()
     {
         EndReached = true;
-        BattleManager.s_Instance.AttackTilePlots(EnemySO.Damage);
+        BattleManager.s_Instance.DamagePlayer(EnemySO.Damage);
         Health.TakeDamage(Health.CurrentHealth);
     }
 

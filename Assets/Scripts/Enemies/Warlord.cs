@@ -18,7 +18,7 @@ public class Warlord : Enemy
     public override void OnPathEnd()
     {
         EndReached = true;
-        BattleManager.s_Instance.AttackTilePlots(EnemySO.Damage);
+        BattleManager.s_Instance.DamagePlayer(EnemySO.Damage);
         int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Count);
         e_OnWarlordEnd?.Invoke(this);
         WaveSpawner.s_WaveSpawners[randomIndex].RegisterWarlord(this);
