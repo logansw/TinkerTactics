@@ -12,7 +12,7 @@ public class DeckManager : Singleton<DeckManager>
     public List<Card> DrawPile;
     public List<Card> Hand;
     public List<Card> DiscardPile;
-    public List<Card> ExhaustPile;
+    public List<Card> ConsumePile;
     public List<Card> Database;
     [SerializeField] private RectTransform _cardPrefab;
     private DeckRenderer _deckRenderer;
@@ -33,10 +33,9 @@ public class DeckManager : Singleton<DeckManager>
         InitializeDeck();
         DrawPile = new List<Card>();
         Hand = new List<Card>();
-        ExhaustPile = new List<Card>();
+        ConsumePile = new List<Card>();
         DiscardPile = new List<Card>();
         InitializeDrawPile();
-        DrawNewHand();
         InitializeDatabase();
     }
 
@@ -83,11 +82,11 @@ public class DeckManager : Singleton<DeckManager>
             DrawPile.Add(card);
         }
         DiscardPile.Clear();
-        foreach (Card card in ExhaustPile)
+        foreach (Card card in ConsumePile)
         {
             DrawPile.Add(card);
         }
-        ExhaustPile.Clear();
+        ConsumePile.Clear();
         Shuffle(DrawPile);
     }
 
@@ -148,6 +147,7 @@ public class DeckManager : Singleton<DeckManager>
             Shuffle(DrawPile);
         }
         Card card = DrawPile[0];
+        card.OnDrawn();
         MoveCard(card, DrawPile, Hand);
     }
 
@@ -162,7 +162,7 @@ public class DeckManager : Singleton<DeckManager>
         MoveCard(card, Hand, DiscardPile);
     }
 
-    public void Exhaust(Card card)
+    public void Consume(Card card)
     {
         if (!Hand.Contains(card))
         {
@@ -170,7 +170,7 @@ public class DeckManager : Singleton<DeckManager>
             return;
         }
 
-        MoveCard(card, Hand, ExhaustPile);
+        MoveCard(card, Hand, ConsumePile);
     }
 
     public Card GetRandomDatabaseCard()

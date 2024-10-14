@@ -28,4 +28,5 @@ public abstract class CardEffect : MonoBehaviour
     /// <param name="targetPosition"></param>
     public abstract bool CanCast(Vector3 targetPosition);
     public abstract void Cast();
+    public abstract void OnDrawn();
 }

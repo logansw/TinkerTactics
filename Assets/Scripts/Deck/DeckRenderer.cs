@@ -19,7 +19,7 @@ public class DeckRenderer : MonoBehaviour
             RenderHand(DeckManager.s_Instance.Hand);
             RenderDrawPile(DeckManager.s_Instance.DrawPile);
             RenderDiscardPile(DeckManager.s_Instance.DiscardPile);
-            RenderExhaustPile(DeckManager.s_Instance.ExhaustPile);
+            RenderExhaustPile(DeckManager.s_Instance.ConsumePile);
             RenderDatabase();
         }
     }

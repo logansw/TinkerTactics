@@ -61,6 +61,11 @@ public class DeployTower : CardEffect
     {
         Instantiate(Tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
         Player.s_Instance.Energy -= GetCost();
-        _parentCard.Discard();
+        _parentCard.Consume();
+    }
+
+    public override void OnDrawn()
+    {
+        // Do nothing
     }
 }

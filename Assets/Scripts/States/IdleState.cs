@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IdleState : State
 {
+    public static Action e_OnIdleStateEnter;
     void Awake()
     {
         StateType = StateType.Idle;
@@ -15,6 +17,8 @@ public class IdleState : State
         {
             waveSpawner.Render(true);
         }
+        Player.s_Instance.Energy = 3;
+        DeckManager.s_Instance.DrawNewHand();
     }
 
     public override void UpdateState(StateController stateController)

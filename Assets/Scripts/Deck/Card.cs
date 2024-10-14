@@ -11,7 +11,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private TMP_Text _description;
     [SerializeField] private TMP_Text _cost;
     [SerializeField] private Image _background;
-    private CardEffect CardEffect;
+    public CardEffect CardEffect;
     public RectTransform RectTransform;
     private bool _isDragging;
     private TargetPreview _targetPreview;
@@ -19,13 +19,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
-        CardEffect = GetComponent<CardEffect>();
     }
 
     protected virtual void Start()
     {
         Render(true);
-        CardEffect.Initialize(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -60,6 +58,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             _isDragging = false;
             Destroy(_targetPreview.gameObject);
         }
+        Render(true);
     }
 
     public bool TryCast(Vector3 targetPosition)
@@ -88,6 +87,21 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void Discard()
     {
-        Destroy(gameObject);
+        DeckManager.s_Instance.Discard(this);
+    }
+
+    public void Consume()
+    {
+        DeckManager.s_Instance.Consume(this);
+    }
+
+    public void OnDrawn()
+    {
+        if (CardEffect == null)
+        {
+            CardEffect = GetComponent<CardEffect>();
+        }
+        CardEffect.Initialize(this);
+        CardEffect.OnDrawn();
     }
 }
