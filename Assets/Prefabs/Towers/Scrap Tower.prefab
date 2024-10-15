@@ -254,7 +254,7 @@ MonoBehaviour:
     minValue: 0
     maxValue: 10
   Ammo:
-    baseValue: 3
+    baseValue: 4
     minValue: 0
     maxValue: 100
   _projectilePrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
