@@ -548,6 +548,7 @@ MonoBehaviour:
     minValue: 0
     maxValue: 100
   _projectilePrefab: {fileID: 0}
+  _abilitySound: {fileID: 0}
   TooltipText: 
   ProjectileSpeed: 10
 --- !u!82 &-7440212879225586614

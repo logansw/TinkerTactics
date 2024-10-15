@@ -31,6 +31,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public float Sweep;
     public bool Active;
     public string TooltipText;
+    private BarUI _ammoBar;
 
 
     public virtual string GetTooltipText()
@@ -44,6 +45,8 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         BasicAttack.Initialize(this);
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
+        _ammoBar = GetComponentInChildren<BarUI>();
+        _ammoBar.RegisterStat(BasicAttack.Ammo);
     }
 
     void Start()

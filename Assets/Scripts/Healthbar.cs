@@ -38,7 +38,8 @@ public class Healthbar : MonoBehaviour
         int segmentCount = Health.SegmentCount;
         float segmentSize = barWidth / segmentCount;
 
-        for (int i = 1; i < segmentCount; i++) {
+        for (int i = 1; i < segmentCount; i++)
+        {
             GameObject breakpoint = Instantiate(_breakpointPrefab, transform);
             float xPosition = -(barWidth/2) + i * segmentSize;
             breakpoint.transform.localPosition = new Vector3(xPosition, 0, 0);
