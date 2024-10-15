@@ -9,9 +9,9 @@ public class BasicAttack : MonoBehaviour
     public float Damage;
     public InternalClock AttackClock;
     public InternalClock AmmoClock;
-    public StatFloat AttackSpeed;
-    public StatFloat ReloadSpeed;
-    public StatInt Ammo;
+    public StatAttackSpeed AttackSpeed;
+    public StatReloadSpeed ReloadSpeed;
+    public StatAmmo Ammo;
     [SerializeField] private Projectile _projectilePrefab;
     protected bool _canAttack;
     public AudioSource _abilitySound;

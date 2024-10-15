@@ -9,7 +9,7 @@ public class DamagingSpell : CardEffect
     public string Name;
     public int Damage;
     public float Range;
-    public StatInt Ammo;
+    public StatAmmo Ammo;
 
     public override TargetPreview GetTargetPreview()
     {
