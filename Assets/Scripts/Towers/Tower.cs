@@ -8,7 +8,7 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
-public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
+public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     public int Cost;
     private TilePlot _tilePlot;
@@ -26,21 +26,22 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
     }
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
-    public List<IAbility> Abilities;
+    [HideInInspector] public BasicAttack BasicAttack;
     public float Range;
     public float Sweep;
     public bool Active;
+    public string TooltipText;
 
 
-    public abstract string GetTooltipText();
+    public virtual string GetTooltipText()
+    {
+        return TooltipText;
+    }
 
     protected virtual void Awake()
     {
-        Abilities = gameObject.GetComponents<IAbility>().ToList();
-        foreach (IAbility ability in Abilities)
-        {
-            ability.Initialize();
-        }
+        BasicAttack = GetComponent<BasicAttack>();
+        BasicAttack.Initialize(this);
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
     }
@@ -56,13 +57,9 @@ public abstract class Tower : MonoBehaviour, ISelectable, ILiftable
         {
             return;
         }
-        foreach (IAbility ability in Abilities)
+        if (BasicAttack.CanActivate())
         {
-            if (ability.IsReloaded())
-            {
-                ability.Activate();
-            }
-            ability.InternalClock += Time.deltaTime;
+            BasicAttack.Attack();
         }
     }
 

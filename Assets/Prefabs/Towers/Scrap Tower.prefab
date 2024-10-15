@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2771591694143906936
+--- !u!1001 &4453889796054795484
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,41 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9049702294697674614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -9049702294697674614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: m_audioClip
+    - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      propertyPath: Tower
       value: 
-      objectReference: {fileID: 8300000, guid: 5d3e7f6b2a67d4053ab6b7f5f8cda87c, type: 3}
-    - target: {fileID: -7440212879225586614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: Damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: CooldownBase
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: ProjectileSpeed
+      propertyPath: _archer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      propertyPath: Ammo.baseValue
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: Name
-      value: Sniper
+    - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      propertyPath: AttackSpeed.baseValue
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: Range
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: Sweep
-      value: 30
+    - target: {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      propertyPath: ReloadSpeed.baseValue
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1154449039375421806, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -86,51 +74,112 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3945254401512882376, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: _name
-      value: "\U0001F3AF"
+      value: "\u2699"
       objectReference: {fileID: 0}
     - target: {fileID: 3945254401512882376, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: _color.b
-      value: 0.6365144
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 3945254401512882376, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: _color.g
-      value: 0.2941177
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 3945254401512882376, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: _color.r
-      value: 0.9607843
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 7002278847893667439, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_text
-      value: "\U0001F3AF"
+      value: "\u2699"
       objectReference: {fileID: 0}
     - target: {fileID: 7221335315480308286, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_Color.b
-      value: 0.6365144
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 7221335315480308286, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_Color.g
-      value: 0.2941177
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 7221335315480308286, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_Color.r
-      value: 0.9607843
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       propertyPath: m_Name
-      value: Sniper
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564644054904874592, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: Max
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564644054904874592, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      propertyPath: Current
-      value: 3
+      value: Scrap Tower
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1559582843964237632, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+    - {fileID: -1532648026573579116, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+    - {fileID: -5726604151056873364, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+    - {fileID: -9049702294697674614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6746069162851295752}
+    - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3444448523574529121}
   m_SourcePrefab: {fileID: 100100000, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+--- !u!82 &2697771512016779414 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -7440212879225586614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+  m_PrefabInstance: {fileID: 4453889796054795484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6122777355554228696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+  m_PrefabInstance: {fileID: 4453889796054795484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6746069162851295752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122777355554228696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf2c547b0a3c4d7ea4184fd964b4e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 1
+  Name: Scrap Tower
+  RangeIndicator: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  Range: 6
+  Sweep: 60
+  Active: 0
+  TooltipText: A weak tower
+--- !u!114 &3444448523574529121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122777355554228696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5fc5fc834bf48f092fae0cf80e6ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tower: {fileID: 0}
+  Name: Pew
+  Damage: 1
+  AttackSpeed:
+    baseValue: 1
+    minValue: 0
+    maxValue: 10
+  ReloadSpeed:
+    baseValue: 0.5
+    minValue: 0
+    maxValue: 10
+  Ammo:
+    baseValue: 10
+    minValue: 0
+    maxValue: 100
+  _projectilePrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
+  _abilitySound: {fileID: 2697771512016779414}
+  TooltipText: Deals a little bit of damage
+  ProjectileSpeed: 10

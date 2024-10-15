@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Stat
+public class StatInt
 {
     // Expose these fields to Unity Inspector
     [SerializeField] private int baseValue;  // Base stat value

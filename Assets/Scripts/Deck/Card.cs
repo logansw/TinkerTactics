@@ -11,7 +11,22 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private TMP_Text _description;
     [SerializeField] private TMP_Text _cost;
     [SerializeField] private Image _background;
-    public CardEffect CardEffect;
+    private CardEffect _cardEffect;
+    public CardEffect CardEffect
+    {
+        get
+        {
+            if (_cardEffect == null)
+            {
+                _cardEffect = GetComponent<CardEffect>();
+            }
+            return _cardEffect;
+        }
+        private set
+        {
+            _cardEffect = value;
+        }
+    }
     public RectTransform RectTransform;
     private bool _isDragging;
     private TargetPreview _targetPreview;
@@ -97,10 +112,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnDrawn()
     {
-        if (CardEffect == null)
-        {
-            CardEffect = GetComponent<CardEffect>();
-        }
         CardEffect.Initialize(this);
         CardEffect.OnDrawn();
     }

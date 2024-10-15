@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CannonAbility : MonoBehaviour, IAbility
+public class CannonAbility : MonoBehaviour
 {
     [SerializeField] private Cannon _cannon;
     public string Name { get; set; }
@@ -41,7 +41,7 @@ public class CannonAbility : MonoBehaviour, IAbility
         return "Cannon Ability";
     }
 
-    public bool IsReloaded()
+    public bool CanActivate()
     {
         return InternalClock >= Cooldown && _cannon.RangeIndicator.HasEnemyInRange;
     }

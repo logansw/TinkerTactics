@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class CardEffect : MonoBehaviour
 {
-    public bool ExhaustAfterUse;
     public Sprite PreviewSprite;
     protected Card _parentCard;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SniperAbility : MonoBehaviour, IAbility
+public class SniperAbility : MonoBehaviour
 {
     [SerializeField] private Archer _archer;
     public string Name { get; set; }
@@ -43,7 +43,7 @@ public class SniperAbility : MonoBehaviour, IAbility
         return "Sniper Abiilty";
     }
 
-    public bool IsReloaded()
+    public bool CanActivate()
     {
         return InternalClock >= Cooldown && _archer.RangeIndicator.HasEnemyInRange;
     }

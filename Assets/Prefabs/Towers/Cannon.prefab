@@ -121,9 +121,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7607588817295794750}
-    - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4731844065842532941}
   m_SourcePrefab: {fileID: 100100000, guid: 81de37c724d55470599728b857ef24cc, type: 3}
 --- !u!1 &969829730776018202 stripped
 GameObject:
@@ -145,9 +142,11 @@ MonoBehaviour:
   Cost: 2
   Name: Cannon
   RangeIndicator: {fileID: 0}
+  BasicAttack: {fileID: 0}
   Range: 10
   Sweep: 60
   Active: 0
+  TooltipText: 
   ExplosionRadius: 2
 --- !u!114 &-7607588817295794750
 MonoBehaviour:
@@ -161,37 +160,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a0f883259d64287b1915daaf9296cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cannon: {fileID: 6245847875094468277}
-  CooldownBase: 1
+  Tower: {fileID: 0}
+  Name: 
   Damage: 5
+  AttackSpeed:
+    baseValue: 0
+    minValue: 0
+    maxValue: 0
+  ReloadSpeed:
+    baseValue: 0
+    minValue: 0
+    maxValue: 0
+  Ammo:
+    baseValue: 0
+    minValue: 0
+    maxValue: 0
+  TooltipText: 
   ProjectileSpeed: 10
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
-  _abilitySound: {fileID: 9006520260239842388}
---- !u!114 &-4731844065842532941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969829730776018202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0d4f7c6d94d4b748adac61de21bc7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cannon: {fileID: 6245847875094468277}
-  CooldownBase: 10
-  Damage: 10
-  ProjectileSpeed: 4
-  _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
-  _abilitySound: {fileID: 7361806556277332116}
---- !u!82 &7361806556277332116 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -9049702294697674614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-  m_PrefabInstance: {fileID: 7224507980481077278}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &9006520260239842388 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -7440212879225586614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-  m_PrefabInstance: {fileID: 7224507980481077278}
-  m_PrefabAsset: {fileID: 0}
+  ExplosionRadius: 0

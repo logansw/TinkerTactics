@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class DamagingSpell : CardEffect
 {
-    public Stat Cost;
+    public StatInt Cost;
     public string Name;
     public int Damage;
     public float Range;
-    public Stat Ammo;
+    public StatInt Ammo;
 
     public override TargetPreview GetTargetPreview()
     {

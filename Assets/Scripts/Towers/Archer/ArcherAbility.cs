@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArcherAbility : MonoBehaviour, IAbility
+public class ArcherAbility : MonoBehaviour
 {
     [SerializeField] private Archer _archer;
     public string Name { get; set; }
@@ -56,7 +56,7 @@ public class ArcherAbility : MonoBehaviour, IAbility
         return "Archer Abiilty";
     }
 
-    public bool IsReloaded()
+    public bool CanActivate()
     {
         return InternalClock >= Cooldown && _archer.RangeIndicator.HasEnemyInRange;
     }

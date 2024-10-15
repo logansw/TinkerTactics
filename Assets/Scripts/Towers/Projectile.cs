@@ -54,6 +54,7 @@ public abstract class Projectile : MonoBehaviour
         if (_target != null)
         {
             e_OnImpact?.Invoke(_target);
+            _target.Health.TakeDamage(Damage);
         }
         _renderer.enabled = false;
         Destroy(gameObject, 1f);
