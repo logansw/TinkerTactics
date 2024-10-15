@@ -11,6 +11,13 @@ public class DamagingSpell : CardEffect
     public float Range;
     public StatAmmo Ammo;
 
+    public override void Initialize(Card parentCard)
+    {
+        base.Initialize(parentCard);
+        Cost.Initialize();
+        Ammo.Initialize();
+    }
+
     public override TargetPreview GetTargetPreview()
     {
         TargetPreview preview = new GameObject().AddComponent<TargetPreview>();

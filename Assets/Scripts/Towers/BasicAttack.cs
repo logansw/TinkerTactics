@@ -38,10 +38,10 @@ public class BasicAttack : MonoBehaviour
 
     public void Initialize(Tower tower)
     {
+        AttackSpeed.Initialize();
+        ReloadSpeed.Initialize();
+        Ammo.Initialize();
         Tower = tower;
-        AttackSpeed.Current = AttackSpeed.Base;
-        ReloadSpeed.Current = ReloadSpeed.Base;
-        Ammo.Current = Ammo.Base;
         AttackClock = new InternalClock(1f / AttackSpeed.Current);
         AmmoClock = new InternalClock(1f / ReloadSpeed.Current);
         AttackClock.e_OnTimerDone += SetCanAttack;

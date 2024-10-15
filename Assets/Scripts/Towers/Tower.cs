@@ -10,7 +10,6 @@ using UnityEngine;
 /// </summary>
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
-    public int Cost;
     private TilePlot _tilePlot;
     private TilePlot TilePlot
     {
@@ -27,8 +26,8 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
     [HideInInspector] public BasicAttack BasicAttack;
-    public float Range;
-    public float Sweep;
+    public StatRange Range;
+    public StatSweep Sweep;
     public bool Active;
     public string TooltipText;
     private BarUI _ammoBar;
@@ -45,6 +44,8 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         BasicAttack.Initialize(this);
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
+        Range.Initialize();
+        Sweep.Initialize();
         _ammoBar = GetComponentInChildren<BarUI>();
         _ammoBar.RegisterStat(BasicAttack.Ammo);
     }

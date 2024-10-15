@@ -36,11 +36,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         RectTransform = GetComponent<RectTransform>();
     }
 
-    protected virtual void Start()
-    {
-        Render(true);
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         _background.color = new Color(0.9f, 0.9f, 0.9f);
@@ -114,5 +109,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         CardEffect.Initialize(this);
         CardEffect.OnDrawn();
+        Render(true);
     }
 }

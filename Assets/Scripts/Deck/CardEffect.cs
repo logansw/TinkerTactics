@@ -7,7 +7,7 @@ public abstract class CardEffect : MonoBehaviour
     public Sprite PreviewSprite;
     protected Card _parentCard;
 
-    public void Initialize(Card parentCard)
+    public virtual void Initialize(Card parentCard)
     {
         _parentCard = parentCard;
     }

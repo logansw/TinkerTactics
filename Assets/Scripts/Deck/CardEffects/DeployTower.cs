@@ -5,6 +5,13 @@ using UnityEngine;
 public class DeployTower : CardEffect
 {
     public Tower Tower;
+    public StatInt Cost;
+
+    public override void Initialize(Card parentCard)
+    {
+        base.Initialize(parentCard);
+        Cost.Initialize();
+    }
 
     public override TargetPreview GetTargetPreview()
     {
@@ -15,7 +22,7 @@ public class DeployTower : CardEffect
 
     public override int GetCost()
     {
-        return Tower.Cost;
+        return Cost.Current;
     }
 
     public override string GetName()

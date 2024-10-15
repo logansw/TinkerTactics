@@ -222,12 +222,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf2c547b0a3c4d7ea4184fd964b4e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 1
   Name: Scrap Tower
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
-  Range: 10
-  Sweep: 60
+  Range:
+    baseValue: 8
+  Sweep:
+    baseValue: 60
   Active: 0
   TooltipText: A weak tower
 --- !u!114 &3444448523574529121
@@ -247,16 +248,10 @@ MonoBehaviour:
   Damage: 1
   AttackSpeed:
     baseValue: 1
-    minValue: 0
-    maxValue: 10
   ReloadSpeed:
     baseValue: 0.5
-    minValue: 0
-    maxValue: 10
   Ammo:
     baseValue: 4
-    minValue: 0
-    maxValue: 100
   _projectilePrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
   _abilitySound: {fileID: 2697771512016779414}
   TooltipText: Deals a little bit of damage

@@ -18,15 +18,11 @@ public class RangeIndicator : MonoBehaviour
         _rangeIndicator = GetComponent<LineRenderer>();
         _collider = GetComponent<PolygonCollider2D>();
         _tower = tower;
-        DrawRangeIndicator();
-        DrawCollider();
+        _tower.Range.e_OnStatChanged += DrawRangeIndicator;
+        _tower.Sweep.e_OnStatChanged += DrawRangeIndicator;
+        _tower.Range.e_OnStatChanged += DrawCollider;
+        _tower.Sweep.e_OnStatChanged += DrawCollider;
         EnemiesInRange = new List<Enemy>();
-    }
-
-    void Update()
-    {
-        DrawRangeIndicator();
-        DrawCollider();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -102,13 +98,13 @@ public class RangeIndicator : MonoBehaviour
         Vector3[] points = new Vector3[arcPointCount + 2];
         // First Point
         points[0] = Vector2.zero;
-        float angle = _tower.Sweep * Mathf.PI / 180f;
+        float angle = _tower.Sweep.Current * Mathf.PI / 180f;
         float startAngle = -angle / 2f;
         float angleDelta = angle / (arcPointCount - 1);
         for (int i = 0; i < arcPointCount; i++)
         {
-            float x = _tower.Range * Mathf.Cos(startAngle + angleDelta * i);
-            float y = _tower.Range * Mathf.Sin(startAngle + angleDelta * i);
+            float x = _tower.Range.Current * Mathf.Cos(startAngle + angleDelta * i);
+            float y = _tower.Range.Current * Mathf.Sin(startAngle + angleDelta * i);
             points[i+1] = new Vector2(x, y);
         }
         // Last Point

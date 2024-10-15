@@ -512,12 +512,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9072abe19d7324f35a38555d9515a1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 2
+  Cost:
+    baseValue: 2
   Name: Archer
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
-  Range: 8
-  Sweep: 120
+  Range:
+    baseValue: 4
+  Sweep:
+    baseValue: 0
   Active: 0
   TooltipText: 
 --- !u!114 &-5726604151056873364
@@ -537,16 +540,10 @@ MonoBehaviour:
   Damage: 3
   AttackSpeed:
     baseValue: 2
-    minValue: 0
-    maxValue: 10
   ReloadSpeed:
     baseValue: 1
-    minValue: 0
-    maxValue: 10
   Ammo:
     baseValue: 20
-    minValue: 0
-    maxValue: 100
   _projectilePrefab: {fileID: 0}
   _abilitySound: {fileID: 0}
   TooltipText: 

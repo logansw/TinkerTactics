@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public abstract class StatBase<T> : ISerializationCallbackReceiver where T : struct
+public abstract class StatBase<T> where T : struct
 {
     [SerializeField] private T baseValue;
     public T Base { get => baseValue; }
@@ -35,14 +35,9 @@ public abstract class StatBase<T> : ISerializationCallbackReceiver where T : str
     public abstract void ModifyStat(T amount);
     public abstract T Clamp(T value, T min, T max);
     public abstract void SetBounds();
-    public void OnBeforeSerialize() { }
-    public void OnAfterDeserialize()
+    public virtual void Initialize()
     {
-        Initialize();
-    }
-    protected virtual void Initialize()
-    {
-        Current = baseValue;
         SetBounds();
+        Current = baseValue;
     }
 }
