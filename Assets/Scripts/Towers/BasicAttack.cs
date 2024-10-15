@@ -17,24 +17,7 @@ public class BasicAttack : MonoBehaviour
     public AudioSource _abilitySound;
     public string TooltipText;
     public float ProjectileSpeed;
-
-    public virtual void Attack()
-    {
-        Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
-        Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
-        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower);
-        projectile.Launch(target);
-        _abilitySound.Play();
-        AttackClock.Reset();
-        AmmoClock.Reset();
-        Ammo.Current -= 1;
-        _canAttack = false;
-    }
-
-    public string GetTooltipText()
-    {
-        return TooltipText;
-    }
+    private ModifierProcessor _modifierProcessor;
 
     public void Initialize(Tower tower)
     {
@@ -47,6 +30,25 @@ public class BasicAttack : MonoBehaviour
         AmmoClock = new InternalClock(1f / ReloadSpeed.Current);
         AttackClock.e_OnTimerDone += SetCanAttack;
         AmmoClock.e_OnTimerDone += ReloadAmmo;
+        _modifierProcessor = tower.ModifierProcessor;
+    }
+
+    public virtual void Attack()
+    {
+        Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
+        Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
+        projectile.Initialize(_modifierProcessor.CalculateDamage(Damage), ProjectileSpeed, Tower);
+        projectile.Launch(target);
+        _abilitySound.Play();
+        AttackClock.Reset();
+        AmmoClock.Reset();
+        Ammo.Current -= 1;
+        _canAttack = false;
+    }
+
+    public string GetTooltipText()
+    {
+        return TooltipText;
     }
 
     public bool CanActivate()

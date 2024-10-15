@@ -194,6 +194,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3444448523574529121}
+    - targetCorrespondingSourceObject: {fileID: 7581560088763616516, guid: 81de37c724d55470599728b857ef24cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2969699163075311064}
   m_SourcePrefab: {fileID: 100100000, guid: 81de37c724d55470599728b857ef24cc, type: 3}
 --- !u!82 &2697771512016779414 stripped
 AudioSource:
@@ -230,6 +233,7 @@ MonoBehaviour:
   Sweep:
     baseValue: 60
   Active: 0
+  ModifierProcessor: {fileID: 2969699163075311064}
 --- !u!114 &3444448523574529121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,3 +260,18 @@ MonoBehaviour:
   _abilitySound: {fileID: 2697771512016779414}
   TooltipText: Deals a little bit of damage
   ProjectileSpeed: 10
+--- !u!114 &2969699163075311064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122777355554228696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7f78ecf1d4f471bb958430191edfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Modifiers: []
+  TinkerCount: 0
+  WidgetCount: 0

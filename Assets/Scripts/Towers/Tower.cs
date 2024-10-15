@@ -31,6 +31,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public StatSweep Sweep;
     public bool Active;
     private BarUI _ammoBar;
+    public ModifierProcessor ModifierProcessor;
 
 
     public virtual string GetTooltipText()
@@ -38,7 +39,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine(Name);
-        sb.AppendLine($"Damage: {BasicAttack.Damage.Current}");
+        sb.AppendLine($"Damage: {ModifierProcessor.CalculateDamage(BasicAttack.Damage)}");
         sb.AppendLine($"Range: {Range.Current}");
         sb.AppendLine($"Sweep: {Sweep.Current}");
         sb.AppendLine($"Ammo: {BasicAttack.Ammo.Current}/{BasicAttack.Ammo.Base}");

@@ -40,4 +40,8 @@ public abstract class StatBase<T> where T : struct
         SetBounds();
         Current = baseValue;
     }
+    public void Reset()
+    {
+        Current = baseValue;
+    }
 }
