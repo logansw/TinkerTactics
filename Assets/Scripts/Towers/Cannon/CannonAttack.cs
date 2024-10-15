@@ -9,7 +9,7 @@ public class CannonAttack : BasicAttack
     {
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
         ProjectileExplosive bomb = Instantiate(_projectileExplosive, Tower.transform.position, Quaternion.identity);
-        bomb.Initialize(Damage, ProjectileSpeed, Tower);
+        bomb.Initialize(Damage.Current, ProjectileSpeed, Tower);
         bomb.SetExplosionRadius(ExplosionRadius);
         bomb.Launch(target);
         _abilitySound.Play();

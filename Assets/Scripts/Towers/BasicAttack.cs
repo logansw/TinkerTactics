@@ -6,7 +6,7 @@ public class BasicAttack : MonoBehaviour
 {
     [HideInInspector] public Tower Tower;
     public string Name;
-    public float Damage;
+    public StatDamage Damage;
     public InternalClock AttackClock;
     public InternalClock AmmoClock;
     public StatAttackSpeed AttackSpeed;
@@ -22,7 +22,7 @@ public class BasicAttack : MonoBehaviour
     {
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
         Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
-        projectile.Initialize(Damage, ProjectileSpeed, Tower);
+        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower);
         projectile.Launch(target);
         _abilitySound.Play();
         AttackClock.Reset();
@@ -40,6 +40,7 @@ public class BasicAttack : MonoBehaviour
     {
         AttackSpeed.Initialize();
         ReloadSpeed.Initialize();
+        Damage.Initialize();
         Ammo.Initialize();
         Tower = tower;
         AttackClock = new InternalClock(1f / AttackSpeed.Current);

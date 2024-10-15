@@ -230,7 +230,6 @@ MonoBehaviour:
   Sweep:
     baseValue: 60
   Active: 0
-  TooltipText: A weak tower
 --- !u!114 &3444448523574529121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tower: {fileID: 0}
   Name: Pew
-  Damage: 1
+  Damage:
+    baseValue: 2
   AttackSpeed:
     baseValue: 1
   ReloadSpeed:

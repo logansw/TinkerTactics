@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -29,13 +30,20 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public StatRange Range;
     public StatSweep Sweep;
     public bool Active;
-    public string TooltipText;
     private BarUI _ammoBar;
 
 
     public virtual string GetTooltipText()
     {
-        return TooltipText;
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine(Name);
+        sb.AppendLine($"Damage: {BasicAttack.Damage.Current}");
+        sb.AppendLine($"Range: {Range.Current}");
+        sb.AppendLine($"Sweep: {Sweep.Current}");
+        sb.AppendLine($"Ammo: {BasicAttack.Ammo.Current}/{BasicAttack.Ammo.Base}");
+
+        return sb.ToString();
     }
 
     protected virtual void Awake()
@@ -79,10 +87,14 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnSelect()
     {
+        TooltipManager.s_Instance.DisplayTooltip(GetTooltipText());
+        RangeIndicator.SetVisible(true);
     }
 
     public void OnDeselect()
     {
+        TooltipManager.s_Instance.HideTooltip();
+        RangeIndicator.SetVisible(false);
     }
 
     /// <summary>
@@ -140,7 +152,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnHover()
     {
-
+        
     }
 
     public void OnHeld()

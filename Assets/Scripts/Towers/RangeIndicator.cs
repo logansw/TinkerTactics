@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer)), RequireComponent(typeof(PolygonCollider2D))]
-public class RangeIndicator : MonoBehaviour
+public class RangeIndicator : MonoBehaviour, ISelectable
 {
     public List<Enemy> EnemiesInRange;
     private Tower _tower;
@@ -23,6 +23,23 @@ public class RangeIndicator : MonoBehaviour
         _tower.Range.e_OnStatChanged += DrawCollider;
         _tower.Sweep.e_OnStatChanged += DrawCollider;
         EnemiesInRange = new List<Enemy>();
+    }
+
+    public void OnSelect()
+    {
+        SetVisible(true);
+        TooltipManager.s_Instance.DisplayTooltip(_tower.GetTooltipText());
+    }
+
+    public void OnDeselect()
+    {
+        SetVisible(false);
+        TooltipManager.s_Instance.HideTooltip();
+    }
+
+    public void SetVisible(bool visible)
+    {
+        _rangeIndicator.enabled = visible;
     }
 
     void OnTriggerEnter2D(Collider2D other)

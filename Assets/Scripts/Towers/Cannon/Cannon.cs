@@ -9,9 +9,4 @@ public class Cannon : Tower
     {
         base.Update();
     }
-
-    public override string GetTooltipText()
-    {
-        return "Cannon";
-    }
 }
