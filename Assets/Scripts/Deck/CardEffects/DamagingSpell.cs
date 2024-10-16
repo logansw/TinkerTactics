@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DamagingSpell : CardEffect
 {
-    public string Name;
     public int Damage;
     public float Range;
     public StatAmmo Ammo;
@@ -13,8 +12,6 @@ public class DamagingSpell : CardEffect
     public override void Initialize(Card parentCard)
     {
         base.Initialize(parentCard);
-        Cost.Initialize();
-        Ammo.Initialize();
     }
 
     public override TargetPreview GetTargetPreview()
@@ -23,16 +20,6 @@ public class DamagingSpell : CardEffect
         preview.Initialize(PreviewSprite);
         preview.transform.localScale = new Vector3(Range, Range, 1);
         return preview;
-    }
-
-    public override int GetCost()
-    {
-        return Cost.Current;
-    }
-
-    public override string GetName()
-    {
-        return Name;
     }
 
     public override string GetDescription()
@@ -45,40 +32,10 @@ public class DamagingSpell : CardEffect
         return new FieldTargetingRule();
     }
 
-    public override bool CanPrepare()
-    {
-        if (Player.s_Instance.Energy >= GetCost())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public override bool CanCast(Vector3 targetPosition)
-    {
-        if (GetTargetingRules().ValidTarget(targetPosition))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     public override void Cast()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        List<Enemy> enemies = TargetCalculator.GetEnemiesInRange(mousePos, Range);
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.Health.TakeDamage(Damage);
-        }
+        ActivateEffect();
         Player.s_Instance.Energy -= GetCost();
-        Ammo.Current -= 1;
         if (Ammo.Current <= 0)
         {
             _parentCard.Discard();
@@ -88,6 +45,18 @@ public class DamagingSpell : CardEffect
             Cost.Current = 0;
             _parentCard.Render(true);
         }
+    }
+
+    public override void ActivateEffect()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        List<Enemy> enemies = TargetCalculator.GetEnemiesInRange(mousePos, Range);
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.Health.TakeDamage(Damage);
+        }
+        Player.s_Instance.Energy -= GetCost();
+        Ammo.Current -= 1;
     }
 
     public override void OnDrawn()

@@ -4,14 +4,20 @@ using UnityEngine;
 [Serializable]
 public abstract class StatBase<T> where T : struct
 {
+    private bool _initialized;
     [SerializeField] private T baseValue;
     public T Base { get => baseValue; }
     private T _current;
     public T Current
     {
-        get => _current;
+        get
+        {
+            TryInitialize();
+            return _current;
+        }
         set
         {
+            TryInitialize();
             _current = Clamp(value, _min, _max);
 
             e_OnStatChanged?.Invoke();
@@ -35,13 +41,19 @@ public abstract class StatBase<T> where T : struct
     public abstract void ModifyStat(T amount);
     public abstract T Clamp(T value, T min, T max);
     public abstract void SetBounds();
-    public virtual void Initialize()
+    protected virtual void Initialize()
     {
+        _initialized = true;
         SetBounds();
         Current = baseValue;
     }
     public void Reset()
     {
         Current = baseValue;
+    }
+
+    private void TryInitialize()
+    {
+        if (!_initialized) { Initialize(); }
     }
 }

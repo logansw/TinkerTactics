@@ -53,8 +53,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         BasicAttack.Initialize(this);
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
-        Range.Initialize();
-        Sweep.Initialize();
         _ammoBar = GetComponentInChildren<BarUI>();
         _ammoBar.RegisterStat(BasicAttack.Ammo);
     }

@@ -21,10 +21,6 @@ public class BasicAttack : MonoBehaviour
 
     public void Initialize(Tower tower)
     {
-        AttackSpeed.Initialize();
-        ReloadSpeed.Initialize();
-        Damage.Initialize();
-        Ammo.Initialize();
         Tower = tower;
         AttackClock = new InternalClock(1f / AttackSpeed.Current);
         AmmoClock = new InternalClock(1f / ReloadSpeed.Current);
