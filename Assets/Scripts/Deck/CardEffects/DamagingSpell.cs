@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DamagingSpell : CardEffect
 {
-    public StatInt Cost;
     public string Name;
     public int Damage;
     public float Range;
@@ -93,7 +92,7 @@ public class DamagingSpell : CardEffect
 
     public override void OnDrawn()
     {
-        Cost.Current = Cost.Base;
+        Cost.Reset();
         _parentCard.Render(true);
         Ammo.Current = Ammo.Base;
     }

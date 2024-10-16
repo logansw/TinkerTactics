@@ -6,6 +6,7 @@ public abstract class CardEffect : MonoBehaviour
 {
     public Sprite PreviewSprite;
     protected Card _parentCard;
+    public StatInt Cost;
 
     public virtual void Initialize(Card parentCard)
     {

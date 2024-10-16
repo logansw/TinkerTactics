@@ -5,7 +5,6 @@ using UnityEngine;
 public class DeployTower : CardEffect
 {
     public Tower Tower;
-    public StatInt Cost;
 
     public override void Initialize(Card parentCard)
     {

@@ -3408,13 +3408,10 @@ MonoBehaviour:
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
-  - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
-  - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
-  - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
-  - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
-  - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
+  - {fileID: 4810116602737779252, guid: dfc8cedd6bf8642278d68c8987f81bc6, type: 3}
+  - {fileID: 4810116602737779252, guid: dfc8cedd6bf8642278d68c8987f81bc6, type: 3}
   DrawPile: []
   Hand: []
   DiscardPile: []

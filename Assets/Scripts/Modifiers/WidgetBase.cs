@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WidgetBase : ModifierBase
 {
-    public override bool TryAddModifier(Tower recipient)
+    public override bool CanAddModifier(Tower recipient)
     {
         return true;
     }

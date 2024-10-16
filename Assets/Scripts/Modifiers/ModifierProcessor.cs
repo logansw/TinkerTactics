@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModifierProcessor : MonoBehaviour
 {
-    public List<ModifierBase> Modifiers = new List<ModifierBase>();
+    private List<ModifierBase> Modifiers = new List<ModifierBase>();
     public int TinkerCount;
     public int WidgetCount;
 
@@ -15,6 +15,11 @@ public class ModifierProcessor : MonoBehaviour
             Modifiers.Add(modifier);
             modifier.OnModifierAdded(recipient);
         }
+    }
+
+    public void AddModifier(ModifierBase modifier)
+    {
+        Modifiers.Add(modifier);
     }
 
     public float CalculateDamage(StatDamage damage)

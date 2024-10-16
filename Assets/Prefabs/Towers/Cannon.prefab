@@ -139,14 +139,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e517821ab6934a0aaeaaabd9252987a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 2
   Name: Cannon
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
-  Range: 10
-  Sweep: 60
+  Range:
+    baseValue: 0
+  Sweep:
+    baseValue: 0
   Active: 0
-  TooltipText: 
+  ModifierProcessor: {fileID: 0}
   ExplosionRadius: 2
 --- !u!114 &-7607588817295794750
 MonoBehaviour:
@@ -162,19 +163,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tower: {fileID: 0}
   Name: 
-  Damage: 5
+  Damage:
+    baseValue: 0
   AttackSpeed:
     baseValue: 0
-    minValue: 0
-    maxValue: 0
   ReloadSpeed:
     baseValue: 0
-    minValue: 0
-    maxValue: 0
   Ammo:
     baseValue: 0
-    minValue: 0
-    maxValue: 0
+  _projectilePrefab: {fileID: 0}
+  _abilitySound: {fileID: 0}
   TooltipText: 
   ProjectileSpeed: 10
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}

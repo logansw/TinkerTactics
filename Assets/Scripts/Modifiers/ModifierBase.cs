@@ -4,12 +4,19 @@ using UnityEngine;
 
 public abstract class ModifierBase : MonoBehaviour
 {
-    void Start()
+    public virtual bool TryAddModifier(Tower recipient)
     {
-        ModifierProcessor modifierProcessor = gameObject.GetComponent<ModifierProcessor>();
-        modifierProcessor.TryAddModifier(this, gameObject.GetComponent<Tower>());
+        if (CanAddModifier(recipient))
+        {
+            recipient.ModifierProcessor.AddModifier(this);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public abstract bool TryAddModifier(Tower recipient);
+    public abstract bool CanAddModifier(Tower recipient);
     public abstract void OnModifierAdded(Tower recipient);
     public virtual void ApplyDamageModifier(StatDamage stat) { }
     public virtual void ApplyRangeModifier(StatRange stat) { }

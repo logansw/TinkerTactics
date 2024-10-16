@@ -6,6 +6,7 @@ public class TileplotTargetingRule : TargetingRules
 {
     private bool TargetEmptyTilePlot;
     private bool TargetOccupiedTilePlot;
+    public TilePlot TargetTilePlot;
 
     public TileplotTargetingRule(bool targetEmptyTilePlot, bool targetOccupiedTilePlot)
     {
@@ -23,14 +24,17 @@ public class TileplotTargetingRule : TargetingRules
                 TilePlot targetPlot = hit.collider.GetComponent<TilePlot>();
                 if (TargetEmptyTilePlot && targetPlot.Towers.Count == 0)
                 {
+                    TargetTilePlot = targetPlot;
                     return true;
                 }
                 if (TargetOccupiedTilePlot && targetPlot.Towers.Count > 0)
                 {
+                    TargetTilePlot = targetPlot;
                     return true;
                 }
             }
         }
+        TargetTilePlot = null;
         return false;
     }
 }
