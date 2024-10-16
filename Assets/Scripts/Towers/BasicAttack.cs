@@ -8,7 +8,7 @@ public class BasicAttack : MonoBehaviour
     public string Name;
     public StatDamage Damage;
     public InternalClock AttackClock;
-    public InternalClock AmmoClock;
+    public InternalClock ReloadClock;
     public StatAttackSpeed AttackSpeed;
     public StatReloadSpeed ReloadSpeed;
     public StatAmmo Ammo;
@@ -23,10 +23,12 @@ public class BasicAttack : MonoBehaviour
     {
         Tower = tower;
         AttackClock = new InternalClock(1f / AttackSpeed.Current);
-        AmmoClock = new InternalClock(1f / ReloadSpeed.Current);
+        ReloadClock = new InternalClock(1f / ReloadSpeed.Current);
         AttackClock.e_OnTimerDone += SetCanAttack;
-        AmmoClock.e_OnTimerDone += ReloadAmmo;
+        ReloadClock.e_OnTimerDone += ReloadAmmo;
         _modifierProcessor = tower.ModifierProcessor;
+        AttackSpeed.e_OnStatChanged += SetClocks;
+        ReloadSpeed.e_OnStatChanged += SetClocks;
     }
 
     public virtual void Attack()
@@ -37,7 +39,7 @@ public class BasicAttack : MonoBehaviour
         projectile.Launch(target);
         _abilitySound.Play();
         AttackClock.Reset();
-        AmmoClock.Reset();
+        ReloadClock.Reset();
         Ammo.Current -= 1;
         _canAttack = false;
     }
@@ -63,5 +65,11 @@ public class BasicAttack : MonoBehaviour
         {
             Ammo.Current += 1;
         }
+    }
+
+    public void SetClocks()
+    {
+        AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
+        ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
     }
 }

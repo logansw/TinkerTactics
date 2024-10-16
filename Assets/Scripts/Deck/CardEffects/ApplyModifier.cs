@@ -17,7 +17,7 @@ public class ApplyModifier : CardEffect
 
     public override string GetDescription()
     {
-        return "Apply a modifier to a target";
+        return Modifier.GetDescription();
     }
 
     public override TargetingRules GetTargetingRules()

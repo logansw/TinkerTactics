@@ -19,6 +19,18 @@ public class BattleManager : Singleton<BattleManager>
         StateController.s_Instance.ChangeState(StateType.Idle);
         Time.timeScale = 5;
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Time.timeScale *= 2;
+            if (Time.timeScale > 8)
+            {
+                Time.timeScale = 1;
+            }
+        }
+    }
     
     public void Continue()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WidgetBase : ModifierBase
+public abstract class WidgetBase : ModifierBase
 {
     public override bool CanAddModifier(Tower recipient)
     {

@@ -31,4 +31,9 @@ public class InternalClock
             e_OnTimerDone?.Invoke();
         }
     }
+
+    public void SetTimeToWait(float timeToWait)
+    {
+        _timeToWait = timeToWait;
+    }
 }

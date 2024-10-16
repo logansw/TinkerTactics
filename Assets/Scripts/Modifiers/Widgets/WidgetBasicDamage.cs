@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class WidgetBasicDamage : WidgetBase
 {
+    public const int DAMAGE_MOD = 1;
+
     public override void ApplyDamageModifier(StatDamage damage)
     {
-        damage.Current += 1;
+        damage.Current += DAMAGE_MOD;
+    }
+
+    public override string GetDescription()
+    {
+        return $"Increase Tower Damage by {DAMAGE_MOD}";
     }
 }

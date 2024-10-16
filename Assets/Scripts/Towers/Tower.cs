@@ -43,6 +43,8 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         sb.AppendLine($"Range: {Range.Current}");
         sb.AppendLine($"Sweep: {Sweep.Current}");
         sb.AppendLine($"Ammo: {BasicAttack.Ammo.Current}/{BasicAttack.Ammo.Base}");
+        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.Current}");
+        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.Current}");
 
         return sb.ToString();
     }
