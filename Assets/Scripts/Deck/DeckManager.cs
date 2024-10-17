@@ -17,19 +17,10 @@ public class DeckManager : Singleton<DeckManager>
     [SerializeField] private RectTransform _cardPrefab;
     private DeckRenderer _deckRenderer;
 
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
+        base.Initialize();
         _deckRenderer = GetComponent<DeckRenderer>();
-    }
-    
-    void Start()
-    {
-        Initialize();
-    }
-
-    public void Initialize()
-    {
         InitializeDeck();
         DrawPile = new List<Card>();
         Hand = new List<Card>();

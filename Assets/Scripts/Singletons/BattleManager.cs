@@ -13,9 +13,10 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
-    
-    void Start()
+
+    public override void Initialize()
     {
+        base.Initialize();
         StateController.s_Instance.ChangeState(StateType.Idle);
         Time.timeScale = 5;
     }

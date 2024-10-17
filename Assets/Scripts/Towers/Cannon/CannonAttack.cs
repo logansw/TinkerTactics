@@ -15,7 +15,7 @@ public class CannonAttack : BasicAttack
         _abilitySound.Play();
         AttackClock.Reset();
         ReloadClock.Reset();
-        Ammo.Current -= 1;
+        CurrentAmmo.Current -= 1;
         _canAttack = false;
     }
 }

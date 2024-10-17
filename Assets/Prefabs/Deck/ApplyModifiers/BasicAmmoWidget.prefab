@@ -13,12 +13,8 @@ PrefabInstance:
       value: Ammo Widget
       objectReference: {fileID: 0}
     - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
-      propertyPath: Modifier
-      value: 
-      objectReference: {fileID: -5543224120270512126}
-    - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: Cost.baseValue
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: m_Name
@@ -107,25 +103,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -5543224120270512126}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
---- !u!1 &7611692905304949882 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
-  m_PrefabInstance: {fileID: 4678348581571243717}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-5543224120270512126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7611692905304949882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8249caadd102642afbca3df554ba760b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

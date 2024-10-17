@@ -6,7 +6,17 @@ public abstract class StatBase<T> where T : struct
 {
     private bool _initialized;
     [SerializeField] private T baseValue;
-    public T Base { get => baseValue; }
+    public T Base
+    {
+        get
+        {
+            return baseValue;
+        }
+        set
+        {
+            baseValue = value;
+        }
+    }
     private T _current;
     public T Current
     {
@@ -31,6 +41,20 @@ public abstract class StatBase<T> where T : struct
             }
         }
     }
+    private T _calculatedFinal;
+    public T CalculatedFinal
+    {
+        get
+        {
+            TryInitialize();
+            return _calculatedFinal;
+        }
+        set
+        {
+            TryInitialize();
+            _calculatedFinal = value;
+        }
+    }
     protected T _min;
     protected T _max;
 
@@ -46,6 +70,7 @@ public abstract class StatBase<T> where T : struct
         _initialized = true;
         SetBounds();
         Current = baseValue;
+        CalculatedFinal = Current;
     }
     public void Reset()
     {

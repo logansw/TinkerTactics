@@ -541,8 +541,10 @@ MonoBehaviour:
     baseValue: 2
   ReloadSpeed:
     baseValue: 1
-  Ammo:
-    baseValue: 20
+  MaxAmmo:
+    baseValue: 0
+  CurrentAmmo:
+    baseValue: 0
   _projectilePrefab: {fileID: 0}
   _abilitySound: {fileID: 0}
   TooltipText: 

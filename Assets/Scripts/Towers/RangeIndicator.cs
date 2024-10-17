@@ -23,6 +23,8 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         _tower.Range.e_OnStatChanged += DrawCollider;
         _tower.Sweep.e_OnStatChanged += DrawCollider;
         EnemiesInRange = new List<Enemy>();
+        DrawRangeIndicator();
+        DrawCollider();
     }
 
     public void OnSelect()
@@ -115,13 +117,13 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         Vector3[] points = new Vector3[arcPointCount + 2];
         // First Point
         points[0] = Vector2.zero;
-        float angle = _tower.Sweep.Current * Mathf.PI / 180f;
+        float angle = _tower.Sweep.CalculatedFinal * Mathf.PI / 180f;
         float startAngle = -angle / 2f;
         float angleDelta = angle / (arcPointCount - 1);
         for (int i = 0; i < arcPointCount; i++)
         {
-            float x = _tower.Range.Current * Mathf.Cos(startAngle + angleDelta * i);
-            float y = _tower.Range.Current * Mathf.Sin(startAngle + angleDelta * i);
+            float x = _tower.Range.CalculatedFinal * Mathf.Cos(startAngle + angleDelta * i);
+            float y = _tower.Range.CalculatedFinal * Mathf.Sin(startAngle + angleDelta * i);
             points[i+1] = new Vector2(x, y);
         }
         // Last Point

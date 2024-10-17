@@ -8,7 +8,7 @@ public abstract class ModifierBase : MonoBehaviour
     {
         if (CanAddModifier(recipient))
         {
-            recipient.ModifierProcessor.AddModifier(this);
+            recipient.ModifierProcessor.AddModifier(this, recipient);
             return true;
         }
         else

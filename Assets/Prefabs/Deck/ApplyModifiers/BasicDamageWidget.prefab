@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: Modifier
       value: 
-      objectReference: {fileID: -1208311772460475651}
+      objectReference: {fileID: 4896903447968369227}
     - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: Cost.baseValue
       value: 1
@@ -110,14 +110,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1208311772460475651}
+      addedObject: {fileID: 4896903447968369227}
   m_SourcePrefab: {fileID: 100100000, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
 --- !u!1 &65341838106373738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
   m_PrefabInstance: {fileID: 3001327472372122837}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1208311772460475651
+--- !u!114 &4896903447968369227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,6 +126,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 65341838106373738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea99e01cd4baf49cc836c92b4fa8acfa, type: 3}
+  m_Script: {fileID: 11500000, guid: d946faa22f9644038b5ed38a6ae9bf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageModFlat: 2
+  RangeModFlat: 0
+  SweepModFlat: 0
+  AmmoModFlat: 0
+  ReloadSpeedModMult: 0
+  AttackSpeedModMult: 0

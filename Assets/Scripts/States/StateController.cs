@@ -24,6 +24,7 @@ public class StateController : Singleton<StateController>
 
     void Update()
     {
+        if (!s_Initialized) { return; }
         GetState(CurrentState).UpdateState(this);
     }
 

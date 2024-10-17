@@ -39,12 +39,12 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine(Name);
-        sb.AppendLine($"Damage: {ModifierProcessor.CalculateDamage(BasicAttack.Damage)}");
-        sb.AppendLine($"Range: {Range.Current}");
-        sb.AppendLine($"Sweep: {Sweep.Current}");
-        sb.AppendLine($"Ammo: {BasicAttack.Ammo.Current}/{BasicAttack.Ammo.Base}");
-        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.Current}");
-        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.Current}");
+        sb.AppendLine($"Damage: {BasicAttack.Damage.CalculatedFinal}");
+        sb.AppendLine($"Range: {Range.CalculatedFinal}");
+        sb.AppendLine($"Sweep: {Sweep.CalculatedFinal}");
+        sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.CalculatedFinal}");
+        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.CalculatedFinal}");
+        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.CalculatedFinal}");
 
         return sb.ToString();
     }
@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
         _ammoBar = GetComponentInChildren<BarUI>();
-        _ammoBar.RegisterStat(BasicAttack.Ammo);
+        _ammoBar.RegisterStat(BasicAttack.CurrentAmmo);
     }
 
     void Start()
@@ -78,12 +78,12 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     protected virtual void OnEnable()
     {
-
+        ModifierProcessor.e_OnModifierAdded += RecalculateStats;
     }
 
     protected virtual void OnDisable()
     {
-
+        ModifierProcessor.e_OnModifierAdded -= RecalculateStats;
     }
 
     public void OnSelect()
@@ -159,5 +159,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public void OnHeld()
     {
         // Do nothing
+    }
+
+    private void RecalculateStats()
+    {
+        ModifierProcessor.CalculateRange(Range);
+        ModifierProcessor.CalculateSweep(Sweep);
     }
 }

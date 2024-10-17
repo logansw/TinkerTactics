@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BarUI : MonoBehaviour
@@ -17,9 +18,11 @@ public class BarUI : MonoBehaviour
     private SpriteRenderer _backgroundWorld;
     private Transform _fillWorld;
     [SerializeField] private GameObject _breakpointPrefab;
+    private List<GameObject> _breakpoints;
 
     void Awake()
     {
+        _breakpoints = new List<GameObject>();
         if (ShowText)
         {
             _statText = transform.Find("StatText").GetComponent<TMP_Text>();
@@ -48,7 +51,7 @@ public class BarUI : MonoBehaviour
     private IEnumerator DelayedInitialize()
     {
         yield return new WaitForEndOfFrame();
-        DrawBreakpoints();
+        // DrawBreakpoints();
         UpdateBar();
     }
 
@@ -69,8 +72,31 @@ public class BarUI : MonoBehaviour
         }
     }
 
+    public void UpdateBar(int current, int max)
+    {
+        float statPercentage = (float)current / max;
+        if (ShowText)
+        {
+            _statText.text = $"{current}/{max}";
+        }
+        if (IsScreenSpace)
+        {
+            _fillScreen.sizeDelta = new Vector2(_backgroundScreen.rect.width * statPercentage, _fillScreen.sizeDelta.y);
+        }
+        else
+        {
+            _fillWorld.localScale = new Vector3(statPercentage, 1, 1);
+        }
+    }
+
     private void DrawBreakpoints()
     {
+        for (int i = _breakpoints.Count - 1; i >= 0; i--)
+        {
+            Destroy(_breakpoints[i]);
+        }
+        _breakpoints.Clear();
+
         if (BreakpointSize == 0)
         {
             return;
@@ -90,6 +116,7 @@ public class BarUI : MonoBehaviour
                 GameObject breakpoint = Instantiate(_breakpointPrefab, transform);
                 float xPosition = -(barWidth / 2) + i * segmentSize;
                 breakpoint.transform.localPosition = new Vector3(xPosition, 0, 0);
+                _breakpoints.Add(breakpoint);
             }
         }
     }

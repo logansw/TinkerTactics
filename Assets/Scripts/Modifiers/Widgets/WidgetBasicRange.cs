@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WidgetBasicRange : WidgetBase
 {
-    public const int RANGE_MOD = 1;
+    public int RANGE_MOD;
     public override void ApplyRangeModifier(StatRange stat)
     {
         stat.Current += RANGE_MOD;

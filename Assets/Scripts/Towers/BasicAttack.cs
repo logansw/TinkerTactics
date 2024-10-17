@@ -11,7 +11,8 @@ public class BasicAttack : MonoBehaviour
     public InternalClock ReloadClock;
     public StatAttackSpeed AttackSpeed;
     public StatReloadSpeed ReloadSpeed;
-    public StatAmmo Ammo;
+    public StatAmmo MaxAmmo;
+    public StatInt CurrentAmmo;
     [SerializeField] private Projectile _projectilePrefab;
     protected bool _canAttack;
     public AudioSource _abilitySound;
@@ -22,13 +23,13 @@ public class BasicAttack : MonoBehaviour
     public void Initialize(Tower tower)
     {
         Tower = tower;
-        AttackClock = new InternalClock(1f / AttackSpeed.Current);
-        ReloadClock = new InternalClock(1f / ReloadSpeed.Current);
+        _modifierProcessor = tower.ModifierProcessor;
+        _modifierProcessor.e_OnModifierAdded += SetClocks;
+        AttackClock = new InternalClock(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed));
+        ReloadClock = new InternalClock(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed));
         AttackClock.e_OnTimerDone += SetCanAttack;
         ReloadClock.e_OnTimerDone += ReloadAmmo;
-        _modifierProcessor = tower.ModifierProcessor;
-        AttackSpeed.e_OnStatChanged += SetClocks;
-        ReloadSpeed.e_OnStatChanged += SetClocks;
+        _modifierProcessor.e_OnModifierAdded += CalculateBaseAmmo;
     }
 
     public virtual void Attack()
@@ -40,7 +41,7 @@ public class BasicAttack : MonoBehaviour
         _abilitySound.Play();
         AttackClock.Reset();
         ReloadClock.Reset();
-        Ammo.Current -= 1;
+        CurrentAmmo.Current -= 1;
         _canAttack = false;
     }
 
@@ -51,7 +52,7 @@ public class BasicAttack : MonoBehaviour
 
     public bool CanActivate()
     {
-        return _canAttack && Ammo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange;
+        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange;
     }
 
     private void SetCanAttack()
@@ -61,15 +62,21 @@ public class BasicAttack : MonoBehaviour
 
     private void ReloadAmmo()
     {
-        if (Ammo.Current < Ammo.Base)
+        if (CurrentAmmo.Current < MaxAmmo.CalculatedFinal)
         {
-            Ammo.Current += 1;
+            CurrentAmmo.Base = MaxAmmo.CalculatedFinal;
+            CurrentAmmo.Current += 1;
         }
+    }
+
+    private void CalculateBaseAmmo()
+    {
+        _modifierProcessor.CalculateMaxAmmo(MaxAmmo);
     }
 
     public void SetClocks()
     {
-        AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
-        ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
+        AttackClock.SetTimeToWait(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed));
+        ReloadClock.SetTimeToWait(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed));
     }
 }

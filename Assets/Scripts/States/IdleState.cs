@@ -17,7 +17,7 @@ public class IdleState : State
         {
             waveSpawner.Render(true);
         }
-        Player.s_Instance.Energy = 3;
+        Player.s_Instance.Energy = Player.MAX_ENERGY;
         DeckManager.s_Instance.DrawNewHand();
     }
 

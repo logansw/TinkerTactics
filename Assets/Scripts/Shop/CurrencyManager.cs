@@ -8,9 +8,9 @@ public class CurrencyManager : Singleton<CurrencyManager>
 {    
     public Currency YellowCurrency { get; private set; }
 
-    protected override void Awake()
+    public override void Initialize()
     {
-        base.Awake();
+        base.Initialize();
         YellowCurrency = new Currency("Yellow", 5);
     }
 
