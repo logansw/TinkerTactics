@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerBase : MonoBehaviour
+public abstract class TinkerBase : ModifierBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool CanAddModifier(Tower recipient)
     {
-        
+        return recipient.ModifierProcessor.TinkerCount < 3;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnModifierAdded(Tower recipient)
     {
-        
+        recipient.ModifierProcessor.TinkerCount++;
     }
 }

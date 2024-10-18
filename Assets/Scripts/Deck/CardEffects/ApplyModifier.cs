@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class ApplyModifier : CardEffect
 {
-    public ModifierBase Modifier;
+    private ModifierBase _modifier;
+    public ModifierBase Modifier
+    {
+        get
+        {
+            if (_modifier == null)
+            {
+                _modifier = gameObject.GetComponent<ModifierBase>();
+            }
+            return _modifier;
+        }
+        set
+        {
+            _modifier = value;
+        }
+    }
     private Tower _recipient;
     private TileplotTargetingRule _targetingRule;
 
