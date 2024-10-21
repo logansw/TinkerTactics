@@ -1,0 +1,58 @@
+name: Spinny2 CI/CD
+
+on:
+  push:
+    branches:
+      - spinny2_prod
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build my project ✨
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+
+      # Output
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: Build
+      #     path: build
+
+      # Set variables for version tagging
+      - name: Set release date
+        run: echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+      - name: Set short hash
+        run: echo "SHORT_HASH=$(git rev-parse --short HEAD)" >> ${GITHUB_ENV}
+
+      # Deploy
+      - name: Upload build to itch.io
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build
+          project: whaleshark-noises/tt-spinny2
+          channel: webgl
+          api-key: ${{ secrets.BUTLER_CREDENTIALS }}
+          version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
