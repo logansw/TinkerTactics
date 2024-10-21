@@ -5,7 +5,22 @@ using UnityEngine;
 
 public class ModifierProcessor : MonoBehaviour
 {
-    private List<ModifierBase> Modifiers = new List<ModifierBase>();
+    private List<ModifierBase> _modifiers;
+    private List<ModifierBase> Modifiers
+    {
+        get
+        {
+            if (_modifiers == null)
+            {
+                _modifiers = new List<ModifierBase>();
+            }
+            return _modifiers;
+        }
+        set
+        {
+            _modifiers = value;
+        }
+    }
     public int TinkerCount;
     public int WidgetCount;
     public Action e_OnModifierAdded;
