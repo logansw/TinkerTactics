@@ -1,4 +1,4 @@
-name: My CI/CD
+name: Spinny2 CI/CD
 
 on:
   push:
@@ -36,10 +36,10 @@ jobs:
           targetPlatform: WebGL
 
       # Output
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Build
-          path: build
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: Build
+      #     path: build
 
       # Set variables for version tagging
       - name: Set release date
@@ -52,7 +52,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build
-          project: whaleshark-noises/tinkertacticstest
+          project: whaleshark-noises/tt-spinny2
           channel: webgl
           api-key: ${{ secrets.BUTLER_CREDENTIALS }}
           version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
