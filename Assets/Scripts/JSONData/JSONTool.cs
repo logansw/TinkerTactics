@@ -12,15 +12,32 @@ public static class JSONTool
         writer.Write(json);
     }
 
-    public static T ReadData<T>(string fileName) where T : IJSONData<T>, new(){
-        if (!FileExists(fileName)) {
-            T tData = new T();
-            tData = tData.CreateNewFile();
-            JSONTool.WriteData(tData, fileName);
+    public static T ReadData<T>(string fileName) where T : IJSONData<T>, new() {
+        TextAsset textAsset = Resources.Load<TextAsset>(fileName);
+        T data;
+        if (textAsset != null)
+        {
+            data = JsonUtility.FromJson<T>(textAsset.text);
+            return data;
         }
-        using StreamReader reader = new StreamReader(Application.persistentDataPath + Path.AltDirectorySeparatorChar + fileName);
-        string json = reader.ReadToEnd();
-        T data = JsonUtility.FromJson<T>(json);
+        else
+        {
+            fileName = fileName + ".json";
+            if (!FileExists(fileName)) {
+                T tData = new T();
+                tData = tData.CreateNewFile();
+                WriteData(tData, fileName);
+            }
+            using StreamReader reader = new StreamReader(Application.persistentDataPath + Path.AltDirectorySeparatorChar + fileName);
+            string json = reader.ReadToEnd();
+            data = JsonUtility.FromJson<T>(json);
+            return data;
+        }
+
+    }
+
+    public static T TranslateRawToData<T>(string rawText) where T : IJSONData<T>, new() {
+        T data = JsonUtility.FromJson<T>(rawText);
         return data;
     }
 
