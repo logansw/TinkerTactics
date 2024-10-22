@@ -24,7 +24,7 @@ public class DamagingSpell : CardEffect
 
     public override string GetDescription()
     {
-        return "Damaging Spell";
+        return Description;
     }
 
     public override TargetingRules GetTargetingRules()

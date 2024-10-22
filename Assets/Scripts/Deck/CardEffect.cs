@@ -9,6 +9,7 @@ public abstract class CardEffect : MonoBehaviour
     public StatInt Cost;
     public string Name;
     public bool Consume;
+    public string Description;
 
     public virtual void Initialize(Card parentCard)
     {

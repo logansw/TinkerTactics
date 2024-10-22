@@ -27,10 +27,6 @@ public class DeckManager : Singleton<DeckManager>
         ConsumePile = new List<Card>();
         DiscardPile = new List<Card>();
         InitializeDrawPile();
-        Card firstCard = DrawPile[0];
-        firstCard.OnDrawn();
-        MoveCard(firstCard, DrawPile, Hand);
-        Shuffle(DrawPile);
         InitializeDatabase();
     }
 
@@ -113,17 +109,23 @@ public class DeckManager : Singleton<DeckManager>
 
     public void DrawNewHand()
     {
-        foreach (Card card in Hand)
+        if (BattleManager.s_Instance.TurnNumber == 0)
         {
-            DiscardPile.Add(card);
+            Card firstCard = DrawPile[0];
+            firstCard.OnDrawn();
+            MoveCard(firstCard, DrawPile, Hand);
+            Shuffle(DrawPile);
+            DrawCards(CARD_DRAW_COUNT - 1);
         }
-        Hand.Clear();
-        DrawCards(CARD_DRAW_COUNT);
-    }
-
-    public void DrawInitialHand()
-    {
-
+        else
+        {
+            foreach (Card card in Hand)
+            {
+                DiscardPile.Add(card);
+            }
+            Hand.Clear();
+            DrawCards(CARD_DRAW_COUNT);
+        }
     }
 
     public void DrawCards(int count)

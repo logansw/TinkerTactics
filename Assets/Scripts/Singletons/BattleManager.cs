@@ -13,13 +13,12 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
-    public int TurnNumber;
+    public int TurnNumber = 1;
 
     public override void Initialize()
     {
         base.Initialize();
         StateController.s_Instance.ChangeState(StateType.Idle);
-        TurnNumber = 1;
     }
 
     public void SetTimeScale(float timeScale)

@@ -40,6 +40,7 @@ public class TinkerGeneric : TinkerBase
         {
             sb.Append($"Increase Tower Attack Speed by {AttackSpeedModMult}x\n");
         }
+        sb.Append("(Card is consumed after use)");
         return sb.ToString();
     }
 
