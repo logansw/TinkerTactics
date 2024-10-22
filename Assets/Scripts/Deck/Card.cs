@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, ISelectable
 {
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
@@ -110,5 +110,17 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         CardEffect.Initialize(this);
         CardEffect.OnDrawn();
         Render(true);
+    }
+
+    // TODO: This is only here so that the camera panning works properly. This should be changed later. Currently, some systems interact with the mouse through the
+    // selectable interface, but others have their own ways of working. These should be unified. 
+    public void OnSelect()
+    {
+        // Do Nothing
+    }
+
+    public void OnDeselect()
+    {
+        // Do Nothing
     }
 }

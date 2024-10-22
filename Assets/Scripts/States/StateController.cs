@@ -40,7 +40,11 @@ public class StateController : Singleton<StateController>
         _previousState = CurrentState;
         CurrentState = stateType;
         GetState(CurrentState).OnEnter(this);
-        StateText.text = CurrentState.ToString();
+        #if UNITY_EDITOR
+            StateText.text = CurrentState.ToString();
+        #else
+            StateText.text = "";
+        #endif
     }
 
     public void ChangeToPreviousState() {
