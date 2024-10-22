@@ -10,7 +10,7 @@ public class Warlord : Enemy
 
     public void Start()
     {
-        int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Count);
+        int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Length);
         WaveSpawner.s_WaveSpawners[randomIndex].RegisterWarlord(this);
         Render(false);
         HealthbarUI.s_Instance.RegisterHealth(Health);
@@ -20,7 +20,7 @@ public class Warlord : Enemy
     {
         EndReached = true;
         BattleManager.s_Instance.DamagePlayer(EnemySO.Damage);
-        int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Count);
+        int randomIndex = UnityEngine.Random.Range(0, WaveSpawner.s_WaveSpawners.Length);
         e_OnWarlordEnd?.Invoke(this);
         WaveSpawner.s_WaveSpawners[randomIndex].RegisterWarlord(this);
         Render(false);

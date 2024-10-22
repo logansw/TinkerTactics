@@ -789,6 +789,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5170298092095927069, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
+      propertyPath: _waveSpawnerIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170298092095927069, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 8a13df0a4308542049ca95df60898a70, type: 2}
@@ -4944,6 +4948,14 @@ PrefabInstance:
     - target: {fileID: 738431381389631455, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170298092095927069, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
+      propertyPath: currentWaveIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170298092095927069, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
+      propertyPath: _waveSpawnerIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5407658275106120028, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
       propertyPath: m_Name
