@@ -45,6 +45,6 @@ public class SniperAbility : MonoBehaviour
 
     public bool CanActivate()
     {
-        return InternalClock >= Cooldown && _archer.RangeIndicator.HasEnemyInRange;
+        return InternalClock >= Cooldown && _archer.RangeIndicator.HasEnemyInRange();
     }
 }

@@ -25,6 +25,7 @@ public class Warlord : Enemy
         WaveSpawner.s_WaveSpawners[randomIndex].RegisterWarlord(this);
         Render(false);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
+        EffectTracker.AddEffect<EffectUntargetable>(1);
     }
 
     public void Respawn(WaveSpawner waveSpawner)
@@ -32,5 +33,6 @@ public class Warlord : Enemy
         Initialize(waveSpawner.SpawnPoint);
         EndReached = false;
         Render(true);
+        EffectTracker.ClearEffects();
     }
 }

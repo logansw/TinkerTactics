@@ -15,6 +15,10 @@ public static class TargetCalculator
             if (!enemy.gameObject.activeInHierarchy) { continue; }
             if (Vector3.Distance(position, enemy.transform.position) <= range)
             {
+                if (enemy.EffectTracker.HasEffect<EffectUntargetable>(out _))
+                {
+                    continue;
+                }
                 enemies.Add(enemy);
             }
         }
@@ -75,5 +79,18 @@ public static class TargetCalculator
         enemies.Sort((enemy1, enemy2) => 
             enemy1.Health.CurrentHealth.CompareTo(enemy2.Health.CurrentHealth));
         return enemies;
+    }
+
+    public static List<Enemy> GetTargetable(List<Enemy> enemies)
+    {
+        List<Enemy> targetableEnemies = new List<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            if (!enemy.EffectTracker.HasEffect<EffectUntargetable>(out _))
+            {
+                targetableEnemies.Add(enemy);
+            }
+        }
+        return targetableEnemies;
     }
 }

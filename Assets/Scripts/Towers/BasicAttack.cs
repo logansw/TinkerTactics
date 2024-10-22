@@ -52,7 +52,7 @@ public class BasicAttack : MonoBehaviour
 
     public bool CanActivate()
     {
-        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange;
+        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange();
     }
 
     private void SetCanAttack()

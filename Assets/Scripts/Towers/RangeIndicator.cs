@@ -11,7 +11,6 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private PolygonCollider2D _collider;
     private bool _isDragging;
     private float _initialAngleOffset;
-    public bool HasEnemyInRange => EnemiesInRange.Count > 0;
 
     public void Initialize(Tower tower)
     {
@@ -133,6 +132,12 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     public List<Enemy> GetEnemiesInRange()
     {
-        return TargetCalculator.GetClosest(EnemiesInRange, _tower);
+        List<Enemy> enemiesInRange = TargetCalculator.GetClosest(EnemiesInRange, _tower);
+        return TargetCalculator.GetTargetable(enemiesInRange);
+    }
+
+    public bool HasEnemyInRange()
+    {
+        return GetEnemiesInRange().Count > 0;
     }
 }

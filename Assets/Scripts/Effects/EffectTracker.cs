@@ -68,4 +68,15 @@ public class EffectTracker : MonoBehaviour
         _effectRenderer.RenderEffects();
         e_OnEffectsChanged?.Invoke();
     }
+
+    public void ClearEffects()
+    {
+        foreach (Effect effect in EffectsApplied)
+        {
+            Destroy(effect);
+        }
+        EffectsApplied.Clear();
+        _effectRenderer.RenderEffects();
+        e_OnEffectsChanged?.Invoke();
+    }
 }
