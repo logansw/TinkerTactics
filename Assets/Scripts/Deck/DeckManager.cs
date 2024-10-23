@@ -16,6 +16,7 @@ public class DeckManager : Singleton<DeckManager>
     public List<Card> Database;
     [SerializeField] private RectTransform _cardPrefab;
     private DeckRenderer _deckRenderer;
+    private bool _initialDraw = true;
 
     public override void Initialize()
     {
@@ -109,8 +110,9 @@ public class DeckManager : Singleton<DeckManager>
 
     public void DrawNewHand()
     {
-        if (BattleManager.s_Instance.TurnNumber == 0)
+        if (_initialDraw)
         {
+            _initialDraw = false;
             Card firstCard = DrawPile[0];
             firstCard.OnDrawn();
             MoveCard(firstCard, DrawPile, Hand);

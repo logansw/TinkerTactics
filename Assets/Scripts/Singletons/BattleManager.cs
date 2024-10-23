@@ -13,7 +13,6 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
-    public int TurnNumber = 1;
 
     public override void Initialize()
     {
@@ -49,7 +48,6 @@ public class BattleManager : Singleton<BattleManager>
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
         _button.text = "Continue";
-        TurnNumber++;
     }
 
     public void DamagePlayer(int damage = 1)
