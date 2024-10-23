@@ -521,6 +521,7 @@ MonoBehaviour:
     baseValue: 0
   Active: 0
   ModifierProcessor: {fileID: 0}
+  TinkerLimit: 0
 --- !u!114 &-5726604151056873364
 MonoBehaviour:
   m_ObjectHideFlags: 0

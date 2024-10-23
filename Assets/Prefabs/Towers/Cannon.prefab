@@ -148,6 +148,7 @@ MonoBehaviour:
     baseValue: 0
   Active: 0
   ModifierProcessor: {fileID: 0}
+  TinkerLimit: 0
   ExplosionRadius: 2
 --- !u!114 &-7607588817295794750
 MonoBehaviour:
@@ -169,7 +170,9 @@ MonoBehaviour:
     baseValue: 0
   ReloadSpeed:
     baseValue: 0
-  Ammo:
+  MaxAmmo:
+    baseValue: 0
+  CurrentAmmo:
     baseValue: 0
   _projectilePrefab: {fileID: 0}
   _abilitySound: {fileID: 0}

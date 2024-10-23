@@ -17,27 +17,27 @@ public class WidgetGeneric : WidgetBase
         StringBuilder sb = new StringBuilder();
         if (DamageModFlat != 0)
         {
-            sb.Append($"Increase Tower Damage by {DamageModFlat}\n");
+            sb.Append($"+{DamageModFlat} Damage\n");
         }
         if (RangeModFlat != 0)
         {
-            sb.Append($"Increase Tower Range by {RangeModFlat}\n");
+            sb.Append($"+{RangeModFlat} Range\n");
         }
         if (SweepModFlat != 0)
         {
-            sb.Append($"Increase Tower Sweep by {SweepModFlat} degrees\n");
+            sb.Append($"+{SweepModFlat} Sweep\n");
         }
         if (AmmoModFlat != 0)
         {
-            sb.Append($"Increase Tower Ammo by {AmmoModFlat}\n");
+            sb.Append($"+{AmmoModFlat} Ammo\n");
         }
         if (ReloadSpeedModMult != 0)
         {
-            sb.Append($"Increase Tower Reload Speed by {ReloadSpeedModMult}x\n");
+            sb.Append($"Reload Speed x{ReloadSpeedModMult}\n");
         }
         if (AttackSpeedModMult != 0)
         {
-            sb.Append($"Increase Tower Attack Speed by {AttackSpeedModMult}x\n");
+            sb.Append($"Attack Speed x{AttackSpeedModMult}\n");
         }
         return sb.ToString();
     }

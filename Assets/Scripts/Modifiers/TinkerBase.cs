@@ -6,7 +6,7 @@ public abstract class TinkerBase : ModifierBase
 {
     public override bool CanAddModifier(Tower recipient)
     {
-        return recipient.ModifierProcessor.TinkerCount < 3;
+        return recipient.ModifierProcessor.TinkerCount < recipient.TinkerLimit;
     }
 
     public override void OnModifierAdded(Tower recipient)
