@@ -43,6 +43,6 @@ public class CannonAbility : MonoBehaviour
 
     public bool CanActivate()
     {
-        return InternalClock >= Cooldown && _cannon.RangeIndicator.HasEnemyInRange;
+        return InternalClock >= Cooldown && _cannon.RangeIndicator.HasEnemyInRange();
     }
 }

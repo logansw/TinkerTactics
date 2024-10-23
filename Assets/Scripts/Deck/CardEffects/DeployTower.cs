@@ -25,7 +25,7 @@ public class DeployTower : CardEffect
 
     public override string GetDescription()
     {
-        return "Tower description here";
+        return Description;
     }
 
     public override TargetingRules GetTargetingRules()

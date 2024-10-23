@@ -7,7 +7,8 @@ using UnityEngine.Rendering;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public static List<WaveSpawner> s_WaveSpawners = new List<WaveSpawner>();    
+    public static WaveSpawner[] s_WaveSpawners = new WaveSpawner[2];
+    [SerializeField] private int _waveSpawnerIndex;
     public bool FinishedSpawning = false;
     public WaveSO[] waves;
     public int currentWaveIndex;
@@ -20,7 +21,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Awake()
     {
-        s_WaveSpawners.Add(this);
+        s_WaveSpawners[_waveSpawnerIndex] = this;
         _placeholderArt = GetComponent<PlaceholderArt>();
     }
 

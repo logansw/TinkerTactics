@@ -18,19 +18,11 @@ public class BattleManager : Singleton<BattleManager>
     {
         base.Initialize();
         StateController.s_Instance.ChangeState(StateType.Idle);
-        Time.timeScale = 5;
     }
 
-    public void Update()
+    public void SetTimeScale(float timeScale)
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Time.timeScale *= 2;
-            if (Time.timeScale > 8)
-            {
-                Time.timeScale = 1;
-            }
-        }
+        Time.timeScale = timeScale;
     }
     
     public void Continue()

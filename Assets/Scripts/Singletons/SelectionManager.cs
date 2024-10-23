@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SelectionManager : Singleton<SelectionManager>
 {
+    private bool _isSelecting;
+    public bool IsSelecting
+    {
+        get { return _currentSelectable != null; }
+        set { _isSelecting = value;}
+    }
     private ISelectable _currentSelectable;
 
     void Update()

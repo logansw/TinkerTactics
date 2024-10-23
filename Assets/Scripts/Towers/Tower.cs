@@ -32,6 +32,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public bool Active;
     private BarUI _ammoBar;
     public ModifierProcessor ModifierProcessor;
+    public int TinkerLimit;
 
 
     public virtual string GetTooltipText()
@@ -45,7 +46,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.CalculatedFinal}");
         sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.CalculatedFinal}");
         sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.CalculatedFinal}");
-        sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/3");
+        sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
 
         return sb.ToString();
     }

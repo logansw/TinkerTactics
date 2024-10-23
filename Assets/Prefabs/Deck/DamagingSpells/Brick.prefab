@@ -102,15 +102,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Range
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Damage
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Consume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Description
+      value: Deal 10 damage to enemies in a small area
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Ammo.baseValue
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Cost.baseValue

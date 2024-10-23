@@ -18,7 +18,7 @@ public class BasicAttack : MonoBehaviour
     public AudioSource _abilitySound;
     public string TooltipText;
     public float ProjectileSpeed;
-    private ModifierProcessor _modifierProcessor;
+    protected ModifierProcessor _modifierProcessor;
 
     public void Initialize(Tower tower)
     {
@@ -40,7 +40,6 @@ public class BasicAttack : MonoBehaviour
         projectile.Launch(target);
         _abilitySound.Play();
         AttackClock.Reset();
-        ReloadClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;
     }
@@ -52,7 +51,7 @@ public class BasicAttack : MonoBehaviour
 
     public bool CanActivate()
     {
-        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange;
+        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange();
     }
 
     private void SetCanAttack()
@@ -66,6 +65,7 @@ public class BasicAttack : MonoBehaviour
         {
             CurrentAmmo.Base = MaxAmmo.CalculatedFinal;
             CurrentAmmo.Current += 1;
+            ReloadClock.Reset();
         }
     }
 

@@ -22,7 +22,7 @@ public class ProjectileExplosive : Projectile
         foreach (Collider2D collider in colliders)
         {
             Enemy enemy = collider.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && enemy != _target)
             {
                 enemy.OnImpact(Damage);
             }

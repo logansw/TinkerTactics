@@ -16,6 +16,7 @@ public class DeckManager : Singleton<DeckManager>
     public List<Card> Database;
     [SerializeField] private RectTransform _cardPrefab;
     private DeckRenderer _deckRenderer;
+    private bool _initialDraw = true;
 
     public override void Initialize()
     {
@@ -87,7 +88,6 @@ public class DeckManager : Singleton<DeckManager>
         {
             DrawPile.Add(card);
         }
-        Shuffle(DrawPile);
         Deck.Clear();
     }
 
@@ -110,12 +110,24 @@ public class DeckManager : Singleton<DeckManager>
 
     public void DrawNewHand()
     {
-        foreach (Card card in Hand)
+        if (_initialDraw)
         {
-            DiscardPile.Add(card);
+            _initialDraw = false;
+            Card firstCard = DrawPile[0];
+            firstCard.OnDrawn();
+            MoveCard(firstCard, DrawPile, Hand);
+            Shuffle(DrawPile);
+            DrawCards(CARD_DRAW_COUNT - 1);
         }
-        Hand.Clear();
-        DrawCards(CARD_DRAW_COUNT);
+        else
+        {
+            foreach (Card card in Hand)
+            {
+                DiscardPile.Add(card);
+            }
+            Hand.Clear();
+            DrawCards(CARD_DRAW_COUNT);
+        }
     }
 
     public void DrawCards(int count)
