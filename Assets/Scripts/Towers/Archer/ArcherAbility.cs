@@ -12,8 +12,6 @@ public class ArcherAbility : MonoBehaviour
     [SerializeField] private ProjectileArrow _projectileArrow;
     public float ProjectileSpeed;
     public int ArrowCount;
-    [SerializeField] private AudioSource _abilitySound;
-    [SerializeField] private AudioSource _powerupSound;
 
     public void Initialize()
     {
@@ -28,7 +26,6 @@ public class ArcherAbility : MonoBehaviour
 
     public void Activate()
     {
-        _powerupSound.Play();
         StartCoroutine(Volley());
         ArrowCount += 3;
         InternalClock = 0;
@@ -46,7 +43,6 @@ public class ArcherAbility : MonoBehaviour
             ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
             arrow.Initialize(Damage, ProjectileSpeed, _archer);
             arrow.Launch(target);
-            _abilitySound.Play();
             yield return new WaitForSeconds(0.1f);
         }
     }

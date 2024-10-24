@@ -20,8 +20,6 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-    [SerializeField] private AudioSource _deathSound;
-    [SerializeField] private AudioSource _spawnSound;
     [SerializeField] private Collider2D _collider;
     public bool EndReached;
 
@@ -41,7 +39,6 @@ public class Enemy : MonoBehaviour
     public void Initialize(TilePath spawnPoint)
     {
         EnemyManager.s_Instance.AddEnemy(this);
-        _spawnSound.Play();
         transform.position = spawnPoint.transform.position;
         TileTarget = spawnPoint;
     }
@@ -77,7 +74,6 @@ public class Enemy : MonoBehaviour
         e_OnEnemyDeath?.Invoke(this);
         _collider.enabled = false;
         Destroy(gameObject, 1f);
-        _deathSound.Play();
         Render(false);
     }
 

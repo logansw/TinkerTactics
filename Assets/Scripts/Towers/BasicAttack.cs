@@ -15,7 +15,6 @@ public class BasicAttack : MonoBehaviour
     public StatInt CurrentAmmo;
     [SerializeField] private Projectile _projectilePrefab;
     protected bool _canAttack;
-    public AudioSource _abilitySound;
     public string TooltipText;
     public float ProjectileSpeed;
     protected ModifierProcessor _modifierProcessor;
@@ -38,7 +37,6 @@ public class BasicAttack : MonoBehaviour
         Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
         projectile.Initialize(_modifierProcessor.CalculateDamage(Damage), ProjectileSpeed, Tower);
         projectile.Launch(target);
-        _abilitySound.Play();
         AttackClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;

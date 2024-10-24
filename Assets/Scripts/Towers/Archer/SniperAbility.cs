@@ -10,7 +10,6 @@ public class SniperAbility : MonoBehaviour
     public float Damage;
     [SerializeField] private ProjectilePierce _projectilePierce;
     public float ProjectileSpeed;
-    [SerializeField] private AudioSource _abilitySound;
 
     public void Initialize()
     {
@@ -33,7 +32,6 @@ public class SniperAbility : MonoBehaviour
         piercingArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
         piercingArrow.Initialize(Damage, ProjectileSpeed, _archer);
         piercingArrow.Launch(target);
-        _abilitySound.Play();
 
         InternalClock = 0;
     }
