@@ -64,4 +64,20 @@ public class ApplyModifier : CardEffect
         Cost.Reset();
         _parentCard.Render(true);
     }
+
+    public override string GetCardType()
+    {
+        if (Modifier is WidgetBase)
+        {
+            return "WIDGET";
+        }
+        else if (Modifier is TinkerBase)
+        {
+            return "TINKER";
+        }
+        else
+        {
+            return "MODIFIER";
+        }
+    }
 }

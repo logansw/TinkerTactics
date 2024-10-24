@@ -7,10 +7,13 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, ISelectable
 {
+    public const int CARD_WIDTH = 150;
+    public const int CARD_HEIGHT = 225;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
     [SerializeField] private TMP_Text _cost;
     [SerializeField] private Image _background;
+    [SerializeField] private TMP_Text _cardType;
     private CardEffect _cardEffect;
     public CardEffect CardEffect
     {
@@ -30,20 +33,25 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public RectTransform RectTransform;
     private bool _isDragging;
     private TargetPreview _targetPreview;
+    public int OriginalSiblingIndex;
 
     void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
+        RectTransform.sizeDelta = new Vector2(CARD_WIDTH, CARD_HEIGHT);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _background.color = new Color(0.9f, 0.9f, 0.9f);
+        transform.SetAsLastSibling();
+        transform.position = new Vector2(transform.position.x, transform.position.y + (RectTransform.rect.width / 4f));
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _background.color = Color.white;
+        transform.position = new Vector2(transform.position.x, transform.position.y - (RectTransform.rect.width / 4f));
+        transform.SetSiblingIndex(OriginalSiblingIndex);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -93,6 +101,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _name.text = CardEffect.GetName();
         _description.text = CardEffect.GetDescription();
         _cost.text = CardEffect.GetCost().ToString();
+        _cardType.text = CardEffect.GetCardType();
     }
 
     public void Discard()

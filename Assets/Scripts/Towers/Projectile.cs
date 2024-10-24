@@ -39,14 +39,15 @@ public abstract class Projectile : MonoBehaviour
             _targetPosition = _target.gameObject.transform.position;
         }
         Vector2 differenceVector = _targetPosition - transform.position;
-        if (differenceVector.magnitude < 0.1f)
+        float deltaPosition = Time.deltaTime * ProjectileSpeed;
+        if (differenceVector.magnitude < deltaPosition)
         {
             OnImpact();
             _arrived = true;
             return;
         }
         Vector2 direction = differenceVector.normalized;
-        transform.Translate(direction * Time.deltaTime * ProjectileSpeed);
+        transform.Translate(direction * deltaPosition);
     }
 
     public virtual void OnImpact()

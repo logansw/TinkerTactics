@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_LocalPosition.x
@@ -121,6 +121,8 @@ MonoBehaviour:
   Cost:
     baseValue: 0
   Name: 
+  Consume: 0
+  Description: 
   Damage: 0
   Range: 0
   Ammo:

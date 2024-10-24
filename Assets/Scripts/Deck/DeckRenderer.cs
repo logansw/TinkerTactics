@@ -27,6 +27,7 @@ public class DeckRenderer : MonoBehaviour
     public void RenderHand(List<Card> hand)
     {
         float cardPositionOffset = 0;
+        float offset = _handTransform.rect.width / hand.Count;
         foreach (Card card in hand)
         {
             card.gameObject.SetActive(true);
@@ -35,7 +36,8 @@ public class DeckRenderer : MonoBehaviour
             card.RectTransform.anchorMax = new Vector2(0, 0.5f);
             card.RectTransform.pivot = new Vector2(0, 0.5f);
             card.RectTransform.anchoredPosition = new Vector2(cardPositionOffset, 0);
-            cardPositionOffset += card.RectTransform.rect.width + 10;
+            cardPositionOffset += offset;
+            card.OriginalSiblingIndex = card.transform.GetSiblingIndex();
         }
     }
 

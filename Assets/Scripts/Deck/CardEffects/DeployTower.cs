@@ -42,4 +42,9 @@ public class DeployTower : CardEffect
     {
         // Do nothing
     }
+
+    public override string GetCardType()
+    {
+        return "TOWER";
+    }
 }

@@ -61,4 +61,5 @@ public abstract class CardEffect : MonoBehaviour
     {
         return Consume;
     }
+    public abstract string GetCardType();
 }
