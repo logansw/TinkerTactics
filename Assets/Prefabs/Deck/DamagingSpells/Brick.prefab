@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Name
-      value: Brick
+      value: Pocket Firecracker
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Range

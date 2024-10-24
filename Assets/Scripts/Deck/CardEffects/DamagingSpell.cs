@@ -65,4 +65,9 @@ public class DamagingSpell : CardEffect
         _parentCard.Render(true);
         Ammo.Current = Ammo.Base;
     }
+
+    public override string GetCardType()
+    {
+        return "SPELL";
+    }
 }

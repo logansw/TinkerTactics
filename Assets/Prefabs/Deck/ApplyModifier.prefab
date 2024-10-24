@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_LocalPosition.x
@@ -120,4 +120,6 @@ MonoBehaviour:
   PreviewSprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
   Cost:
     baseValue: 0
-  Modifier: {fileID: 0}
+  Name: 
+  Consume: 0
+  Description: 
