@@ -52,6 +52,7 @@ public abstract class StatBase<T> where T : struct
         set
         {
             TryInitialize();
+            e_OnStatChanged?.Invoke();            
             _calculatedFinal = value;
         }
     }

@@ -11,19 +11,28 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private PolygonCollider2D _collider;
     private bool _isDragging;
     private float _initialAngleOffset;
+    private bool _updateQueued;
 
     public void Initialize(Tower tower)
     {
         _rangeIndicator = GetComponent<LineRenderer>();
         _collider = GetComponent<PolygonCollider2D>();
         _tower = tower;
-        _tower.Range.e_OnStatChanged += DrawRangeIndicator;
-        _tower.Sweep.e_OnStatChanged += DrawRangeIndicator;
-        _tower.Range.e_OnStatChanged += DrawCollider;
-        _tower.Sweep.e_OnStatChanged += DrawCollider;
+        _tower.Range.e_OnStatChanged += QueueUpdate;
+        _tower.Sweep.e_OnStatChanged += QueueUpdate;
         EnemiesInRange = new List<Enemy>();
         DrawRangeIndicator();
         DrawCollider();
+    }
+
+    void Update()
+    {
+        if (_updateQueued)
+        {
+            DrawRangeIndicator();
+            DrawCollider();
+            _updateQueued = false;
+        }    
     }
 
     public void OnSelect()
@@ -139,5 +148,10 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     public bool HasEnemyInRange()
     {
         return GetEnemiesInRange().Count > 0;
+    }
+
+    private void QueueUpdate()
+    {
+        _updateQueued = true;
     }
 }

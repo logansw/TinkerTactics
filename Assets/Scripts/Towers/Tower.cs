@@ -167,5 +167,9 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         ModifierProcessor.CalculateRange(Range);
         ModifierProcessor.CalculateSweep(Sweep);
+        ModifierProcessor.CalculateDamage(BasicAttack.Damage);
+        ModifierProcessor.CalculateMaxAmmo(BasicAttack.MaxAmmo);
+        ModifierProcessor.CalculateAttackSpeed(BasicAttack.AttackSpeed);
+        ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
     }
 }
