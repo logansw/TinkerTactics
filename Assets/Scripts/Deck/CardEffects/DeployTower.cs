@@ -47,4 +47,9 @@ public class DeployTower : CardEffect
     {
         return "TOWER";
     }
+
+    public override Color GetColor()
+    {
+        return new Color(1f, 0.8906723f, 0.4858491f, 1f);
+    }
 }

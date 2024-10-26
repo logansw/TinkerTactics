@@ -70,4 +70,9 @@ public class DamagingSpell : CardEffect
     {
         return "SPELL";
     }
+
+    public override Color GetColor()
+    {
+        return new Color(1f, 0.4862745f, 0.5677084f, 1f);
+    }
 }

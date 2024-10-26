@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1146750392838252932
+--- !u!1001 &1671210152818438500
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,26 +11,22 @@ PrefabInstance:
     - target: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: EnemySO
       value: 
-      objectReference: {fileID: 11400000, guid: 13991449fd0dd44ac8f32f0faf92a495, type: 2}
+      objectReference: {fileID: 11400000, guid: bf196c4435ee14c2699644ba44f9361d, type: 2}
     - target: {fileID: 732624412162309185, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Name
-      value: Slime Orange
+      value: Fast Bot
       objectReference: {fileID: 0}
     - target: {fileID: 2709231604010494696, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: UnitSO
       value: 
-      objectReference: {fileID: 11400000, guid: f2c4c3401b3a4419ba2239ffc8a4b216, type: 2}
-    - target: {fileID: 2709231604010494696, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
-      propertyPath: GoldValue
-      value: 10
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 803ab8c696240468e94b963a70f5d2bd, type: 2}
     - target: {fileID: 3620811638928851442, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.89
+      value: -8.43
       objectReference: {fileID: 0}
     - target: {fileID: 3620811638928851442, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4
+      value: 1.3734648
       objectReference: {fileID: 0}
     - target: {fileID: 3620811638928851442, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66,37 +62,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025604771536335966, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: _color.b
-      value: 0.17412782
+      value: 0.7970686
       objectReference: {fileID: 0}
     - target: {fileID: 5025604771536335966, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: _color.g
-      value: 0.6022184
+      value: 0.5518868
       objectReference: {fileID: 0}
     - target: {fileID: 5025604771536335966, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: _color.r
-      value: 0.8584906
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7613097520309272142, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: EnemySO
       value: 
-      objectReference: {fileID: 11400000, guid: 13991449fd0dd44ac8f32f0faf92a495, type: 2}
+      objectReference: {fileID: 11400000, guid: bf196c4435ee14c2699644ba44f9361d, type: 2}
     - target: {fileID: 8463952410731778258, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Color.b
-      value: 0.17412782
+      value: 0.7970686
       objectReference: {fileID: 0}
     - target: {fileID: 8463952410731778258, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Color.g
-      value: 0.6022184
+      value: 0.5518868
       objectReference: {fileID: 0}
     - target: {fileID: 8463952410731778258, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: m_Color.r
-      value: 0.8584906
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8968760711258328685, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
       propertyPath: UnitSO
       value: 
-      objectReference: {fileID: 11400000, guid: f2c4c3401b3a4419ba2239ffc8a4b216, type: 2}
-    m_RemovedComponents: []
+      objectReference: {fileID: 11400000, guid: 803ab8c696240468e94b963a70f5d2bd, type: 2}
+    m_RemovedComponents:
+    - {fileID: 7613097520309272142, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

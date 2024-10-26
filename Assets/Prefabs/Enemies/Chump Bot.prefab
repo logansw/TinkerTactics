@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504792322831159299, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Color.b
-      value: 0.83137256
+      value: 0.55092734
       objectReference: {fileID: 0}
     - target: {fileID: 1504792322831159299, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 1504792322831159299, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Color.r
-      value: 0.6328792
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2152886801086598844, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: UnitSO
@@ -42,19 +42,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _name
-      value: "\U0001F47F"
+      value: "\U0001F916"
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _color.b
-      value: 0.83137256
+      value: 0.55092734
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _color.g
-      value: 0
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _color.r
-      value: 0.6328792
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4904130481620134457, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: UnitSO
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6591230026136968899, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_text
-      value: "\U0001F47F"
+      value: "\U0001F916"
       objectReference: {fileID: 0}
     - target: {fileID: 7259172787460783383, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_IsActive
@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Name
-      value: Warlord
+      value: Chump Bot
       objectReference: {fileID: 0}
     - target: {fileID: 8353575784761169880, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_IsActive
@@ -127,6 +127,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -5732281124746718282}
+    - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -7493120411934559269}
     - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       insertIndex: -1
@@ -134,15 +137,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7084016938913041781}
-    - targetCorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -2110764758518215073}
   m_SourcePrefab: {fileID: 100100000, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
 --- !u!1 &732624412162309185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
   m_PrefabInstance: {fileID: 7032343857327800529}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5732281124746718282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732624412162309185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0555b9065eaa41d68c36c06df0c5915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySO: {fileID: 11400000, guid: 007a5164e24224146be9321c35bb9b45, type: 2}
+  Armor: 0
+  DistanceTraveled: 0
+  EffectTracker: {fileID: 0}
+  _collider: {fileID: 4912470934267653942}
+  EndReached: 0
 --- !u!50 &-7493120411934559269
 Rigidbody2D:
   serializedVersion: 4
@@ -362,26 +380,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2110764758518215073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732624412162309185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9501f3786b0984f87bffcca51360de57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySO: {fileID: 11400000, guid: 3a37d2c56839c4ae1bc235aa8863cca1, type: 2}
-  Armor: 0
-  DistanceTraveled: 0
-  EffectTracker: {fileID: 0}
-  _deathSound: {fileID: 7084016938913041781}
-  _spawnSound: {fileID: 2500021354665965914}
-  _collider: {fileID: 4912470934267653942}
-  EndReached: 0
 --- !u!61 &4912470934267653942 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2718904459053297639, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}

@@ -12,7 +12,6 @@ public class CannonAttack : BasicAttack
         bomb.Initialize(_modifierProcessor.CalculateDamage(Damage), ProjectileSpeed, Tower);
         bomb.SetExplosionRadius(ExplosionRadius);
         bomb.Launch(target);
-        _abilitySound.Play();
         AttackClock.Reset();
         ReloadClock.Reset();
         CurrentAmmo.Current -= 1;
