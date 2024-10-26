@@ -198,11 +198,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2969699163075311064}
   m_SourcePrefab: {fileID: 100100000, guid: 81de37c724d55470599728b857ef24cc, type: 3}
---- !u!82 &2697771512016779414 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -7440212879225586614, guid: 81de37c724d55470599728b857ef24cc, type: 3}
-  m_PrefabInstance: {fileID: 4453889796054795484}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3299458898797663666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1154449039375421806, guid: 81de37c724d55470599728b857ef24cc, type: 3}
@@ -260,7 +255,6 @@ MonoBehaviour:
   CurrentAmmo:
     baseValue: 4
   _projectilePrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
-  _abilitySound: {fileID: 2697771512016779414}
   TooltipText: Deals a little bit of damage
   ProjectileSpeed: 10
 --- !u!114 &2969699163075311064

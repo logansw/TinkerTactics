@@ -77,7 +77,25 @@ public class ApplyModifier : CardEffect
         }
         else
         {
+            Debug.LogError("No card type defined for modifier type.");
             return "MODIFIER";
+        }
+    }
+
+    public override Color GetColor()
+    {
+        if (Modifier is WidgetBase)
+        {
+            return new Color(0.6745283f, 0.9072257f, 1f, 1f);
+        }
+        else if (Modifier is TinkerBase)
+        {
+            return new Color(0.4669811f, 0.6507807f, 1f, 1f);
+        }
+        else
+        {
+            Debug.LogError("No color defined for modifier type.");
+            return new Color(1f, 1f, 1f, 1f);
         }
     }
 }

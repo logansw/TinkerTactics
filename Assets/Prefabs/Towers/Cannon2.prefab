@@ -139,13 +139,7 @@ MonoBehaviour:
   CurrentAmmo:
     baseValue: 2
   _projectilePrefab: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
-  _abilitySound: {fileID: 8654279494774607790}
   TooltipText: Explosion
   ProjectileSpeed: 10
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
   ExplosionRadius: 1
---- !u!82 &8654279494774607790 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
-  m_PrefabInstance: {fileID: 6731269269802284856}
-  m_PrefabAsset: {fileID: 0}

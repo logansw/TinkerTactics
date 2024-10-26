@@ -744,7 +744,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 732624412162309185, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
       propertyPath: m_Name
-      value: Warlord
+      value: Boss Bot
       objectReference: {fileID: 0}
     - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5210,7 +5210,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Name
-      value: Warlord
+      value: Boss Bot
       objectReference: {fileID: 0}
     - target: {fileID: 8353575784761169880, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_IsActive
@@ -378,8 +378,6 @@ MonoBehaviour:
   Armor: 0
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}
-  _deathSound: {fileID: 7084016938913041781}
-  _spawnSound: {fileID: 2500021354665965914}
   _collider: {fileID: 4912470934267653942}
   EndReached: 0
 --- !u!61 &4912470934267653942 stripped

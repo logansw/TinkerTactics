@@ -49,7 +49,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _background.color = Color.white;
         transform.position = new Vector2(transform.position.x, transform.position.y - (RectTransform.rect.width / 4f));
         transform.SetSiblingIndex(OriginalSiblingIndex);
     }
@@ -102,6 +101,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         _description.text = CardEffect.GetDescription();
         _cost.text = CardEffect.GetCost().ToString();
         _cardType.text = CardEffect.GetCardType();
+        _background.color = CardEffect.GetColor();
     }
 
     public void Discard()
