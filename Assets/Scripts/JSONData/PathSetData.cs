@@ -6,16 +6,18 @@ using System;
 public class PathSetData : IJSONData<PathSetData>
 {
     public List<PathData> Paths;
+    public List<TilePlotData> TilePlots;
 
     public PathSetData CreateNewFile()
     {
         PathSetData data = new PathSetData();
         data.Paths = new List<PathData>();
+        data.TilePlots = new List<TilePlotData>();
         return data;
     }
 }
 
-[System.Serializable]
+[Serializable]
 public struct PathData
 {
     public List<PathPieceData> Path;
@@ -30,12 +32,23 @@ public struct PathData
     }
 }
 
-[System.Serializable]
+[Serializable]
 public struct PathPieceData
 {
     public Vector3 Position;
 
     public PathPieceData(Vector3 position)
+    {
+        Position = position;
+    }
+}
+
+[Serializable]
+public struct TilePlotData
+{
+    public Vector3 Position;
+
+    public TilePlotData(Vector3 position)
     {
         Position = position;
     }

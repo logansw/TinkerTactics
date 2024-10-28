@@ -8,6 +8,7 @@ public class PathDrawer : MonoBehaviour
     public static PathDrawer s_Instance;
     public string FileName;
     [SerializeField] private TilePath _tilePathPrefab;
+    [SerializeField] private TilePlot _tilePlotPrefab;
 
     public PathSetData PathSetData;
     public List<TilePath> CurrentPath = new List<TilePath>();
@@ -27,6 +28,7 @@ public class PathDrawer : MonoBehaviour
         LoadPathData();
         foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
         {
+            if (StartTiles.Count == 0) { return; }
             waveSpawner.SpawnPoint = StartTiles[StartTilesIndex];
             StartTilesIndex++;
         }
@@ -56,6 +58,11 @@ public class PathDrawer : MonoBehaviour
             }
             CurrentPath[^1].PathType = PathType.End;
             CurrentPath = new List<TilePath>();
+        }
+
+        foreach (TilePlotData tilePlotData in PathSetData.TilePlots)
+        {
+            TilePlot plot = Instantiate(_tilePlotPrefab, tilePlotData.Position, Quaternion.identity);
         }
     }
 
@@ -107,6 +114,13 @@ public class PathDrawer : MonoBehaviour
             AllTiles = new List<TilePath>();
             PathSetData = new PathSetData();
             PathSetData.Paths = new List<PathData>();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            TilePlot plot = Instantiate(_tilePlotPrefab, position, Quaternion.identity);
+            PathSetData.TilePlots.Add(new TilePlotData(plot.transform.position));
         }
     }
     #endif

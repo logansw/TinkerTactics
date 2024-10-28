@@ -3102,8 +3102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866602fbfb19a419f83decb3d4cfa8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileName: Test
+  FileName: Test3
   _tilePathPrefab: {fileID: 6406577955387159717, guid: ca37d0ed510424e819ecdb5f950ca15f, type: 3}
+  _tilePlotPrefab: {fileID: 1142235282118334235, guid: 904768361503e477ca94d62232fb8f53, type: 3}
   CurrentPath: []
   AllTiles: []
   StartTiles: []

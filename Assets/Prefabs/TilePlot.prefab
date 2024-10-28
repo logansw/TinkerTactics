@@ -183,7 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6a6e78039ea4296936d67b13a6aed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Capacity: 0
+  IsActivated: 1
+  Capacity: 1
   _targetedIndicator: {fileID: 6683779490693216965}
 --- !u!61 &8010990399139734254
 BoxCollider2D:
