@@ -1,0 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WaveHolder : MonoBehaviour
+{
+    public List<Wave> Waves = new List<Wave>();
+}

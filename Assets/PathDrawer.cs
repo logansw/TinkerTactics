@@ -14,6 +14,7 @@ public class PathDrawer : MonoBehaviour
     public List<TilePath> CurrentPath = new List<TilePath>();
     public List<TilePath> AllTiles = new List<TilePath>();
     public List<TilePath> StartTiles = new List<TilePath>();
+    public List <TilePlot> TilePlots = new List<TilePlot>();
     public int StartTilesIndex = 0;
 
     void Awake()
@@ -28,7 +29,7 @@ public class PathDrawer : MonoBehaviour
         LoadPathData();
         foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
         {
-            if (StartTiles.Count == 0) { return; }
+            if (StartTiles.Count < 2) { return; }
             waveSpawner.SpawnPoint = StartTiles[StartTilesIndex];
             StartTilesIndex++;
         }
@@ -63,6 +64,7 @@ public class PathDrawer : MonoBehaviour
         foreach (TilePlotData tilePlotData in PathSetData.TilePlots)
         {
             TilePlot plot = Instantiate(_tilePlotPrefab, tilePlotData.Position, Quaternion.identity);
+            TilePlots.Add(plot);
         }
     }
 
@@ -111,15 +113,23 @@ public class PathDrawer : MonoBehaviour
                 TilePath path = AllTiles[i];
                 Destroy(path.gameObject);
             }
+            for (int i = TilePlots.Count - 1; i >= 0; i--)
+            {
+                TilePlot tilePlot = TilePlots[i];
+                Destroy(tilePlot.gameObject);
+            }
             AllTiles = new List<TilePath>();
             PathSetData = new PathSetData();
             PathSetData.Paths = new List<PathData>();
+            PathSetData.TilePlots = new List<TilePlotData>();
+            TilePlots = new List<TilePlot>();
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             TilePlot plot = Instantiate(_tilePlotPrefab, position, Quaternion.identity);
+            TilePlots.Add(plot);
             PathSetData.TilePlots.Add(new TilePlotData(plot.transform.position));
         }
     }
