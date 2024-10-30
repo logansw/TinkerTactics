@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveHolder : MonoBehaviour
+public class WaveHolder : Singleton<WaveHolder>
 {
-    public List<Wave> Waves = new List<Wave>();
+    public List<Wave> Waves;
 }

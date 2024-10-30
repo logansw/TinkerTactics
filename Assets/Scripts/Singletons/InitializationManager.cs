@@ -20,6 +20,7 @@ public class InitializationManager : Singleton<InitializationManager>
         base.Initialize();
         // Initialize all singletons
         DeckManager.s_Instance.Initialize();
+        PathDrawer.s_Instance.Initialize();
         BattleManager.s_Instance.Initialize();
         // ColorManager.s_Instance.Initialize();
         // GameManager.s_Instance.Initialize();

@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public bool IsDead => Health.CurrentHealth <= 0;
     [HideInInspector] public int DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
+    public bool IsSpawned;
 
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
         EnemyManager.s_Instance.AddEnemy(this);
         transform.position = spawnPoint.transform.position;
         TileTarget = spawnPoint;
+        IsSpawned = true;
     }
 
     void Update()
@@ -96,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        if (EndReached)
+        if (EndReached || !IsSpawned)
         {
             return;
         }

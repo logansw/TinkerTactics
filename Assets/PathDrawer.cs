@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class PathDrawer : MonoBehaviour
+public class PathDrawer : Singleton<PathDrawer>
 {
-    public static PathDrawer s_Instance;
     public string FileName;
     [SerializeField] private TilePath _tilePathPrefab;
     [SerializeField] private TilePlot _tilePlotPrefab;
@@ -17,22 +16,13 @@ public class PathDrawer : MonoBehaviour
     public List <TilePlot> TilePlots = new List<TilePlot>();
     public int StartTilesIndex = 0;
 
-    void Awake()
+    public override void Initialize()
     {
-        s_Instance = this;
-    }
-
-    void Start()
-    {
+        base.Initialize();
         PathSetData = new PathSetData();
         PathSetData.Paths = new List<PathData>();
         LoadPathData();
-        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
-        {
-            if (StartTiles.Count < 2) { return; }
-            waveSpawner.SpawnPoint = StartTiles[StartTilesIndex];
-            StartTilesIndex++;
-        }
+        GenerateWaveSpawners();
     }
 
     public void LoadPathData()
@@ -65,6 +55,14 @@ public class PathDrawer : MonoBehaviour
         {
             TilePlot plot = Instantiate(_tilePlotPrefab, tilePlotData.Position, Quaternion.identity);
             TilePlots.Add(plot);
+        }
+    }
+
+    private void GenerateWaveSpawners()
+    {
+        foreach (TilePath startTile in StartTiles)
+        {
+            WaveSpawnerManager.s_Instance.GenerateWaveSpawner(startTile);
         }
     }
 

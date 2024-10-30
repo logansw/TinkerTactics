@@ -141,7 +141,7 @@ public class WaveHolderEditor : Editor
             // Squads List Element Drawing
             squadsList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
                 SerializedProperty squad = squadsList.serializedProperty.GetArrayElementAtIndex(index);
-                SerializedProperty enemyTypeProp = squad.FindPropertyRelative("EnemyType");
+                SerializedProperty enemyTypeProp = squad.FindPropertyRelative("Enemy");
                 SerializedProperty countProp = squad.FindPropertyRelative("Count");
 
                 float halfWidth = (rect.width - 5) / 2;

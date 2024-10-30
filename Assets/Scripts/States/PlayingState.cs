@@ -17,7 +17,7 @@ public class PlayingState : State
     public override void UpdateState(StateController stateController)
     {
         bool finishedSpawning = true;
-        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        foreach (WaveSpawner waveSpawner in WaveSpawnerManager.s_Instance.WaveSpawners)
         {
             if (!waveSpawner.FinishedSpawning)
             {

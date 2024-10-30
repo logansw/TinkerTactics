@@ -13,7 +13,8 @@ public class IdleState : State
 
     public override void OnEnter(StateController stateController)
     {
-        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        WaveSpawnerManager.s_Instance.PrepareNextWave();
+        foreach (WaveSpawner waveSpawner in WaveSpawnerManager.s_Instance.WaveSpawners)
         {
             waveSpawner.Render(true);
         }
@@ -28,10 +29,6 @@ public class IdleState : State
 
     public override void OnExit(StateController stateController)
     {
-        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
-        {
-            waveSpawner.BeginWave();
-            waveSpawner.Render(false);
-        }
+        WaveSpawnerManager.s_Instance.StartWaves();
     }
 }

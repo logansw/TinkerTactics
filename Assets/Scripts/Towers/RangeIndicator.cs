@@ -141,7 +141,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     public List<Enemy> GetEnemiesInRange()
     {
-        List<Enemy> enemiesInRange = TargetCalculator.GetClosest(EnemiesInRange, _tower);
+        List<Enemy> enemiesInRange = TargetCalculator.GetMostTraveled(EnemiesInRange);
         return TargetCalculator.GetTargetable(enemiesInRange);
     }
 

@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Squad
 {
-    public EnemySO EnemyType;
+    public Enemy Enemy;
     public int Count;
 }
