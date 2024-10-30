@@ -64,6 +64,7 @@ public class DeckManager : Singleton<DeckManager>
 
     public void Reset()
     {
+        _initialDraw = true;
         foreach (Card card in Hand)
         {
             DiscardPile.Add(card);
@@ -113,7 +114,15 @@ public class DeckManager : Singleton<DeckManager>
         if (_initialDraw)
         {
             _initialDraw = false;
-            Card firstCard = DrawPile[0];
+            Card firstCard = null;
+            foreach (Card card in DrawPile)
+            {
+                if (card.CardEffect is DeployTower)
+                {
+                    firstCard = card;
+                    break;
+                }
+            }
             firstCard.OnDrawn();
             MoveCard(firstCard, DrawPile, Hand);
             Shuffle(DrawPile);

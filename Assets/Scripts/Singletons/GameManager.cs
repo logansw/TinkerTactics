@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
         CurrentLevelIndex++;
         _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
         e_OnNextLevel?.Invoke();
+        DeckManager.s_Instance.Reset();
         WaveSpawnerManager.s_Instance.NextLevel();
         PathDrawer.s_Instance.NextLevel();
         WaveSpawnerManager.s_Instance.UnassignSpawners();
