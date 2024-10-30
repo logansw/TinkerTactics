@@ -35,7 +35,7 @@ public class DeployTower : CardEffect
 
     public override void ActivateEffect()
     {
-        Instantiate(Tower, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+        TowerManager.s_Instance.AddTower(Tower, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     public override void OnDrawn()

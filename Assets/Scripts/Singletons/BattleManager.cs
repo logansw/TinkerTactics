@@ -7,7 +7,6 @@ using UnityEngine;
 
 /// <summary>
 /// Handles the game flow within a single battle.
-/// Keeps track of the current turn and sends commands to towers and enemies each turn.
 /// </summary>
 public class BattleManager : Singleton<BattleManager>
 {

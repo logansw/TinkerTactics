@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
         PathDrawer.s_Instance.NextLevel();
         WaveSpawnerManager.s_Instance.UnassignSpawners();
         StateController.s_Instance.ChangeState(StateType.Idle);
+        TowerManager.s_Instance.ClearTowers();
     }
 
     public string GetLevelName()
