@@ -9,10 +9,16 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
     public int CurrentWaveIndex;
     public Warlord Warlord;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        Warlord = GameManager.s_Instance.GetWarlord();
+    }
+
     public void PrepareNextWave()
     {
         UnassignSpawners();
-        AssignRandomLanesToSpawners(WaveHolder.s_Instance.Waves[CurrentWaveIndex]);
+        AssignRandomLanesToSpawners(Warlord.WaveHolder.Waves[CurrentWaveIndex]);
         CurrentWaveIndex++;
     }
 

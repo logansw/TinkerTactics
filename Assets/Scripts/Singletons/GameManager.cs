@@ -5,13 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    void Update()
+    [SerializeField] private List<Warlord> _warlords = new List<Warlord>();
+    [SerializeField] private List<string> _levelNames = new List<string>();
+    public int CurrentLevelIndex;
+    private Warlord _currentWarlord;
+
+    public override void Initialize()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.R))
-        {
-            // Reload the scene here
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.buildIndex);
-        }
+        base.Initialize();
+        CurrentLevelIndex = 0;
+        _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
+    }
+
+    public void NextLevel()
+    {
+        CurrentLevelIndex++;
+    }
+
+    public string GetLevelName()
+    {
+        return _levelNames[CurrentLevelIndex];
+    }
+
+    public Warlord GetWarlord()
+    {
+        return _currentWarlord;
     }
 }

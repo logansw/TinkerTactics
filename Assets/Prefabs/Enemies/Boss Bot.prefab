@@ -378,6 +378,7 @@ MonoBehaviour:
   Armor: 0
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}
+  IsSpawned: 0
   _collider: {fileID: 4912470934267653942}
   EndReached: 0
 --- !u!61 &4912470934267653942 stripped

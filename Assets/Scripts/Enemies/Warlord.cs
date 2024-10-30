@@ -7,6 +7,7 @@ public class Warlord : Enemy
 {
     public delegate void OnWarlordEnd(Warlord warlord);
     public OnWarlordEnd e_OnWarlordEnd;
+    public WaveHolder WaveHolder;
 
     public void Start()
     {

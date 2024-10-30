@@ -19,6 +19,7 @@ public class PathDrawer : Singleton<PathDrawer>
     public override void Initialize()
     {
         base.Initialize();
+        FileName = GameManager.s_Instance.GetLevelName();
         PathSetData = new PathSetData();
         PathSetData.Paths = new List<PathData>();
         LoadPathData();
