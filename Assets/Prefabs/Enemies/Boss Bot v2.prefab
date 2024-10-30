@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: Waves.Array.data[9].Lanes.Array.data[0].Squads.Array.data[1].Enemy
       value: 
       objectReference: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+    - target: {fileID: 2984855229957750881, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
+      propertyPath: EnemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: d96be0bcd14b74243bbb2a0ebeacd351, type: 2}
     - target: {fileID: 4752307661770601087, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
       propertyPath: m_Name
       value: Boss Bot v2

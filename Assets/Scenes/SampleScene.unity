@@ -788,12 +788,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 732624412162309185, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
       insertIndex: 6
       addedObject: {fileID: 335024180}
-    - targetCorrespondingSourceObject: {fileID: 7946649004753084100, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6163354070907313752, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
 --- !u!1 &377900781
 GameObject:
@@ -2808,7 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866602fbfb19a419f83decb3d4cfa8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileName: Level1
+  FileName: 
   _tilePathPrefab: {fileID: 6406577955387159717, guid: ca37d0ed510424e819ecdb5f950ca15f, type: 3}
   _tilePlotPrefab: {fileID: 1142235282118334235, guid: 904768361503e477ca94d62232fb8f53, type: 3}
   CurrentPath: []
@@ -4072,12 +4066,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _warlords:
-  - {fileID: 2984855229957750881, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
   - {fileID: 7496497891095629512, guid: 8e4b69d403cca4c4f80e18c9d4c95fec, type: 3}
+  - {fileID: 2984855229957750881, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
   - {fileID: 9090826151856389642, guid: f6a290185ff264c49bd168cb8715b42f, type: 3}
   _levelNames:
-  - Level1
   - Level2
+  - Level1
   - Level3
   CurrentLevelIndex: 0
 --- !u!4 &1829851285

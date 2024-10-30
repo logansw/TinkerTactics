@@ -26,8 +26,15 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
     {
         foreach (WaveSpawner waveSpawner in WaveSpawners)
         {
-            waveSpawner.BeginLane();
-            waveSpawner.Render(false);
+            if (waveSpawner.HasEnemies())
+            {
+                waveSpawner.BeginLane();
+                waveSpawner.Render(false);
+            }
+            else
+            {
+                waveSpawner.FinishedSpawning = true;
+            }
         }
     }
 

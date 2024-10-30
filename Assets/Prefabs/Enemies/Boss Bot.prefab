@@ -381,6 +381,7 @@ MonoBehaviour:
   IsSpawned: 0
   _collider: {fileID: 4912470934267653942}
   EndReached: 0
+  WaveHolder: {fileID: 0}
 --- !u!61 &4912470934267653942 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2718904459053297639, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
