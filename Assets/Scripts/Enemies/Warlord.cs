@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Warlord : Enemy
 {
+    public static Action e_OnWarlordDefeated;
     public delegate void OnWarlordEnd(Warlord warlord);
     public OnWarlordEnd e_OnWarlordEnd;
     public WaveHolder WaveHolder;
@@ -33,5 +34,11 @@ public class Warlord : Enemy
         Render(true);
         EffectTracker.ClearEffects();
         IsSpawned = true;
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        e_OnWarlordDefeated?.Invoke();
     }
 }

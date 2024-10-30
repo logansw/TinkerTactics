@@ -68,6 +68,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
     {
         foreach (WaveSpawner waveSpawner in WaveSpawners)
         {
+            waveSpawner.Warlords.Clear();
             waveSpawner.CurrentLane = null;
             waveSpawner.IsAssigned = false;
         }
@@ -93,5 +94,22 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
                 AssignLaneToRandomUniqueSpawner(wave.Lanes[i]);
             }
         }
+    }
+
+    public void NextLevel()
+    {
+        CurrentWaveIndex = 0;
+        ClearWaveSpawners();
+        Warlord = GameManager.s_Instance.GetWarlord();
+    }
+
+    private void ClearWaveSpawners()
+    {
+        for (int i = WaveSpawners.Count - 1; i >= 0; i--)
+        {
+            WaveSpawner waveSpawner = WaveSpawners[i];
+            Destroy(waveSpawner.gameObject);
+        }
+        WaveSpawners = new List<WaveSpawner>();
     }
 }

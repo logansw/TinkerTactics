@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private List<string> _levelNames = new List<string>();
     public int CurrentLevelIndex;
     private Warlord _currentWarlord;
+    public static Action e_OnNextLevel;
 
     public override void Initialize()
     {
@@ -20,6 +22,12 @@ public class GameManager : Singleton<GameManager>
     public void NextLevel()
     {
         CurrentLevelIndex++;
+        _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
+        e_OnNextLevel?.Invoke();
+        WaveSpawnerManager.s_Instance.NextLevel();
+        PathDrawer.s_Instance.NextLevel();
+        WaveSpawnerManager.s_Instance.UnassignSpawners();
+        StateController.s_Instance.ChangeState(StateType.Idle);
     }
 
     public string GetLevelName()

@@ -67,6 +67,34 @@ public class PathDrawer : Singleton<PathDrawer>
         }
     }
 
+    public void NextLevel()
+    {
+        ClearLevel();
+        FileName = GameManager.s_Instance.GetLevelName();
+        LoadPathData();
+        GenerateWaveSpawners();
+    }
+
+    private void ClearLevel()
+    {
+        for (int i = AllTiles.Count - 1; i >= 0; i--)
+        {
+            TilePath path = AllTiles[i];
+            Destroy(path.gameObject);
+        }
+        for (int i = TilePlots.Count - 1; i >= 0; i--)
+        {
+            TilePlot tilePlot = TilePlots[i];
+            Destroy(tilePlot.gameObject);
+        }
+        AllTiles = new List<TilePath>();
+        PathSetData = new PathSetData();
+        PathSetData.Paths = new List<PathData>();
+        PathSetData.TilePlots = new List<TilePlotData>();
+        TilePlots = new List<TilePlot>();
+        StartTiles = new List<TilePath>();
+    }
+
     #if UNITY_EDITOR
     void Update()
     {
@@ -107,21 +135,7 @@ public class PathDrawer : Singleton<PathDrawer>
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            for (int i = AllTiles.Count - 1; i >= 0; i--)
-            {
-                TilePath path = AllTiles[i];
-                Destroy(path.gameObject);
-            }
-            for (int i = TilePlots.Count - 1; i >= 0; i--)
-            {
-                TilePlot tilePlot = TilePlots[i];
-                Destroy(tilePlot.gameObject);
-            }
-            AllTiles = new List<TilePath>();
-            PathSetData = new PathSetData();
-            PathSetData.Paths = new List<PathData>();
-            PathSetData.TilePlots = new List<TilePlotData>();
-            TilePlots = new List<TilePlot>();
+            ClearLevel();
         }
 
         if (Input.GetKeyDown(KeyCode.T))

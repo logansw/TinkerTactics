@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Profiling;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +14,7 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
+    public bool WarlordDefeated;
 
     public override void Initialize()
     {
@@ -48,6 +50,10 @@ public class BattleManager : Singleton<BattleManager>
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
         _button.text = "Continue";
+        if (GameManager.s_Instance.GetWarlord().IsDead)
+        {
+            GameManager.s_Instance.NextLevel();
+        }
     }
 
     public void DamagePlayer(int damage = 1)
