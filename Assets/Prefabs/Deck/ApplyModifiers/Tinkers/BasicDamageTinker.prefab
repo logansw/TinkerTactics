@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b772632914947b71814980dc6189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageModFlat: 8
+  DamageModFlat: 5
   RangeModFlat: 0
   SweepModFlat: 0
   AmmoModFlat: 0

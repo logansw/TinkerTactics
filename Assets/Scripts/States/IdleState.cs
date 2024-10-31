@@ -13,6 +13,7 @@ public class IdleState : State
 
     public override void OnEnter(StateController stateController)
     {
+        e_OnIdleStateEnter?.Invoke();
         WaveSpawnerManager.s_Instance.PrepareNextWave();
         foreach (WaveSpawner waveSpawner in WaveSpawnerManager.s_Instance.WaveSpawners)
         {

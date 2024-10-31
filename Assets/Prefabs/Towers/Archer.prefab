@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
+  IsLocked: 0
 --- !u!114 &-1532648026573579116
 MonoBehaviour:
   m_ObjectHideFlags: 0

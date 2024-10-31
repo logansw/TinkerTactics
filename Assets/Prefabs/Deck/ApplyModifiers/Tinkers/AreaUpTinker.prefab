@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageModFlat: 0
-  RangeModFlat: 4
-  SweepModFlat: 60
+  RangeModFlat: 3
+  SweepModFlat: 45
   AmmoModFlat: 0
   ReloadSpeedModMult: 0
   AttackSpeedModMult: 0

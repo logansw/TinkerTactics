@@ -4,13 +4,10 @@ using System.Linq;
 
 public class Archer : Tower
 {
-    protected override void Update()
+    protected override void OnEnable()
     {
-        base.Update();
-    }
-
-    public override string GetTooltipText()
-    {
-        return "Archer";
+        // Undo the default behavior of locking on playing state entered.
+        base.OnEnable();
+        IdleState.e_OnIdleStateEnter += Unlock;
     }
 }
