@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor.Media;
 using UnityEngine;
 
 [RequireComponent(typeof(EffectRenderer))]
@@ -17,6 +18,7 @@ public class EffectTracker : MonoBehaviour
         EffectsApplied = new List<Effect>();
         _effectRenderer = GetComponent<EffectRenderer>();
     }
+    
 
     public bool HasEffect<T>(out T effect) where T : Effect
     {

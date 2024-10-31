@@ -104,7 +104,16 @@ public class Enemy : MonoBehaviour
         }
         Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
-        transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
+        float currentMovementSpeed = MovementSpeed;
+        if (EffectTracker.HasEffect<EffectChill>(out EffectChill effectChill))
+        {
+            currentMovementSpeed *= effectChill.GetSpeedMultiplier();
+        }
+        if (EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
+        {
+            currentMovementSpeed = 0;
+        }
+        transform.Translate(direction * Time.deltaTime * currentMovementSpeed / 10);
         if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1 && !EndReached)
         {
             OnPathEnd();

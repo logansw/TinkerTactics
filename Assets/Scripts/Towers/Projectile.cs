@@ -18,12 +18,14 @@ public abstract class Projectile : MonoBehaviour
     public Action e_OnDestroyed;
     [SerializeField] private SpriteRenderer _renderer;
     private bool _arrived;
+    private Collider2D _collider;
 
     public virtual void Initialize(float damage, float projectileSpeed, Tower source) 
     {
         Damage = damage;
         ProjectileSpeed = projectileSpeed;
         _source = source;
+        _collider = GetComponent<Collider2D>();
     }
 
     public virtual void Launch(Enemy target)
@@ -65,6 +67,7 @@ public abstract class Projectile : MonoBehaviour
         e_OnImpact?.Invoke(recipient);
         recipient.Health.TakeDamage(Damage);
         _renderer.enabled = false;
+        _collider.enabled = false;
         Destroy(gameObject, 1f);
     }
 

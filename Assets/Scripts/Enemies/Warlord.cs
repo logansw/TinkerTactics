@@ -24,7 +24,7 @@ public class Warlord : Enemy
         e_OnWarlordEnd?.Invoke(this);
         Render(false);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
-        EffectTracker.AddEffect<EffectUntargetable>(1);
+        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue);
         IsSpawned = false;
         // Health.TakeDamage(Health.CurrentHealth);
     }
