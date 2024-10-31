@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4595026877543231167}
   - component: {fileID: 4193782691126074514}
   - component: {fileID: 7206681751891780673}
+  - component: {fileID: 9077380257712852257}
   m_Layer: 0
   m_Name: ProjectileArrow
   m_TagString: Untagged
@@ -101,7 +102,6 @@ MonoBehaviour:
   Damage: 0
   ProjectileSpeed: 0
   _renderer: {fileID: 4595026877543231167}
-  _impactSound: {fileID: 7206681751891780673}
 --- !u!82 &7206681751891780673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -198,3 +198,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &9077380257712852257
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803087172549512459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
