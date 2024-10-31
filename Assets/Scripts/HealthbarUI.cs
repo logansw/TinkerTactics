@@ -15,6 +15,7 @@ public class HealthbarUI : Singleton<HealthbarUI>
     {
         Health = health;
         Health.e_OnHealthChanged += UpdateHealthbar;
+        UpdateHealthbar(Health.CurrentHealth, Health.MaxHealth);
     }
 
     private void UpdateHealthbar(float currentHealth, float maxHealth)

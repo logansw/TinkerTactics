@@ -14,6 +14,7 @@ public class Warlord : Enemy
     {
         Render(false);
         HealthbarUI.s_Instance.RegisterHealth(Health);
+        EffectTracker.AddEffect<EffectUntargetable>(1);
     }
 
     public override void OnPathEnd()
