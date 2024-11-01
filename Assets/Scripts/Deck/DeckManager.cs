@@ -39,6 +39,7 @@ public class DeckManager : Singleton<DeckManager>
         foreach (Card card in Deck)
         {
             Card instance = Instantiate(card);
+            instance.transform.localScale = Vector3.one;
             instance.IsOwned = true;
             tempDeck.Add(instance);
         }
