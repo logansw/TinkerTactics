@@ -30,6 +30,8 @@ public class GameManager : Singleton<GameManager>
         WaveSpawnerManager.s_Instance.UnassignSpawners();
         StateController.s_Instance.ChangeState(StateType.Idle);
         TowerManager.s_Instance.ClearTowers();
+        MarketplaceManager.s_Instance.PopulateAvailableItems();
+        MarketplaceManager.s_Instance.ShowShop(true);
     }
 
     public string GetLevelName()

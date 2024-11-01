@@ -5,38 +5,60 @@ using System.Linq;
 
 public class MarketplaceManager : Singleton<MarketplaceManager>
 {
-    public TowerItemSO[] AvailableItems;
-    List<TowerItemSO> towerItems;
+    public List<Card> AllCards;
+    public List<Card> AvailableCards;
 
-    private void Start()
-    {
-        // Initialization code goes here
-        AvailableItems = new TowerItemSO[3];
-        LoadTowerItems();
-        PopulateAvailableItems();
-    }
-
-    private void LoadTowerItems()
-    {
-        // Get all TowerItemSO objects from a folder
-        TowerItemSO[] towerItemObjects = Resources.LoadAll<TowerItemSO>("TowerItems/_Prod");
-
-        // Convert the array to a list
-        towerItems = new List<TowerItemSO>(towerItemObjects);
-    }
+    [SerializeField] private Transform cardsContainer;
+    [SerializeField] private Canvas canvas;
+    public int CardsSelected;
 
     public void PopulateAvailableItems()
     {
-        MarketplaceUI.s_Instance.ResetItemUIs();
+        ResetCards();
+        AllCards = AllCards.OrderBy(item => Guid.NewGuid()).ToList();
+        RenderNewItems();
+        CardsSelected = 0;
+    }
 
-        towerItems = towerItems.OrderBy(item => Guid.NewGuid()).ToList();
+    public void ShowShop(bool show)
+    {
+        canvas.gameObject.SetActive(show);
+    }
 
-        // Take the first 3 tower items from the shuffled list
-        List<TowerItemSO> selectedItems = towerItems.Take(3).ToList();
-        for (int i = 0; i < AvailableItems.Length; i++)
+    public void RenderNewItems()
+    {
+        float padding = 10f;
+        List<Card> selectedCards = AllCards.Take(5).ToList();
+
+        for (int i = 0; i < selectedCards.Count; i++)
         {
-            AvailableItems[i] = selectedItems[i];
+            Card instance = Instantiate(selectedCards[i], cardsContainer);
+            instance.gameObject.SetActive(true);
+            instance.transform.localScale = Vector3.one;
+            AvailableCards.Add(instance);
+            instance.IsOwned = false;
+            instance.RectTransform.anchoredPosition = new Vector2((i-2) * (Card.CARD_WIDTH + padding), 0);
+            instance.Render(true);
         }
-        MarketplaceUI.s_Instance.RenderNewItems();
+    }
+
+    public void ResetCards()
+    {
+        for (int i = AvailableCards.Count - 1; i >= 0; i--)
+        {
+            Destroy(AvailableCards[i].gameObject);
+        }
+    }
+
+    public void RemoveFromAvailable(Card card)
+    {
+        AvailableCards.Remove(card);
+        card.Render(false);
+        CardsSelected++;
+        if (CardsSelected == 2)
+        {
+            card.Render(true);
+            ShowShop(false);
+        }
     }
 }
