@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
@@ -193,3 +194,4 @@ public class WaveHolderEditor : Editor
         return 50f + squadsProp.arraySize * (EditorGUIUtility.singleLineHeight + 7.5f);
     }
 }
+#endif

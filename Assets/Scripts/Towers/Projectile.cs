@@ -31,6 +31,7 @@ public abstract class Projectile : MonoBehaviour
     public virtual void Launch(Enemy target)
     {
         _target = target;
+        Destroy(gameObject, 2f);
     }
 
     protected virtual void Update()
@@ -55,7 +56,6 @@ public abstract class Projectile : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
-        // if (enemy == null) { enemy = other.GetComponent<Warlord>(); }
         if (enemy != null)
         {
             OnImpact(enemy);
