@@ -30,7 +30,7 @@ public class Player : Singleton<Player>
 
     void Start()
     {
-        Health = new Health(20, 1);
+        Health = new Health(50, 1);
         Energy = MAX_ENERGY;
         UpdateHealthText(Health.CurrentHealth, Health.MaxHealth);
         Health.e_OnHealthChanged += UpdateHealthText;
