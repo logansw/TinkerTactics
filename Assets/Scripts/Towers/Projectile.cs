@@ -46,7 +46,7 @@ public abstract class Projectile : MonoBehaviour
         
         if (differenceVector.magnitude < deltaPosition)
         {
-            _arrived = true;
+            transform.position = _targetPosition;
             return;
         }
         Vector2 direction = differenceVector.normalized;
