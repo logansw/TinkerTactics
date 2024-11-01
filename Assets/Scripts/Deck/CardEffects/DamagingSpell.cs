@@ -55,7 +55,6 @@ public class DamagingSpell : CardEffect
         {
             enemy.Health.TakeDamage(Damage);
         }
-        Player.s_Instance.Energy -= GetCost();
         Ammo.Current -= 1;
     }
 

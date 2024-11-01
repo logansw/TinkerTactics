@@ -8,6 +8,7 @@ public class Liftable : MonoBehaviour
     private Collider2D _collider;
     private ILiftable _liftable;
     public bool IsLifted;
+    public bool IsLocked;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class Liftable : MonoBehaviour
 
     void Update()
     {
+        if (IsLocked) { return; }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (CheckClick(mousePos))
         {

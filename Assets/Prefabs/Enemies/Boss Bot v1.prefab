@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5465497096192953918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2110764758518215073, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: EnemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 269677673da064f46a9fd222e378cdf4, type: 2}
+    - target: {fileID: -2110764758518215073, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: WaveHolder
+      value: 
+      objectReference: {fileID: -6796800564554809}
+    - target: {fileID: 732624412162309185, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_Name
+      value: Boss Bot v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620811638928851442, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 732624412162309185, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6796800564554809}
+  m_SourcePrefab: {fileID: 100100000, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+--- !u!1 &4752307661770601087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 732624412162309185, guid: 6fd6cc62d769b415ca05285ac2a5a731, type: 3}
+  m_PrefabInstance: {fileID: 5465497096192953918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6796800564554809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752307661770601087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb71bd7fc0a7346a0b72db13378e923c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Waves:
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+        Count: 1
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+        Count: 2
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+        Count: 4
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+        Count: 2
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
+        Count: 4
+      - Enemy: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+        Count: 2
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+        Count: 6
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 4582636749655800370, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+        Count: 1
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 4582636749655800370, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+        Count: 2
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 4582636749655800370, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+        Count: 2
+      - Enemy: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+        Count: 4
+  - Lanes:
+    - Squads:
+      - Enemy: {fileID: 4582636749655800370, guid: 576ae7b9813b4498fbaae1b003bb49d2, type: 3}
+        Count: 4

@@ -76,6 +76,8 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     private void OnMouseDown()
     {
+        if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
+
         // Calculate and store the initial angle offset when the mouse is first clicked
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 towerPos = transform.position;
@@ -89,7 +91,9 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     }
 
     private void OnMouseDrag() {
+        if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
         if (!_isDragging) { return; }
+        
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 towerPos = transform.position;
         Vector3 difference = mousePos - towerPos;
@@ -141,7 +145,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     public List<Enemy> GetEnemiesInRange()
     {
-        List<Enemy> enemiesInRange = TargetCalculator.GetClosest(EnemiesInRange, _tower);
+        List<Enemy> enemiesInRange = TargetCalculator.GetMostTraveled(EnemiesInRange);
         return TargetCalculator.GetTargetable(enemiesInRange);
     }
 

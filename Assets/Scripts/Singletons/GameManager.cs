@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,41 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    void Update()
+    [SerializeField] private List<Warlord> _warlords = new List<Warlord>();
+    [SerializeField] private List<string> _levelNames = new List<string>();
+    public int CurrentLevelIndex;
+    private Warlord _currentWarlord;
+    public static Action e_OnNextLevel;
+
+    public override void Initialize()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.R))
-        {
-            // Reload the scene here
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.buildIndex);
-        }
+        base.Initialize();
+        CurrentLevelIndex = 0;
+        _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
+    }
+
+    public void NextLevel()
+    {
+        CurrentLevelIndex++;
+        _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
+        e_OnNextLevel?.Invoke();
+        DeckManager.s_Instance.Reset();
+        WaveSpawnerManager.s_Instance.NextLevel();
+        PathDrawer.s_Instance.NextLevel();
+        WaveSpawnerManager.s_Instance.UnassignSpawners();
+        StateController.s_Instance.ChangeState(StateType.Idle);
+        TowerManager.s_Instance.ClearTowers();
+        MarketplaceManager.s_Instance.PopulateAvailableItems();
+        MarketplaceManager.s_Instance.ShowShop(true);
+    }
+
+    public string GetLevelName()
+    {
+        return _levelNames[CurrentLevelIndex];
+    }
+
+    public Warlord GetWarlord()
+    {
+        return _currentWarlord;
     }
 }

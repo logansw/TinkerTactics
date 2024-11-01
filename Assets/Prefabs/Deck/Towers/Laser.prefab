@@ -9,12 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
+      propertyPath: Name
+      value: Laser Pointer Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Tower
       value: 
-      objectReference: {fileID: 5533898421653354732, guid: c838dd87578934c859389a3e21f1f8e5, type: 3}
+      objectReference: {fileID: 8243423439359245681, guid: cb344a9e20c8a4293b1e8cb9c699f262, type: 3}
+    - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
+      propertyPath: Description
+      value: Projectiles pierce through first enemy. 2 Tinker Slots.
+      objectReference: {fileID: 0}
+    - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
+      propertyPath: Cost.baseValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_Pivot.y
@@ -22,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -30,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchorMin.y
@@ -74,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -94,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6082087254971923773, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_Name
-      value: Sniper
+      value: Laser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

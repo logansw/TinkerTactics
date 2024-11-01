@@ -33,7 +33,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private BarUI _ammoBar;
     public ModifierProcessor ModifierProcessor;
     public int TinkerLimit;
-
+    private Liftable _liftable;
 
     public virtual string GetTooltipText()
     {
@@ -59,6 +59,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         RangeIndicator.Initialize(this);
         _ammoBar = GetComponentInChildren<BarUI>();
         _ammoBar.RegisterStat(BasicAttack.CurrentAmmo);
+        _liftable = GetComponent<Liftable>();
     }
 
     void Start()
@@ -81,11 +82,13 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     protected virtual void OnEnable()
     {
         ModifierProcessor.e_OnModifierAdded += RecalculateStats;
+        PlayingState.e_OnPlayingStateEnter += Lock;
     }
 
     protected virtual void OnDisable()
     {
         ModifierProcessor.e_OnModifierAdded -= RecalculateStats;
+        PlayingState.e_OnPlayingStateEnter -= Lock;
     }
 
     public void OnSelect()
@@ -171,5 +174,15 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ModifierProcessor.CalculateMaxAmmo(BasicAttack.MaxAmmo);
         ModifierProcessor.CalculateAttackSpeed(BasicAttack.AttackSpeed);
         ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
+    }
+
+    public void Lock()
+    {
+        _liftable.IsLocked = true;
+    }
+
+    public void Unlock()
+    {
+        _liftable.IsLocked = false;
     }
 }

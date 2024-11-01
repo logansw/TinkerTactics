@@ -34,6 +34,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private bool _isDragging;
     private TargetPreview _targetPreview;
     public int OriginalSiblingIndex;
+    public bool IsOwned;
 
     void Awake()
     {
@@ -55,27 +56,42 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!CardEffect.CanPrepare())
+        if (IsOwned)
         {
-            Debug.Log("Cannot play card right now.");
-            return;
+            if (!CardEffect.CanPrepare())
+            {
+                Debug.Log("Cannot play card right now.");
+                return;
+            }
+
+            _isDragging = true;
+
+            _targetPreview = CardEffect.GetTargetPreview();
+            Render(false);
         }
-
-        _isDragging = true;
-
-        _targetPreview = CardEffect.GetTargetPreview();
-        Render(false);
+        else
+        {
+            // Do Nothing
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (_isDragging)
+        if (IsOwned)
         {
-            TryCast(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            _isDragging = false;
-            Destroy(_targetPreview.gameObject);
+            if (_isDragging)
+            {
+                TryCast(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                _isDragging = false;
+                Destroy(_targetPreview.gameObject);
+            }
+            Render(true);
         }
-        Render(true);
+        else
+        {
+            AddToDeck();
+            MarketplaceManager.s_Instance.RemoveFromAvailable(this);
+        }
     }
 
     public bool TryCast(Vector3 targetPosition)
@@ -131,5 +147,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnDeselect()
     {
         // Do Nothing
+    }
+
+    private void AddToDeck()
+    {
+        DeckManager.s_Instance.AddCardToDeck(this);
+        IsOwned = true;
     }
 }

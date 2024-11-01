@@ -6,17 +6,27 @@ using UnityEngine;
 public class EffectChill : Effect
 {
     public static int FrostbiteDamage = 10;
+    private InternalClock _internalClock;
 
-    public override void Initialize(int duration)
+    public override void Initialize(int stacks)
     {
-        base.Initialize(duration);
-        Duration = duration;
-        Stacks = 1;
+        Stacks = 0;
+        _internalClock = new InternalClock(3f);
+        _internalClock.e_OnTimerDone += Remove;
+        AddStacks(stacks);
         IconColor = new Color32(128, 249, 255, 255);
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        _internalClock.e_OnTimerDone -= Remove;
+        _internalClock.Delete();
     }
 
     public override void AddStacks(int count)
     {
+        _internalClock.Reset();
         for (int i = 0; i < count; i++)
         {
             Stacks++;
@@ -27,6 +37,7 @@ public class EffectChill : Effect
             else if (Stacks >= 3)
             {
                 Enemy.OnImpact(FrostbiteDamage);
+                Remove();
             }
         }
     }

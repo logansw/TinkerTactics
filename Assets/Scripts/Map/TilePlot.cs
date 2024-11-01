@@ -42,7 +42,8 @@ public class TilePlot : Tile
         else
         {
             Towers.Add(tower);
-            tower.transform.position = transform.position;
+            Vector2 tilePosition = transform.position;
+            tower.transform.position = new Vector3(tilePosition.x, tilePosition.y, tower.transform.position.z);
             return true;
         }
     }

@@ -36,4 +36,9 @@ public class InternalClock
     {
         _timeToWait = timeToWait;
     }
+
+    public void Delete()
+    {
+        ClockManager.s_Instance.RemoveClock(this);
+    }
 }

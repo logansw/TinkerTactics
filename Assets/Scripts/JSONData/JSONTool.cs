@@ -6,7 +6,7 @@ using System.IO;
 public static class JSONTool
 {
     public static void WriteData<JSONData>(JSONData data, string fileName) {
-        string savePath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + fileName;
+        string savePath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + fileName + ".json";
         string json = JsonUtility.ToJson(data);
         using StreamWriter writer = new StreamWriter(savePath);
         writer.Write(json);

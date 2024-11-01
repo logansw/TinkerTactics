@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public bool IsDead => Health.CurrentHealth <= 0;
     [HideInInspector] public int DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
+    public bool IsSpawned;
 
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
         EnemyManager.s_Instance.AddEnemy(this);
         transform.position = spawnPoint.transform.position;
         TileTarget = spawnPoint;
+        IsSpawned = true;
     }
 
     void Update()
@@ -96,13 +98,22 @@ public class Enemy : MonoBehaviour
 
     public void Move()
     {
-        if (EndReached)
+        if (EndReached || !IsSpawned)
         {
             return;
         }
         Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
-        transform.Translate(direction * Time.deltaTime * MovementSpeed / 10);
+        float currentMovementSpeed = MovementSpeed;
+        if (EffectTracker.HasEffect<EffectChill>(out EffectChill effectChill))
+        {
+            currentMovementSpeed *= effectChill.GetSpeedMultiplier();
+        }
+        if (EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
+        {
+            currentMovementSpeed = 0;
+        }
+        transform.Translate(direction * Time.deltaTime * currentMovementSpeed / 10);
         if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1 && !EndReached)
         {
             OnPathEnd();

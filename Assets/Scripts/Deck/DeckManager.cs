@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ public class DeckManager : Singleton<DeckManager>
         foreach (Card card in Deck)
         {
             Card instance = Instantiate(card);
+            instance.IsOwned = true;
             tempDeck.Add(instance);
         }
         Deck.Clear();
@@ -64,6 +66,7 @@ public class DeckManager : Singleton<DeckManager>
 
     public void Reset()
     {
+        _initialDraw = true;
         foreach (Card card in Hand)
         {
             DiscardPile.Add(card);
@@ -80,6 +83,7 @@ public class DeckManager : Singleton<DeckManager>
         }
         ConsumePile.Clear();
         Shuffle(DrawPile);
+        DrawNewHand();
     }
 
     public void InitializeDrawPile()
@@ -113,7 +117,15 @@ public class DeckManager : Singleton<DeckManager>
         if (_initialDraw)
         {
             _initialDraw = false;
-            Card firstCard = DrawPile[0];
+            Card firstCard = null;
+            foreach (Card card in DrawPile)
+            {
+                if (card.CardEffect is DeployTower)
+                {
+                    firstCard = card;
+                    break;
+                }
+            }
             firstCard.OnDrawn();
             MoveCard(firstCard, DrawPile, Hand);
             Shuffle(DrawPile);
@@ -191,5 +203,11 @@ public class DeckManager : Singleton<DeckManager>
         to.Add(card);
         from.Remove(card);
         _deckRenderer.QueueUpdate();
+    }
+
+    public void AddCardToDeck(Card card)
+    {
+        DrawPile.Add(card);
+        Reset();
     }
 }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayingState : State
 {
+    public static Action e_OnPlayingStateEnter;
+
     void Awake()
     {
         StateType = StateType.Playing;
@@ -11,13 +14,13 @@ public class PlayingState : State
 
     public override void OnEnter(StateController stateController)
     {
-
+        e_OnPlayingStateEnter?.Invoke();
     }
 
     public override void UpdateState(StateController stateController)
     {
         bool finishedSpawning = true;
-        foreach (WaveSpawner waveSpawner in WaveSpawner.s_WaveSpawners)
+        foreach (WaveSpawner waveSpawner in WaveSpawnerManager.s_Instance.WaveSpawners)
         {
             if (!waveSpawner.FinishedSpawning)
             {

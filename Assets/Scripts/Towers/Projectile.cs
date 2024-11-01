@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Projectile : MonoBehaviour
 {
-    private Tower _source;
+    protected Tower _source;
     [HideInInspector] public float Damage;
     [HideInInspector] public float ProjectileSpeed;
     protected Enemy _target;
@@ -18,12 +18,14 @@ public abstract class Projectile : MonoBehaviour
     public Action e_OnDestroyed;
     [SerializeField] private SpriteRenderer _renderer;
     private bool _arrived;
+    private Collider2D _collider;
 
     public virtual void Initialize(float damage, float projectileSpeed, Tower source) 
     {
         Damage = damage;
         ProjectileSpeed = projectileSpeed;
         _source = source;
+        _collider = GetComponent<Collider2D>();
     }
 
     public virtual void Launch(Enemy target)
@@ -40,9 +42,9 @@ public abstract class Projectile : MonoBehaviour
         }
         Vector2 differenceVector = _targetPosition - transform.position;
         float deltaPosition = Time.deltaTime * ProjectileSpeed;
+        
         if (differenceVector.magnitude < deltaPosition)
         {
-            OnImpact();
             _arrived = true;
             return;
         }
@@ -50,14 +52,22 @@ public abstract class Projectile : MonoBehaviour
         transform.Translate(direction * deltaPosition);
     }
 
-    public virtual void OnImpact()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (_target != null)
+        Enemy enemy = other.GetComponent<Enemy>();
+        // if (enemy == null) { enemy = other.GetComponent<Warlord>(); }
+        if (enemy != null)
         {
-            e_OnImpact?.Invoke(_target);
-            _target.Health.TakeDamage(Damage);
+            OnImpact(enemy);
         }
+    }
+
+    public virtual void OnImpact(Enemy recipient)
+    {
+        e_OnImpact?.Invoke(recipient);
+        recipient.Health.TakeDamage(Damage);
         _renderer.enabled = false;
+        _collider.enabled = false;
         Destroy(gameObject, 1f);
     }
 

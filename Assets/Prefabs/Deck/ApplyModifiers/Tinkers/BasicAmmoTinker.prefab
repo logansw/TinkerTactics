@@ -132,6 +132,6 @@ MonoBehaviour:
   DamageModFlat: 0
   RangeModFlat: 0
   SweepModFlat: 0
-  AmmoModFlat: 10
+  AmmoModFlat: 6
   ReloadSpeedModMult: 0
   AttackSpeedModMult: 0

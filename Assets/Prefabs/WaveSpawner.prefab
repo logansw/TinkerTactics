@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5170298092095927069}
   - component: {fileID: 8066635675065709399}
   - component: {fileID: 4249741820458845378}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,23 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c62e6cd2b3cb4cd6b9271cc21c9974c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveSpawnerIndex: 0
   FinishedSpawning: 0
-  waves:
-  - {fileID: 11400000, guid: 68b92f6e4a87d4366ba7f4220490f9f1, type: 2}
-  - {fileID: 11400000, guid: 4c1eb90f53ae14582a6ad54f20278579, type: 2}
-  - {fileID: 11400000, guid: 68b92f6e4a87d4366ba7f4220490f9f1, type: 2}
-  - {fileID: 11400000, guid: 039313fa77663486da94ea0493f2204b, type: 2}
-  - {fileID: 11400000, guid: 68b92f6e4a87d4366ba7f4220490f9f1, type: 2}
-  - {fileID: 11400000, guid: 4b82d94af263440adbf221c47bc2a25c, type: 2}
-  - {fileID: 11400000, guid: 68b92f6e4a87d4366ba7f4220490f9f1, type: 2}
-  - {fileID: 11400000, guid: e04e8c99147ce46b3aa03ea964d96a93, type: 2}
-  - {fileID: 11400000, guid: 68b92f6e4a87d4366ba7f4220490f9f1, type: 2}
-  - {fileID: 11400000, guid: 4bf51133b217b4f2c9bbfe9fac16b57b, type: 2}
-  currentWaveIndex: 0
-  SpawnPoint: {fileID: 0}
   _boxCollider2d: {fileID: 4249741820458845378}
   Warlords: []
+  CurrentLane:
+    Squads: []
+  StartTile: {fileID: 0}
+  IsAssigned: 0
 --- !u!114 &8066635675065709399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +127,7 @@ GameObject:
   - component: {fileID: 1079797517914882745}
   - component: {fileID: 8620096003074373723}
   - component: {fileID: 1800003468880539857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2638153518689610814}
   - component: {fileID: 7203766623592126458}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

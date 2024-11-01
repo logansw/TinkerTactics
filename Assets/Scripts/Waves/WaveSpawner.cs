@@ -7,21 +7,18 @@ using UnityEngine.Rendering;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public static WaveSpawner[] s_WaveSpawners = new WaveSpawner[2];
-    [SerializeField] private int _waveSpawnerIndex;
     public bool FinishedSpawning = false;
-    public WaveSO[] waves;
-    public int currentWaveIndex;
-    private int currentSubWaveIndex = 0;
-    private int currentEnemyIndex = 0;
-    public TilePath SpawnPoint;
+    private int CurrentSquadIndex = 0;
+    private int CurrentEnemyIndex = 0;
     [SerializeField] private BoxCollider2D _boxCollider2d;
     public List<Warlord> Warlords = new List<Warlord>();
     private PlaceholderArt _placeholderArt;
+    public Lane CurrentLane;
+    public TilePath StartTile;
+    public bool IsAssigned;
 
     void Awake()
     {
-        s_WaveSpawners[_waveSpawnerIndex] = this;
         _placeholderArt = GetComponent<PlaceholderArt>();
     }
 
@@ -39,11 +36,11 @@ public class WaveSpawner : MonoBehaviour
         TooltipManager.s_Instance.HideTooltip();
     }
 
-    public void BeginWave()
+    public void BeginLane()
     {
         FinishedSpawning = false;
-        currentSubWaveIndex = 0;
-        currentEnemyIndex = 0;
+        CurrentSquadIndex = 0;
+        CurrentEnemyIndex = 0;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -65,49 +62,42 @@ public class WaveSpawner : MonoBehaviour
 
     public bool HasEnemies()
     {
-        return waves[currentWaveIndex] != null && (Warlords.Count > 0 || waves[currentWaveIndex].subWaves.Length > 0);
+        return CurrentLane != null;
     }
 
     public IEnumerator SpawnEnemies()
     {
+        while (!FinishedSpawning)
+        {
+            // Spawn the current enemy in the squad
+            Squad currentSquad = CurrentLane.Squads[CurrentSquadIndex];
+            SpawnEnemy(currentSquad.Enemy);
+            yield return new WaitForSeconds(0.5f);
+            CurrentEnemyIndex++;
+            // Check if the squad has finished spawning
+            if (CurrentEnemyIndex >= currentSquad.Count)
+            {
+                CurrentSquadIndex++;
+                CurrentEnemyIndex = 0;
+            }
+            // Check if all squads have been spawned
+            if (CurrentSquadIndex >= CurrentLane.Squads.Count)
+            {
+                FinishedSpawning = true;
+            }
+        }
         foreach (Warlord warlord in Warlords)
         {
             warlord.Respawn(this);
             yield return new WaitForSeconds(0.5f);
         }
-        while (!FinishedSpawning)
-        {
-            WaveSO currentWave = waves[currentWaveIndex];
-            if (currentWave.subWaves.Length == 0)
-            {
-                FinishedSpawning = true;
-                currentWaveIndex++;
-                yield break;
-            }
-            SubWaveSO currentSubwave = currentWave.subWaves[currentSubWaveIndex];
-            for (int i = 0 ; i < currentSubwave.enemyCounts[currentEnemyIndex]; i++)
-            {
-                SpawnEnemy(currentWave.subWaves[currentSubWaveIndex].enemies[currentEnemyIndex].enemyPrefab);
-                yield return new WaitForSeconds(currentSubwave.spawnInterval);
-            }
-            currentEnemyIndex++;
-            if (currentEnemyIndex >= currentWave.subWaves[currentSubWaveIndex].enemies.Length)
-            {
-                currentSubWaveIndex++;
-                currentEnemyIndex = 0;
-                if (currentSubWaveIndex >= currentWave.subWaves.Length)
-                {
-                    currentWaveIndex++;
-                    FinishedSpawning = true;
-                }
-            }
-        }
+        FinishedSpawning = true;
     }
 
-    private void SpawnEnemy(GameObject enemyPrefab)
+    private void SpawnEnemy(Enemy enemyPrefab)
     {
-        Enemy enemy = Instantiate(enemyPrefab, SpawnPoint.transform.position, Quaternion.identity).GetComponent<Enemy>();
-        enemy.Initialize(SpawnPoint);
+        Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
+        enemy.Initialize(StartTile);
     }
 
     public string PreviewWave()
@@ -116,34 +106,30 @@ public class WaveSpawner : MonoBehaviour
         {
             return "";
         }
-
-        WaveSO nextWave = waves[currentWaveIndex];
+        
         StringBuilder sb = new StringBuilder();
-        Dictionary<SubWaveSO.EnemyType, int> enemyCounts = new Dictionary<SubWaveSO.EnemyType, int>();
+        Dictionary<Enemy, int> enemyCounts = new Dictionary<Enemy, int>();
 
         foreach (Warlord warlord in Warlords)
         {
             sb.Append($"{warlord.gameObject.name}\n");
         }
 
-        foreach (SubWaveSO subWave in nextWave.subWaves)
+        foreach (Squad squad in CurrentLane.Squads)
         {
-            for (int i = 0; i < subWave.enemies.Length; i++)
+            if (!enemyCounts.ContainsKey(squad.Enemy))
             {
-                if (!enemyCounts.ContainsKey(subWave.enemies[i]))
-                {
-                    enemyCounts.Add(subWave.enemies[i], subWave.enemyCounts[i]);
-                }
-                else
-                {
-                    enemyCounts[subWave.enemies[i]] += subWave.enemyCounts[i];
-                }
+                enemyCounts.Add(squad.Enemy, squad.Count);
+            }
+            else
+            {
+                enemyCounts[squad.Enemy] += squad.Count;
             }
         }
 
-        foreach (KeyValuePair<SubWaveSO.EnemyType, int> enemyCount in enemyCounts)
+        foreach (KeyValuePair<Enemy, int> enemyCount in enemyCounts)
         {
-            sb.Append($"{enemyCount.Key.enemyPrefab.name} x {enemyCount.Value}\n");
+            sb.Append($"{enemyCount.Key.gameObject.name} x {enemyCount.Value}\n");
         }
 
         return sb.ToString();
