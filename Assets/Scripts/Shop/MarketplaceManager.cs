@@ -9,7 +9,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     public List<Card> AvailableCards;
 
     [SerializeField] private Transform cardsContainer;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject canvas;
     public int CardsSelected;
 
     public void PopulateAvailableItems()

@@ -135,6 +135,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         CardEffect.Initialize(this);
         CardEffect.OnDrawn();
         Render(true);
+        transform.localScale = Vector3.one;
     }
 
     // TODO: This is only here so that the camera panning works properly. This should be changed later. Currently, some systems interact with the mouse through the
