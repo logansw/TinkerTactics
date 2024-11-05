@@ -5,51 +5,54 @@ using UnityEngine;
 
 public class EffectChill : Effect
 {
-    public static int FrostbiteDamage = 10;
     private InternalClock _internalClock;
 
-    public override void Initialize(int stacks)
+    public override void Initialize(int stacks, EffectTracker effectTracker)
     {
+        base.Initialize(stacks, effectTracker);
         Stacks = 0;
-        _internalClock = new InternalClock(3f);
-        _internalClock.e_OnTimerDone += Remove;
         AddStacks(stacks);
         IconColor = new Color32(128, 249, 255, 255);
+        _internalClock = new InternalClock(2f);
+        _internalClock.e_OnTimerDone += RemoveStack;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
-        _internalClock.e_OnTimerDone -= Remove;
+        _internalClock.e_OnTimerDone -= RemoveStack;
         _internalClock.Delete();
     }
 
     public override void AddStacks(int count)
     {
-        _internalClock.Reset();
-        for (int i = 0; i < count; i++)
+        Stacks += count;
+        if (Stacks >= 5)
         {
-            Stacks++;
-            if (Stacks == 2)
-            {
-                Enemy.EffectTracker.AddEffect<EffectStun>(1);
-            }
-            else if (Stacks >= 3)
-            {
-                Enemy.OnImpact(FrostbiteDamage);
-                Remove();
-            }
+            Stacks = 5;
         }
+        _effectTracker.UpdateRenderer();
     }
 
     public override void RemoveStacks(int count)
     {
+        _effectTracker.UpdateRenderer();
         Stacks -= count;
+        if (Stacks <= 0)
+        {
+            Stacks = 0;
+            _effectTracker.RemoveEffect(this);
+        }
+    }
+
+    private void RemoveStack()
+    {
+        RemoveStacks(1);
     }
 
     public float GetSpeedMultiplier()
     {
-        return 0.5f;
+        return Mathf.Pow(0.8f, Stacks);
     }
 
     public override string GetStackText()
@@ -64,6 +67,6 @@ public class EffectChill : Effect
 
     public override string GetDescriptionText()
     {
-        return $"CHILL:\n(1) Reduces speed by 50%\n(2) Applies Stun\n(3+) deals {FrostbiteDamage} damage.";
+        return $"Slows the enemy by {GetSpeedMultiplier()}x";
     }
 }

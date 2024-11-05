@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EffectDefend : Effect
 {
-    public override void Initialize(int val)
+    public override void Initialize(int val, EffectTracker effectTracker)
     {
-        base.Initialize(val);
+        base.Initialize(val, effectTracker);
         Duration = 1;
         AddStacks(val);
         IconColor = new Color32(83, 191, 237, 255);

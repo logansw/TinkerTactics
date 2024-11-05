@@ -6,9 +6,9 @@ public class EffectStun : Effect
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(int duration)
+    public override void Initialize(int duration, EffectTracker effectTracker)
     {
-        base.Initialize(duration);
+        base.Initialize(duration, effectTracker);
         if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
         {
             Enemy.EffectTracker.RemoveEffect(this);

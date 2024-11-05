@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EffectVulnerable : Effect
 {
-    public override void Initialize(int duration)
+    public override void Initialize(int duration, EffectTracker effectTracker)
     {
-        base.Initialize(duration);
+        base.Initialize(duration, effectTracker);
         Duration = duration;
         IconColor = new Color32(255, 128, 170, 255);
     }

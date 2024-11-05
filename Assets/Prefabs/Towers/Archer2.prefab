@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Damage.baseValue
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: MaxAmmo.baseValue
@@ -161,7 +161,7 @@ MonoBehaviour:
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
   Range:
-    baseValue: 10
+    baseValue: 9
   Sweep:
     baseValue: 90
   Active: 0

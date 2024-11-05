@@ -34,6 +34,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public ModifierProcessor ModifierProcessor;
     public int TinkerLimit;
     private Liftable _liftable;
+    public bool IsLocked => _liftable.IsLocked;
 
     public virtual string GetTooltipText()
     {
@@ -126,6 +127,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
                 {
                     // Swap Towers
                     Tower otherTower = otherPlot.Towers[0];
+                    if (otherTower.IsLocked)
+                    {
+                        ReturnToPlot();
+                        return;
+                    }
                     otherPlot.RemoveTower(otherTower);
                     otherPlot.AddTower(this);
                     TilePlot.RemoveTower(this);

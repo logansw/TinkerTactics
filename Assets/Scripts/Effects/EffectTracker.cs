@@ -43,7 +43,7 @@ public class EffectTracker : MonoBehaviour
             T newEffect = gameObject.AddComponent<T>();
             if (newEffect.CheckRules())
             {
-                newEffect.Initialize(stacks);
+                newEffect.Initialize(stacks, this);
                 EffectsApplied.Add(newEffect);
             }
             else
@@ -78,5 +78,10 @@ public class EffectTracker : MonoBehaviour
         EffectsApplied.Clear();
         _effectRenderer.RenderEffects();
         e_OnEffectsChanged?.Invoke();
+    }
+
+    public void UpdateRenderer()
+    {
+        _effectRenderer.RenderEffects();
     }
 }

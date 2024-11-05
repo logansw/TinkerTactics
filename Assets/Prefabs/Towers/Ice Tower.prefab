@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Range.baseValue
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: _name
@@ -81,9 +81,17 @@ PrefabInstance:
       value: Slows
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Damage.baseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: _projectilePrefab
       value: 
       objectReference: {fileID: -3248178715166481428, guid: 817e4cd5224dc499295fb74b1a3140c0, type: 3}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: AttackSpeed.baseValue
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: m_Name
       value: Ice Tower
@@ -104,7 +112,8 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u2603"
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

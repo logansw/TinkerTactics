@@ -171,10 +171,10 @@ PrefabInstance:
     - target: {fileID: 2984855229957750881, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
       propertyPath: EnemySO
       value: 
-      objectReference: {fileID: 11400000, guid: d96be0bcd14b74243bbb2a0ebeacd351, type: 2}
+      objectReference: {fileID: 11400000, guid: d8338386012c84b11be9bfbb9c6f6a7d, type: 2}
     - target: {fileID: 4752307661770601087, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
       propertyPath: m_Name
-      value: Boss Bot v2
+      value: Boss Bot v3
       objectReference: {fileID: 0}
     - target: {fileID: 8783969423598211020, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
       propertyPath: m_LocalPosition.x

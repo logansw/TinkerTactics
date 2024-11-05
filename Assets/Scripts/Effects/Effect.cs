@@ -8,15 +8,17 @@ public abstract class Effect : MonoBehaviour
     public Enemy Enemy;
     public Color32 IconColor;
     public int Stacks;
+    protected EffectTracker _effectTracker;
 
     public virtual void Awake()
     {
         Enemy = GetComponent<Enemy>();
     }
 
-    public virtual void Initialize(int duration)
+    public virtual void Initialize(int duration, EffectTracker effectTracker)
     {
         // Nothing by default
+        _effectTracker = effectTracker;
     }
 
     public abstract void AddStacks(int count);

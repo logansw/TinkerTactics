@@ -48,6 +48,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         {
             Destroy(AvailableCards[i].gameObject);
         }
+        AvailableCards.Clear();
     }
 
     public void RemoveFromAvailable(Card card)

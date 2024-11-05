@@ -13,12 +13,16 @@ PrefabInstance:
       value: Laser Pointer Tower
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Range.baseValue
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Sweep.baseValue
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: _name
@@ -128,7 +132,8 @@ PrefabInstance:
       propertyPath: m_text
       value: "\U0001F52B"
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

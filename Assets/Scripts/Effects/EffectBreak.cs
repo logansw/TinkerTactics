@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EffectBreak : Effect
 {
-    public override void Initialize(int duration)
+    public override void Initialize(int duration, EffectTracker effectTracker)
     {
-        base.Initialize(duration);
+        base.Initialize(duration, effectTracker);
         Duration = duration;
         Enemy.EffectTracker.AddEffect<EffectStun>(duration);
         Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration);

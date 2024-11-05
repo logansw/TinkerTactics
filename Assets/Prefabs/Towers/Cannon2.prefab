@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Range.baseValue
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Sweep.baseValue
@@ -102,6 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+    - {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -131,15 +132,15 @@ MonoBehaviour:
   Damage:
     baseValue: 4
   AttackSpeed:
-    baseValue: 0.5
+    baseValue: 1
   ReloadSpeed:
     baseValue: 0.25
   MaxAmmo:
-    baseValue: 2
+    baseValue: 3
   CurrentAmmo:
-    baseValue: 2
+    baseValue: 3
   _projectilePrefab: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
   TooltipText: Explosion
   ProjectileSpeed: 10
   _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
-  ExplosionRadius: 1
+  ExplosionRadius: 2

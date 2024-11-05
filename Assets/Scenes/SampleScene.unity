@@ -3420,6 +3420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deck:
+  - {fileID: 2931863317418072218, guid: f486c10178b4b40a78d8965e2bc79e85, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
@@ -3706,9 +3707,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2069504699}
     m_Modifications:
+    - target: {fileID: 1803454858038983305, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803454858038983305, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 3942872935967839828, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
       propertyPath: m_Name
       value: Healthbar UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721210422256608531, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6027053880166498301, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
       propertyPath: m_Pivot.x
@@ -3740,7 +3753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6027053880166498301, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6027053880166498301, guid: 0e12bf5ead1c84a6298f98be5a470bd6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4381,8 +4394,8 @@ MonoBehaviour:
   _warlords:
   - {fileID: 2984855229957750881, guid: 72034aa587f924c5b876bfdb5903d713, type: 3}
   - {fileID: 7496497891095629512, guid: 8e4b69d403cca4c4f80e18c9d4c95fec, type: 3}
-  - {fileID: 9090826151856389642, guid: f6a290185ff264c49bd168cb8715b42f, type: 3}
-  - {fileID: 9090826151856389642, guid: f6a290185ff264c49bd168cb8715b42f, type: 3}
+  - {fileID: 7496497891095629512, guid: 2a75730716a604ffbb2c9d6b680681dd, type: 3}
+  - {fileID: 7496497891095629512, guid: b25e53f238f1043e8afa20622a525d92, type: 3}
   - {fileID: 9090826151856389642, guid: f6a290185ff264c49bd168cb8715b42f, type: 3}
   _levelNames:
   - Level1
@@ -5183,8 +5196,8 @@ RectTransform:
   - {fileID: 1652847612}
   - {fileID: 730670327}
   - {fileID: 32358292}
-  - {fileID: 825052340}
   - {fileID: 669374855}
+  - {fileID: 825052340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
