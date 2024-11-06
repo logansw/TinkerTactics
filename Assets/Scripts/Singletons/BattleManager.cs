@@ -14,6 +14,7 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
     public bool WarlordDefeated;
+    private float _previousTimeScale;
 
     public override void Initialize()
     {
@@ -23,7 +24,13 @@ public class BattleManager : Singleton<BattleManager>
 
     public void SetTimeScale(float timeScale)
     {
+        _previousTimeScale = Time.timeScale;
         Time.timeScale = timeScale;
+    }
+
+    public void UndoTimeScale()
+    {
+        SetTimeScale(_previousTimeScale);
     }
     
     public void Continue()

@@ -53,4 +53,14 @@ public class DeployTower : CardEffect
     {
         return new Color(1f, 0.8906723f, 0.4858491f, 1f);
     }
+
+    public override void OnCardClicked()
+    {
+        // Do nothing
+    }
+
+    public override void OnCardReturned()
+    {
+        // Do nothing
+    }
 }

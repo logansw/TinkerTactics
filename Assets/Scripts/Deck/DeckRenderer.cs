@@ -9,6 +9,7 @@ public class DeckRenderer : MonoBehaviour
     [SerializeField] private RectTransform _discardPileTransform;
     [SerializeField] private RectTransform _exhaustPileTransform;
     [SerializeField] private RectTransform _databaseTransform;
+    [SerializeField] private ReturnTray _returnTray;
     private bool _updateQueued;
 
     void Update()
@@ -84,5 +85,11 @@ public class DeckRenderer : MonoBehaviour
     public void QueueUpdate()
     {
         _updateQueued = true;
+    }
+
+    public void ShowReturnTray(bool show)
+    {
+        _returnTray.gameObject.SetActive(show);
+        _returnTray.transform.SetAsLastSibling();
     }
 }

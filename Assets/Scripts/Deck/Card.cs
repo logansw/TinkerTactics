@@ -64,6 +64,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 return;
             }
 
+            DeckManager.s_Instance.ShowReturnTray(true);
+            CardEffect.OnCardClicked();
             _isDragging = true;
 
             _targetPreview = CardEffect.GetTargetPreview();
@@ -77,6 +79,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        DeckManager.s_Instance.ShowReturnTray(false);
         if (IsOwned)
         {
             if (_isDragging)

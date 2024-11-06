@@ -46,7 +46,7 @@ public class ApplyModifier : CardEffect
 
     public override bool CanCast(Vector3 targetPosition)
     {
-        bool validTarget = GetTargetingRules().ValidTarget(targetPosition);
+        bool validTarget = GetTargetingRules().CheckValidTarget(targetPosition);
         if (!validTarget) { return false; }
 
         _recipient = _targetingRule.TargetTilePlot.Towers[0];
@@ -97,5 +97,15 @@ public class ApplyModifier : CardEffect
             Debug.LogError("No color defined for modifier type.");
             return new Color(1f, 1f, 1f, 1f);
         }
+    }
+
+    public override void OnCardClicked()
+    {
+        // Do nothing
+    }
+
+    public override void OnCardReturned()
+    {
+        // Do nothing
     }
 }

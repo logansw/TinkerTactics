@@ -40,7 +40,7 @@ public abstract class CardEffect : MonoBehaviour
     /// <param name="targetPosition"></param>
     public virtual bool CanCast(Vector3 targetPosition)
     {
-        return GetTargetingRules().ValidTarget(targetPosition);
+        return GetTargetingRules().CheckValidTarget(targetPosition);
     }
     public virtual void Cast()
     {
@@ -63,4 +63,6 @@ public abstract class CardEffect : MonoBehaviour
     }
     public abstract string GetCardType();
     public abstract Color GetColor();
+    public abstract void OnCardClicked();
+    public abstract void OnCardReturned();
 }

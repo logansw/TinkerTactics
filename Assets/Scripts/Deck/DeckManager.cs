@@ -211,4 +211,9 @@ public class DeckManager : Singleton<DeckManager>
         DrawPile.Add(card);
         Reset();
     }
+
+    public void ShowReturnTray(bool show)
+    {
+        _deckRenderer.ShowReturnTray(show);
+    }
 }

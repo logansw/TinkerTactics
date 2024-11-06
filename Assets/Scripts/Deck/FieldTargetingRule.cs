@@ -9,7 +9,7 @@ public class FieldTargetingRule : TargetingRules
 
     }
 
-    public override bool ValidTarget(Vector3 targetPosition)
+    protected override bool ValidTargetHelper(Vector3 targetPosition)
     {
         return true;
     }

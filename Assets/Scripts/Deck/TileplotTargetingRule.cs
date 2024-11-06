@@ -14,7 +14,7 @@ public class TileplotTargetingRule : TargetingRules
         TargetOccupiedTilePlot = targetOccupiedTilePlot;
     }
 
-    public override bool ValidTarget(Vector3 targetPosition)
+    protected override bool ValidTargetHelper(Vector3 targetPosition)
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(targetPosition, Vector2.zero);
         foreach (RaycastHit2D hit in hits)

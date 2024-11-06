@@ -68,6 +68,7 @@ public class BarUI : MonoBehaviour
         }
         else
         {
+            if (_fillWorld == null) { return; }
             _fillWorld.localScale = new Vector3(statPercentage, 1, 1);
         }
     }

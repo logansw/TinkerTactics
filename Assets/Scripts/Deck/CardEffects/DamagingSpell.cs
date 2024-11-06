@@ -56,6 +56,17 @@ public class DamagingSpell : CardEffect
             enemy.Health.TakeDamage(Damage);
         }
         Ammo.Current -= 1;
+        BattleManager.s_Instance.UndoTimeScale();
+    }
+
+    public override void OnCardClicked()
+    {
+        BattleManager.s_Instance.SetTimeScale(1f);
+    }
+
+    public override void OnCardReturned()
+    {
+        BattleManager.s_Instance.UndoTimeScale();
     }
 
     public override void OnDrawn()
