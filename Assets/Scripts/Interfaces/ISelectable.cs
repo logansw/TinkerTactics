@@ -6,4 +6,5 @@ public interface ISelectable
 {
     void OnSelect();
     void OnDeselect();
+    public bool IsSelectable();
 }

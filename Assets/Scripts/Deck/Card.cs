@@ -153,6 +153,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // Do Nothing
     }
 
+    public bool IsSelectable()
+    {
+        return true;
+    }
+
     private void AddToDeck()
     {
         DeckManager.s_Instance.AddCardToDeck(this);

@@ -106,6 +106,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         RangeIndicator.SetVisible(false);
     }
 
+    public bool IsSelectable()
+    {
+        return true;
+    }
+
     /// <summary>
     /// Assigns the tower to a tile plot by performing a raycast from the tower's position.
     /// If an empty tile plot is found, the tower is assigned to it. 

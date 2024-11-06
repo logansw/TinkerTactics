@@ -23,6 +23,16 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         EnemiesInRange = new List<Enemy>();
         DrawRangeIndicator();
         DrawCollider();
+        PlayingState.e_OnPlayingStateEnter += EnableCollider;
+        IdleState.e_OnIdleStateEnter += DisableCollider;
+    }
+
+    public void OnDestroy()
+    {
+        _tower.Range.e_OnStatChanged -= QueueUpdate;
+        _tower.Sweep.e_OnStatChanged -= QueueUpdate;
+        PlayingState.e_OnPlayingStateEnter -= EnableCollider;
+        IdleState.e_OnIdleStateEnter -= DisableCollider;
     }
 
     void Update()
@@ -47,9 +57,15 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         TooltipManager.s_Instance.HideTooltip();
     }
 
+    public bool IsSelectable()
+    {
+        return _rangeIndicator.enabled;
+    }
+
     public void SetVisible(bool visible)
     {
         _rangeIndicator.enabled = visible;
+        _collider.enabled = visible;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -161,5 +177,15 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private void QueueUpdate()
     {
         _updateQueued = true;
+    }
+
+    private void EnableCollider()
+    {
+        _collider.enabled = true;
+    }
+    
+    private void DisableCollider()
+    {
+        _collider.enabled = false;
     }
 }
