@@ -91,7 +91,11 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     }
 
     private void OnMouseDrag() {
-        if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            ToastManager.s_Instance.AddToast("Cannot rotate towers during battle");
+            return;
+        }
         if (!_isDragging) { return; }
         
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -167,3 +167,4 @@ MonoBehaviour:
   Active: 0
   ModifierProcessor: {fileID: 2640380389457892312}
   TinkerLimit: 2
+  WidgetLimit: 5

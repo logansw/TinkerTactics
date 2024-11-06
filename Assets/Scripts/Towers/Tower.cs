@@ -33,6 +33,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private BarUI _ammoBar;
     public ModifierProcessor ModifierProcessor;
     public int TinkerLimit;
+    public int WidgetLimit = 5;
     private Liftable _liftable;
     public bool IsLocked => _liftable.IsLocked;
 
@@ -48,6 +49,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.CalculatedFinal}");
         sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.CalculatedFinal}");
         sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
+        sb.AppendLine($"Widgets Equipped: {ModifierProcessor.WidgetCount}/{WidgetLimit}");
 
         return sb.ToString();
     }

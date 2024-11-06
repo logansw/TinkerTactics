@@ -6,7 +6,7 @@ public abstract class WidgetBase : ModifierBase
 {
     public override bool CanAddModifier(Tower recipient)
     {
-        return true;
+        return recipient.ModifierProcessor.WidgetCount < recipient.WidgetLimit;
     }
 
     public override void OnModifierAdded(Tower recipient)

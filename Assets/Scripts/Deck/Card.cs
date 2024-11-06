@@ -60,7 +60,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             if (!CardEffect.CanPrepare())
             {
-                Debug.Log("Cannot play card right now.");
+                ToastManager.s_Instance.AddToast("Not enough energy");
                 return;
             }
 

@@ -18,10 +18,14 @@ public class Liftable : MonoBehaviour
 
     void Update()
     {
-        if (IsLocked) { return; }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (CheckClick(mousePos))
         {
+            if (IsLocked)
+            {
+                ToastManager.s_Instance.AddToast("Tower cannot be repositioned");
+                return;
+            }
             _liftable.OnLift();
             IsLifted = true;
         }

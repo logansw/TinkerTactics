@@ -31,6 +31,17 @@ public class ModifierProcessor : MonoBehaviour
         {
             AddModifier(modifier, recipient);
         }
+        else
+        {
+            if (modifier is TinkerBase)
+            {
+                ToastManager.s_Instance.AddToast($"Tinker limit reached for {recipient.Name}");
+            }
+            else if (modifier is WidgetBase)
+            {
+                ToastManager.s_Instance.AddToast($"Widget limit reached for {recipient.Name}");
+            }
+        }
     }
 
     public void AddModifier(ModifierBase modifier, Tower recipient)
@@ -38,6 +49,14 @@ public class ModifierProcessor : MonoBehaviour
         Modifiers.Add(modifier);
         e_OnModifierAdded?.Invoke();
         modifier.OnModifierAdded(recipient);
+        if (modifier is TinkerBase)
+        {
+            ToastManager.s_Instance.AddToast($"{recipient.Name} has {TinkerCount}/{recipient.TinkerLimit} tinkers equipped.");
+        }
+        else if (modifier is WidgetBase)
+        {
+            ToastManager.s_Instance.AddToast($"{recipient.Name} has {WidgetCount}/{recipient.WidgetLimit} widgets equipped.");
+        }
     }
 
     public float CalculateDamage(StatDamage damage)
