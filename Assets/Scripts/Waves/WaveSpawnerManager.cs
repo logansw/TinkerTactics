@@ -20,6 +20,10 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
         UnassignSpawners();
         AssignRandomLanesToSpawners(Warlord.WaveHolder.Waves[CurrentWaveIndex]);
         CurrentWaveIndex++;
+        if (CurrentWaveIndex > Warlord.WaveHolder.Waves.Count - 1)
+        {
+            CurrentWaveIndex--;
+        }
     }
 
     public void StartWaves()
