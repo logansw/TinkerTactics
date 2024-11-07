@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -139,15 +140,19 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
                         ReturnToPlot();
                         return;
                     }
+                    TilePlot temp = TilePlot;
                     otherPlot.RemoveTower(otherTower);
                     otherPlot.AddTower(this);
                     TilePlot.RemoveTower(this);
                     TilePlot.AddTower(otherTower);
                     TilePlot = otherPlot;
+                    otherTower.TilePlot = temp;
+                    return;
                 }
             }
         }
         // Return to plot if no tile plot is found
+        TilePlot.AddTower(this);
         ReturnToPlot();
     }
 

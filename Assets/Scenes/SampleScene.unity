@@ -3739,8 +3739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deck:
-  - {fileID: 5838725101998783181, guid: d67405c7a1bd14c4991f244d0a1523c3, type: 3}
-  - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 4810116602737779252, guid: dfc8cedd6bf8642278d68c8987f81bc6, type: 3}
@@ -3750,6 +3748,7 @@ MonoBehaviour:
   - {fileID: 8214740067187143250, guid: c04415f7a03904460b015aeacb1cf789, type: 3}
   - {fileID: 3814989322589869822, guid: b6b29322805f044f792db446e73c014a, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
+  - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   DrawPile: []
   Hand: []
   DiscardPile: []

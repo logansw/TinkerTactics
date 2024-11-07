@@ -10,11 +10,35 @@ public class TilePlot : Tile
     public int Capacity;
     public bool IsTargeted { get; private set; }
     [SerializeField] private GameObject _targetedIndicator;
+    [SerializeField] private GameObject _lockedIndicator;
+    private bool _updateQueued;
 
     void Start()
     {
         Capacity = 1;
         Towers = new List<Tower>();
+        SetLocked();
+    }
+
+    void OnEnable()
+    {
+        PlayingState.e_OnPlayingStateEnter += QueueLockUpdate;
+        IdleState.e_OnIdleStateEnter += QueueLockUpdate;
+    }
+
+    void OnDisable()
+    {
+        PlayingState.e_OnPlayingStateEnter -= QueueLockUpdate;
+        IdleState.e_OnIdleStateEnter -= QueueLockUpdate;
+    }
+
+    public void Update()
+    {
+        if (_updateQueued)
+        {
+            SetLocked();
+            _updateQueued = false;
+        }
     }
 
     public bool IsOccupied()
@@ -37,6 +61,7 @@ public class TilePlot : Tile
     {
         if (IsOccupied())
         {
+            SetLocked();
             return false;
         }
         else
@@ -44,6 +69,7 @@ public class TilePlot : Tile
             Towers.Add(tower);
             Vector2 tilePosition = transform.position;
             tower.transform.position = new Vector3(tilePosition.x, tilePosition.y, tower.transform.position.z);
+            SetLocked();
             return true;
         }
     }
@@ -51,5 +77,31 @@ public class TilePlot : Tile
     public void RemoveTower(Tower tower)
     {
         Towers.Remove(tower);
+        SetLocked();
+    }
+
+    public void QueueLockUpdate()
+    {
+        _updateQueued = true;
+    }
+
+    private void SetLocked()
+    {
+        if (Towers == null || Towers.Count == 0)
+        {
+            _lockedIndicator.gameObject.SetActive(false);
+            return;
+        }
+
+        bool locked = Towers[0].IsLocked;
+        _lockedIndicator.gameObject.SetActive(true);
+        if (locked)
+        {
+            _lockedIndicator.transform.localPosition = new Vector2(0, 0.75f);
+        }
+        else
+        {
+            _lockedIndicator.transform.localPosition = new Vector2(0.536f, 0.75f);
+        }
     }
 }
