@@ -32,6 +32,7 @@ public class GameManager : Singleton<GameManager>
         TowerManager.s_Instance.ClearTowers();
         MarketplaceManager.s_Instance.PopulateAvailableItems();
         MarketplaceManager.s_Instance.ShowShop(true);
+        BattleManager.s_Instance.SetTimeScale(1f);
     }
 
     public string GetLevelName()
