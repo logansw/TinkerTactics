@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
             currentMovementSpeed = 0;
         }
         transform.Translate(direction * Time.deltaTime * currentMovementSpeed / 10);
-        if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.1 && !EndReached)
+        if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.2f && !EndReached)
         {
             OnPathEnd();
         }
