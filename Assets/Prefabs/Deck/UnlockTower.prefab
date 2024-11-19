@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2631743420391283226
+--- !u!1001 &8307424567156778674
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 22
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_Name
-      value: DeployTower
+      value: UnlockTower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98,29 +98,28 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4705125130567479054}
+      addedObject: {fileID: -500057100883014651}
   m_SourcePrefab: {fileID: 100100000, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
---- !u!1 &6082087254971923773 stripped
+--- !u!1 &264542711423910293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
-  m_PrefabInstance: {fileID: 2631743420391283226}
+  m_PrefabInstance: {fileID: 8307424567156778674}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4705125130567479054
+--- !u!114 &-500057100883014651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6082087254971923773}
+  m_GameObject: {fileID: 264542711423910293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb71698b1d2e4396b515bfafc05ee2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 51d1649f233c74eeea357f813078b912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PreviewSprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
   Cost:
     baseValue: 1
   Name: Unlock
-  Consume: 1
-  Description: Unlock a tower until the next wave. Cannot be used during battle.
-  Tower: {fileID: 0}
+  Consume: 0
+  Description: Unlock a tower until the next wave.

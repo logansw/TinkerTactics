@@ -197,10 +197,12 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public void Lock()
     {
         _liftable.IsLocked = true;
+        _tilePlot.QueueLockUpdate();
     }
 
     public void Unlock()
     {
         _liftable.IsLocked = false;
+        _tilePlot.QueueLockUpdate();
     }
 }

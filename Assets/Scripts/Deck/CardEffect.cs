@@ -25,7 +25,6 @@ public abstract class CardEffect : MonoBehaviour
     {
         return Name;
     }
-    public abstract string GetDescription();
     public abstract TargetingRules GetTargetingRules();
     /// <summary>
     /// Returns true if the card can be prepared to be cast (i.e. eligible to be dragged from hand)
@@ -62,6 +61,7 @@ public abstract class CardEffect : MonoBehaviour
         return Consume;
     }
     public abstract string GetCardType();
+    public abstract string GetDescription();
     public abstract Color GetColor();
     public abstract void OnCardClicked();
     public abstract void OnCardReturned();

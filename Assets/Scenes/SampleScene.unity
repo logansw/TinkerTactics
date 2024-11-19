@@ -942,7 +942,6 @@ MonoBehaviour:
   - {fileID: 5838725101998783181, guid: d67405c7a1bd14c4991f244d0a1523c3, type: 3}
   - {fileID: 2931863317418072218, guid: f486c10178b4b40a78d8965e2bc79e85, type: 3}
   - {fileID: 998647300915211702, guid: 0ec089d41cbf245fabc8df90c68b0e40, type: 3}
-  - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 3137594697258223652, guid: 2a956d77eab534e7e8ae881469f08aaf, type: 3}
   - {fileID: 296042900591297405, guid: 1e630359888cc47cabe57aeae64d8c1f, type: 3}
@@ -954,6 +953,7 @@ MonoBehaviour:
   - {fileID: 3814989322589869822, guid: 19b675d9829864af08e6d4acec0988a1, type: 3}
   - {fileID: 3814989322589869822, guid: cef834cefb6214abcb1710645fde23e2, type: 3}
   - {fileID: 3814989322589869822, guid: 45461390b220f4e74af0bab1b1b8895f, type: 3}
+  - {fileID: 4720629682095951307, guid: 8555967b3615147579766cea1fe72370, type: 3}
   AvailableCards: []
   cardsContainer: {fileID: 66078692}
   canvas: {fileID: 825052339}
@@ -3749,6 +3749,9 @@ MonoBehaviour:
   - {fileID: 3814989322589869822, guid: b6b29322805f044f792db446e73c014a, type: 3}
   - {fileID: 4874060471286656800, guid: 83c0e30fbb795445eb1eac1887a8bf58, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
+  - {fileID: 4720629682095951307, guid: 8555967b3615147579766cea1fe72370, type: 3}
+  - {fileID: 4720629682095951307, guid: 8555967b3615147579766cea1fe72370, type: 3}
+  - {fileID: 4720629682095951307, guid: 8555967b3615147579766cea1fe72370, type: 3}
   DrawPile: []
   Hand: []
   DiscardPile: []
