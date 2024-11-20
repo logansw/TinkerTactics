@@ -56,11 +56,10 @@ public class Health
         {
             e_OnHealthDepleted?.Invoke();
         }
-        else if (CurrentHealth == _lowerBreakpoint)
+        else if (CurrentHealth <= _lowerBreakpoint)
         {
             // Trigger enemy health breakpoint event
-            _upperBreakpoint -= _segmentHealth;
-            _lowerBreakpoint -= _segmentHealth;
+            _lowerBreakpoint = int.MinValue;
             e_OnHealthBreak?.Invoke();
         }
     }
@@ -71,5 +70,16 @@ public class Health
         {
             CurrentHealth += amount;
         }
+    }
+
+    public void SetLowerBreakpoint(float lowerBreakpoint)
+    {
+        _lowerBreakpoint = lowerBreakpoint;
+        e_OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+
+    public float GetLowerBreakpoint()
+    {
+        return _lowerBreakpoint;
     }
 }

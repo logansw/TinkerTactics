@@ -9,6 +9,7 @@ public class HealthbarUI : Singleton<HealthbarUI>
     [SerializeField] private RectTransform _background;
     [SerializeField] private RectTransform _remainingHealth;
     [SerializeField] private TMP_Text _healthText;
+    [SerializeField] private GameObject _breakpoint;
 
     public void RegisterHealth(Health health)
     {
@@ -22,5 +23,6 @@ public class HealthbarUI : Singleton<HealthbarUI>
         float healthPercentage = currentHealth / maxHealth;
         _remainingHealth.sizeDelta = new Vector2(_background.rect.width * healthPercentage, _remainingHealth.sizeDelta.y);
         _healthText.text = $"{currentHealth}/{maxHealth}";
+        _breakpoint.transform.localPosition = new Vector3(_background.rect.width * Health.GetLowerBreakpoint() / Health.MaxHealth, 0, 0);
     }
 }
