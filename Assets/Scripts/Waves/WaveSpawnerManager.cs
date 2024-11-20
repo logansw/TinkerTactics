@@ -85,13 +85,17 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
 
     public void AssignRandomLanesToSpawners(Wave wave)
     {
+        Debug.Log(CurrentWaveIndex);
         for (int i = 0; i < wave.Lanes.Count; i++)
         {
             if (i == 0)
             {
                 int randomIndex = Random.Range(0, WaveSpawners.Count);
                 AssignLaneToSpawner(wave.Lanes[i], WaveSpawners[randomIndex]);
-                AssignWarlordToSpawner(Warlord, WaveSpawners[randomIndex]);
+                if (CurrentWaveIndex != 0 && CurrentWaveIndex % 3 == 2)
+                {
+                    AssignWarlordToSpawner(Warlord, WaveSpawners[randomIndex]);
+                }
             }
             else
             {
