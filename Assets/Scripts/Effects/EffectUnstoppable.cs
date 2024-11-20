@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class EffectUnstoppable : Effect
 {
-    public override void Initialize(int duration, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
-        base.Initialize(duration, effectTracker);
-        Duration = duration;
+        base.Initialize(duration, stacks, effectTracker);
         IconColor = new Color32(201, 195, 177, 255);
     }
 
     public override void AddStacks(int count)
     {
-        Duration += count;
+        Stacks += count;
     }
 
     public override void RemoveStacks(int count)
@@ -24,7 +23,7 @@ public class EffectUnstoppable : Effect
 
     public override string GetStackText()
     {
-        return Duration.ToString();
+        return Stacks.ToString();
     }
 
     public override string GetAbbreviationText()

@@ -7,13 +7,13 @@ public class EffectChill : Effect
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
-        base.Initialize(stacks, effectTracker);
+        base.Initialize(duration, stacks, effectTracker);
         Stacks = 0;
         AddStacks(stacks);
         IconColor = new Color32(128, 249, 255, 255);
-        _internalClock = new InternalClock(2f);
+        _internalClock = new InternalClock(duration);
         _internalClock.e_OnTimerDone += RemoveStack;
     }
 

@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class EffectBreak : Effect
 {
-    public override void Initialize(int duration, EffectTracker effectTracker)
+    private InternalClock _internalClock;
+
+    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
-        base.Initialize(duration, effectTracker);
-        Duration = duration;
-        Enemy.EffectTracker.AddEffect<EffectStun>(duration);
-        Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration);
+        base.Initialize(duration, stacks, effectTracker);
+        Enemy.EffectTracker.AddEffect<EffectStun>(duration, stacks);
+        Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration, stacks);
         IconColor = new Color32(255, 158, 128, 255);
+        _internalClock = new InternalClock(duration);
+        _internalClock.e_OnTimerDone += Remove;
     }
 
     public override void AddStacks(int count)

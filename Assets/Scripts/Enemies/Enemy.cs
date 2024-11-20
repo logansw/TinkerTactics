@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     {
         float maxHealth = EnemySO.MaxHealth;
         int breakpointCount = EnemySO.SegmentCount;
-        Health = new Health(EnemySO.MaxHealth, EnemySO.SegmentCount);
+        Health = new Health(EnemySO.MaxHealth);
         BaseMovementSpeed = EnemySO.MovementSpeed;
         MovementSpeed = BaseMovementSpeed;
         Armor = EnemySO.Armor;
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnBreak()
     {
-        EffectTracker.AddEffect<EffectBreak>(1);
+        EffectTracker.AddEffect<EffectBreak>(5f, 1);
         e_OnEnemyBreak?.Invoke(this);
     }
 

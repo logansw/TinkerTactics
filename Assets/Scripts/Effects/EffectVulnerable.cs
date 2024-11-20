@@ -5,21 +5,24 @@ using UnityEngine;
 
 public class EffectVulnerable : Effect
 {
-    public override void Initialize(int duration, EffectTracker effectTracker)
+    private InternalClock _internalClock;
+
+    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
-        base.Initialize(duration, effectTracker);
-        Duration = duration;
+        base.Initialize(duration, stacks, effectTracker);
         IconColor = new Color32(255, 128, 170, 255);
+        _internalClock = new InternalClock(duration);
+        _internalClock.e_OnTimerDone += Remove;
     }
 
     public override void AddStacks(int count)
     {
-        Duration += count;
+        Stacks += count;
     }
 
     public override void RemoveStacks(int count)
     {
-        Duration -= count;
+        Stacks -= count;
     }
 
     public float GetDamageMultiplier()
@@ -29,7 +32,7 @@ public class EffectVulnerable : Effect
 
     public override string GetStackText()
     {
-        return Duration.ToString();
+        return Stacks.ToString();
     }
 
     public override string GetAbbreviationText()
@@ -39,6 +42,6 @@ public class EffectVulnerable : Effect
 
     public override string GetDescriptionText()
     {
-        return $"VULNERABLE: Enemy takes double damage for {Duration} turns.";
+        return $"";
     }
 }

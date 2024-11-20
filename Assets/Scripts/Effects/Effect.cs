@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Effect : MonoBehaviour
 {
-    public int Duration;
     public Enemy Enemy;
     public Color32 IconColor;
     public int Stacks;
@@ -15,7 +14,7 @@ public abstract class Effect : MonoBehaviour
         Enemy = GetComponent<Enemy>();
     }
 
-    public virtual void Initialize(int duration, EffectTracker effectTracker)
+    public virtual void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
         // Nothing by default
         _effectTracker = effectTracker;
@@ -30,15 +29,6 @@ public abstract class Effect : MonoBehaviour
 
     public virtual void OnDisable()
     {
-    }
-
-    public virtual void OnEnemyTurnEnd()
-    {
-        Duration--;
-        if (Duration <= 0)
-        {
-            Remove();
-        }
     }
 
     public virtual void Remove()

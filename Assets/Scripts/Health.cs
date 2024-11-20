@@ -7,7 +7,6 @@ public class Health
     public float MaxHealth { get; private set; }
     private float _upperBreakpoint;
     private float _lowerBreakpoint;
-    private float _segmentHealth;
     public Action e_OnHealthDepleted;
     public Action e_OnHealthBreak;
     public delegate void HealthAction(float currentHealth, float maxHealth);
@@ -37,13 +36,10 @@ public class Health
 
     public int SegmentCount { get; private set; }
 
-    public Health(float maxHealth, int segmentCount)
+    public Health(float maxHealth)
     {
         MaxHealth = maxHealth;
-        SegmentCount = segmentCount;
         _upperBreakpoint = maxHealth;
-        _segmentHealth = maxHealth / segmentCount;
-        _lowerBreakpoint = _upperBreakpoint - _segmentHealth;
         CurrentHealth = maxHealth;
     }
 
@@ -59,7 +55,7 @@ public class Health
         else if (CurrentHealth <= _lowerBreakpoint)
         {
             // Trigger enemy health breakpoint event
-            _lowerBreakpoint = int.MinValue;
+            _lowerBreakpoint = 0;
             e_OnHealthBreak?.Invoke();
         }
     }

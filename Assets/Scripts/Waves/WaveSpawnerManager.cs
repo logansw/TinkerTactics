@@ -85,7 +85,6 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
 
     public void AssignRandomLanesToSpawners(Wave wave)
     {
-        Debug.Log(CurrentWaveIndex);
         for (int i = 0; i < wave.Lanes.Count; i++)
         {
             if (i == 0)

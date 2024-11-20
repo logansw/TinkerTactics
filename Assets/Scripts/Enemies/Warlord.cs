@@ -14,7 +14,7 @@ public class Warlord : Enemy
     {
         Render(false);
         HealthbarUI.s_Instance.RegisterHealth(Health);
-        EffectTracker.AddEffect<EffectUntargetable>(1);
+        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
     }
 
     public override void OnPathEnd()
@@ -24,7 +24,7 @@ public class Warlord : Enemy
         e_OnWarlordEnd?.Invoke(this);
         Render(false);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
-        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue);
+        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
         IsSpawned = false;
         // Health.TakeDamage(Health.CurrentHealth);
     }

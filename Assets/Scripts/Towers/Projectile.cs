@@ -65,6 +65,10 @@ public abstract class Projectile : MonoBehaviour
     public virtual void OnImpact(Enemy recipient)
     {
         e_OnImpact?.Invoke(recipient);
+        if (recipient.EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
+        {
+            Damage *= effectVulnerable.GetDamageMultiplier();
+        }
         recipient.Health.TakeDamage(Damage);
         _renderer.enabled = false;
         _collider.enabled = false;

@@ -32,7 +32,7 @@ public class EffectTracker : MonoBehaviour
         return false;
     }
 
-    public void AddEffect<T>(int stacks) where T : Effect
+    public void AddEffect<T>(float duration, int stacks) where T : Effect
     {
         if (HasEffect<T>(out T effect))
         {
@@ -43,7 +43,7 @@ public class EffectTracker : MonoBehaviour
             T newEffect = gameObject.AddComponent<T>();
             if (newEffect.CheckRules())
             {
-                newEffect.Initialize(stacks, this);
+                newEffect.Initialize(duration, stacks, this);
                 EffectsApplied.Add(newEffect);
             }
             else

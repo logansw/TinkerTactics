@@ -6,17 +6,16 @@ public class EffectStun : Effect
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(int duration, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
-        base.Initialize(duration, effectTracker);
+        base.Initialize(duration, stacks, effectTracker);
         if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
         {
             Enemy.EffectTracker.RemoveEffect(this);
             return;
         }
-        Duration = duration;
         IconColor = new Color32(255, 240, 128, 255);
-        _internalClock = new InternalClock(0.5f);
+        _internalClock = new InternalClock(duration);
         _internalClock.e_OnTimerDone += Remove;
     }
 
@@ -29,12 +28,12 @@ public class EffectStun : Effect
 
     public override void AddStacks(int count)
     {
-        Duration += count;
+        Stacks += count;
     }
 
     public override void RemoveStacks(int count)
     {
-        Duration -= count;
+        Stacks -= count;
     }
 
     public override bool CheckRules()
@@ -48,7 +47,7 @@ public class EffectStun : Effect
 
     public override string GetStackText()
     {
-        return Duration.ToString();
+        return Stacks.ToString();
     }
 
     public override string GetAbbreviationText()
@@ -58,6 +57,6 @@ public class EffectStun : Effect
 
     public override string GetDescriptionText()
     {
-        return $"STUN: Enemy cannot act for {Duration} turns.";
+        return $"";
     }
 }

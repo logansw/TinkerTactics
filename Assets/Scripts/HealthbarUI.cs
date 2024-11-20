@@ -23,6 +23,11 @@ public class HealthbarUI : Singleton<HealthbarUI>
         float healthPercentage = currentHealth / maxHealth;
         _remainingHealth.sizeDelta = new Vector2(_background.rect.width * healthPercentage, _remainingHealth.sizeDelta.y);
         _healthText.text = $"{currentHealth}/{maxHealth}";
-        _breakpoint.transform.localPosition = new Vector3(_background.rect.width * Health.GetLowerBreakpoint() / Health.MaxHealth, 0, 0);
+
+        if (Health.GetLowerBreakpoint() == int.MinValue || maxHealth == 0)
+        {
+            return;
+        }
+        _breakpoint.transform.localPosition = new Vector3(_background.rect.width * Health.GetLowerBreakpoint() / maxHealth, 0, 0);
     }
 }
