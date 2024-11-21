@@ -91,7 +91,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
             {
                 int randomIndex = Random.Range(0, WaveSpawners.Count);
                 AssignLaneToSpawner(wave.Lanes[i], WaveSpawners[randomIndex]);
-                if (CurrentWaveIndex != 0 && CurrentWaveIndex % 3 == 2)
+                if (CurrentWaveIndex != 0 && CurrentWaveIndex % 3 == 2 || CurrentWaveIndex == Warlord.WaveHolder.Waves.Count - 1)
                 {
                     AssignWarlordToSpawner(Warlord, WaveSpawners[randomIndex]);
                     if (CurrentWaveIndex == 2)

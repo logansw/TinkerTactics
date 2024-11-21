@@ -117,6 +117,11 @@ public class Enemy : MonoBehaviour
         if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.2f && !EndReached)
         {
             OnPathEnd();
+            return;
+        }
+        if ((destination - transform.position).magnitude < 0.2f)
+        {
+            TileTarget = TileTarget.NextTilePath;
         }
     }
 

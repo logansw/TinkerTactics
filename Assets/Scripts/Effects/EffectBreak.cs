@@ -46,4 +46,16 @@ public class EffectBreak : Effect
     {
         return "BREAK: Applies Stun and Vulnerable.";
     }
+
+    public override void Remove()
+    {
+        if (Enemy is Warlord)
+        {
+            Warlord warlord = Enemy.gameObject.GetComponent<Warlord>();
+            warlord.Retreat();
+            _internalClock.e_OnTimerDone -= Remove;
+            _internalClock.Delete();
+        }
+        base.Remove();
+    }
 }

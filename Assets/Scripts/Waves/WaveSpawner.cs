@@ -137,13 +137,13 @@ public class WaveSpawner : MonoBehaviour
 
     public void RegisterWarlord(Warlord warlord)
     {
-        warlord.e_OnWarlordEnd += UnregisterWarlord;
+        warlord.e_OnWarlordRemoved += UnregisterWarlord;
         Warlords.Add(warlord);
     }
 
     public void UnregisterWarlord(Warlord warlord)
     {
         Warlords.Remove(warlord);
-        warlord.e_OnWarlordEnd -= UnregisterWarlord;
+        warlord.e_OnWarlordRemoved -= UnregisterWarlord;
     }
 }

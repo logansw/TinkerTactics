@@ -13,17 +13,17 @@ public class TilePath : Tile
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.GetComponent<Enemy>() != null)
-        {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy.TileTarget != null && enemy.TileTarget.PathType != PathType.End)
-            {
-                enemy.TileTarget = enemy.TileTarget.NextTilePath;
-            }
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.GetComponent<Enemy>() != null)
+    //     {
+    //         Enemy enemy = other.GetComponent<Enemy>();
+    //         if (enemy.TileTarget != null && enemy.TileTarget.PathType != PathType.End)
+    //         {
+    //             enemy.TileTarget = enemy.TileTarget.NextTilePath;
+    //         }
+    //     }
+    // }
 
     public Direction GetNextPathDirection()
     {

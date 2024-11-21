@@ -6,9 +6,10 @@ using UnityEngine;
 public class Warlord : Enemy
 {
     public static Action e_OnWarlordDefeated;
-    public delegate void OnWarlordEnd(Warlord warlord);
-    public OnWarlordEnd e_OnWarlordEnd;
+    public delegate void OnWarlordRemoved(Warlord warlord);
+    public OnWarlordRemoved e_OnWarlordRemoved;
     public WaveHolder WaveHolder;
+    private Vector3 _startPosition;
 
     public void Start()
     {
@@ -21,7 +22,7 @@ public class Warlord : Enemy
     {
         EndReached = true;
         BattleManager.s_Instance.DamagePlayer(EnemySO.Damage);
-        e_OnWarlordEnd?.Invoke(this);
+        e_OnWarlordRemoved?.Invoke(this);
         Render(false);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
         EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
@@ -36,11 +37,38 @@ public class Warlord : Enemy
         Render(true);
         EffectTracker.ClearEffects();
         IsSpawned = true;
+        _startPosition = waveSpawner.transform.position;
     }
 
     public override void OnDeath()
     {
         base.OnDeath();
         e_OnWarlordDefeated?.Invoke();
+    }
+
+    public void Retreat()
+    {
+        OnRemovedFromBoard();
+    }
+
+    private void OnRemovedFromBoard()
+    {
+        e_OnWarlordRemoved?.Invoke(this);
+        Render(true);
+        EnemyManager.s_Instance.RemoveEnemyFromList(this);
+        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
+        IsSpawned = false;
+        StartCoroutine(AnimateRetreat());
+    }
+
+    private IEnumerator AnimateRetreat()
+    {
+        Vector3 endPos = _startPosition;
+        while ((transform.position - endPos).magnitude > 1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, endPos, 1f * Time.deltaTime);
+            yield return null;
+        }
+        Render(false);
     }
 }
