@@ -12,9 +12,18 @@ public class TowerManager : Singleton<TowerManager>
         Towers = new List<Tower>();
     }
 
-    public void AddTower(Tower tower, Vector3 position)
+    public Tower AddTower(Tower tower, Vector3 position)
     {
-        Towers.Add(Instantiate(tower, position, Quaternion.identity));
+        Tower newTower = Instantiate(tower, position, Quaternion.identity);
+        Towers.Add(newTower);
+        return newTower;
+    }
+
+    public void RemoveTower(Tower tower)
+    {
+        Towers.Remove(tower);
+        tower.TilePlot.RemoveTower(tower);
+        Destroy(tower.gameObject);
     }
 
     public void ClearTowers()

@@ -189,6 +189,17 @@ public class DeckManager : Singleton<DeckManager>
         MoveCard(card, Hand, ConsumePile);
     }
 
+    public void RestoreCard(Card card)
+    {
+        if (!ConsumePile.Contains(card))
+        {
+            Debug.LogError("The card you are trying to return has not been consumed");
+            return;
+        }
+
+        MoveCard(card, ConsumePile, DiscardPile);
+    }
+
     public Card GetRandomDatabaseCard()
     {
         return Database[Random.Range(0, Database.Count)];

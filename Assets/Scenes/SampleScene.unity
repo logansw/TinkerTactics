@@ -3789,6 +3789,7 @@ MonoBehaviour:
   - {fileID: 4874060471286656800, guid: 56c415b5b169b4e089036613233fd561, type: 3}
   - {fileID: 4874060471286656800, guid: e4f00fd0db1ad4b1f870cae92d1e6a33, type: 3}
   - {fileID: 4874060471286656800, guid: aa43c14f13d244a6884cd128844c66d0, type: 3}
+  - {fileID: 4720629682095951307, guid: 3c0ab26f647174fe29b9d0d89a7e12df, type: 3}
   DrawPile: []
   Hand: []
   DiscardPile: []

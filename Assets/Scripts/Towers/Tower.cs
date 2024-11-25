@@ -13,13 +13,13 @@ using UnityEngine;
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private TilePlot _tilePlot;
-    private TilePlot TilePlot
+    public TilePlot TilePlot
     {
         get
         {
             return _tilePlot;
         }
-        set
+        private set
         {
             _tilePlot = value;
             Active = _tilePlot.IsActivated;
@@ -37,6 +37,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public int WidgetLimit = 5;
     private Liftable _liftable;
     public bool IsLocked => _liftable.IsLocked;
+    public Card ParentCard;
 
     public virtual string GetTooltipText()
     {
