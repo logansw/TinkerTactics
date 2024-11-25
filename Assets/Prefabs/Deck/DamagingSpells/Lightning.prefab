@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: Lightning
       objectReference: {fileID: 0}
     - target: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: m_IsActive
@@ -98,23 +98,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Name
-      value: Pocket Firecracker
+      value: Lightning Bolt
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Range
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Damage
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Consume
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Description
-      value: Deal 20 damage to enemies in a small area
+      value: Deal 100 damage to enemies in a tiny area. Consume after use.
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Ammo.baseValue
@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
       propertyPath: Cost.baseValue
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

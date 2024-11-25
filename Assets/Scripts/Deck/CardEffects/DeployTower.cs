@@ -18,6 +18,16 @@ public class DeployTower : CardEffect
         return preview;
     }
 
+    public override bool CanPrepare()
+    {
+        bool result = !StateController.CurrentState.Equals(StateType.Playing) && base.CanPrepare();
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            ToastManager.s_Instance.AddToast("Cannot deploy towers during a wave.");
+        }
+        return result;
+    }
+
     public override string GetName()
     {
         return Tower.Name;
@@ -62,5 +72,10 @@ public class DeployTower : CardEffect
     public override void OnCardReturned()
     {
         // Do nothing
+    }
+
+    public override string GetInvalidTargetMessage()
+    {
+        return "Must be played on an empty tile.";
     }
 }

@@ -34,6 +34,16 @@ public class ApplyModifier : CardEffect
     {
         return Modifier.GetDescription();
     }
+    
+    public override bool CanPrepare()
+    {
+        bool result = !StateController.CurrentState.Equals(StateType.Playing) && base.CanPrepare();
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            ToastManager.s_Instance.AddToast("Cannot apply modifiers during a wave.");
+        }
+        return result;
+    }
 
     public override TargetingRules GetTargetingRules()
     {
@@ -47,7 +57,11 @@ public class ApplyModifier : CardEffect
     public override bool CanCast(Vector3 targetPosition)
     {
         bool validTarget = GetTargetingRules().CheckValidTarget(targetPosition);
-        if (!validTarget) { return false; }
+        if (!validTarget)
+        {
+            ToastManager.s_Instance.AddToast(GetInvalidTargetMessage());
+            return false;
+        }
 
         _recipient = _targetingRule.TargetTilePlot.Towers[0];
         return Modifier.CanAddModifier(_recipient);
@@ -107,5 +121,10 @@ public class ApplyModifier : CardEffect
     public override void OnCardReturned()
     {
         // Do nothing
+    }
+
+    public override string GetInvalidTargetMessage()
+    {
+        return "Must be played on a tower.";
     }
 }

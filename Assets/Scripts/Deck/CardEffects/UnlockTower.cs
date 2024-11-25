@@ -30,13 +30,22 @@ public class UnlockTower : CardEffect
 
     public override bool CanPrepare()
     {
-        return base.CanPrepare() && StateController.CurrentState != StateType.Playing && StateController.CurrentState != StateType.Paused;
+        bool result = base.CanPrepare() && !StateController.CurrentState.Equals(StateType.Playing);
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            ToastManager.s_Instance.AddToast("Cannot cast green spells during battle.");
+        }
+        return result;
     }
 
     public override bool CanCast(Vector3 targetPosition)
     {
         bool validTarget = GetTargetingRules().CheckValidTarget(targetPosition);
-        if (!validTarget) { return false; }
+        if (!validTarget)
+        {
+            ToastManager.s_Instance.AddToast(GetInvalidTargetMessage());
+            return false;
+        }
 
         _recipient = _targetingRule.TargetTilePlot.Towers[0];
         return _recipient.IsLocked;
@@ -70,5 +79,10 @@ public class UnlockTower : CardEffect
     public override void OnCardReturned()
     {
         // Do nothing
+    }
+
+    public override string GetInvalidTargetMessage()
+    {
+        return "Must be played on a locked tower.";
     }
 }

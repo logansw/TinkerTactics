@@ -58,12 +58,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         if (IsOwned)
         {
-            if (!CardEffect.CanPrepare())
-            {
-                ToastManager.s_Instance.AddToast("Not enough energy");
-                return;
-            }
-
             DeckManager.s_Instance.ShowReturnTray(true);
             CardEffect.OnCardClicked();
             _isDragging = true;

@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(DeckRenderer))]
 public class DeckManager : Singleton<DeckManager>
 {
-    public const int CARD_DRAW_COUNT = 5;
+    public const int CARD_DRAW_COUNT = 7;
     public List<Card> Deck;
     public List<Card> DrawPile;
     public List<Card> Hand;

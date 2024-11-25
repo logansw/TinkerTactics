@@ -32,6 +32,16 @@ public class DamagingSpell : CardEffect
         return new FieldTargetingRule();
     }
 
+    public override bool CanPrepare()
+    {
+        bool result = base.CanPrepare() && StateController.CurrentState.Equals(StateType.Playing);
+        if (!StateController.CurrentState.Equals(StateType.Playing))
+        {
+            ToastManager.s_Instance.AddToast("Cannot cast red spells outside of battle.");
+        }
+        return result;
+    }
+
     public override void Cast()
     {
         ActivateEffect();
@@ -84,5 +94,10 @@ public class DamagingSpell : CardEffect
     public override Color GetColor()
     {
         return new Color(1f, 0.4862745f, 0.5677084f, 1f);
+    }
+
+    public override string GetInvalidTargetMessage()
+    {
+        return "Invalid target.";
     }
 }

@@ -31,7 +31,12 @@ public abstract class CardEffect : MonoBehaviour
     /// </summary>
     public virtual bool CanPrepare()
     {
-        return Player.s_Instance.Energy >= GetCost();
+        bool result = Player.s_Instance.Energy >= GetCost();
+        if (!result)
+        {
+            ToastManager.s_Instance.AddToast("Not enough energy");
+        }
+        return result;
     }
     /// <summary>
     /// Returns true if the card can be cast at the target position.
@@ -39,7 +44,12 @@ public abstract class CardEffect : MonoBehaviour
     /// <param name="targetPosition"></param>
     public virtual bool CanCast(Vector3 targetPosition)
     {
-        return GetTargetingRules().CheckValidTarget(targetPosition);
+        bool result = GetTargetingRules().CheckValidTarget(targetPosition);
+        if (!result)
+        {
+            ToastManager.s_Instance.AddToast(GetInvalidTargetMessage());
+        }
+        return result;
     }
     public virtual void Cast()
     {
@@ -65,4 +75,5 @@ public abstract class CardEffect : MonoBehaviour
     public abstract Color GetColor();
     public abstract void OnCardClicked();
     public abstract void OnCardReturned();
+    public abstract string GetInvalidTargetMessage();
 }
