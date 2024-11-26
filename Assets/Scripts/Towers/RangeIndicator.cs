@@ -66,8 +66,15 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     public void SetVisible(bool visible)
     {
+        if (StateController.CurrentState.Equals(StateType.Playing))
+        {
+            _collider.enabled = true;
+        }
+        else
+        {
+            _collider.enabled = visible;
+        }
         _rangeIndicator.enabled = visible;
-        _collider.enabled = visible;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -193,6 +200,13 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     private void ClearEnemiesList()
     {
+        foreach (Enemy enemy in EnemiesInRange)
+        {
+            if (enemy == null)
+            {
+                Debug.LogError("Enemy in range indicator is null");
+            }
+        }
         EnemiesInRange.Clear();
     }
 }
