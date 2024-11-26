@@ -49,7 +49,7 @@ public class ApplyModifier : CardEffect
     {
         if (_targetingRule == null)
         {
-            _targetingRule = new TileplotTargetingRule(false, true);
+            _targetingRule = new TileplotTargetingRule(false, true, this);
         }
         return _targetingRule;
     }

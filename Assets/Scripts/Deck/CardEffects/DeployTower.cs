@@ -40,7 +40,7 @@ public class DeployTower : CardEffect
 
     public override TargetingRules GetTargetingRules()
     {
-        return new TileplotTargetingRule(true, false);
+        return new TileplotTargetingRule(true, false, this);
     }
 
     public override void ActivateEffect()

@@ -56,7 +56,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (IsOwned)
+        if (IsOwned && CardEffect.CanPrepare())
         {
             DeckManager.s_Instance.ShowReturnTray(true);
             CardEffect.OnCardClicked();

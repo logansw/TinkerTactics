@@ -23,7 +23,7 @@ public class UnlockTower : CardEffect
     {
         if (_targetingRule == null)
         {
-            _targetingRule = new TileplotTargetingRule(false, true);
+            _targetingRule = new TileplotTargetingRule(false, true, this);
         }
         return _targetingRule;
     }

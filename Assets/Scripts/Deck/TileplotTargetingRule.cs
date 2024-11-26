@@ -8,10 +8,11 @@ public class TileplotTargetingRule : TargetingRules
     private bool TargetOccupiedTilePlot;
     public TilePlot TargetTilePlot;
 
-    public TileplotTargetingRule(bool targetEmptyTilePlot, bool targetOccupiedTilePlot)
+    public TileplotTargetingRule(bool targetEmptyTilePlot, bool targetOccupiedTilePlot, CardEffect cardEffect)
     {
         TargetEmptyTilePlot = targetEmptyTilePlot;
         TargetOccupiedTilePlot = targetOccupiedTilePlot;
+        e_OnCardReturned += cardEffect.OnCardReturned;
     }
 
     protected override bool ValidTargetHelper(Vector3 targetPosition)

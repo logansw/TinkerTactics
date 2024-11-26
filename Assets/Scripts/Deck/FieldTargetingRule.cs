@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FieldTargetingRule : TargetingRules
 {
-    public FieldTargetingRule()
+    public FieldTargetingRule(CardEffect cardEffect)
     {
-
+        e_OnCardReturned += cardEffect.OnCardReturned;
     }
 
     protected override bool ValidTargetHelper(Vector3 targetPosition)
