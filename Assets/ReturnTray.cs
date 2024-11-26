@@ -13,6 +13,16 @@ public class ReturnTray : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         s_Instance = this;
     }
 
+    void OnEnable()
+    {
+        IdleState.e_OnIdleStateEnter += OnIdleStateEnter;
+    }
+
+    void OnDisable()
+    {
+        IdleState.e_OnIdleStateEnter -= OnIdleStateEnter;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         IsHovered = true;
@@ -21,5 +31,10 @@ public class ReturnTray : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         IsHovered = false;
+    }
+
+    private void OnIdleStateEnter()
+    {
+        gameObject.SetActive(false);
     }
 }

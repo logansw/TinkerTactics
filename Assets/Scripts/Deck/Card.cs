@@ -42,6 +42,16 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         RectTransform.sizeDelta = new Vector2(CARD_WIDTH, CARD_HEIGHT);
     }
 
+    void OnEnable()
+    {
+        IdleState.e_OnIdleStateEnter += OnDeselect;
+    }
+
+    void OnDisable()
+    {
+        IdleState.e_OnIdleStateEnter -= OnDeselect;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.SetAsLastSibling();
@@ -144,7 +154,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnDeselect()
     {
-        // Do Nothing
+        if (_isDragging)
+        {
+            _isDragging = false;
+            Discard();
+        }
     }
 
     public bool IsSelectable()
