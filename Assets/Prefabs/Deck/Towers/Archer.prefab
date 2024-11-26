@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Description
-      value: Can be moved freely between rounds. Holds 2 Tinkers.
+      value: Refunds 1 Energy when Unlocked. Holds 2 Tinkers.
       objectReference: {fileID: 0}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Cost.baseValue

@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class TargetingRules
 {
     public Action e_OnCardReturned;
-    public bool CheckValidTarget(Vector3 targetPosition)
+    public virtual bool CheckValidTarget(Vector3 targetPosition)
     {
         if (CheckTargetingReturnTray())
         {

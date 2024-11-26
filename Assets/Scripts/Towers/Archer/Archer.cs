@@ -4,10 +4,9 @@ using System.Linq;
 
 public class Archer : Tower
 {
-    protected override void OnEnable()
+    public override void Unlock()
     {
-        // Undo the default behavior of locking on playing state entered.
-        base.OnEnable();
-        IdleState.e_OnIdleStateEnter += Unlock;
+        base.Unlock();
+        Player.s_Instance.Energy += 1;
     }
 }

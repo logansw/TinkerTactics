@@ -17,7 +17,7 @@ public class TileplotTargetingRule : TargetingRules
 
     protected override bool ValidTargetHelper(Vector3 targetPosition)
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(targetPosition, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(targetPosition, new Vector2(1f, 1f), 0f, Vector2.zero);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null && hit.collider.GetComponent<TilePlot>() != null)

@@ -121,7 +121,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     /// </summary>
     public void AssignTowerToTilePlot()
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0f, Vector2.zero);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null && hit.collider.GetComponent<TilePlot>() != null)
@@ -195,13 +195,13 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
     }
 
-    public void Lock()
+    public virtual void Lock()
     {
         _liftable.IsLocked = true;
         _tilePlot.QueueLockUpdate();
     }
 
-    public void Unlock()
+    public virtual void Unlock()
     {
         _liftable.IsLocked = false;
         _tilePlot.QueueLockUpdate();
