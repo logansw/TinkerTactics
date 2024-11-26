@@ -17,7 +17,7 @@ public class ToastManager : Singleton<ToastManager>
         RectTransform toast = Instantiate(_toastPrefab, transform);
         toast.GetComponentInChildren<TMP_Text>().text = message;
         _toasts.Add(toast);
-        InternalClock internalClock = new InternalClock(3f);
+        InternalClock internalClock = new InternalClock(3f, gameObject);
         internalClock.e_OnTimerDone += () =>
         {
             _toasts.Remove(toast);

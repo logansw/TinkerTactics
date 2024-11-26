@@ -11,7 +11,7 @@ public class EffectVulnerable : Effect
     {
         base.Initialize(duration, stacks, effectTracker);
         IconColor = new Color32(255, 128, 170, 255);
-        _internalClock = new InternalClock(duration);
+        _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
 

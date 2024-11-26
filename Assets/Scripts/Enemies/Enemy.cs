@@ -72,11 +72,11 @@ public class Enemy : MonoBehaviour
     /// and so that the death animation can be played.
     public virtual void OnDeath()
     {
-        Health.e_OnHealthDepleted -= OnDeath;
         e_OnEnemyDeath?.Invoke(this);
         _collider.enabled = false;
         Destroy(gameObject, 1f);
         Render(false);
+        Health.e_OnHealthDepleted -= OnDeath;
     }
 
     public virtual void OnBreak()

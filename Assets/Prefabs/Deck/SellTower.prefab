@@ -122,4 +122,4 @@ MonoBehaviour:
     baseValue: 0
   Name: Sell
   Consume: 0
-  Description: Move a tower back into your hand and gain 2 energy
+  Description: Move a tower back into your hand and gain 1 energy

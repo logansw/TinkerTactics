@@ -21,7 +21,10 @@ public class EffectIcon : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        if (gameObject != null)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnMouseEnter()

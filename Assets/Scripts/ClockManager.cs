@@ -17,6 +17,11 @@ public class ClockManager : Singleton<ClockManager>
         }
         foreach (InternalClock clock in _clocks)
         {
+            if (clock.Parent == null)
+            {
+                _clocksToRemove.Add(clock);
+                continue;
+            }
             clock.Tick();
         }
     }

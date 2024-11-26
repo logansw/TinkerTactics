@@ -25,6 +25,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         DrawCollider();
         PlayingState.e_OnPlayingStateEnter += EnableCollider;
         IdleState.e_OnIdleStateEnter += DisableCollider;
+        IdleState.e_OnIdleStateEnter += ClearEnemiesList;
     }
 
     public void OnDestroy()
@@ -33,6 +34,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         _tower.Sweep.e_OnStatChanged -= QueueUpdate;
         PlayingState.e_OnPlayingStateEnter -= EnableCollider;
         IdleState.e_OnIdleStateEnter -= DisableCollider;
+        IdleState.e_OnIdleStateEnter -= ClearEnemiesList;
     }
 
     void Update()
@@ -187,5 +189,10 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private void DisableCollider()
     {
         _collider.enabled = false;
+    }
+
+    private void ClearEnemiesList()
+    {
+        EnemiesInRange.Clear();
     }
 }

@@ -13,7 +13,7 @@ public class EffectChill : Effect
         Stacks = 0;
         AddStacks(stacks);
         IconColor = new Color32(128, 249, 255, 255);
-        _internalClock = new InternalClock(duration);
+    _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += RemoveStack;
     }
 

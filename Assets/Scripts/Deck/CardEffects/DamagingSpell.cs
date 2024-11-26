@@ -34,7 +34,7 @@ public class DamagingSpell : CardEffect
 
     public override bool CanPrepare()
     {
-        bool result = base.CanPrepare() && StateController.CurrentState.Equals(StateType.Playing);
+        bool result = base.CanPrepare() && !StateController.CurrentState.Equals(StateType.Playing);
         if (!StateController.CurrentState.Equals(StateType.Playing))
         {
             ToastManager.s_Instance.AddToast("Cannot cast red spells outside of battle.");

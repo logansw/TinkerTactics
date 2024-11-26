@@ -6,14 +6,16 @@ using System;
 
 public class InternalClock
 {
+    public GameObject Parent;
     public Action e_OnTimerDone;
     private float _timeElapsed;
     private float _timeToWait;
 
-    public InternalClock(float timeToWait)
+    public InternalClock(float timeToWait, GameObject gameObject)
     {
         _timeToWait = timeToWait;
         ClockManager.s_Instance.AddClock(this);
+        Parent = gameObject;
     }
 
     public void Reset()

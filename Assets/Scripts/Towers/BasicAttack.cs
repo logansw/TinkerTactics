@@ -24,8 +24,8 @@ public class BasicAttack : MonoBehaviour
         Tower = tower;
         _modifierProcessor = tower.ModifierProcessor;
         _modifierProcessor.e_OnModifierAdded += SetClocks;
-        AttackClock = new InternalClock(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed));
-        ReloadClock = new InternalClock(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed));
+        AttackClock = new InternalClock(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed), gameObject);
+        ReloadClock = new InternalClock(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed), gameObject);
         AttackClock.e_OnTimerDone += SetCanAttack;
         ReloadClock.e_OnTimerDone += ReloadAmmo;
         _modifierProcessor.e_OnModifierAdded += CalculateBaseAmmo;

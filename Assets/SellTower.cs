@@ -45,7 +45,7 @@ public class SellTower : CardEffect
     {
         TowerManager.s_Instance.RemoveTower(_target);
         DeckManager.s_Instance.RestoreCard(_target.ParentCard);
-        Player.s_Instance.Energy += 2;
+        Player.s_Instance.Energy += 1;
     }
 
     public override void OnDrawn()

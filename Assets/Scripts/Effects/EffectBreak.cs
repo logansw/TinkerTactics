@@ -13,7 +13,7 @@ public class EffectBreak : Effect
         Enemy.EffectTracker.AddEffect<EffectStun>(duration, stacks);
         Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration, stacks);
         IconColor = new Color32(255, 158, 128, 255);
-        _internalClock = new InternalClock(duration);
+        _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
 

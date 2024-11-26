@@ -524,6 +524,7 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 0}
   TinkerLimit: 0
   WidgetLimit: 5
+  ParentCard: {fileID: 0}
 --- !u!114 &-5726604151056873364
 MonoBehaviour:
   m_ObjectHideFlags: 0
