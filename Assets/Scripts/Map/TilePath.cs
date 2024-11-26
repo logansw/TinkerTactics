@@ -89,6 +89,17 @@ public class TilePath : Tile
                 (prevDir == Direction.Down && nextDir == Direction.Left) || (prevDir == Direction.Left && nextDir == Direction.Down) ||
                 (prevDir == Direction.Left && nextDir == Direction.Up) || (prevDir == Direction.Up && nextDir == Direction.Left);
     }
+
+    public IEnumerator AnimateLive(Color color)
+    {
+        _spriteRenderer.color = color;
+        yield return new WaitForSeconds(0.1f);
+        if (NextTilePath != null)
+        {
+            StartCoroutine(NextTilePath.AnimateLive(color));
+        }
+        _spriteRenderer.color = Color.white;
+    }
 }
 
 public enum PathType

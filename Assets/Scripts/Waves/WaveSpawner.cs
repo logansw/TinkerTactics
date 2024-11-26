@@ -36,6 +36,16 @@ public class WaveSpawner : MonoBehaviour
         TooltipManager.s_Instance.HideTooltip();
     }
 
+    void OnEnable()
+    {
+        IdleState.e_OnIdleStateEnter += AnimatePath;
+    }
+
+    void OnDisable()
+    {
+        IdleState.e_OnIdleStateEnter -= AnimatePath;
+    }
+
     public void BeginLane()
     {
         FinishedSpawning = false;
@@ -145,5 +155,20 @@ public class WaveSpawner : MonoBehaviour
     {
         Warlords.Remove(warlord);
         warlord.e_OnWarlordRemoved -= UnregisterWarlord;
+    }
+
+    public void AnimatePath()
+    {
+        if (HasEnemies())
+        {
+            if (Warlords.Count > 0)
+            {
+                StartCoroutine(StartTile.AnimateLive(new Color32(184, 0, 255, 255)));
+            }
+            else
+            {
+                StartCoroutine(StartTile.AnimateLive(new Color32(238, 124, 61, 255)));
+            }
+        }
     }
 }

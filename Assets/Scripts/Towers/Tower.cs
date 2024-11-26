@@ -88,6 +88,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         ModifierProcessor.e_OnModifierAdded += RecalculateStats;
         PlayingState.e_OnPlayingStateEnter += Lock;
+        IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Current = BasicAttack.MaxAmmo.CalculatedFinal;};
     }
 
     protected virtual void OnDisable()

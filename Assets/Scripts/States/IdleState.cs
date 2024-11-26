@@ -13,7 +13,6 @@ public class IdleState : State
 
     public override void OnEnter(StateController stateController)
     {
-        e_OnIdleStateEnter?.Invoke();
         WaveSpawnerManager.s_Instance.PrepareNextWave();
         foreach (WaveSpawner waveSpawner in WaveSpawnerManager.s_Instance.WaveSpawners)
         {
@@ -21,6 +20,8 @@ public class IdleState : State
         }
         Player.s_Instance.Energy = Player.MAX_ENERGY;
         DeckManager.s_Instance.DrawNewHand();
+        BattleManager.s_Instance.SetTimeScale(1f);
+        e_OnIdleStateEnter?.Invoke();
     }
 
     public override void UpdateState(StateController stateController)
@@ -31,5 +32,6 @@ public class IdleState : State
     public override void OnExit(StateController stateController)
     {
         WaveSpawnerManager.s_Instance.StartWaves();
+        BattleManager.s_Instance.UndoTimeScale();
     }
 }
