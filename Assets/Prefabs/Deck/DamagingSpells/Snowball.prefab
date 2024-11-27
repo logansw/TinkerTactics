@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &658235786789289905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_Name
+      value: Snowball
+      objectReference: {fileID: 0}
+    - target: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227486219903845769, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Name
+      value: Pocket Firecracker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Consume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Description
+      value: Deal 20 damage to enemies in a small area
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Ammo.baseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      propertyPath: Cost.baseValue
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8248839425298315028, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -380405188944559277}
+  m_SourcePrefab: {fileID: 100100000, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+--- !u!1 &111736435458548606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
+  m_PrefabInstance: {fileID: 658235786789289905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-380405188944559277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111736435458548606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a930fd49f8f294c19b6c64185ba4599e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewSprite: {fileID: 21300000, guid: 8ff0a2b6316f545d983adb4f4a107e38, type: 3}
+  Cost:
+    baseValue: 1
+  Name: Snowball
+  Consume: 0
+  Description: Deal 5 damage to enemies in a small area and Slow them.
+  Damage: 5
+  Range: 1
+  Ammo:
+    baseValue: 1
+  SlowDuration: 2

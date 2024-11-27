@@ -1390,7 +1390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3607e28c602441aab46e6129eaaec85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 0}
   _tilePlots:
   - {fileID: 0}
   - {fileID: 0}
@@ -3815,6 +3814,10 @@ MonoBehaviour:
   - {fileID: 4720629682095951307, guid: 8555967b3615147579766cea1fe72370, type: 3}
   - {fileID: 4874060471286656800, guid: 56c415b5b169b4e089036613233fd561, type: 3}
   - {fileID: 4720629682095951307, guid: 3c0ab26f647174fe29b9d0d89a7e12df, type: 3}
+  - {fileID: 4874060471286656800, guid: 6a3ac0aeac0f4486e871d76f0a7af67a, type: 3}
+  - {fileID: 4874060471286656800, guid: 6a3ac0aeac0f4486e871d76f0a7af67a, type: 3}
+  - {fileID: 6508311902550055011, guid: a8ef3f15c4a2b4d77837336bdd950611, type: 3}
+  - {fileID: 4810116602737779252, guid: dfc8cedd6bf8642278d68c8987f81bc6, type: 3}
   DrawPile: []
   Hand: []
   DiscardPile: []
@@ -5181,8 +5184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 70.79878, y: 0}
+  m_SizeDelta: {x: -141.5975, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2050109767
 GameObject:
