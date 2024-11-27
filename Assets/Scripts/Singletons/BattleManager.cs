@@ -10,7 +10,6 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : Singleton<BattleManager>
 {
-    [SerializeField] private TMP_Text _button;
     [SerializeField] private List<TilePlot> _tilePlots;
     [SerializeField] private Healthbar _warlordHealthbar;
     public bool WarlordDefeated;
@@ -38,24 +37,13 @@ public class BattleManager : Singleton<BattleManager>
         if (StateController.CurrentState == StateType.Idle)
         {
             StateController.s_Instance.ChangeState(StateType.Playing);
-            _button.text = "Pause";
-        }
-        else if (StateController.CurrentState == StateType.Playing)
-        {
-            StateController.s_Instance.ChangeState(StateType.Paused);
-            _button.text = "Resume";
-        }
-        else if (StateController.CurrentState == StateType.Paused)
-        {
-            StateController.s_Instance.ChangeState(StateType.Playing);
-            _button.text = "Pause";
         }
     }
 
     public void FinishWave()
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
-        _button.text = "Continue";
+
         if (GameManager.s_Instance.GetWarlord().IsDead)
         {
             GameManager.s_Instance.NextLevel();
