@@ -93,6 +93,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
                 AssignLaneToSpawner(wave.Lanes[i], WaveSpawners[randomIndex]);
                 if (CurrentWaveIndex != 0 && CurrentWaveIndex % 3 == 2 || CurrentWaveIndex == Warlord.WaveHolder.Waves.Count - 1)
                 {
+                    HealthbarUI.s_Instance.gameObject.SetActive(true);
                     AssignWarlordToSpawner(Warlord, WaveSpawners[randomIndex]);
                     if (CurrentWaveIndex == 2)
                     {
@@ -106,6 +107,10 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
                     {
                         Warlord.Health.SetLowerBreakpoint(Warlord.Health.CurrentHealth - (Warlord.Health.MaxHealth * 0.3f));
                     }
+                }
+                else
+                {
+                    HealthbarUI.s_Instance.gameObject.SetActive(false);
                 }
             }
             else

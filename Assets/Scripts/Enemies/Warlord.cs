@@ -66,7 +66,7 @@ public class Warlord : Enemy
         Vector3 endPos = _startPosition;
         while ((transform.position - endPos).magnitude > 1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, endPos, 1f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, endPos, 3f * Time.deltaTime);
             yield return null;
         }
         Render(false);
