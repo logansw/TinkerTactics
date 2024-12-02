@@ -122,6 +122,6 @@ MonoBehaviour:
     baseValue: 1
   Name: Reloader
   Consume: 0
-  Description: Reload 5 Ammo to towers in range
-  Range: 3
+  Description: Reload 3 Ammo to towers in range
+  Range: 4
   ReloadAmount: 3
