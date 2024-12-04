@@ -81,7 +81,14 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnBreak()
     {
-        EffectTracker.AddEffect<EffectBreak>(5f, 1);
+        if (EffectTracker.HasEffect<EffectBreak>(out EffectBreak effectBreak))
+        {
+            effectBreak.Extend();
+        }
+        else
+        {
+            EffectTracker.AddEffect<EffectBreak>(5f, 1);
+        }
         e_OnEnemyBreak?.Invoke(this);
     }
 

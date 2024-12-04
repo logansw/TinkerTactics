@@ -59,4 +59,9 @@ public class EffectStun : Effect
     {
         return $"";
     }
+
+    public void Extend()
+    {
+        _internalClock.Reset();
+    }
 }

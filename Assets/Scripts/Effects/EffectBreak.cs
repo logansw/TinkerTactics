@@ -58,4 +58,14 @@ public class EffectBreak : Effect
         }
         base.Remove();
     }
+
+    public void Extend()
+    {
+        Debug.Log("Extend!");
+        _internalClock.Reset();
+        Enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun);
+        effectStun.Extend();
+        Enemy.EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable);
+        effectVulnerable.Extend();
+    }
 }

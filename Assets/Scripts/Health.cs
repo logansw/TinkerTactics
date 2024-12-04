@@ -11,6 +11,7 @@ public class Health
     public Action e_OnHealthBreak;
     public delegate void HealthAction(float currentHealth, float maxHealth);
     public HealthAction e_OnHealthChanged;
+    public List<float> Breakpoints = new List<float>();
 
     private float _currentHealth;
     public float CurrentHealth
@@ -22,9 +23,11 @@ public class Health
             {
                 _currentHealth = _upperBreakpoint;
             }
-            else if (value < _lowerBreakpoint)
+            else if (value <= _lowerBreakpoint)
             {
                 _currentHealth = _lowerBreakpoint;
+                e_OnHealthBreak?.Invoke();
+                GetNewLowerBreakpoint();
             }
             else
             {
@@ -56,7 +59,6 @@ public class Health
         {
             // Trigger enemy health breakpoint event
             _lowerBreakpoint = 0;
-            e_OnHealthBreak?.Invoke();
         }
     }
 
@@ -66,6 +68,27 @@ public class Health
         {
             CurrentHealth += amount;
         }
+    }
+
+    public void AddBreakpoint(float breakpoint)
+    {
+        Breakpoints.Add(breakpoint);
+        e_OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        GetNewLowerBreakpoint();
+    }
+
+    private float GetNewLowerBreakpoint()
+    {
+        float newBreakpoint = 0;
+        foreach (float breakpoint in Breakpoints)
+        {
+            if (breakpoint < CurrentHealth)
+            {
+                newBreakpoint = Math.Max(breakpoint, newBreakpoint);
+            }
+        }
+        _lowerBreakpoint = newBreakpoint;
+        return _lowerBreakpoint;
     }
 
     public void SetLowerBreakpoint(float lowerBreakpoint)

@@ -44,4 +44,9 @@ public class EffectVulnerable : Effect
     {
         return $"";
     }
+
+    public void Extend()
+    {
+        _internalClock.Reset();
+    }
 }

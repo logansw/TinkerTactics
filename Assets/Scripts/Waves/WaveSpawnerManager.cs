@@ -106,15 +106,9 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
                     AssignWarlordToSpawner(Warlord, WaveSpawners[randomIndex]);
                     if (CurrentWaveIndex == 2)
                     {
-                        Warlord.Health.SetLowerBreakpoint(Warlord.Health.CurrentHealth - (Warlord.Health.MaxHealth * 0.1f));
-                    }
-                    else if (CurrentWaveIndex == 5)
-                    {
-                        Warlord.Health.SetLowerBreakpoint(Warlord.Health.CurrentHealth - (Warlord.Health.MaxHealth * 0.2f));
-                    }
-                    else if (CurrentWaveIndex == 8)
-                    {
-                        Warlord.Health.SetLowerBreakpoint(Warlord.Health.CurrentHealth - (Warlord.Health.MaxHealth * 0.3f));
+                        Warlord.Health.AddBreakpoint(Warlord.Health.MaxHealth - Warlord.Health.MaxHealth * 0.1f);
+                        Warlord.Health.AddBreakpoint(Warlord.Health.MaxHealth - Warlord.Health.MaxHealth * 0.3f);
+                        Warlord.Health.AddBreakpoint(Warlord.Health.MaxHealth - Warlord.Health.MaxHealth * 0.6f);
                     }
                 }
             }
