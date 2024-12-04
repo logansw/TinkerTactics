@@ -130,15 +130,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -380405188944559277}
+      insertIndex: 3
+      addedObject: {fileID: 7432826393165431972}
   m_SourcePrefab: {fileID: 100100000, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
 --- !u!1 &111736435458548606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 625563050841201871, guid: 2cec051bd8d5343b891141eba634db11, type: 3}
   m_PrefabInstance: {fileID: 658235786789289905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-380405188944559277
+--- !u!114 &7432826393165431972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,9 +155,9 @@ MonoBehaviour:
     baseValue: 1
   Name: Snowball
   Consume: 0
-  Description: Deal 5 damage to enemies in a small area and Slow them.
+  Description: Deal 5 damage to enemies and Slow them.
   Damage: 5
-  Range: 1
+  Range: 2
   Ammo:
     baseValue: 1
   SlowDuration: 2
