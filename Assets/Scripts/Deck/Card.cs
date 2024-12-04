@@ -30,6 +30,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             _cardEffect = value;
         }
     }
+
     public RectTransform RectTransform;
     private bool _isDragging;
     private TargetPreview _targetPreview;
@@ -66,51 +67,14 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (IsOwned && CardEffect.CanPrepare())
-        {
-            DeckManager.s_Instance.ShowReturnTray(true);
-            CardEffect.OnCardClicked();
-            _isDragging = true;
-
-            _targetPreview = CardEffect.GetTargetPreview();
-            Render(false);
-        }
-        else
-        {
-            // Do Nothing
-        }
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        DeckManager.s_Instance.ShowReturnTray(false);
-        if (IsOwned)
-        {
-            if (_isDragging)
-            {
-                TryCast(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                _isDragging = false;
-                Destroy(_targetPreview.gameObject);
-            }
-            Render(true);
-        }
-        else
-        {
-            AddToDeck();
-            MarketplaceManager.s_Instance.RemoveFromAvailable(this);
-        }
-    }
-
-    public bool TryCast(Vector3 targetPosition)
-    {
-        if (CardEffect.CanCast(targetPosition))
-        {
-            CardEffect.Cast();
-            return true;
-        }
-
-        Render(true);
-        return false;
+        // TODO: Add this item (tower or tinker) to the player's ownership
+        AddToDeck();
+        MarketplaceManager.s_Instance.RemoveFromAvailable(this);
     }
 
     public void Render(bool active)
@@ -129,12 +93,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void Discard()
     {
-        DeckManager.s_Instance.Discard(this);
+        Debug.LogError("Not implemented yet");
     }
 
     public void Consume()
     {
-        DeckManager.s_Instance.Consume(this);
+        Debug.LogError("Not implemented yet");
     }
 
     public void OnDrawn()
@@ -145,6 +109,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         transform.localScale = Vector3.one;
     }
 
+
     // TODO: This is only here so that the camera panning works properly. This should be changed later. Currently, some systems interact with the mouse through the
     // selectable interface, but others have their own ways of working. These should be unified. 
     public void OnSelect()
@@ -154,11 +119,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnDeselect()
     {
-        if (_isDragging)
-        {
-            _isDragging = false;
-            Discard();
-        }
+
     }
 
     public bool IsSelectable()
@@ -168,7 +129,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void AddToDeck()
     {
-        DeckManager.s_Instance.AddCardToDeck(this);
+        // TODO: Actually add it properly.
+        Debug.LogError("Not implemented yet");
         IsOwned = true;
     }
 }

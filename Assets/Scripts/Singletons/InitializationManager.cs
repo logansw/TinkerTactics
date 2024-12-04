@@ -20,7 +20,6 @@ public class InitializationManager : Singleton<InitializationManager>
         base.Initialize();
         // Initialize all singletons
         GameManager.s_Instance.Initialize();
-        DeckManager.s_Instance.Initialize();
         PathDrawer.s_Instance.Initialize();
         WaveSpawnerManager.s_Instance.Initialize();
         BattleManager.s_Instance.Initialize();
