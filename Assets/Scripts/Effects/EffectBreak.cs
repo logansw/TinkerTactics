@@ -61,7 +61,6 @@ public class EffectBreak : Effect
 
     public void Extend()
     {
-        Debug.Log("Extend!");
         _internalClock.Reset();
         Enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun);
         effectStun.Extend();
