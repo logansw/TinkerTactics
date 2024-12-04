@@ -67,9 +67,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         _liftable = GetComponent<Liftable>();
     }
 
-    void Start()
+    public void Initialize(Card parentCard)
     {
         AssignTowerToTilePlot();
+        ParentCard = parentCard;
+        Unlock();
     }
 
     protected virtual void Update()
@@ -89,12 +91,26 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ModifierProcessor.e_OnModifierAdded += RecalculateStats;
         PlayingState.e_OnPlayingStateEnter += Lock;
         IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Current = BasicAttack.MaxAmmo.CalculatedFinal;};
+        IdleState.e_OnIdleStateEnter += Recall;
     }
 
     protected virtual void OnDisable()
     {
         ModifierProcessor.e_OnModifierAdded -= RecalculateStats;
         PlayingState.e_OnPlayingStateEnter -= Lock;
+        IdleState.e_OnIdleStateEnter -= Recall;
+    }
+
+    private void Recall()
+    {
+        TowerManager.s_Instance.RemoveTower(this);
+        DeckManager.s_Instance.RestoreCard(ParentCard);
+    }
+
+    public void Activate(bool active)
+    {
+        Active = active;
+        gameObject.SetActive(active);
     }
 
     public void OnSelect()

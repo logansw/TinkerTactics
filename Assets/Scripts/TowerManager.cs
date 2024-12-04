@@ -23,7 +23,8 @@ public class TowerManager : Singleton<TowerManager>
     {
         Towers.Remove(tower);
         tower.TilePlot.RemoveTower(tower);
-        Destroy(tower.gameObject);
+        tower.Activate(false);
+        // Destroy(tower.gameObject);
     }
 
     public void ClearTowers()
