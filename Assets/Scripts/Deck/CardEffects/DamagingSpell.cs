@@ -45,7 +45,6 @@ public class DamagingSpell : CardEffect
     public override void Cast()
     {
         ActivateEffect();
-        Player.s_Instance.Energy -= GetCost();
         if (Ammo.Current <= 0)
         {
             _parentCard.Discard();

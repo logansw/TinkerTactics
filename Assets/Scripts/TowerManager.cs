@@ -23,14 +23,15 @@ public class TowerManager : Singleton<TowerManager>
     {
         Towers.Remove(tower);
         tower.TilePlot.RemoveTower(tower);
-        Destroy(tower.gameObject);
+        tower.gameObject.SetActive(false);
     }
 
     public void ClearTowers()
     {
-        foreach (Tower tower in Towers)
+        int count = Towers.Count;
+        for (int i = count - 1; i >= 0; i--)
         {
-            Destroy(tower.gameObject);
+            Towers[i].Recall();
         }
         Towers.Clear();
     }

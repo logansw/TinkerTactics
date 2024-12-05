@@ -66,7 +66,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         _liftable = GetComponent<Liftable>();
     }
 
-    void Start()
+    public void Initialize()
     {
         AssignTowerToTilePlot();
     }
@@ -168,8 +168,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         if (ReturnTray.s_Instance.IsHovered)
         {
-            TowerManager.s_Instance.RemoveTower(this);
-            DeckManager.s_Instance.RestoreCard(ParentCard);
+            Recall();
         }
         else
         {
@@ -196,5 +195,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ModifierProcessor.CalculateMaxAmmo(BasicAttack.MaxAmmo);
         ModifierProcessor.CalculateAttackSpeed(BasicAttack.AttackSpeed);
         ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
+    }
+
+    public void Recall()
+    {
+        TowerManager.s_Instance.RemoveTower(this);
+        DeckManager.s_Instance.RestoreCard(ParentCard);
     }
 }

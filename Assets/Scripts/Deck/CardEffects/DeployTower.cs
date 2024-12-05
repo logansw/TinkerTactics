@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeployTower : CardEffect
 {
     public Tower Tower;
+    private Tower _towerInstance;
 
     public override void Initialize(Card parentCard)
     {
@@ -46,8 +47,17 @@ public class DeployTower : CardEffect
     public override void ActivateEffect()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Tower newTower = TowerManager.s_Instance.AddTower(Tower, new Vector3(mousePosition.x, mousePosition.y, -0.1f));
-        newTower.ParentCard = _parentCard;
+        if (_towerInstance == null)
+        {
+            _towerInstance = TowerManager.s_Instance.AddTower(Tower, new Vector3(mousePosition.x, mousePosition.y, -0.1f));
+            _towerInstance.ParentCard = _parentCard;
+        }
+        else
+        {
+            _towerInstance.gameObject.SetActive(true);
+            _towerInstance.transform.position = new Vector3(mousePosition.x, mousePosition.y, -0.1f);
+        }
+        _towerInstance.Initialize();
     }
 
     public override void OnDrawn()

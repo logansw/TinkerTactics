@@ -18,7 +18,6 @@ public class IdleState : State
         {
             waveSpawner.Render(true);
         }
-        Player.s_Instance.Energy = Player.MAX_ENERGY;
         BattleManager.s_Instance.SetTimeScale(1f);
         e_OnIdleStateEnter?.Invoke();
     }

@@ -30,12 +30,7 @@ public abstract class CardEffect : MonoBehaviour
     /// </summary>
     public virtual bool CanPrepare()
     {
-        bool result = Player.s_Instance.Energy >= GetCost();
-        if (!result)
-        {
-            ToastManager.s_Instance.AddToast("Not enough energy");
-        }
-        return result;
+        return true;
     }
     /// <summary>
     /// Returns true if the card can be cast at the target position.
@@ -53,7 +48,6 @@ public abstract class CardEffect : MonoBehaviour
     public virtual void Cast()
     {
         ActivateEffect();
-        Player.s_Instance.Energy -= GetCost();
         _parentCard.Discard();
     }
     public abstract void ActivateEffect();
