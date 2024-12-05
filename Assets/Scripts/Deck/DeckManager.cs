@@ -47,9 +47,10 @@ public class DeckManager : Singleton<DeckManager>
 
     public void Reset()
     {
-        foreach (Card card in DiscardPile)
+        int count = DiscardPile.Count;
+        for (int i = count - 1; i >= 0; i--)
         {
-            MoveCard(card, DiscardPile, Hand);
+            MoveCard(DiscardPile[i], DiscardPile, Deck);
         }
     }
 

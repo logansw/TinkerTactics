@@ -37,6 +37,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public int WidgetLimit = 5;
     private Liftable _liftable;
     public Card ParentCard;
+    public int EnergyCost => ParentCard.EnergyCost;
 
     public virtual string GetTooltipText()
     {
@@ -201,5 +202,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         TowerManager.s_Instance.RemoveTower(this);
         DeckManager.s_Instance.RestoreCard(ParentCard);
+        Player.s_Instance.RenderEnergyText();
     }
 }

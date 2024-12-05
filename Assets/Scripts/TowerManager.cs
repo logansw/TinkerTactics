@@ -35,4 +35,14 @@ public class TowerManager : Singleton<TowerManager>
         }
         Towers.Clear();
     }
+
+    public int GetTotalEnergyCost()
+    {
+        int total = 0;
+        foreach (Tower tower in Towers)
+        {
+            total += tower.EnergyCost;
+        }
+        return total;
+    }
 }

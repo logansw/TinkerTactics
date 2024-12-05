@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: Damage.baseValue
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: MaxAmmo.baseValue
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: AttackSpeed.baseValue
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: CurrentAmmo.baseValue
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: ReloadSpeed.baseValue
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: m_Name

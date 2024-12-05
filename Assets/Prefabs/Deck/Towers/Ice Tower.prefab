@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: Description
       value: Attacks slow enemies. Holds 2 Tinkers.
       objectReference: {fileID: 0}
+    - target: {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
+      propertyPath: EnergyCost
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314475684024846409, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

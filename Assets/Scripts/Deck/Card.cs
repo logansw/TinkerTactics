@@ -35,6 +35,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private TargetPreview _targetPreview;
     public int OriginalSiblingIndex;
     public bool IsOwned;
+    public int EnergyCost;
 
     void Awake()
     {

@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: Cost.baseValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1607567074943693155, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
+      propertyPath: EnergyCost
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5602882914157700219, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

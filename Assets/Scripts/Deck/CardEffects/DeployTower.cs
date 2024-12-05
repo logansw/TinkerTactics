@@ -22,6 +22,11 @@ public class DeployTower : CardEffect
     public override bool CanPrepare()
     {
         bool result = !StateController.CurrentState.Equals(StateType.Playing) && base.CanPrepare();
+        if (TowerManager.s_Instance.GetTotalEnergyCost() + _parentCard.EnergyCost > Player.s_Instance.Energy)
+        {
+            ToastManager.s_Instance.AddToast("Not enough energy to deploy tower.");
+            return false;
+        }
         if (StateController.CurrentState.Equals(StateType.Playing))
         {
             ToastManager.s_Instance.AddToast("Cannot deploy towers during a wave.");
@@ -56,8 +61,10 @@ public class DeployTower : CardEffect
         {
             _towerInstance.gameObject.SetActive(true);
             _towerInstance.transform.position = new Vector3(mousePosition.x, mousePosition.y, -0.1f);
+            TowerManager.s_Instance.Towers.Add(_towerInstance);
         }
         _towerInstance.Initialize();
+        Player.s_Instance.RenderEnergyText();
     }
 
     public override void OnDrawn()
