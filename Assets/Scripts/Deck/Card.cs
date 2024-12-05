@@ -132,11 +132,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         DeckManager.s_Instance.Discard(this);
     }
 
-    public void Consume()
-    {
-        DeckManager.s_Instance.Consume(this);
-    }
-
     public void OnDrawn()
     {
         CardEffect.Initialize(this);

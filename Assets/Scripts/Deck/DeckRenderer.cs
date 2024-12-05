@@ -18,9 +18,7 @@ public class DeckRenderer : MonoBehaviour
         {
             _updateQueued = false;
             RenderHand(DeckManager.s_Instance.Hand);
-            RenderDrawPile(DeckManager.s_Instance.DrawPile);
             RenderDiscardPile(DeckManager.s_Instance.DiscardPile);
-            RenderExhaustPile(DeckManager.s_Instance.ConsumePile);
             RenderDatabase();
         }
     }
@@ -42,31 +40,11 @@ public class DeckRenderer : MonoBehaviour
         }
     }
 
-    public void RenderDrawPile(List<Card> drawPile)
-    {
-        foreach (Card card in drawPile)
-        {
-            card.transform.SetParent(_drawPileTransform);
-            card.gameObject.SetActive(false);
-            card.transform.localPosition = Vector3.zero;
-        }
-    }
-
     public void RenderDiscardPile(List<Card> discardPile)
     {
         foreach (Card card in discardPile)
         {
             card.transform.SetParent(_discardPileTransform);
-            card.gameObject.SetActive(false);
-            card.transform.localPosition = Vector3.zero;
-        }
-    }
-
-    public void RenderExhaustPile(List<Card> exhaustPile)
-    {
-        foreach (Card card in exhaustPile)
-        {
-            card.transform.SetParent(_exhaustPileTransform);
             card.gameObject.SetActive(false);
             card.transform.localPosition = Vector3.zero;
         }

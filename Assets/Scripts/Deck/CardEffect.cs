@@ -8,7 +8,6 @@ public abstract class CardEffect : MonoBehaviour
     protected Card _parentCard;
     public StatInt Cost;
     public string Name;
-    public bool Consume;
     public string Description;
 
     public virtual void Initialize(Card parentCard)
@@ -55,21 +54,10 @@ public abstract class CardEffect : MonoBehaviour
     {
         ActivateEffect();
         Player.s_Instance.Energy -= GetCost();
-        if (ConsumeAfterUse())
-        {
-            _parentCard.Consume();
-        }
-        else
-        {
-            _parentCard.Discard();
-        }
+        _parentCard.Discard();
     }
     public abstract void ActivateEffect();
     public abstract void OnDrawn();
-    public virtual bool ConsumeAfterUse()
-    {
-        return Consume;
-    }
     public abstract string GetCardType();
     public abstract string GetDescription();
     public abstract Color GetColor();
