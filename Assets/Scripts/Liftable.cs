@@ -8,7 +8,6 @@ public class Liftable : MonoBehaviour
     private Collider2D _collider;
     private ILiftable _liftable;
     public bool IsLifted;
-    public bool IsLocked;
 
     void Awake()
     {
@@ -21,11 +20,6 @@ public class Liftable : MonoBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (CheckClick(mousePos))
         {
-            if (IsLocked)
-            {
-                ToastManager.s_Instance.AddToast("Tower cannot be repositioned");
-                return;
-            }
             _liftable.OnLift();
             IsLifted = true;
         }

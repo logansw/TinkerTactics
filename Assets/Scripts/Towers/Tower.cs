@@ -36,7 +36,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public int TinkerLimit;
     public int WidgetLimit = 5;
     private Liftable _liftable;
-    public bool IsLocked => _liftable.IsLocked;
     public Card ParentCard;
 
     public virtual string GetTooltipText()
@@ -87,14 +86,12 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     protected virtual void OnEnable()
     {
         ModifierProcessor.e_OnModifierAdded += RecalculateStats;
-        PlayingState.e_OnPlayingStateEnter += Lock;
         IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Current = BasicAttack.MaxAmmo.CalculatedFinal;};
     }
 
     protected virtual void OnDisable()
     {
         ModifierProcessor.e_OnModifierAdded -= RecalculateStats;
-        PlayingState.e_OnPlayingStateEnter -= Lock;
     }
 
     public void OnSelect()
@@ -137,11 +134,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
                 {
                     // Swap Towers
                     Tower otherTower = otherPlot.Towers[0];
-                    if (otherTower.IsLocked)
-                    {
-                        ReturnToPlot();
-                        return;
-                    }
                     TilePlot temp = TilePlot;
                     otherPlot.RemoveTower(otherTower);
                     otherPlot.AddTower(this);
@@ -168,12 +160,22 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         if (TilePlot != null)
         {
             TilePlot.RemoveTower(this);
+            DeckManager.s_Instance.ShowReturnTray(true);
         }
     }
 
     public void OnDrop()
     {
-        AssignTowerToTilePlot();
+        if (ReturnTray.s_Instance.IsHovered)
+        {
+            TowerManager.s_Instance.RemoveTower(this);
+            DeckManager.s_Instance.RestoreCard(ParentCard);
+        }
+        else
+        {
+            AssignTowerToTilePlot();
+        }
+        DeckManager.s_Instance.ShowReturnTray(false);
     }
 
     public void OnHover()
@@ -194,17 +196,5 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ModifierProcessor.CalculateMaxAmmo(BasicAttack.MaxAmmo);
         ModifierProcessor.CalculateAttackSpeed(BasicAttack.AttackSpeed);
         ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
-    }
-
-    public virtual void Lock()
-    {
-        _liftable.IsLocked = true;
-        _tilePlot.QueueLockUpdate();
-    }
-
-    public virtual void Unlock()
-    {
-        _liftable.IsLocked = false;
-        _tilePlot.QueueLockUpdate();
     }
 }

@@ -17,7 +17,6 @@ public class TilePlot : Tile
     {
         Capacity = 1;
         Towers = new List<Tower>();
-        SetLocked();
     }
 
     void OnEnable()
@@ -36,7 +35,6 @@ public class TilePlot : Tile
     {
         if (_updateQueued)
         {
-            SetLocked();
             _updateQueued = false;
         }
     }
@@ -61,7 +59,6 @@ public class TilePlot : Tile
     {
         if (IsOccupied())
         {
-            SetLocked();
             return false;
         }
         else
@@ -69,7 +66,6 @@ public class TilePlot : Tile
             Towers.Add(tower);
             Vector2 tilePosition = transform.position;
             tower.transform.position = new Vector3(tilePosition.x, tilePosition.y, tower.transform.position.z);
-            SetLocked();
             return true;
         }
     }
@@ -77,31 +73,10 @@ public class TilePlot : Tile
     public void RemoveTower(Tower tower)
     {
         Towers.Remove(tower);
-        SetLocked();
     }
 
     public void QueueLockUpdate()
     {
         _updateQueued = true;
-    }
-
-    private void SetLocked()
-    {
-        if (Towers == null || Towers.Count == 0)
-        {
-            _lockedIndicator.gameObject.SetActive(false);
-            return;
-        }
-
-        bool locked = Towers[0].IsLocked;
-        _lockedIndicator.gameObject.SetActive(true);
-        if (locked)
-        {
-            _lockedIndicator.transform.localPosition = new Vector2(0, 0.75f);
-        }
-        else
-        {
-            _lockedIndicator.transform.localPosition = new Vector2(0.536f, 0.75f);
-        }
     }
 }
