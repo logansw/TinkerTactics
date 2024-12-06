@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-    [SerializeField] private Collider2D _collider;
+    [SerializeField] protected Collider2D _collider;
     public bool EndReached;
 
     public virtual void Awake()

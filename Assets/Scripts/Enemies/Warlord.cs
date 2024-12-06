@@ -16,6 +16,7 @@ public class Warlord : Enemy
         Render(false);
         HealthbarUI.s_Instance.RegisterHealth(Health);
         EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
+        _collider.enabled = false;
     }
 
     public override void OnPathEnd()
@@ -38,6 +39,7 @@ public class Warlord : Enemy
         EffectTracker.ClearEffects();
         IsSpawned = true;
         _startPosition = waveSpawner.transform.position;
+        _collider.enabled = true;
     }
 
     public override void OnDeath()
@@ -59,6 +61,7 @@ public class Warlord : Enemy
         EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
         IsSpawned = false;
         StartCoroutine(AnimateRetreat());
+        _collider.enabled = false;
     }
 
     private IEnumerator AnimateRetreat()
