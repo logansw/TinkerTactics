@@ -60,6 +60,8 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         {
             card.Render(true);
             ShowShop(false);
+            DeckRenderer.s_Instance.QueueUpdate();
+            Debug.Log("Removed from available");
         }
     }
 }

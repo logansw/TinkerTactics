@@ -31,7 +31,10 @@ public class TowerManager : Singleton<TowerManager>
         int count = Towers.Count;
         for (int i = count - 1; i >= 0; i--)
         {
-            Towers[i].Recall();
+            if (Towers[i].gameObject.activeSelf)
+            {
+                Towers[i].Recall();
+            }
         }
         Towers.Clear();
     }

@@ -45,15 +45,6 @@ public class DeckManager : Singleton<DeckManager>
         Database = new List<Card>();
     }
 
-    public void Reset()
-    {
-        int count = DiscardPile.Count;
-        for (int i = count - 1; i >= 0; i--)
-        {
-            MoveCard(DiscardPile[i], DiscardPile, Deck);
-        }
-    }
-
     public void Discard(Card card)
     {
         if (!Hand.Contains(card))
@@ -96,7 +87,7 @@ public class DeckManager : Singleton<DeckManager>
     public void AddCardToDeck(Card card)
     {
         Hand.Add(card);
-        Reset();
+        card.OnDrawn();
     }
 
     public void ShowReturnTray(bool show)

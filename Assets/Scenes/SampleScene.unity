@@ -953,13 +953,6 @@ MonoBehaviour:
   - {fileID: 5838725101998783181, guid: d67405c7a1bd14c4991f244d0a1523c3, type: 3}
   - {fileID: 2931863317418072218, guid: f486c10178b4b40a78d8965e2bc79e85, type: 3}
   - {fileID: 998647300915211702, guid: 0ec089d41cbf245fabc8df90c68b0e40, type: 3}
-  - {fileID: 3814989322589869822, guid: b6b29322805f044f792db446e73c014a, type: 3}
-  - {fileID: 3814989322589869822, guid: 19b675d9829864af08e6d4acec0988a1, type: 3}
-  - {fileID: 3814989322589869822, guid: cef834cefb6214abcb1710645fde23e2, type: 3}
-  - {fileID: 3814989322589869822, guid: 45461390b220f4e74af0bab1b1b8895f, type: 3}
-  - {fileID: 3814989322589869822, guid: 45461390b220f4e74af0bab1b1b8895f, type: 3}
-  - {fileID: 4874060471286656800, guid: aa43c14f13d244a6884cd128844c66d0, type: 3}
-  - {fileID: 4874060471286656800, guid: 56c415b5b169b4e089036613233fd561, type: 3}
   AvailableCards: []
   cardsContainer: {fileID: 66078692}
   canvas: {fileID: 825052339}
@@ -3280,6 +3273,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MarketplaceManager, Assembly-CSharp
         m_MethodName: ShowShop
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1497094964}
+        m_TargetAssemblyTypeName: DeckRenderer, Assembly-CSharp
+        m_MethodName: QueueUpdate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

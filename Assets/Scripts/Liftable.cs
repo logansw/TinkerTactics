@@ -41,6 +41,7 @@ public class Liftable : MonoBehaviour
 
     private bool CheckClick(Vector2 mousePos)
     {
+        if (StateController.CurrentState.Equals(StateType.Playing)) { return false; }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, Vector2.zero);

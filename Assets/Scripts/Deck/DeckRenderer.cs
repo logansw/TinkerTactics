@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckRenderer : MonoBehaviour
+public class DeckRenderer : Singleton<DeckRenderer>
 {
     [SerializeField] private RectTransform _drawPileTransform;
     [SerializeField] private RectTransform _handTransform;
@@ -25,6 +25,7 @@ public class DeckRenderer : MonoBehaviour
 
     public void RenderHand(List<Card> hand)
     {
+        Debug.Log("Rendering hand");
         float cardPositionOffset = 0;
         float offset = _handTransform.rect.width / hand.Count;
         foreach (Card card in hand)
@@ -37,6 +38,7 @@ public class DeckRenderer : MonoBehaviour
             card.RectTransform.anchoredPosition = new Vector2(cardPositionOffset, 0);
             cardPositionOffset += offset;
             card.OriginalSiblingIndex = card.transform.GetSiblingIndex();
+            card.Render(true);
         }
     }
 
