@@ -5,19 +5,29 @@ using System.Linq;
 
 public class MarketplaceManager : Singleton<MarketplaceManager>
 {
-    public List<Card> AllCards;
+    public List<Card> AllTowers;
+    public List<Card> AllTinkers;
     public List<Card> AvailableCards;
 
     [SerializeField] private Transform cardsContainer;
     [SerializeField] private GameObject canvas;
-    public int CardsSelected;
+    private int _cardsSelected;
+    private int _cardsToSelect;
+    private int _cardOptionsCount;
 
     public void PopulateAvailableItems()
     {
         ResetCards();
-        AllCards = AllCards.OrderBy(item => Guid.NewGuid()).ToList();
-        RenderNewItems();
-        CardsSelected = 0;
+        AllTowers = AllTowers.OrderBy(item => Guid.NewGuid()).ToList();
+        _cardsSelected = 0;
+        if (GameManager.s_Instance.CurrentLevelIndex % 2 == 0)
+        {
+            PrepareTowerShop();
+        }
+        else
+        {
+            PrepareTinkerShop();
+        }
     }
 
     public void ShowShop(bool show)
@@ -25,10 +35,10 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         canvas.gameObject.SetActive(show);
     }
 
-    public void RenderNewItems()
+    public void RenderNewItems(List<Card> chooseFromList)
     {
         float padding = 10f;
-        List<Card> selectedCards = AllCards.Take(5).ToList();
+        List<Card> selectedCards = chooseFromList.Take(_cardOptionsCount).ToList();
 
         for (int i = 0; i < selectedCards.Count; i++)
         {
@@ -40,6 +50,20 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
             instance.RectTransform.anchoredPosition = new Vector2((i-2) * (Card.CARD_WIDTH + padding), 0);
             instance.Render(true);
         }
+    }
+
+    private void PrepareTowerShop()
+    {
+        _cardOptionsCount = 3;
+        _cardsToSelect = 1;
+        RenderNewItems(AllTowers);
+    }
+
+    private void PrepareTinkerShop()
+    {
+        _cardOptionsCount = 5;
+        _cardsToSelect = 2;
+        RenderNewItems(AllTinkers);
     }
 
     public void ResetCards()
@@ -55,8 +79,8 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     {
         AvailableCards.Remove(card);
         card.Render(false);
-        CardsSelected++;
-        if (CardsSelected == 2)
+        _cardsSelected++;
+        if (_cardsSelected == _cardsToSelect)
         {
             card.Render(true);
             ShowShop(false);
