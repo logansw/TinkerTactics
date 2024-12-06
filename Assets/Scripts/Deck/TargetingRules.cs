@@ -11,6 +11,7 @@ public abstract class TargetingRules
     {
         if (CheckTargetingReturnTray())
         {
+            e_OnCardReturned?.Invoke();
             return false;
         }
         return ValidTargetHelper(targetPosition);
@@ -20,7 +21,6 @@ public abstract class TargetingRules
 
     private bool CheckTargetingReturnTray()
     {
-        e_OnCardReturned?.Invoke();
         return ReturnTray.s_Instance.IsHovered;
     }
 }

@@ -94,6 +94,6 @@ public class DeployTower : CardEffect
 
     public override string GetInvalidTargetMessage()
     {
-        return "Must be played on an empty tile.";
+        return "Tower must be played on an empty Tile";
     }
 }

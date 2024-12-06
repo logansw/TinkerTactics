@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -56,12 +57,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.SetAsLastSibling();
-        transform.position = new Vector2(transform.position.x, transform.position.y + (RectTransform.rect.width / 4f));
+        transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y + (RectTransform.rect.width / 2f));
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y - (RectTransform.rect.width / 4f));
+        transform.localPosition = new Vector2(transform.localPosition.x, 0f);
         transform.SetSiblingIndex(OriginalSiblingIndex);
     }
 

@@ -25,7 +25,6 @@ public class DeckRenderer : Singleton<DeckRenderer>
 
     public void RenderHand(List<Card> hand)
     {
-        Debug.Log("Rendering hand");
         float cardPositionOffset = 0;
         float offset = _handTransform.rect.width / hand.Count;
         foreach (Card card in hand)
@@ -36,6 +35,7 @@ public class DeckRenderer : Singleton<DeckRenderer>
             card.RectTransform.anchorMax = new Vector2(0, 0.5f);
             card.RectTransform.pivot = new Vector2(0, 0.5f);
             card.RectTransform.anchoredPosition = new Vector2(cardPositionOffset, 0);
+            card.RectTransform.localScale = Vector3.one;
             cardPositionOffset += offset;
             card.OriginalSiblingIndex = card.transform.GetSiblingIndex();
             card.Render(true);
