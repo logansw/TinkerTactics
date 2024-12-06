@@ -52,7 +52,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build
-          project: whaleshark-noises/tt-notdeckbuilder
+          project: whaleshark-noises/tttd-notdeckbuilder
           channel: webgl
           api-key: ${{ secrets.BUTLER_CREDENTIALS }}
           version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
