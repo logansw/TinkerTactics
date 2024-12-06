@@ -44,7 +44,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
             DrawRangeIndicator();
             DrawCollider();
             _updateQueued = false;
-        }    
+        }
     }
 
     public void OnSelect()

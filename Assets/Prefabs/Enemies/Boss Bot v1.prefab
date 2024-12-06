@@ -90,6 +90,8 @@ MonoBehaviour:
     - Squads:
       - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}
         Count: 1
+      - Enemy: {fileID: 2829259436081504978, guid: 58014a9a550da4924b682e17ec265378, type: 3}
+        Count: 1
   - Lanes:
     - Squads:
       - Enemy: {fileID: -5732281124746718282, guid: febbc5c69dbb940748f5056d5d1e4223, type: 3}

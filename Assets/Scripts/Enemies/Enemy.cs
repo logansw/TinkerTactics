@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float Armor;
     public TilePath TileTarget { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
-    [HideInInspector] public int DistanceTraveled;
+    [HideInInspector] public float DistanceTraveled;
     [HideInInspector] public EffectTracker EffectTracker;
     public bool IsSpawned;
 
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public EnemyAction e_OnEnemyBreak;
     [SerializeField] protected Collider2D _collider;
     public bool EndReached;
+    private Vector3 _lastPosition;
 
     public virtual void Awake()
     {
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
         transform.position = spawnPoint.transform.position;
         TileTarget = spawnPoint;
         IsSpawned = true;
+        _lastPosition = transform.position;
     }
 
     void Update()
@@ -130,6 +132,8 @@ public class Enemy : MonoBehaviour
         {
             TileTarget = TileTarget.NextTilePath;
         }
+        DistanceTraveled += (transform.position - _lastPosition).magnitude;
+        _lastPosition = transform.position;
     }
 
     public virtual void OnPathEnd()
