@@ -1,9 +1,9 @@
-name: Spinny2 CI/CD
+name: NotDeckbuilder CI/CD
 
 on:
   push:
     branches:
-      - spinny2_prod
+      - notdeckbuilder_prod
   workflow_dispatch:
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
         uses: robpc/itchio-upload-action@v1
         with:
           path: build
-          project: whaleshark-noises/tt-spinny2
+          project: whaleshark-noises/tttd-notdeckbuilder
           channel: webgl
           api-key: ${{ secrets.BUTLER_CREDENTIALS }}
           version: ${{ env.RELEASE_DATE }}-${{ env.SHORT_HASH }}
