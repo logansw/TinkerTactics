@@ -33,7 +33,7 @@ public class ProjectilePierce : Projectile
     {
         transform.Translate(Vector2.right * Time.deltaTime * ProjectileSpeed);
         float distanceFromTower = Vector2.Distance(transform.position, _source.transform.position);
-        if (distanceFromTower > _source.Range.CalculatedFinal)
+        if (distanceFromTower > _source.Range.Current)
         {
             Destroy(gameObject);
         }

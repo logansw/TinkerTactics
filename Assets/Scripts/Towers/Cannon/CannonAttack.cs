@@ -5,11 +5,11 @@ public class CannonAttack : BasicAttack
     [SerializeField] private ProjectileExplosive _projectileExplosive;
     public float ExplosionRadius;
 
-    public override void Attack()
+    public override void Execute()
     {
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
         ProjectileExplosive bomb = Instantiate(_projectileExplosive, Tower.transform.position, Quaternion.identity);
-        bomb.Initialize(_modifierProcessor.CalculateDamage(Damage), ProjectileSpeed, Tower);
+        bomb.Initialize(Damage.Current, ProjectileSpeed, Tower);
         bomb.SetExplosionRadius(ExplosionRadius);
         bomb.Launch(target);
         AttackClock.Reset();

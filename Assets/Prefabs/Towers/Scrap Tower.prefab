@@ -231,7 +231,6 @@ MonoBehaviour:
   Active: 0
   ModifierProcessor: {fileID: 2969699163075311064}
   TinkerLimit: 2
-  WidgetLimit: 5
   ParentCard: {fileID: 0}
 --- !u!114 &3444448523574529121
 MonoBehaviour:
@@ -273,4 +272,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TinkerCount: 0
-  WidgetCount: 0

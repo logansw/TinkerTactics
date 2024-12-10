@@ -6,11 +6,16 @@ public abstract class TinkerBase : ModifierBase
 {
     public override bool CanAddModifier(Tower recipient)
     {
-        return recipient.ModifierProcessor.TinkerCount < recipient.TinkerLimit;
+        bool result = recipient.ModifierProcessor.TinkerCount < recipient.TinkerLimit;
+        if (!result)
+        {
+            ToastManager.s_Instance.AddToast($"{recipient.Name} has reached the maximum number of Tinkers.");
+        }
+        return result;
     }
 
-    public override void OnModifierAdded(Tower recipient)
+    protected override void OnTinkerEquipped(TinkerEquippedEvent tinkerEquippedEvent)
     {
-        recipient.ModifierProcessor.TinkerCount++;
+        tinkerEquippedEvent.Tower.ModifierProcessor.TinkerCount++;
     }
 }

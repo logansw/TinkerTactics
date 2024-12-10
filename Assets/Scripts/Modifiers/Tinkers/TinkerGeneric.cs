@@ -43,38 +43,64 @@ public class TinkerGeneric : TinkerBase
         return sb.ToString();
     }
 
-    public override void ApplyDamageModifier(StatDamage stat)
+    public override void Initialize(Tower recipient)
+    {
+        _tower = recipient;
+        EventBus.Subscribe<TinkerEquippedEvent>(OnTinkerEquipped);
+    }
+
+    protected override void OnTinkerEquipped(TinkerEquippedEvent tinkerEquippedEvent)
+    {
+        Tower recipient = tinkerEquippedEvent.Tower;
+        ApplyStatModifier(recipient);
+        EventBus.Unsubscribe<TinkerEquippedEvent>(OnTinkerEquipped);
+    }
+
+    private void ApplyStatModifier(Tower recipient)
+    {
+        ApplyDamageModifier(recipient.BasicAttack.Damage);
+        ApplyRangeModifier(recipient.Range);
+        ApplySweepModifier(recipient.Sweep);
+        ApplyReloadSpeedModifier(recipient.BasicAttack.ReloadSpeed);
+        ApplyAttackSpeedModifier(recipient.BasicAttack.AttackSpeed);
+        ApplyAmmoModifier(recipient.BasicAttack.MaxAmmo);
+        recipient.BasicAttack.SetClocks();
+    }
+
+    public void ApplyDamageModifier(StatDamage stat)
     {
         if (DamageModFlat == default) { return; }
 
         stat.Current += DamageModFlat;
     }
 
-    public override void ApplyRangeModifier(StatRange stat)
+    public void ApplyRangeModifier(StatRange stat)
     {
         if (RangeModFlat == default) { return; }
         stat.Current += RangeModFlat;
     }
 
-    public override void ApplySweepModifier(StatSweep stat)
+    public void ApplySweepModifier(StatSweep stat)
     {
         if (SweepModFlat == default) { return; }
         stat.Current += SweepModFlat;
     }
 
-    public override void ApplyAmmoModifier(StatAmmo stat)
+    public void ApplyAmmoModifier(StatAmmo maxAmmo)
     {
         if (AmmoModFlat == default) { return; }
-        stat.Current += AmmoModFlat;
+        maxAmmo.Current += AmmoModFlat;
+        _tower.BasicAttack.CurrentAmmo.Base = maxAmmo.Current;
+        _tower.BasicAttack.CurrentAmmo.Reset();
     }
 
-    public override void ApplyReloadSpeedModifier(StatReloadSpeed stat)
+    public void ApplyReloadSpeedModifier(StatReloadSpeed stat)
     {
         if (ReloadSpeedModMult == default) { return; }
         stat.Current *= ReloadSpeedModMult;
     }
 
-    public override void ApplyAttackSpeedModifier(StatAttackSpeed stat)
+    public void ApplyAttackSpeedModifier(StatAttackSpeed stat)
     {
         if (AttackSpeedModMult == default) { return; }
         stat.Current *= AttackSpeedModMult;
