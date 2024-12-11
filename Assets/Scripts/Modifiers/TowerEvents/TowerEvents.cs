@@ -20,34 +20,48 @@ public class TinkerEquippedEvent : ITowerEvent
 }
 
 /// <summary>
-/// Called when an enemy is hit by a Tower's attack
+/// Called when an enemy is hit by a Tower's attack before damage calculations
 /// </summary>
 public class EnemyImpactEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
+    public Projectile Projectile { get; private set; }
 
-    public EnemyImpactEvent(Enemy enemy)
+    public EnemyImpactEvent(Enemy enemy, Projectile projectile)
     {
         Enemy = enemy;
+        Projectile = projectile;
     }
 }
 
+/// <summary>
+/// Called when an enemy is hit by a Tower's attack after damage calculations
+/// </summary>
 public class PostEnemyImpactEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
+    public Projectile Projectile { get; private set; }
 
-    public PostEnemyImpactEvent(Enemy enemy)
+    public PostEnemyImpactEvent(Enemy enemy, Projectile projectile)
     {
         Enemy = enemy;
+        Projectile = projectile;
     }
 }
 
 /// <summary>
 /// Called when an enemy is killed by a Tower's attack
 /// </summary>
-public class EnemyKillEvent : ITowerEvent
+public class EnemyDeathEvent : ITowerEvent
 {
-
+    public Enemy Enemy { get; private set; }
+    public Projectile Projectile { get; private set; }
+    
+    public EnemyDeathEvent(Enemy enemy, Projectile projectile)
+    {
+        Enemy = enemy;
+        Projectile = projectile;
+    }
 }
 
 /// <summary>

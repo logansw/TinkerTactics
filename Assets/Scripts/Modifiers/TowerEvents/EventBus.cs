@@ -1,17 +1,13 @@
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
 
 
-public class EventBus
+public static class EventBus
 {
-    private Dictionary<Type, List<Delegate>> _eventListeners;
+    private static Dictionary<Type, List<Delegate>> _eventListeners = new Dictionary<Type, List<Delegate>>();
 
-    public EventBus()
-    {
-        _eventListeners = new Dictionary<Type, List<Delegate>>();
-    }
-
-    public void Subscribe<T>(Action<T> handler) where T : ITowerEvent
+    public static void Subscribe<T>(Action<T> handler) where T : ITowerEvent
     {
         Type eventType = typeof(T);
         if (!_eventListeners.ContainsKey(eventType))
@@ -21,7 +17,7 @@ public class EventBus
         _eventListeners[eventType].Add(handler);
     }
 
-    public void Unsubscribe<T>(Action<T> handler) where T : ITowerEvent
+    public static void Unsubscribe<T>(Action<T> handler) where T : ITowerEvent
     {
         Type eventType = typeof(T);
         if (_eventListeners.ContainsKey(eventType))
@@ -37,7 +33,7 @@ public class EventBus
         }
     }
 
-    public void RaiseEvent<T>(T towerEvent) where T : ITowerEvent
+    public static void RaiseEvent<T>(T towerEvent) where T : ITowerEvent
     {
         Type eventType = typeof(T);
         if (_eventListeners.ContainsKey(eventType))

@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void ReceiveProjectile(Projectile projectile, float incomingDamage)
     {
-        projectile.SourceTower.EventBus.RaiseEvent<EnemyImpactEvent>(new EnemyImpactEvent(this));
+        EventBus.RaiseEvent<EnemyImpactEvent>(new EnemyImpactEvent(this, projectile));
         if (EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
         {
             incomingDamage *= effectVulnerable.GetDamageMultiplier();
@@ -104,7 +104,11 @@ public class Enemy : MonoBehaviour
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
-        projectile.SourceTower.EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(this));
+        EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(this, projectile));
+        if (Health.CurrentHealth <= 0)
+        {
+            EventBus.RaiseEvent<EnemyDeathEvent>(new EnemyDeathEvent(this, projectile));
+        }
     }
 
     public void Move()

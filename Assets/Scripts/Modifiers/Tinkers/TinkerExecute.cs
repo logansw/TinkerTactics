@@ -12,17 +12,20 @@ public class TinkerExecute : TinkerBase
     public override void Initialize(Tower recipient)
     {
         _tower = recipient;
-        recipient.EventBus.Subscribe<PostEnemyImpactEvent>(OnPostEnemyImpact);   
+        EventBus.Subscribe<PostEnemyImpactEvent>(OnPostEnemyImpact);   
     }
 
     public void OnPostEnemyImpact(PostEnemyImpactEvent postEnemyImpactEvent)
     {
-        if (postEnemyImpactEvent.Enemy is Warlord)
+        Debug.Log("Post Impact");
+        if (postEnemyImpactEvent.Enemy is Warlord || postEnemyImpactEvent.Projectile.SourceTower != _tower)
         {
+            Debug.Log("Return");
             return;
         }
         if (postEnemyImpactEvent.Enemy.Health.CurrentHealth <= postEnemyImpactEvent.Enemy.Health.MaxHealth * 0.12f)
         {
+            Debug.Log("Execute");
             postEnemyImpactEvent.Enemy.Health.TakeDamage(9999);
         }
     }

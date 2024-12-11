@@ -46,14 +46,14 @@ public class TinkerGeneric : TinkerBase
     public override void Initialize(Tower recipient)
     {
         _tower = recipient;
-        recipient.EventBus.Subscribe<TinkerEquippedEvent>(OnTinkerEquipped);
+        EventBus.Subscribe<TinkerEquippedEvent>(OnTinkerEquipped);
     }
 
     protected override void OnTinkerEquipped(TinkerEquippedEvent tinkerEquippedEvent)
     {
         Tower recipient = tinkerEquippedEvent.Tower;
         ApplyStatModifier(recipient);
-        recipient.EventBus.Unsubscribe<TinkerEquippedEvent>(OnTinkerEquipped);
+        EventBus.Unsubscribe<TinkerEquippedEvent>(OnTinkerEquipped);
     }
 
     private void ApplyStatModifier(Tower recipient)

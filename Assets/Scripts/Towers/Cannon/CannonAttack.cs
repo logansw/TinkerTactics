@@ -14,7 +14,7 @@ public class CannonAttack : BasicAttack
         bomb.Launch(target);
         AttackClock.Reset();
         ReloadClock.Reset();
-        CurrentAmmo.Current -= 1;
+        ChangeCurrentAmmo(-1);
         _canAttack = false;
     }
 }

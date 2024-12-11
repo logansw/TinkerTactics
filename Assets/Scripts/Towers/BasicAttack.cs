@@ -82,4 +82,13 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
         ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
     }
+
+    /// <summary>
+    /// Changes the current ammo by the given amount, clamped between 0 and MaxAmmo. This is the preferred method for changing ammo outside.
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ChangeCurrentAmmo(int amount)
+    {
+        CurrentAmmo.Current = Mathf.Clamp(CurrentAmmo.Current + amount, 0, MaxAmmo.Current);
+    }
 }

@@ -27,5 +27,6 @@ public class ProjectileExplosive : Projectile
                 nearbyEnemy.ReceiveProjectile(this, Damage);
             }
         }
+        CleanUp();
     }
 }
