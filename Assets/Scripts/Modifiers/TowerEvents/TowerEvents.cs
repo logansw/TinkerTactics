@@ -24,7 +24,22 @@ public class TinkerEquippedEvent : ITowerEvent
 /// </summary>
 public class EnemyImpactEvent : ITowerEvent
 {
+    public Enemy Enemy { get; private set; }
 
+    public EnemyImpactEvent(Enemy enemy)
+    {
+        Enemy = enemy;
+    }
+}
+
+public class PostEnemyImpactEvent : ITowerEvent
+{
+    public Enemy Enemy { get; private set; }
+
+    public PostEnemyImpactEvent(Enemy enemy)
+    {
+        Enemy = enemy;
+    }
 }
 
 /// <summary>

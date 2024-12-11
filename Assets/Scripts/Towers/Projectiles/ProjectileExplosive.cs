@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProjectileExplosive : Projectile
 {
+    private bool _exploded;
     [HideInInspector] public float ExplosionRadius;
     [SerializeField] private GameObject _explosionPrefab;
 
@@ -12,7 +13,8 @@ public class ProjectileExplosive : Projectile
 
     public override void OnImpact(Enemy enemy)
     {
-        base.OnImpact(enemy);
+        if (_exploded) { return; }
+        _exploded = true;
         GameObject explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         explosion.transform.localScale = new Vector3(ExplosionRadius, ExplosionRadius, 1);
         Destroy(explosion, 1f);
@@ -20,9 +22,9 @@ public class ProjectileExplosive : Projectile
         foreach (Collider2D collider in colliders)
         {
             Enemy nearbyEnemy = collider.GetComponent<Enemy>();
-            if (nearbyEnemy != null && nearbyEnemy != _target)
+            if (nearbyEnemy != null )
             {
-                nearbyEnemy.OnImpact(Damage);
+                nearbyEnemy.ReceiveProjectile(this, Damage);
             }
         }
     }

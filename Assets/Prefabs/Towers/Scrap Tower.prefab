@@ -247,7 +247,7 @@ MonoBehaviour:
   Tower: {fileID: 0}
   Name: Pew
   Damage:
-    baseValue: 5
+    baseValue: 9
   AttackSpeed:
     baseValue: 1
   ReloadSpeed:

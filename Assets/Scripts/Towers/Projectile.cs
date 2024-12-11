@@ -8,12 +8,11 @@ using UnityEngine;
 /// </summary>
 public abstract class Projectile : MonoBehaviour
 {
-    protected Tower _source;
+    public Tower SourceTower;
     [HideInInspector] public float Damage;
     [HideInInspector] public float ProjectileSpeed;
     protected Enemy _target;
     public delegate void OnImpactDelegate(Enemy hit);
-    public OnImpactDelegate e_OnImpact;
     protected Vector3 _targetPosition;
     public Action e_OnDestroyed;
     [SerializeField] private SpriteRenderer _renderer;
@@ -24,7 +23,7 @@ public abstract class Projectile : MonoBehaviour
     {
         Damage = damage;
         ProjectileSpeed = projectileSpeed;
-        _source = source;
+        SourceTower = source;
         _collider = GetComponent<Collider2D>();
     }
 
@@ -62,14 +61,19 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the projectile collides with an enemy.
+    /// </summary>
+    /// <param name="recipient"></param>
+    /// <remarks> This method should do only 2 things: Initially call the OnImpact method for the enemy, and handle anything specific to this projectile. </remarks>
     public virtual void OnImpact(Enemy recipient)
     {
-        e_OnImpact?.Invoke(recipient);
-        if (recipient.EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
-        {
-            Damage *= effectVulnerable.GetDamageMultiplier();
-        }
-        recipient.Health.TakeDamage(Damage);
+        recipient.ReceiveProjectile(this, Damage);
+        CleanUp();
+    }
+
+    protected void CleanUp()
+    {
         _renderer.enabled = false;
         _collider.enabled = false;
         Destroy(gameObject, 1f);

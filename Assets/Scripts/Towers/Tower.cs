@@ -37,6 +37,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private Liftable _liftable;
     public Card ParentCard;
     public int EnergyCost => ParentCard.EnergyCost;
+    public EventBus EventBus;
 
     public virtual string GetTooltipText()
     {
@@ -68,6 +69,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public void Initialize()
     {
         AssignTowerToTilePlot();
+        EventBus = new EventBus();
     }
 
     protected virtual void Update()

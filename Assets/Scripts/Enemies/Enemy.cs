@@ -94,8 +94,9 @@ public class Enemy : MonoBehaviour
         e_OnEnemyBreak?.Invoke(this);
     }
 
-    public virtual void OnImpact(float incomingDamage)
+    public virtual void ReceiveProjectile(Projectile projectile, float incomingDamage)
     {
+        projectile.SourceTower.EventBus.RaiseEvent<EnemyImpactEvent>(new EnemyImpactEvent(this));
         if (EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
         {
             incomingDamage *= effectVulnerable.GetDamageMultiplier();
@@ -103,6 +104,7 @@ public class Enemy : MonoBehaviour
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = incomingDamage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
+        projectile.SourceTower.EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(this));
     }
 
     public void Move()

@@ -13,7 +13,7 @@ public class ProjectilePierce : Projectile
 
     public override void OnImpact(Enemy enemy)
     {
-        enemy.OnImpact(Damage);
+        enemy.ReceiveProjectile(this, Damage);
         Pierce--;
         if (Pierce == 0)
         {
@@ -32,8 +32,8 @@ public class ProjectilePierce : Projectile
     protected override void Update()
     {
         transform.Translate(Vector2.right * Time.deltaTime * ProjectileSpeed);
-        float distanceFromTower = Vector2.Distance(transform.position, _source.transform.position);
-        if (distanceFromTower > _source.Range.Current)
+        float distanceFromTower = Vector2.Distance(transform.position, SourceTower.transform.position);
+        if (distanceFromTower > SourceTower.Range.Current)
         {
             Destroy(gameObject);
         }
