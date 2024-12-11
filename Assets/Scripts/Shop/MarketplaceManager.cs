@@ -48,7 +48,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
             AvailableCards.Add(instance);
             instance.IsOwned = false;
             instance.RectTransform.anchoredPosition = new Vector2((i-2) * (Card.CARD_WIDTH + padding), 0);
-            instance.Render(true);
+            instance.OnDrawn();
         }
     }
 

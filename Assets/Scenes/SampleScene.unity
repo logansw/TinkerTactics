@@ -3820,12 +3820,9 @@ MonoBehaviour:
   - {fileID: 8287899881202067201, guid: 9a3d9064ce2a34150be8bccb7f142bbe, type: 3}
   - {fileID: 998647300915211702, guid: 0ec089d41cbf245fabc8df90c68b0e40, type: 3}
   - {fileID: 5838725101998783181, guid: d67405c7a1bd14c4991f244d0a1523c3, type: 3}
-  - {fileID: 3814989322589869822, guid: b6b29322805f044f792db446e73c014a, type: 3}
-  - {fileID: 3814989322589869822, guid: 19b675d9829864af08e6d4acec0988a1, type: 3}
-  - {fileID: 3814989322589869822, guid: cef834cefb6214abcb1710645fde23e2, type: 3}
-  - {fileID: 3814989322589869822, guid: 45461390b220f4e74af0bab1b1b8895f, type: 3}
-  - {fileID: 3814989322589869822, guid: f6b80910161dd43dca8be8ba0ab2ac74, type: 3}
   - {fileID: 6813532617856343124, guid: 4262816afff8146afb8c042db4b188ef, type: 3}
+  - {fileID: 530142614057873419, guid: 5cb4365ec3c4d49dda697e294b0445df, type: 3}
+  - {fileID: 8225585126990123969, guid: ddb7c2a4ed602462bb23e44cd7ddc2da, type: 3}
   Hand: []
   DiscardPile: []
   Database: []

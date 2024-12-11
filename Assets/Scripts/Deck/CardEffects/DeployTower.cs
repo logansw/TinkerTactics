@@ -96,4 +96,9 @@ public class DeployTower : CardEffect
     {
         return "Tower must be played on an empty Tile";
     }
+
+    public override int GetCost()
+    {
+        return _parentCard.EnergyCost;
+    }
 }

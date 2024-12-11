@@ -12,6 +12,7 @@ public class TinkerGeneric : TinkerBase
     public int AmmoModFlat;
     public float ReloadSpeedModMult;
     public float AttackSpeedModMult;
+    public int CostModDelta;
 
     public override string GetDescription()
     {
@@ -40,6 +41,17 @@ public class TinkerGeneric : TinkerBase
         {
             sb.Append($"Attack Speed x{AttackSpeedModMult}\n");
         }
+        if (CostModDelta != 0)
+        {
+            if (CostModDelta > 0)
+            {
+                sb.Append($"+{CostModDelta} Energy Cost\n");
+            }
+            else
+            {
+                sb.Append($"-{CostModDelta} Energy Cost\n");
+            }
+        }
         return sb.ToString();
     }
 
@@ -64,6 +76,7 @@ public class TinkerGeneric : TinkerBase
         ApplyReloadSpeedModifier(recipient.BasicAttack.ReloadSpeed);
         ApplyAttackSpeedModifier(recipient.BasicAttack.AttackSpeed);
         ApplyAmmoModifier(recipient.BasicAttack.MaxAmmo);
+        ApplyCostModifier();
         recipient.BasicAttack.SetClocks();
     }
 
@@ -104,5 +117,10 @@ public class TinkerGeneric : TinkerBase
     {
         if (AttackSpeedModMult == default) { return; }
         stat.Current *= AttackSpeedModMult;
+    }
+
+    public void ApplyCostModifier()
+    {
+        _tower.ParentCard.EnergyCost += CostModDelta;
     }
 }
