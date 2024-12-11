@@ -15,7 +15,7 @@ public class TinkerExecute : TinkerBase
         EventBus.Subscribe<PostEnemyImpactEvent>(OnPostEnemyImpact);   
     }
 
-    public void OnPostEnemyImpact(PostEnemyImpactEvent postEnemyImpactEvent)
+    private void OnPostEnemyImpact(PostEnemyImpactEvent postEnemyImpactEvent)
     {
         if (postEnemyImpactEvent.Enemy is Warlord || postEnemyImpactEvent.Projectile.SourceTower != _tower)
         {

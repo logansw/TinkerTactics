@@ -68,7 +68,7 @@ public abstract class Projectile : MonoBehaviour
     /// <remarks> This method should do only 2 things: Initially call the OnImpact method for the enemy, and handle anything specific to this projectile. </remarks>
     public virtual void OnImpact(Enemy recipient)
     {
-        recipient.ReceiveProjectile(this, Damage);
+        recipient.ReceiveProjectile(this);
         CleanUp();
     }
 

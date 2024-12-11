@@ -13,7 +13,7 @@ public class ProjectilePierce : Projectile
 
     public override void OnImpact(Enemy enemy)
     {
-        enemy.ReceiveProjectile(this, Damage);
+        enemy.ReceiveProjectile(this);
         Pierce--;
         if (Pierce == 0)
         {

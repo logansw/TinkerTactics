@@ -15,7 +15,7 @@ public class TinkerKillReload : TinkerBase
         EventBus.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
     }
 
-    public void OnEnemyDeath(EnemyDeathEvent enemyDeathEvent)
+    private void OnEnemyDeath(EnemyDeathEvent enemyDeathEvent)
     {
         EnemyDeathEvent e = enemyDeathEvent;
         if (e.Projectile.SourceTower != _tower) { return; }
