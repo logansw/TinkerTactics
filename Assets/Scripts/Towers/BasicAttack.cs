@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class BasicAttack : MonoBehaviour
+public class BasicAttack : MonoBehaviour, ITowerAction
 {
     [HideInInspector] public Tower Tower;
     public string Name;
@@ -18,28 +19,40 @@ public class BasicAttack : MonoBehaviour
     public string TooltipText;
     public float ProjectileSpeed;
     protected ModifierProcessor _modifierProcessor;
+    public List<string> Tags { get; }
 
     public void Initialize(Tower tower)
     {
         Tower = tower;
         _modifierProcessor = tower.ModifierProcessor;
-        _modifierProcessor.e_OnModifierAdded += SetClocks;
-        AttackClock = new InternalClock(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed), gameObject);
-        ReloadClock = new InternalClock(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed), gameObject);
+        AttackClock = new InternalClock(1f / AttackSpeed.Current, gameObject);
+        ReloadClock = new InternalClock(1f / ReloadSpeed.Current, gameObject);
         AttackClock.e_OnTimerDone += SetCanAttack;
         ReloadClock.e_OnTimerDone += ReloadAmmo;
-        _modifierProcessor.e_OnModifierAdded += CalculateBaseAmmo;
     }
 
-    public virtual void Attack()
+    public virtual void Execute()
     {
+        OnActionStart();
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
         Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
-        projectile.Initialize(_modifierProcessor.CalculateDamage(Damage), ProjectileSpeed, Tower);
+        ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
+        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower, projectileEffectTracker);
         projectile.Launch(target);
         AttackClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;
+        EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectile, Tower, target));
+    }
+
+    public void OnActionStart()
+    {
+        // Not implemented
+    }
+
+    public void OnActionComplete()
+    {
+        // Not implemented
     }
 
     public string GetTooltipText()
@@ -59,22 +72,26 @@ public class BasicAttack : MonoBehaviour
 
     private void ReloadAmmo()
     {
-        if (CurrentAmmo.Current < MaxAmmo.CalculatedFinal)
+        if (CurrentAmmo.Current < MaxAmmo.Current)
         {
-            CurrentAmmo.Base = MaxAmmo.CalculatedFinal;
+            CurrentAmmo.Base = MaxAmmo.Current;
             CurrentAmmo.Current += 1;
             ReloadClock.Reset();
         }
     }
 
-    private void CalculateBaseAmmo()
-    {
-        _modifierProcessor.CalculateMaxAmmo(MaxAmmo);
-    }
-
     public void SetClocks()
     {
-        AttackClock.SetTimeToWait(1f / _modifierProcessor.CalculateAttackSpeed(AttackSpeed));
-        ReloadClock.SetTimeToWait(1f / _modifierProcessor.CalculateReloadSpeed(ReloadSpeed));
+        AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
+        ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
+    }
+
+    /// <summary>
+    /// Changes the current ammo by the given amount, clamped between 0 and MaxAmmo. This is the preferred method for changing ammo outside.
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ChangeCurrentAmmo(int amount)
+    {
+        CurrentAmmo.Current = Mathf.Clamp(CurrentAmmo.Current + amount, 0, MaxAmmo.Current);
     }
 }

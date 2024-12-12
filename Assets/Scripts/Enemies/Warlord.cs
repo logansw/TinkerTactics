@@ -40,6 +40,7 @@ public class Warlord : Enemy
         IsSpawned = true;
         _startPosition = waveSpawner.transform.position;
         _collider.enabled = true;
+        DistanceTraveled = 0;
     }
 
     public override void OnDeath()

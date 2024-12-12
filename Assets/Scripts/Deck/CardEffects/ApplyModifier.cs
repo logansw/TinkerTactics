@@ -70,7 +70,12 @@ public class ApplyModifier : CardEffect
     public override void ActivateEffect()
     {
         Tower recipient = _targetingRule.TargetTilePlot.Towers[0];
-        Modifier.TryAddModifier(recipient);
+        if (Modifier.CanAddModifier(recipient))
+        {
+            recipient.ModifierProcessor.AddModifier(Modifier, recipient);
+            Modifier.Initialize(recipient);
+            EventBus.RaiseEvent<TinkerEquippedEvent>(new TinkerEquippedEvent(recipient));
+        }
     }
 
     public override void OnDrawn()
@@ -81,11 +86,7 @@ public class ApplyModifier : CardEffect
 
     public override string GetCardType()
     {
-        if (Modifier is WidgetBase)
-        {
-            return "WIDGET";
-        }
-        else if (Modifier is TinkerBase)
+        if (Modifier is TinkerBase)
         {
             return "TINKER";
         }
@@ -98,11 +99,7 @@ public class ApplyModifier : CardEffect
 
     public override Color GetColor()
     {
-        if (Modifier is WidgetBase)
-        {
-            return new Color(0.6745283f, 0.9072257f, 1f, 1f);
-        }
-        else if (Modifier is TinkerBase)
+        if (Modifier is TinkerBase)
         {
             return new Color(0.4669811f, 0.6507807f, 1f, 1f);
         }

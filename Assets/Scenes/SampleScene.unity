@@ -960,7 +960,14 @@ MonoBehaviour:
   - {fileID: 3814989322589869822, guid: 19b675d9829864af08e6d4acec0988a1, type: 3}
   - {fileID: 3814989322589869822, guid: cef834cefb6214abcb1710645fde23e2, type: 3}
   - {fileID: 3814989322589869822, guid: 45461390b220f4e74af0bab1b1b8895f, type: 3}
+  - {fileID: 1650203075211530902, guid: 419418c4286b64d8581c35811705b925, type: 3}
+  - {fileID: 9151544723058786286, guid: 74f7ab4b954a8432081d12adad479684, type: 3}
+  - {fileID: 530142614057873419, guid: 5cb4365ec3c4d49dda697e294b0445df, type: 3}
+  - {fileID: 5646295903753103423, guid: fc0d0ad95748e4c9d8f8ac66ef72a806, type: 3}
   - {fileID: 3814989322589869822, guid: f6b80910161dd43dca8be8ba0ab2ac74, type: 3}
+  - {fileID: 8287899881202067201, guid: 9a3d9064ce2a34150be8bccb7f142bbe, type: 3}
+  - {fileID: 6813532617856343124, guid: 4262816afff8146afb8c042db4b188ef, type: 3}
+  - {fileID: 8225585126990123969, guid: ddb7c2a4ed602462bb23e44cd7ddc2da, type: 3}
   AvailableCards: []
   cardsContainer: {fileID: 66078692}
   canvas: {fileID: 825052339}
@@ -3815,7 +3822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deck:
-  - {fileID: 8214740067187143250, guid: c04415f7a03904460b015aeacb1cf789, type: 3}
   - {fileID: 8214740067187143250, guid: c04415f7a03904460b015aeacb1cf789, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
   - {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}

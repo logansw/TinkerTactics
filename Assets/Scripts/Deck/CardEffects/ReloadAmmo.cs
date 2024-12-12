@@ -78,11 +78,7 @@ public class ReloadAmmo : CardEffect
     {
         foreach (Tower tower in _recipients)
         {
-            tower.BasicAttack.CurrentAmmo.Current += ReloadAmount;
-            if (tower.BasicAttack.CurrentAmmo.Current > tower.BasicAttack.MaxAmmo.Current)
-            {
-                tower.BasicAttack.CurrentAmmo.Current = tower.BasicAttack.MaxAmmo.Current;
-            }
+            tower.BasicAttack.ChangeCurrentAmmo(ReloadAmount);
         }
     }
 

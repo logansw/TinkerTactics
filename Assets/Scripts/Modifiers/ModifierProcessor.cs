@@ -22,106 +22,14 @@ public class ModifierProcessor : MonoBehaviour
         }
     }
     public int TinkerCount;
-    public int WidgetCount;
-    public Action e_OnModifierAdded;
-
-    public void TryAddModifier(ModifierBase modifier, Tower recipient)
-    {
-        if (modifier.TryAddModifier(recipient))
-        {
-            AddModifier(modifier, recipient);
-        }
-        else
-        {
-            if (modifier is TinkerBase)
-            {
-                ToastManager.s_Instance.AddToast($"Tinker limit reached for {recipient.Name}");
-            }
-            else if (modifier is WidgetBase)
-            {
-                ToastManager.s_Instance.AddToast($"Widget limit reached for {recipient.Name}");
-            }
-        }
-    }
 
     public void AddModifier(ModifierBase modifier, Tower recipient)
     {
         Modifiers.Add(modifier);
-        e_OnModifierAdded?.Invoke();
-        modifier.OnModifierAdded(recipient);
+        TinkerCount++;
         if (modifier is TinkerBase)
         {
             ToastManager.s_Instance.AddToast($"{recipient.Name} has {TinkerCount}/{recipient.TinkerLimit} tinkers equipped.");
         }
-        else if (modifier is WidgetBase)
-        {
-            ToastManager.s_Instance.AddToast($"{recipient.Name} has {WidgetCount}/{recipient.WidgetLimit} widgets equipped.");
-        }
-    }
-
-    public float CalculateDamage(StatDamage damage)
-    {
-        damage.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplyDamageModifier(damage);
-        }
-        damage.CalculatedFinal = damage.Current;
-        return damage.CalculatedFinal;
-    }
-
-    public float CalculateRange(StatRange range)
-    {
-        range.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplyRangeModifier(range);
-        }
-        range.CalculatedFinal = range.Current;
-        return range.CalculatedFinal;
-    }
-
-    public float CalculateSweep(StatSweep sweep)
-    {
-        sweep.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplySweepModifier(sweep);
-        }
-        sweep.CalculatedFinal = sweep.Current;
-        return sweep.CalculatedFinal;
-    }
-
-    public int CalculateMaxAmmo(StatAmmo ammo)
-    {
-        ammo.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplyAmmoModifier(ammo);
-        }
-        ammo.CalculatedFinal = ammo.Current;
-        return ammo.CalculatedFinal;
-    }
-
-    public float CalculateAttackSpeed(StatAttackSpeed attackSpeed)
-    {
-        attackSpeed.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplyAttackSpeedModifier(attackSpeed);
-        }
-        attackSpeed.CalculatedFinal = attackSpeed.Current;
-        return attackSpeed.CalculatedFinal;
-    }
-
-    public float CalculateReloadSpeed(StatReloadSpeed reloadSpeed)
-    {
-        reloadSpeed.Reset();
-        foreach (ModifierBase modifier in Modifiers)
-        {
-            modifier.ApplyReloadSpeedModifier(reloadSpeed);
-        }
-        reloadSpeed.CalculatedFinal = reloadSpeed.Current;
-        return reloadSpeed.CalculatedFinal;
     }
 }

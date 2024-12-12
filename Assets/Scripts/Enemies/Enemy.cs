@@ -94,15 +94,27 @@ public class Enemy : MonoBehaviour
         e_OnEnemyBreak?.Invoke(this);
     }
 
-    public virtual void OnImpact(float incomingDamage)
+    /// <summary>
+    /// Deal damage directly to an enemy, not through a projectile.
+    /// </summary>
+    /// <param name="damage">The amount of damage to deal.</param>
+    /// <param name="projectile">The projectile which dealt the damage, or null if none.</param>
+    /// <param name="resonsibleTower">The Tower which should be credited with the damage, or null if none.</param>
+    /// <remarks>Use ReceiveProjectile() for damage dealt by projectiles instead.</remarks>
+    public virtual void ReceiveDamage(float damage, Projectile projectile = null, Tower responsibleTower = null)
     {
         if (EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
         {
-            incomingDamage *= effectVulnerable.GetDamageMultiplier();
+            damage *= effectVulnerable.GetDamageMultiplier();
         }
         float physicalFactor = 100f / (100f + Armor);
-        float postMitigationDamage = incomingDamage * physicalFactor;
+        float postMitigationDamage = damage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
+        EventBus.RaiseEvent<EnemyDamagedEvent>(new EnemyDamagedEvent(this, projectile));
+        if (Health.CurrentHealth <= 0)
+        {
+            EventBus.RaiseEvent<EnemyDeathEvent>(new EnemyDeathEvent(this, responsibleTower));
+        }
     }
 
     public void Move()

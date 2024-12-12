@@ -41,21 +41,6 @@ public abstract class StatBase<T> where T : struct
             }
         }
     }
-    private T _calculatedFinal;
-    public T CalculatedFinal
-    {
-        get
-        {
-            TryInitialize();
-            return _calculatedFinal;
-        }
-        set
-        {
-            TryInitialize();
-            e_OnStatChanged?.Invoke();            
-            _calculatedFinal = value;
-        }
-    }
     protected T _min;
     protected T _max;
 
@@ -71,7 +56,6 @@ public abstract class StatBase<T> where T : struct
         _initialized = true;
         SetBounds();
         Current = baseValue;
-        CalculatedFinal = Current;
     }
     public void Reset()
     {

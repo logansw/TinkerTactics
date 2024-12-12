@@ -34,7 +34,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private BarUI _ammoBar;
     public ModifierProcessor ModifierProcessor;
     public int TinkerLimit;
-    public int WidgetLimit = 5;
     private Liftable _liftable;
     public Card ParentCard;
     public int EnergyCost => ParentCard.EnergyCost;
@@ -44,14 +43,13 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine(Name);
-        sb.AppendLine($"Damage: {BasicAttack.Damage.CalculatedFinal}");
-        sb.AppendLine($"Range: {Range.CalculatedFinal}");
-        sb.AppendLine($"Sweep: {Sweep.CalculatedFinal}");
-        sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.CalculatedFinal}");
-        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.CalculatedFinal}");
-        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.CalculatedFinal}");
+        sb.AppendLine($"Damage: {BasicAttack.Damage.Current}");
+        sb.AppendLine($"Range: {Range.Current}");
+        sb.AppendLine($"Sweep: {Sweep.Current}");
+        sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.Current}");
+        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.Current}");
+        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.Current}");
         sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
-        sb.AppendLine($"Widgets Equipped: {ModifierProcessor.WidgetCount}/{WidgetLimit}");
 
         return sb.ToString();
     }
@@ -80,20 +78,16 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         }
         if (BasicAttack.CanActivate())
         {
-            BasicAttack.Attack();
+            BasicAttack.Execute();
         }
     }
 
     protected virtual void OnEnable()
     {
-        ModifierProcessor.e_OnModifierAdded += RecalculateStats;
-        IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Current = BasicAttack.MaxAmmo.CalculatedFinal;};
+        IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Reset(); };
     }
 
-    protected virtual void OnDisable()
-    {
-        ModifierProcessor.e_OnModifierAdded -= RecalculateStats;
-    }
+    protected virtual void OnDisable() { }
 
     public void OnSelect()
     {
@@ -186,16 +180,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public void OnHeld()
     {
         // Do nothing
-    }
-
-    private void RecalculateStats()
-    {
-        ModifierProcessor.CalculateRange(Range);
-        ModifierProcessor.CalculateSweep(Sweep);
-        ModifierProcessor.CalculateDamage(BasicAttack.Damage);
-        ModifierProcessor.CalculateMaxAmmo(BasicAttack.MaxAmmo);
-        ModifierProcessor.CalculateAttackSpeed(BasicAttack.AttackSpeed);
-        ModifierProcessor.CalculateReloadSpeed(BasicAttack.ReloadSpeed);
     }
 
     public void Recall()

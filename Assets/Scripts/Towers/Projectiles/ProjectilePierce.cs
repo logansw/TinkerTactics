@@ -5,20 +5,11 @@ public class ProjectilePierce : Projectile
     private Vector2 _direction;
     public int Pierce;
 
-    public override void Initialize(float damage, float projectileSpeed, Tower source)
+    public override void Initialize(float damage, float projectileSpeed, Tower source, ProjectileEffectTracker projectileEffectTracker)
     {
-        base.Initialize(damage, projectileSpeed, source);
+        base.Initialize(damage, projectileSpeed, source, projectileEffectTracker);
         Pierce = 2;
-    }
-
-    public override void OnImpact(Enemy enemy)
-    {
-        enemy.OnImpact(Damage);
-        Pierce--;
-        if (Pierce == 0)
-        {
-            Destroy(gameObject);
-        }
+        ProjectileEffectTracker.AddEffect<PierceProjectileEffect>(Pierce);
     }
 
     public override void Launch(Enemy target)
@@ -32,8 +23,8 @@ public class ProjectilePierce : Projectile
     protected override void Update()
     {
         transform.Translate(Vector2.right * Time.deltaTime * ProjectileSpeed);
-        float distanceFromTower = Vector2.Distance(transform.position, _source.transform.position);
-        if (distanceFromTower > _source.Range.CalculatedFinal)
+        float distanceFromTower = Vector2.Distance(transform.position, SourceTower.transform.position);
+        if (distanceFromTower > SourceTower.Range.Current)
         {
             Destroy(gameObject);
         }
