@@ -15,9 +15,8 @@ public class TinkerKillReload : TinkerBase
         EventBus.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
     }
 
-    private void OnEnemyDeath(EnemyDeathEvent enemyDeathEvent)
+    private void OnEnemyDeath(EnemyDeathEvent e)
     {
-        EnemyDeathEvent e = enemyDeathEvent;
         if (e.Tower != _tower) { return; }
 
         _tower.BasicAttack.ChangeCurrentAmmo(1);

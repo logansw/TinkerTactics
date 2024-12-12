@@ -1,9 +1,10 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Cannon : Tower
+public class LaserPointerTower : Tower
 {
-    public int ExplosionRadius;
+    public int Pierce;
 
     protected override void OnEnable()
     {
@@ -17,9 +18,10 @@ public class Cannon : Tower
         EventBus.Unsubscribe<BasicAttackEvent>(OnTowerAction);
     }
 
-    public void OnTowerAction(BasicAttackEvent e)
+    private void OnTowerAction(BasicAttackEvent e)
     {
         if (e.Tower != this) { return; }
-        e.Projectile.ProjectileEffectTracker.AddEffect<BlastProjectileEffect>(ExplosionRadius);
+        Debug.Log($"Adding Pierce to {e.Projectile.name}");
+        e.Projectile.ProjectileEffectTracker.AddEffect<PierceProjectileEffect>(Pierce);
     }
 }

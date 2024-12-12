@@ -40,6 +40,11 @@ public class BlastProjectileEffect : ProjectileEffect
         // Do Nothing
     }
 
+    public override void OnProjectileLaunched(Enemy target)
+    {
+        // Do Nothing
+    }
+
     private void GenerateExplosion(int explosionRadius)
     {
         GameObject explosion = Instantiate(Resources.Load<GameObject>("Explosion"), transform.position, Quaternion.identity);

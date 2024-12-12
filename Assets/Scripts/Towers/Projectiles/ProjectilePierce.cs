@@ -9,16 +9,7 @@ public class ProjectilePierce : Projectile
     {
         base.Initialize(damage, projectileSpeed, source, projectileEffectTracker);
         Pierce = 2;
-    }
-
-    public override void OnImpact(Enemy enemy)
-    {
-        // enemy.ReceiveProjectile(this);
-        Pierce--;
-        if (Pierce == 0)
-        {
-            Destroy(gameObject);
-        }
+        ProjectileEffectTracker.AddEffect<PierceProjectileEffect>(Pierce);
     }
 
     public override void Launch(Enemy target)

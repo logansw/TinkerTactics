@@ -27,6 +27,7 @@ public class ProjectileEffectTracker : MonoBehaviour
         EventBus.Subscribe<PreEnemyImpactEvent>(RaiseOnProjectileHitPreImpact);
         EventBus.Subscribe<EnemyDamagedEvent>(RaiseOnEnemyDamaged);
         EventBus.Subscribe<PostEnemyImpactEvent>(RaiseOnProjectileHitPostImpact);
+        EventBus.Subscribe<BasicAttackEvent>(RaiseOnProjectileLaunched);
     }
 
     void OnDestroy()
@@ -34,6 +35,7 @@ public class ProjectileEffectTracker : MonoBehaviour
         EventBus.Unsubscribe<PreEnemyImpactEvent>(RaiseOnProjectileHitPreImpact);
         EventBus.Unsubscribe<EnemyDamagedEvent>(RaiseOnEnemyDamaged);
         EventBus.Unsubscribe<PostEnemyImpactEvent>(RaiseOnProjectileHitPostImpact);
+        EventBus.Unsubscribe<BasicAttackEvent>(RaiseOnProjectileLaunched);
     }
 
 
@@ -66,6 +68,35 @@ public class ProjectileEffectTracker : MonoBehaviour
         }
     }
 
+    public void RemoveStacks<T>(int count) where T : ProjectileEffect
+    {
+        for (int i = EffectsApplied.Count - 1; i >= 0; i--)
+        {
+            ProjectileEffect effect = EffectsApplied[i];
+            if (effect is T)
+            {
+                effect.Stacks -= count;
+                if (effect.Stacks <= 0)
+                {
+                    EffectsApplied.Remove(effect);
+                }
+                break;
+            }
+        }
+    }
+
+    public void RemoveEffect<T>() where T : ProjectileEffect
+    {
+        if (!HasEffect<T>(out T effect)) { return; }
+        for (int i = EffectsApplied.Count - 1; i >= 0; i--)
+        {
+            if (EffectsApplied[i] is T)
+            {
+                EffectsApplied.RemoveAt(i);
+            }
+        }
+    }
+
     public void RaiseOnProjectileHitPreImpact(PreEnemyImpactEvent e)
     {
         if (e.Projectile != ParentProjectile) { return; }
@@ -91,5 +122,15 @@ public class ProjectileEffectTracker : MonoBehaviour
         {
             projectileEffect.OnEnemyDamaged(e.Enemy);
         }
+    }
+
+    public void RaiseOnProjectileLaunched(BasicAttackEvent e)
+    {
+        if (e.Projectile != ParentProjectile) { return; }
+        foreach (ProjectileEffect projectileEffect in EffectsApplied)
+        {
+            projectileEffect.OnProjectileLaunched(e.Target);
+        }
+    
     }
 }

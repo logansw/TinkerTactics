@@ -116,10 +116,12 @@ public class BasicAttackEvent : ITowerEvent
 {
     public Projectile Projectile;
     public Tower Tower;
+    public Enemy Target;
 
-    public BasicAttackEvent(Projectile projectile, Tower tower)
+    public BasicAttackEvent(Projectile projectile, Tower tower, Enemy target)
     {
         Projectile = projectile;
         Tower = tower;
+        Target = target;
     }
 }

@@ -24,4 +24,6 @@ public abstract class ProjectileEffect : MonoBehaviour
     /// </summary>
     /// <param name="hit"></param>
     public abstract void OnEnemyDamaged(Enemy hit);
+
+    public abstract void OnProjectileLaunched(Enemy target);
 }

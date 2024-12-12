@@ -42,7 +42,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         AttackClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;
-        EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectile, Tower));
+        EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectile, Tower, target));
     }
 
     public void OnActionStart()

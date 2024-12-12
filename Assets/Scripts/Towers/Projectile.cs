@@ -38,6 +38,28 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (ProjectileEffectTracker.HasEffect<PierceProjectileEffect>(out PierceProjectileEffect pierceProjectileEffect))
+        {
+            MovePierce();
+        }
+        else
+        {
+            MoveNormal();
+        }
+    }
+
+    private void MovePierce()
+    {
+        transform.Translate(Vector2.right * Time.deltaTime * ProjectileSpeed);
+        float distanceFromTower = Vector2.Distance(transform.position, SourceTower.transform.position);
+        if (distanceFromTower > SourceTower.Range.Current)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void MoveNormal()
+    {
         if (_arrived) { return; }
         if (_target != null)
         {
@@ -76,10 +98,22 @@ public abstract class Projectile : MonoBehaviour
         EventBus.RaiseEvent<PreEnemyImpactEvent>(new PreEnemyImpactEvent(recipient, this));
         recipient.ReceiveDamage(Damage, this, SourceTower);
         EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(recipient, this));
-        CleanUp();
+        if (ProjectileEffectTracker.HasEffect<PierceProjectileEffect>(out PierceProjectileEffect pierceProjectileEffect))
+        {
+            if (pierceProjectileEffect.Stacks < 0)
+            {
+                Debug.Log("Pierce cleanup");
+                CleanUp();
+            }
+        }
+        else
+        {
+            Debug.Log("Normal cleanup");
+            CleanUp();
+        }
     }
 
-    protected void CleanUp()
+    public void CleanUp()
     {
         _renderer.enabled = false;
         _collider.enabled = false;

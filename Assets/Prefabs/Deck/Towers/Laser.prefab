@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Tower
       value: 
-      objectReference: {fileID: 8243423439359245681, guid: cb344a9e20c8a4293b1e8cb9c699f262, type: 3}
+      objectReference: {fileID: 7266898718043153615, guid: cb344a9e20c8a4293b1e8cb9c699f262, type: 3}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Description
       value: Projectiles pierce through first enemy. 2 Tinker Slots.

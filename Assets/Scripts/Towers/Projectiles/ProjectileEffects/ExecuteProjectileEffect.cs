@@ -25,4 +25,9 @@ public class ExecuteProjectileEffect : ProjectileEffect
             hit.Health.TakeDamage(9999);
         }
     }
+
+    public override void OnProjectileLaunched(Enemy target)
+    {
+        // Do Nothing
+    }
 }
