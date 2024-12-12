@@ -102,13 +102,11 @@ public abstract class Projectile : MonoBehaviour
         {
             if (pierceProjectileEffect.Stacks < 0)
             {
-                Debug.Log("Pierce cleanup");
                 CleanUp();
             }
         }
         else
         {
-            Debug.Log("Normal cleanup");
             CleanUp();
         }
     }

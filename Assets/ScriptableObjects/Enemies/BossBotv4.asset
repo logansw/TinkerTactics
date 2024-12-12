@@ -16,4 +16,4 @@ MonoBehaviour:
   SegmentCount: 0
   MovementSpeed: 8
   Armor: 0
-  Damage: 1
+  Damage: 5
