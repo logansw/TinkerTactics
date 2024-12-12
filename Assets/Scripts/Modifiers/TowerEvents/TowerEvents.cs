@@ -93,5 +93,10 @@ public class TowerPositionEvent : ITowerEvent
 /// </summary>
 public class TowerActionEvent : ITowerEvent
 {
+    public List<Projectile> Projectiles { get; private set; }
 
+    public TowerActionEvent(List<Projectile> projectiles)
+    {
+        Projectiles = projectiles;
+    }
 }

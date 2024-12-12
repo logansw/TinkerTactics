@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicAttack : MonoBehaviour, ITowerAction
@@ -35,11 +36,13 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         OnActionStart();
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
         Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
-        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower);
+        ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
+        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower, projectileEffectTracker);
         projectile.Launch(target);
         AttackClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;
+        EventBus.RaiseEvent<TowerActionEvent>(new TowerActionEvent(new List<Projectile> { projectile }));
     }
 
     public void OnActionStart()

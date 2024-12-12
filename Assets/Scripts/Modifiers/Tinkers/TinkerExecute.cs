@@ -6,24 +6,22 @@ public class TinkerExecute : TinkerBase
 {
     public override string GetDescription()
     {
-        return "Execute non-Boss Enemies below 12% Max Health";
+        return "Give Tower +5 Execute";
     }
 
     public override void Initialize(Tower recipient)
     {
         _tower = recipient;
-        EventBus.Subscribe<PostEnemyImpactEvent>(OnPostEnemyImpact);   
+        EventBus.Subscribe<TowerActionEvent>(OnProjectileSpawned);
     }
 
-    private void OnPostEnemyImpact(PostEnemyImpactEvent postEnemyImpactEvent)
+    private void OnProjectileSpawned(TowerActionEvent e)
     {
-        if (postEnemyImpactEvent.Enemy is Warlord || postEnemyImpactEvent.Projectile.SourceTower != _tower)
+        List<Projectile> projectiles = e.Projectiles;
+        foreach (Projectile projectile in projectiles)
         {
-            return;
-        }
-        if (postEnemyImpactEvent.Enemy.Health.CurrentHealth <= postEnemyImpactEvent.Enemy.Health.MaxHealth * 0.12f)
-        {
-            postEnemyImpactEvent.Enemy.Health.TakeDamage(9999);
+            ProjectileEffectTracker projectileEffectTracker = projectile.GetComponent<ProjectileEffectTracker>();
+            projectileEffectTracker.AddEffect<ExecuteProjectileEffect>(5);
         }
     }
 }

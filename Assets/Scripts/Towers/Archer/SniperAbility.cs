@@ -30,7 +30,8 @@ public class SniperAbility : MonoBehaviour
         Vector2 direction = target.transform.position - _archer.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         piercingArrow.transform.rotation = Quaternion.Euler(0, 0, angle);
-        piercingArrow.Initialize(Damage, ProjectileSpeed, _archer);
+        // TODO: This line is commented out because the Initialize method doesn't support the ProjectileEffectTracker parameter
+        // piercingArrow.Initialize(Damage, ProjectileSpeed, _archer);
         piercingArrow.Launch(target);
 
         InternalClock = 0;

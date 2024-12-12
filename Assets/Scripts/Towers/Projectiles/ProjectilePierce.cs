@@ -5,9 +5,9 @@ public class ProjectilePierce : Projectile
     private Vector2 _direction;
     public int Pierce;
 
-    public override void Initialize(float damage, float projectileSpeed, Tower source)
+    public override void Initialize(float damage, float projectileSpeed, Tower source, ProjectileEffectTracker projectileEffectTracker)
     {
-        base.Initialize(damage, projectileSpeed, source);
+        base.Initialize(damage, projectileSpeed, source, projectileEffectTracker);
         Pierce = 2;
     }
 

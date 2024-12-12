@@ -41,7 +41,8 @@ public class ArcherAbility : MonoBehaviour
             }
             Enemy target = _archer.RangeIndicator.GetEnemiesInRange()[Random.Range(0, _archer.RangeIndicator.GetEnemiesInRange().Count)];
             ProjectileArrow arrow = Instantiate(_projectileArrow, _archer.transform.position, Quaternion.identity);
-            arrow.Initialize(Damage, ProjectileSpeed, _archer);
+            // TODO: This line is commented out because the Initialize method doesn't support the ProjectileEffectTracker parameter
+            // arrow.Initialize(Damage, ProjectileSpeed, _archer);
             arrow.Launch(target);
             yield return new WaitForSeconds(0.1f);
         }

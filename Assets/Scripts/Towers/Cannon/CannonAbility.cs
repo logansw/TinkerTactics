@@ -27,7 +27,8 @@ public class CannonAbility : MonoBehaviour
         Enemy target = _cannon.RangeIndicator.GetEnemiesInRange()[0];
         ProjectileExplosive bomb = Instantiate(_projectileExplosive, _cannon.transform.position, Quaternion.identity);
         bomb.transform.localScale = new Vector2(2f, 2f);
-        bomb.Initialize(Damage, ProjectileSpeed, _cannon);
+        // TODO: This line is commented out because the Initialize method doesn't support the ProjectileEffectTracker parameter
+        // bomb.Initialize(Damage, ProjectileSpeed, _cannon);
         bomb.SetExplosionRadius(_cannon.ExplosionRadius * 3);
         bomb.Launch(target);
         
