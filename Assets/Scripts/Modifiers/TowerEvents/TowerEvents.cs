@@ -22,15 +22,49 @@ public class TinkerEquippedEvent : ITowerEvent
 /// <summary>
 /// Called when an enemy is hit by a Tower's attack before damage calculations
 /// </summary>
-public class EnemyImpactEvent : ITowerEvent
+public class PreEnemyImpactEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
     public Projectile Projectile { get; private set; }
 
-    public EnemyImpactEvent(Enemy enemy, Projectile projectile)
+    public PreEnemyImpactEvent(Enemy enemy, Projectile projectile)
     {
         Enemy = enemy;
         Projectile = projectile;
+    }
+}
+
+/// <summary>
+/// Called whenever an enemy receives damage.
+/// </summary>
+/// <remarks>
+/// On-hit effects should be called here.
+/// Primary projectile effects should NOT be called here (e.g. Pierce, Bounce)
+/// </remarks>
+public class EnemyDamagedEvent : ITowerEvent
+{
+    public Enemy Enemy { get; private set; }
+    public Projectile Projectile { get; private set; }
+
+    public EnemyDamagedEvent(Enemy enemy, Projectile projectile = null)
+    {
+        Enemy = enemy;
+        Projectile = projectile;
+    }
+}
+
+/// <summary>
+/// Called when an enemy is killed by a Tower's attack
+/// </summary>
+public class EnemyDeathEvent : ITowerEvent
+{
+    public Enemy Enemy { get; private set; }
+    public Tower Tower { get; private set; }
+    
+    public EnemyDeathEvent(Enemy enemy, Tower tower)
+    {
+        Enemy = enemy;
+        Tower = tower;
     }
 }
 
@@ -49,20 +83,7 @@ public class PostEnemyImpactEvent : ITowerEvent
     }
 }
 
-/// <summary>
-/// Called when an enemy is killed by a Tower's attack
-/// </summary>
-public class EnemyDeathEvent : ITowerEvent
-{
-    public Enemy Enemy { get; private set; }
-    public Projectile Projectile { get; private set; }
-    
-    public EnemyDeathEvent(Enemy enemy, Projectile projectile)
-    {
-        Enemy = enemy;
-        Projectile = projectile;
-    }
-}
+
 
 /// <summary>
 /// Called upon wave start and end, and level start and end
@@ -91,12 +112,14 @@ public class TowerPositionEvent : ITowerEvent
 /// <summary>
 /// Called when a Tower uses its basic attack or ability
 /// </summary>
-public class TowerActionEvent : ITowerEvent
+public class BasicAttackEvent : ITowerEvent
 {
-    public List<Projectile> Projectiles { get; private set; }
+    public Projectile Projectile;
+    public Tower Tower;
 
-    public TowerActionEvent(List<Projectile> projectiles)
+    public BasicAttackEvent(Projectile projectile, Tower tower)
     {
-        Projectiles = projectiles;
+        Projectile = projectile;
+        Tower = tower;
     }
 }

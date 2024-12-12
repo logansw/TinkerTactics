@@ -13,6 +13,10 @@ PrefabInstance:
       value: Bubblegum Cannon
       objectReference: {fileID: 0}
     - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       propertyPath: TinkerLimit
       value: 2
       objectReference: {fileID: 0}
@@ -103,19 +107,23 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
     - {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+    - {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3835832507503852211}
+      addedObject: {fileID: 8793825538341965666}
+    - targetCorrespondingSourceObject: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 66499945772906277}
   m_SourcePrefab: {fileID: 100100000, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
 --- !u!1 &689679852995673824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
   m_PrefabInstance: {fileID: 6731269269802284856}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3835832507503852211
+--- !u!114 &8793825538341965666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 689679852995673824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a0f883259d64287b1915daaf9296cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a5fc5fc834bf48f092fae0cf80e6ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tower: {fileID: 0}
@@ -139,8 +147,41 @@ MonoBehaviour:
     baseValue: 3
   CurrentAmmo:
     baseValue: 3
-  _projectilePrefab: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
+  _projectilePrefab: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
   TooltipText: Explosion
   ProjectileSpeed: 10
-  _projectileExplosive: {fileID: -1535682890116077312, guid: 0bf44b6d440494208b9d78db5e3c93d9, type: 3}
+--- !u!114 &66499945772906277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689679852995673824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e517821ab6934a0aaeaaabd9252987a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bubblegum Cannon
+  RangeIndicator: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  Range:
+    baseValue: 8
+  Sweep:
+    baseValue: 90
+  Active: 0
+  ModifierProcessor: {fileID: 8384638295592764128}
+  TinkerLimit: 2
+  ParentCard: {fileID: 0}
   ExplosionRadius: 2
+--- !u!114 &8384638295592764128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2969699163075311064, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+  m_PrefabInstance: {fileID: 6731269269802284856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689679852995673824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7f78ecf1d4f471bb958430191edfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

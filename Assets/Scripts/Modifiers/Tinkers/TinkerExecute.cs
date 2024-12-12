@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class TinkerExecute : TinkerBase
 {
+    [SerializeField] private int _executeAmount;
     public override string GetDescription()
     {
-        return "Give Tower +5 Execute";
+        return $"Give Tower +{_executeAmount} Execute";
     }
 
     public override void Initialize(Tower recipient)
     {
         _tower = recipient;
-        EventBus.Subscribe<TowerActionEvent>(OnProjectileSpawned);
+        EventBus.Subscribe<BasicAttackEvent>(OnProjectileSpawned);
     }
 
-    private void OnProjectileSpawned(TowerActionEvent e)
+    private void OnProjectileSpawned(BasicAttackEvent e)
     {
-        List<Projectile> projectiles = e.Projectiles;
-        foreach (Projectile projectile in projectiles)
-        {
-            ProjectileEffectTracker projectileEffectTracker = projectile.GetComponent<ProjectileEffectTracker>();
-            projectileEffectTracker.AddEffect<ExecuteProjectileEffect>(5);
-        }
+        e.Projectile.ProjectileEffectTracker.AddEffect<ExecuteProjectileEffect>(_executeAmount);
     }
 }

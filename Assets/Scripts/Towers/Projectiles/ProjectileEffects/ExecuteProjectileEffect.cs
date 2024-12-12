@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class ExecuteProjectileEffect : ProjectileEffect
 {
-    public override void OnProjectileHitPostDamage(Enemy hit)
+    public override void OnProjectileHitPreImpact(Enemy hit)
+    {
+        // Do Nothing
+    }
+
+    public override void OnProjectileHitPostImpact(Enemy hit)
+    {
+        // Do Nothing
+    }
+
+    public override void OnEnemyDamaged(Enemy hit)
     {
         if (hit is Warlord)
         {
@@ -14,15 +24,5 @@ public class ExecuteProjectileEffect : ProjectileEffect
         {
             hit.Health.TakeDamage(9999);
         }
-    }
-
-    public override void OnProjectileHitPreDamage(Enemy hit)
-    {
-        // Do Nothing
-    }
-
-    public override void OnProjectileLaunched()
-    {
-        // Do Nothing
     }
 }

@@ -14,10 +14,10 @@ public class TinkerBonusDamage : TinkerBase
     public override void Initialize(Tower recipient)
     {
         _tower = recipient;
-        EventBus.Subscribe<EnemyImpactEvent>(OnEnemyImpact);
+        EventBus.Subscribe<PreEnemyImpactEvent>(OnEnemyImpact);
     }
 
-    private void OnEnemyImpact(EnemyImpactEvent enemyImpactEvent)
+    private void OnEnemyImpact(PreEnemyImpactEvent enemyImpactEvent)
     {
         if (enemyImpactEvent.Projectile.SourceTower != _tower)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileEffectTracker : MonoBehaviour
 {
+    public Projectile ParentProjectile;
     private List<ProjectileEffect> _effectsApplied;
     public List<ProjectileEffect> EffectsApplied
     {
@@ -20,6 +21,21 @@ public class ProjectileEffectTracker : MonoBehaviour
             _effectsApplied = value;
         }    
     }
+
+    void OnEnable()
+    {
+        EventBus.Subscribe<PreEnemyImpactEvent>(RaiseOnProjectileHitPreImpact);
+        EventBus.Subscribe<EnemyDamagedEvent>(RaiseOnEnemyDamaged);
+        EventBus.Subscribe<PostEnemyImpactEvent>(RaiseOnProjectileHitPostImpact);
+    }
+
+    void OnDestroy()
+    {
+        EventBus.Unsubscribe<PreEnemyImpactEvent>(RaiseOnProjectileHitPreImpact);
+        EventBus.Unsubscribe<EnemyDamagedEvent>(RaiseOnEnemyDamaged);
+        EventBus.Unsubscribe<PostEnemyImpactEvent>(RaiseOnProjectileHitPostImpact);
+    }
+
 
     public bool HasEffect<T>(out T effect) where T : ProjectileEffect
     {
@@ -46,30 +62,34 @@ public class ProjectileEffectTracker : MonoBehaviour
             T newProjectileEffect = gameObject.AddComponent<T>();
             newProjectileEffect.Stacks = stacks;
             EffectsApplied.Add(newProjectileEffect);
+            newProjectileEffect.ParentProjectile = ParentProjectile;
         }
     }
 
-    public void RaiseOnProjectileHitPreDamage(Enemy hit)
+    public void RaiseOnProjectileHitPreImpact(PreEnemyImpactEvent e)
     {
+        if (e.Projectile != ParentProjectile) { return; }
         foreach (ProjectileEffect projectileEffect in EffectsApplied)
         {
-            projectileEffect.OnProjectileHitPreDamage(hit);
+            projectileEffect.OnProjectileHitPreImpact(e.Enemy);
         }
     }
 
-    public void RaiseOnProjectileHitPostDamage(Enemy hit)
+    public void RaiseOnProjectileHitPostImpact(PostEnemyImpactEvent e)
     {
+        if (e.Projectile != ParentProjectile) { return; }
         foreach (ProjectileEffect projectileEffect in EffectsApplied)
         {
-            projectileEffect.OnProjectileHitPostDamage(hit);
+            projectileEffect.OnProjectileHitPostImpact(e.Enemy);
         }
     }
 
-    public void RaiseOnProjectileLaunched()
+    public void RaiseOnEnemyDamaged(EnemyDamagedEvent e)
     {
+        if (e.Projectile != ParentProjectile) { return; }
         foreach (ProjectileEffect projectileEffect in EffectsApplied)
         {
-            projectileEffect.OnProjectileLaunched();
+            projectileEffect.OnEnemyDamaged(e.Enemy);
         }
     }
 }

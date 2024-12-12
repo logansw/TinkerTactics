@@ -19,6 +19,6 @@ public class CannonAttack : BasicAttack
         ReloadClock.Reset();
         ChangeCurrentAmmo(-1);
         _canAttack = false;
-        EventBus.RaiseEvent<TowerActionEvent>(new TowerActionEvent(new List<Projectile> { bomb }));
+        // EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(new List<Projectile> { bomb }));
     }
 }

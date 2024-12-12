@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1757149291315806688
+--- !u!1001 &9043401824895628407
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: Name
-      value: Execute Thing
-      objectReference: {fileID: 0}
-    - target: {fileID: -8076268543736540461, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
-      propertyPath: Description
-      value: 
+      value: Blast Tinker
       objectReference: {fileID: 0}
     - target: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: m_Name
-      value: TinkerExecute
+      value: BlastTinker
       objectReference: {fileID: 0}
     - target: {fileID: 3524177829453378553, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       propertyPath: m_Pivot.x
@@ -106,23 +102,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -5378501782200170509}
+      addedObject: {fileID: -4137269874896853064}
   m_SourcePrefab: {fileID: 100100000, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
---- !u!1 &3543306621925256031 stripped
+--- !u!1 &6110928855404666568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2976597196017871551, guid: 4009c40bfaec2461999e6b6b99e98083, type: 3}
-  m_PrefabInstance: {fileID: 1757149291315806688}
+  m_PrefabInstance: {fileID: 9043401824895628407}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5378501782200170509
+--- !u!114 &-4137269874896853064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3543306621925256031}
+  m_GameObject: {fileID: 6110928855404666568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0ea0a407b4a4eca9f826a95196d193, type: 3}
+  m_Script: {fileID: 11500000, guid: a66cc2ce2fb18452abf405a6d48bd11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _executeAmount: 5
+  _blastAmount: 1

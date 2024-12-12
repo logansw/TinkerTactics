@@ -18,7 +18,7 @@ public class TinkerKillReload : TinkerBase
     private void OnEnemyDeath(EnemyDeathEvent enemyDeathEvent)
     {
         EnemyDeathEvent e = enemyDeathEvent;
-        if (e.Projectile.SourceTower != _tower) { return; }
+        if (e.Tower != _tower) { return; }
 
         _tower.BasicAttack.ChangeCurrentAmmo(1);
     }

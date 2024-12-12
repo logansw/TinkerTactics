@@ -18,7 +18,7 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     private bool _arrived;
     private Collider2D _collider;
-    private ProjectileEffectTracker _projectileEffectTracker;
+    public ProjectileEffectTracker ProjectileEffectTracker { get; private set; }
 
     public virtual void Initialize(float damage, float projectileSpeed, Tower source, ProjectileEffectTracker projectileEffectTracker) 
     {
@@ -26,14 +26,14 @@ public abstract class Projectile : MonoBehaviour
         ProjectileSpeed = projectileSpeed;
         SourceTower = source;
         _collider = GetComponent<Collider2D>();
-        _projectileEffectTracker = projectileEffectTracker;
+        ProjectileEffectTracker = projectileEffectTracker;
+        ProjectileEffectTracker.ParentProjectile = this;
     }
 
     public virtual void Launch(Enemy target)
     {
         _target = target;
         Destroy(gameObject, 2f);
-        _projectileEffectTracker.RaiseOnProjectileLaunched();
     }
 
     protected virtual void Update()
@@ -68,15 +68,14 @@ public abstract class Projectile : MonoBehaviour
     /// Called when the projectile collides with an enemy.
     /// </summary>
     /// <param name="recipient"></param>
-    /// <remarks>
-    /// This method should do only 2 things: Initially call the ReceiveProjectile method for the enemy, and handle anything specific to this projectile.
-    /// Any enemy-related logic should be handled in the enemy's ReceiveProjectile method.
+    /// <remarks
+    /// Any enemy-related logic should be handled in the enemy's ReceiveDamage method.
     /// </remarks>
     public virtual void OnImpact(Enemy recipient)
     {
-        _projectileEffectTracker.RaiseOnProjectileHitPreDamage(recipient);
-        recipient.ReceiveProjectile(this);
-        _projectileEffectTracker.RaiseOnProjectileHitPostDamage(recipient);
+        EventBus.RaiseEvent<PreEnemyImpactEvent>(new PreEnemyImpactEvent(recipient, this));
+        recipient.ReceiveDamage(Damage, this, SourceTower);
+        EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(recipient, this));
         CleanUp();
     }
 

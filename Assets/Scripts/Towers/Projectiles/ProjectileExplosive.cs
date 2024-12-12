@@ -24,7 +24,7 @@ public class ProjectileExplosive : Projectile
             Enemy nearbyEnemy = collider.GetComponent<Enemy>();
             if (nearbyEnemy != null )
             {
-                nearbyEnemy.ReceiveProjectile(this);
+                // nearbyEnemy.ReceiveProjectile(this);
             }
         }
         CleanUp();
