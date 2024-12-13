@@ -38,6 +38,8 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     public void RenderNewItems(List<Card> chooseFromList)
     {
         float padding = 10f;
+        // Randomize order in list
+        chooseFromList = chooseFromList.OrderBy(item => Guid.NewGuid()).ToList();
         List<Card> selectedCards = chooseFromList.Take(_cardOptionsCount).ToList();
 
         for (int i = 0; i < selectedCards.Count; i++)
