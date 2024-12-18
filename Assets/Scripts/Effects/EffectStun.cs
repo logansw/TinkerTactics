@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectStun : Effect
+public class EffectStun : Effect, IMoveEffect
 {
     private InternalClock _internalClock;
 
@@ -24,6 +24,11 @@ public class EffectStun : Effect
         base.OnDisable();
         _internalClock.e_OnTimerDone -= Remove;
         _internalClock.Delete();
+    }
+
+    public float OnMove(float moveSpeed)
+    {
+        return 0;
     }
 
     public override void AddStacks(int count)

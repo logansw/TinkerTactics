@@ -1,33 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectVulnerable : Effect, IDamageEffect
+public class EffectBurn : Effect, ITickEffect
 {
     private InternalClock _internalClock;
 
     public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
         base.Initialize(duration, stacks, effectTracker);
-        IconColor = new Color32(255, 128, 170, 255);
+        Stacks = 1;
+        IconColor = new Color32(255, 107, 65, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
 
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        _internalClock.e_OnTimerDone -= Remove;
+        _internalClock.Delete();
+    }
+
     public override void AddStacks(int count)
     {
-        Stacks += count;
+        Stacks = 1;
+        _internalClock.Reset();
     }
 
     public override void RemoveStacks(int count)
     {
-        Stacks -= count;
+        throw new System.NotImplementedException();
     }
 
-    public float OnDamage(float damage)
+    public void OnTick(Enemy enemy)
     {
-        return damage * 2f;
+        enemy.ReceiveDamage(enemy.Health.MaxHealth * 0.01f);
     }
 
     public override string GetStackText()
@@ -37,16 +45,11 @@ public class EffectVulnerable : Effect, IDamageEffect
 
     public override string GetAbbreviationText()
     {
-        return "VUL";
+        return "BRN";
     }
 
     public override string GetDescriptionText()
     {
-        return $"";
-    }
-
-    public void Extend()
-    {
-        _internalClock.Reset();
+        return $"Enemy takes 2% Max Health damage each second";
     }
 }

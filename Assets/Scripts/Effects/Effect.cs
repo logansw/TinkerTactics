@@ -46,3 +46,18 @@ public abstract class Effect : MonoBehaviour
     public abstract string GetAbbreviationText();
     public abstract string GetDescriptionText();
 }
+
+public interface IMoveEffect
+{
+    public float OnMove(float moveSpeed);
+}
+
+public interface ITickEffect
+{
+    public void OnTick(Enemy enemy);
+}
+
+public interface IDamageEffect
+{
+    public float OnDamage(float damage);
+}

@@ -3,56 +3,40 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectChill : Effect
+public class EffectChill : Effect, IMoveEffect
 {
     private InternalClock _internalClock;
 
     public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
         base.Initialize(duration, stacks, effectTracker);
-        Stacks = 0;
-        AddStacks(stacks);
+        Stacks = 1;
         IconColor = new Color32(128, 249, 255, 255);
-    _internalClock = new InternalClock(duration, gameObject);
-        _internalClock.e_OnTimerDone += RemoveStack;
+        _internalClock = new InternalClock(duration, gameObject);
+        _internalClock.e_OnTimerDone += Remove;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
-        _internalClock.e_OnTimerDone -= RemoveStack;
+        _internalClock.e_OnTimerDone -= Remove;
         _internalClock.Delete();
     }
 
     public override void AddStacks(int count)
     {
-        Stacks += count;
-        if (Stacks >= 5)
-        {
-            Stacks = 5;
-        }
-        _effectTracker.UpdateRenderer();
+        Stacks = 1;
+        _internalClock.Reset();
     }
 
     public override void RemoveStacks(int count)
     {
-        _effectTracker.UpdateRenderer();
-        Stacks -= count;
-        if (Stacks <= 0)
-        {
-            Stacks = 0;
-            _effectTracker.RemoveEffect(this);
-        }
+        throw new System.NotImplementedException();
     }
 
-    private void RemoveStack()
+    public float OnMove(float moveSpeed)
     {
-        RemoveStacks(1);
-    }
-
-    public float GetSpeedMultiplier()
-    {
-        return Mathf.Pow(0.8f, Stacks);
+        return moveSpeed * 0.5f;
     }
 
     public override string GetStackText()
@@ -67,6 +51,6 @@ public class EffectChill : Effect
 
     public override string GetDescriptionText()
     {
-        return $"Slows the enemy by {GetSpeedMultiplier()}x";
+        return $"Slows the enemy by 0.5x";
     }
 }

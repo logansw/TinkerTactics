@@ -39,6 +39,11 @@ public class InternalClock
         _timeToWait = timeToWait;
     }
 
+    public void IncreaseTime(float additionalTime)
+    {
+        _timeToWait += additionalTime;
+    }
+
     public void Delete()
     {
         ClockManager.s_Instance.RemoveClock(this);

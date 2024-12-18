@@ -84,4 +84,41 @@ public class EffectTracker : MonoBehaviour
     {
         _effectRenderer.RenderEffects();
     }
+
+    public float ProcessMoveEffects(float initialMoveSpeed)
+    {
+        float currentMovementSpeed = initialMoveSpeed;
+        foreach (Effect effect in EffectsApplied)
+        {
+            if (effect is IMoveEffect moveEffect)
+            {
+                currentMovementSpeed = moveEffect.OnMove(currentMovementSpeed);
+            }
+        }
+        return currentMovementSpeed;
+    }
+
+    public void ProcessTickEffects(Enemy enemy)
+    {
+        foreach (Effect effect in EffectsApplied)
+        {
+            if (effect is ITickEffect tickEffect)
+            {
+                tickEffect.OnTick(enemy);
+            }
+        }
+    }
+
+    public float ProcessDamageEffects(float initialDamage)
+    {
+        float damage = initialDamage;
+        foreach (Effect effect in EffectsApplied)
+        {
+            if (effect is IDamageEffect damageEffect)
+            {
+                damage = damageEffect.OnDamage(damage);
+            }
+        }
+        return damage;
+    }
 }
