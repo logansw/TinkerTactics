@@ -172,7 +172,7 @@ MonoBehaviour:
     baseValue: 10
   Active: 0
   ModifierProcessor: {fileID: 8733004696333718865}
-  TinkerLimit: 2
+  TinkerLimit: 3
   ParentCard: {fileID: 0}
   Pierce: 2
 --- !u!114 &8733004696333718865 stripped

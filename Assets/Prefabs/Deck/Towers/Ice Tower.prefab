@@ -15,14 +15,18 @@ PrefabInstance:
     - target: {fileID: 1654867451284962496, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
       propertyPath: Tower
       value: 
-      objectReference: {fileID: 5738431041439278203, guid: f7c80a60411bc4a21bf846d22dee6216, type: 3}
+      objectReference: {fileID: 7370266144634976146, guid: f7c80a60411bc4a21bf846d22dee6216, type: 3}
     - target: {fileID: 1654867451284962496, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
       propertyPath: Description
-      value: Attacks slow enemies. Holds 2 Tinkers.
+      value: Applies Chill every 3 attacks. Holds 3 Tinkers.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654867451284962496, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
+      propertyPath: Cost.baseValue
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4471077235181280593, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
       propertyPath: EnergyCost
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314475684024846409, guid: 67a47c9efb6714a98913c6b0d409f19d, type: 3}
       propertyPath: m_Pivot.x

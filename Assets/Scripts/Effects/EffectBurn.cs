@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class EffectBurn : Effect, ITickEffect
 {
     private InternalClock _internalClock;
+    private bool _evenTick;
 
     public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
@@ -35,7 +37,12 @@ public class EffectBurn : Effect, ITickEffect
 
     public void OnTick(Enemy enemy)
     {
-        enemy.ReceiveDamage(enemy.Health.MaxHealth * 0.01f);
+        _evenTick = !_evenTick;
+        if (_evenTick)
+        {
+            float burnDamage = Math.Max(enemy.Health.MaxHealth * 0.01f, 1f);
+            enemy.ReceiveDamage(burnDamage);
+        }
     }
 
     public override string GetStackText()
@@ -50,6 +57,6 @@ public class EffectBurn : Effect, ITickEffect
 
     public override string GetDescriptionText()
     {
-        return $"Enemy takes 2% Max Health damage each second";
+        return $"Enemy takes 1% Max Health damage each second";
     }
 }
