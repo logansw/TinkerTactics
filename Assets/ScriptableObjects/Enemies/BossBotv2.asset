@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914cba20f64a54728b47bb2a0a83ec32, type: 3}
   m_Name: BossBotv2
   m_EditorClassIdentifier: 
-  MaxHealth: 500
+  MaxHealth: 400
   SegmentCount: 0
   MovementSpeed: 8
   Armor: 0
