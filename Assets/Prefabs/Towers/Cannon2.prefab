@@ -171,7 +171,7 @@ MonoBehaviour:
     baseValue: 90
   Active: 0
   ModifierProcessor: {fileID: 8384638295592764128}
-  TinkerLimit: 2
+  TinkerLimit: 3
   ParentCard: {fileID: 0}
   ExplosionRadius: 2
 --- !u!114 &8384638295592764128 stripped

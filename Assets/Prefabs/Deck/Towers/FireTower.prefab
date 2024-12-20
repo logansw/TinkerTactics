@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1987444031630990549
+--- !u!1001 &2901246915447434290
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
+      propertyPath: Name
+      value: Fire Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Tower
       value: 
-      objectReference: {fileID: 66499945772906277, guid: e155fd2a411bf441d948d46e34a320e9, type: 3}
+      objectReference: {fileID: 8447553521645205993, guid: 4126c2485357e4040878339bcffa5b64, type: 3}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Description
-      value: Launches explosive projectiles. Holds 3 Tinkers
+      value: Applies Burn every 3 attacks. Holds 3 Tinkers.
       objectReference: {fileID: 0}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Cost.baseValue
@@ -106,11 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6082087254971923773, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: m_Name
-      value: Cannon
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082087254971923773, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: FireTower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

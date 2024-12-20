@@ -1,20 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectStun : Effect, IMoveEffect
+public class EffectBurn : Effect, ITickEffect
 {
     private InternalClock _internalClock;
+    private bool _evenTick;
 
     public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
         base.Initialize(duration, stacks, effectTracker);
-        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
-        {
-            Enemy.EffectTracker.RemoveEffect(this);
-            return;
-        }
-        IconColor = new Color32(255, 240, 128, 255);
+        Stacks = 1;
+        IconColor = new Color32(255, 107, 65, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
@@ -26,28 +24,25 @@ public class EffectStun : Effect, IMoveEffect
         _internalClock.Delete();
     }
 
-    public float OnMove(float moveSpeed)
-    {
-        return 0;
-    }
-
     public override void AddStacks(int count)
     {
-        Stacks += count;
+        Stacks = 1;
+        _internalClock.Reset();
     }
 
     public override void RemoveStacks(int count)
     {
-        Stacks -= count;
+        throw new System.NotImplementedException();
     }
 
-    public override bool CheckRules()
+    public void OnTick(Enemy enemy)
     {
-        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+        _evenTick = !_evenTick;
+        if (_evenTick)
         {
-            return false;
+            float burnDamage = Math.Max(enemy.Health.MaxHealth * 0.01f, 1f);
+            enemy.ReceiveDamage(burnDamage);
         }
-        return true;
     }
 
     public override string GetStackText()
@@ -57,16 +52,11 @@ public class EffectStun : Effect, IMoveEffect
 
     public override string GetAbbreviationText()
     {
-        return "STN";
+        return "BRN";
     }
 
     public override string GetDescriptionText()
     {
-        return $"";
-    }
-
-    public void Extend()
-    {
-        _internalClock.Reset();
+        return $"Enemy takes 1% Max Health damage each second";
     }
 }

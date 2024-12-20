@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Collider2D _collider;
     public bool EndReached;
     private Vector3 _lastPosition;
+    private InternalClock _internalClock;
 
     public virtual void Awake()
     {
@@ -45,6 +46,8 @@ public class Enemy : MonoBehaviour
         TileTarget = spawnPoint;
         IsSpawned = true;
         _lastPosition = transform.position;
+        _internalClock = new InternalClock(0.5f, gameObject);
+        _internalClock.e_OnTimerDone += Tick;
     }
 
     void Update()
@@ -65,6 +68,7 @@ public class Enemy : MonoBehaviour
     {
         Health.e_OnHealthBreak -= OnBreak;
         Health.e_OnHealthDepleted -= OnDeath;
+        _internalClock.e_OnTimerDone -= Tick;
     }
 
     /// <summary>
@@ -103,10 +107,7 @@ public class Enemy : MonoBehaviour
     /// <remarks>Use ReceiveProjectile() for damage dealt by projectiles instead.</remarks>
     public virtual void ReceiveDamage(float damage, Projectile projectile = null, Tower responsibleTower = null)
     {
-        if (EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable))
-        {
-            damage *= effectVulnerable.GetDamageMultiplier();
-        }
+        damage = EffectTracker.ProcessDamageEffects(damage);
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = damage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
@@ -125,15 +126,7 @@ public class Enemy : MonoBehaviour
         }
         Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
-        float currentMovementSpeed = MovementSpeed;
-        if (EffectTracker.HasEffect<EffectChill>(out EffectChill effectChill))
-        {
-            currentMovementSpeed *= effectChill.GetSpeedMultiplier();
-        }
-        if (EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun))
-        {
-            currentMovementSpeed = 0;
-        }
+        float currentMovementSpeed = EffectTracker.ProcessMoveEffects(MovementSpeed);
         transform.Translate(direction * Time.deltaTime * currentMovementSpeed / 10);
         if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.2f && !EndReached)
         {
@@ -161,5 +154,10 @@ public class Enemy : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(active);
         }
+    }
+
+    private void Tick()
+    {
+        EffectTracker.ProcessTickEffects(this);
     }
 }

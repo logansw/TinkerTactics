@@ -1,33 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectVulnerable : Effect, IDamageEffect
+public class EffectShock : Effect, IDamageEffect
 {
     private InternalClock _internalClock;
 
     public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
     {
         base.Initialize(duration, stacks, effectTracker);
-        IconColor = new Color32(255, 128, 170, 255);
+        Stacks = 1;
+        IconColor = new Color32(254, 230, 127, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
 
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        _internalClock.e_OnTimerDone -= Remove;
+        _internalClock.Delete();
+    }
+
     public override void AddStacks(int count)
     {
-        Stacks += count;
+        Stacks = 1;
+        _internalClock.Reset();
     }
 
     public override void RemoveStacks(int count)
     {
-        Stacks -= count;
+        throw new System.NotImplementedException();
     }
 
     public float OnDamage(float damage)
     {
-        return damage * 2f;
+        return damage * 1.25f;
     }
 
     public override string GetStackText()
@@ -37,16 +45,11 @@ public class EffectVulnerable : Effect, IDamageEffect
 
     public override string GetAbbreviationText()
     {
-        return "VUL";
+        return "SHK";
     }
 
     public override string GetDescriptionText()
     {
-        return $"";
-    }
-
-    public void Extend()
-    {
-        _internalClock.Reset();
+        return $"Enemy takes 1.25x damage from all sources";
     }
 }

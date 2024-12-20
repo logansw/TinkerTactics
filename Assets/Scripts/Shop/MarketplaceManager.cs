@@ -14,12 +14,11 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     private int _cardsSelected;
     private int _cardsToSelect;
     private int _cardOptionsCount;
+    private int _timesToRepeat;
 
     public void PopulateAvailableItems()
     {
         ResetCards();
-        AllTowers = AllTowers.OrderBy(item => Guid.NewGuid()).ToList();
-        _cardsSelected = 0;
         if (GameManager.s_Instance.CurrentLevelIndex % 2 == 0)
         {
             PrepareTowerShop();
@@ -56,6 +55,7 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
     private void PrepareTowerShop()
     {
+        AllTowers = AllTowers.OrderBy(item => Guid.NewGuid()).ToList();
         _cardOptionsCount = 3;
         _cardsToSelect = 1;
         RenderNewItems(AllTowers);
@@ -63,8 +63,9 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
     private void PrepareTinkerShop()
     {
-        _cardOptionsCount = 5;
-        _cardsToSelect = 2;
+        AllTinkers = AllTinkers.OrderBy(item => Guid.NewGuid()).ToList();
+        _cardOptionsCount = 3;
+        _cardsToSelect = 3;
         RenderNewItems(AllTinkers);
     }
 
@@ -82,11 +83,15 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         AvailableCards.Remove(card);
         card.Render(false);
         _cardsSelected++;
-        if (_cardsSelected == _cardsToSelect)
+        if (_cardsSelected < _cardsToSelect)
         {
-            card.Render(true);
+            PopulateAvailableItems();
+        }
+        else
+        {
             ShowShop(false);
             DeckRenderer.s_Instance.QueueUpdate();
+            _cardsSelected = 0;
         }
     }
 }
