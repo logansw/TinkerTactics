@@ -132,11 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7f78ecf1d4f471bb958430191edfc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1812274704347105324 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8537934679356779262, guid: dd463920a436843c0bf00692e57020d6, type: 3}
-  m_PrefabInstance: {fileID: 8023910847430894290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5189467125887635922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
@@ -154,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d68819323b248a29fd6230a2a269d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Matchbox Tower
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
   Range:
@@ -165,4 +160,3 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 334654240966289345}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
-  _spriteTransform: {fileID: 1812274704347105324}

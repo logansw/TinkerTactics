@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e517821ab6934a0aaeaaabd9252987a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Cannon
+  Name: Bubblegum Cannon
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
   Range:
@@ -161,13 +161,7 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 6413803663834024915}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
-  _spriteTransform: {fileID: 4936217925892416574}
   ExplosionRadius: 2
---- !u!4 &4936217925892416574 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8537934679356779262, guid: dd463920a436843c0bf00692e57020d6, type: 3}
-  m_PrefabInstance: {fileID: 3673862343872679616}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6413803663834024915 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7781734332646425875, guid: dd463920a436843c0bf00692e57020d6, type: 3}

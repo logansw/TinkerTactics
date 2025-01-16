@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20be85e71da67409092bb518ac51925d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Snowglobe
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
   Range:

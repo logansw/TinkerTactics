@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fff7b0401fc84ef7ad8c02a7dfdd757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Shock Tower
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
   Range:
