@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5766753941029838985
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Name
+      value: Laser Pointer Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Range.baseValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Sweep.baseValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _name
+      value: "\U0001F52B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.b
+      value: 0.4117989
+      objectReference: {fileID: 0}
+    - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.g
+      value: 0.28435388
+      objectReference: {fileID: 0}
+    - target: {fileID: 796924732144190484, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299458898797663666, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Name
+      value: Rubber Band
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: TooltipText
+      value: Piercing Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: Damage.baseValue
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: MaxAmmo.baseValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _projectilePrefab
+      value: 
+      objectReference: {fileID: 4193782691126074514, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: AttackSpeed.baseValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: CurrentAmmo.baseValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444448523574529121, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: ReloadSpeed.baseValue
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361541425341742086, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _name
+      value: "\U0001F52B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361541425341742086, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.b
+      value: 0.3915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361541425341742086, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.g
+      value: 0.3915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361541425341742086, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: _color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_Name
+      value: Laser Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482987869449924322, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482987869449924322, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482987869449924322, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693038065469602483, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      propertyPath: m_text
+      value: "\U0001F52B"
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2697771512016779414, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+    - {fileID: -6746069162851295752, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7266898718043153615}
+  m_SourcePrefab: {fileID: 100100000, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+--- !u!1 &360245876401596753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6122777355554228696, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+  m_PrefabInstance: {fileID: 5766753941029838985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7266898718043153615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360245876401596753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971f0eaff47d84ae3824607e5854dce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Laser Pointer Tower
+  RangeIndicator: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  Range:
+    baseValue: 12
+  Sweep:
+    baseValue: 10
+  Active: 0
+  ModifierProcessor: {fileID: 8733004696333718865}
+  TinkerLimit: 3
+  ParentCard: {fileID: 0}
+  _spriteTransform: {fileID: 3916421816017680870}
+  Pierce: 2
+--- !u!4 &3916421816017680870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7376417643780643183, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+  m_PrefabInstance: {fileID: 5766753941029838985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8733004696333718865 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2969699163075311064, guid: 8fd970343ba6c485cbafa1e73934981a, type: 3}
+  m_PrefabInstance: {fileID: 5766753941029838985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360245876401596753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7f78ecf1d4f471bb958430191edfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
