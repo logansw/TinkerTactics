@@ -8,9 +8,6 @@ public class TilePlot : Tile
     public List<Tower> Towers { get; set; }
     public bool IsActivated;
     public int Capacity;
-    public bool IsTargeted { get; private set; }
-    [SerializeField] private GameObject _targetedIndicator;
-    [SerializeField] private GameObject _lockedIndicator;
     private bool _updateQueued;
 
     void Start()
@@ -44,12 +41,6 @@ public class TilePlot : Tile
         return Towers.Count >= Capacity;
     }
 
-    public void SetTargeted(bool targeted)
-    {
-        IsTargeted = targeted;
-        _targetedIndicator.gameObject.SetActive(targeted);
-    }
-
     /// <summary>
     /// Adds a tower to the tile plot if it is not fully occupied.
     /// </summary>
@@ -78,5 +69,28 @@ public class TilePlot : Tile
     public void QueueLockUpdate()
     {
         _updateQueued = true;
+    }
+
+    public static TilePlot GetClosest(GameObject sourceObject)
+    {
+        Transform transform = sourceObject.transform;
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0f, Vector2.zero);
+        TilePlot closestPlot = null;
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.GetComponent<TilePlot>() != null)
+            {
+                TilePlot hitPlot = hit.collider.GetComponent<TilePlot>();
+                if (closestPlot == null)
+                {
+                    closestPlot = hitPlot;
+                }
+                if ((closestPlot.transform.position - transform.position).magnitude > (hitPlot.transform.position - transform.position).magnitude)
+                {
+                    closestPlot = hitPlot;
+                }
+            }
+        }
+        return closestPlot;
     }
 }

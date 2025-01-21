@@ -12,6 +12,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private bool _isDragging;
     private float _initialAngleOffset;
     private bool _updateQueued;
+    [SerializeField] private BoxCollider2D _towerHitbox;    // Tower hitbox needs to rotate with the range indicator and sprites
 
     public void Initialize(Tower tower)
     {
@@ -131,6 +132,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         float finalAngle = angle - _initialAngleOffset;
         
         transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
+        _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
     }
 
     private void DrawRangeIndicator()

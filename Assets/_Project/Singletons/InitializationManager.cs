@@ -22,11 +22,10 @@ public class InitializationManager : Singleton<InitializationManager>
         GameManager.s_Instance.Initialize();
         DeckManager.s_Instance.Initialize();
         PathDrawer.s_Instance.Initialize();
+        BlockManager.s_Instance.Initialize();
         WaveSpawnerManager.s_Instance.Initialize();
         BattleManager.s_Instance.Initialize();
-        // ColorManager.s_Instance.Initialize();
         SelectionManager.s_Instance.Initialize();
-        // CurrencyManager.s_Instance.Initialize();
         StateController.s_Instance.Initialize();
     }
 }

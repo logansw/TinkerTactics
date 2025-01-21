@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesInRange: []
+  _towerHitbox: {fileID: 7235066314296405638}
 --- !u!1 &2701050758988644789
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +400,6 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 7781734332646425875}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
-  _spriteTransform: {fileID: 8537934679356779262}
 --- !u!114 &7781734332646425875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,6 +1097,10 @@ PrefabInstance:
     - target: {fileID: 3560131876213183137, guid: fcf5ab1525a724a6c8b00b8b219017ef, type: 3}
       propertyPath: m_Name
       value: AmmoBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560131876213183137, guid: fcf5ab1525a724a6c8b00b8b219017ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811737209183629978, guid: fcf5ab1525a724a6c8b00b8b219017ef, type: 3}
       propertyPath: BreakpointSize

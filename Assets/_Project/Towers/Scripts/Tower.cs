@@ -119,35 +119,29 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     /// </summary>
     public void AssignTowerToTilePlot()
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(1f, 1f), 0f, Vector2.zero);
-        foreach (RaycastHit2D hit in hits)
+        TilePlot closestPlot = TilePlot.GetClosest(gameObject);
+        if (closestPlot == null)
         {
-            if (hit.collider != null && hit.collider.GetComponent<TilePlot>() != null)
-            {
-                TilePlot otherPlot = hit.collider.GetComponent<TilePlot>();
-                if (otherPlot.AddTower(this))
-                {
-                    TilePlot = otherPlot;
-                    return;
-                }
-                else
-                {
-                    // Swap Towers
-                    Tower otherTower = otherPlot.Towers[0];
-                    TilePlot temp = TilePlot;
-                    otherPlot.RemoveTower(otherTower);
-                    otherPlot.AddTower(this);
-                    TilePlot.RemoveTower(this);
-                    TilePlot.AddTower(otherTower);
-                    TilePlot = otherPlot;
-                    otherTower.TilePlot = temp;
-                    return;
-                }
-            }
+            // Return to plot if no tile plot is found
+            TilePlot.AddTower(this);
+            ReturnToPlot();
         }
-        // Return to plot if no tile plot is found
-        TilePlot.AddTower(this);
-        ReturnToPlot();
+        else if (closestPlot.AddTower(this))
+        {
+            TilePlot = closestPlot;
+        }
+        else
+        {
+            // Swap Towers
+            Tower otherTower = closestPlot.Towers[0];
+            TilePlot temp = TilePlot;
+            closestPlot.RemoveTower(otherTower);
+            closestPlot.AddTower(this);
+            TilePlot.RemoveTower(this);
+            TilePlot.AddTower(otherTower);
+            TilePlot = closestPlot;
+            otherTower.TilePlot = temp;
+        }
     }
 
     private void ReturnToPlot()

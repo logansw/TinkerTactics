@@ -1,29 +1,67 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
-public class BlockManager : MonoBehaviour
+public class BlockManager : Singleton<BlockManager>
 {
+    public const float TILE_PLOT_PERCENTAGE = 0.25f;
     [SerializeField] private Block _blockPrefab;
-    private Block[,] _blocks = new Block[5,5];
+    private Block[,] _blocks = new Block[9,9];
 
-    void Start()
+    public override void Initialize()
     {
-       InstantiateBlocks();
-       CalculateShadows();
+        base.Initialize();
+        InstantiateBlocks();
+        transform.localRotation = Quaternion.AngleAxis(45f, Vector3.back);
+        CalculateHeights();
+        CalculateShadows();
     }
 
     private void InstantiateBlocks()
     {
-        for (int i = 0; i < _blocks.GetLength(0); i++)
+        int m = _blocks.GetLength(0);
+        int n = _blocks.GetLength(1);
+        for (int i = 0; i < m; i++)
         {
-            for (int j = 0; j < _blocks.GetLength(1); j++)
+            for (int j = 0; j < n; j++)
             {
-                Block block = Instantiate(_blockPrefab, new Vector2(i, j), Quaternion.identity, transform);
+                Block block = Instantiate(_blockPrefab, new Vector2(i, j) - new Vector2((m-1)/2f, (n-1)/2f), Quaternion.identity, transform);
                 _blocks[i,j] = block;
-                block.Initialize(UnityEngine.Random.Range(0, 3));
+            }
+        }
+    }
+
+    private void CalculateHeights()
+    {
+        int m = _blocks.GetLength(0);
+        int n = _blocks.GetLength(1);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Block block = _blocks[i,j];
+                TilePath closestPath = TilePath.GetClosest(block.gameObject);
+                if (closestPath == null)
+                {
+                    float randomHeight = UnityEngine.Random.Range(0f, 1f);
+                    if (randomHeight < TILE_PLOT_PERCENTAGE)
+                    {
+                        block.Initialize(2);
+                        TilePlot tilePlot = block.AddComponent<TilePlot>();
+                        tilePlot.IsActivated = true;
+                    }
+                    else
+                    {
+                        block.Initialize(0);
+                    }
+                }
+                else
+                {
+                    block.Initialize(1);
+                }
             }
         }
     }

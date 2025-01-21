@@ -9,8 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: Damage.baseValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: MaxAmmo.baseValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: AttackSpeed.baseValue
-      value: 20
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: CurrentAmmo.baseValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: ReloadSpeed.baseValue
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1299214318894106093, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_Color.b
@@ -97,8 +113,12 @@ PrefabInstance:
       value: Toy Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: TinkerLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: Range.baseValue
-      value: 8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: Sweep.baseValue

@@ -100,6 +100,28 @@ public class TilePath : Tile
         }
         _spriteRenderer.color = Color.white;
     }
+
+    public static TilePath GetClosest(GameObject sourceObject)
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(sourceObject.transform.position, new Vector2(0.1f, 0.1f), 0f, Vector2.zero);
+        TilePath closestPath = null;
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.GetComponent<TilePath>() != null)
+            {
+                TilePath hitPath = hit.collider.GetComponent<TilePath>();
+                if (closestPath == null)
+                {
+                    closestPath = hitPath;
+                }
+                if ((closestPath.transform.position - sourceObject.transform.position).magnitude > (hitPath.transform.position - sourceObject.transform.position).magnitude)
+                {
+                    closestPath = hitPath;
+                }
+            }
+        }
+        return closestPath;
+    }
 }
 
 public enum PathType
