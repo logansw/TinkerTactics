@@ -7,8 +7,6 @@ using System.Text;
 public class TinkerGeneric : TinkerBase
 {
     public int DamageModFlat;
-    public int RangeModFlat;
-    public int SweepModFlat;
     public int AmmoModFlat;
     public float ReloadSpeedModMult;
     public float AttackSpeedModMult;
@@ -20,14 +18,6 @@ public class TinkerGeneric : TinkerBase
         if (DamageModFlat != 0)
         {
             sb.Append($"+{DamageModFlat} Damage\n");
-        }
-        if (RangeModFlat != 0)
-        {
-            sb.Append($"+{RangeModFlat} Range\n");
-        }
-        if (SweepModFlat != 0)
-        {
-            sb.Append($"+{SweepModFlat} Sweep\n");
         }
         if (AmmoModFlat != 0)
         {
@@ -71,8 +61,6 @@ public class TinkerGeneric : TinkerBase
     private void ApplyStatModifier(Tower recipient)
     {
         ApplyDamageModifier(recipient.BasicAttack.Damage);
-        ApplyRangeModifier(recipient.Range);
-        ApplySweepModifier(recipient.Sweep);
         ApplyReloadSpeedModifier(recipient.BasicAttack.ReloadSpeed);
         ApplyAttackSpeedModifier(recipient.BasicAttack.AttackSpeed);
         ApplyAmmoModifier(recipient.BasicAttack.MaxAmmo);
@@ -85,18 +73,6 @@ public class TinkerGeneric : TinkerBase
         if (DamageModFlat == default) { return; }
 
         stat.Current += DamageModFlat;
-    }
-
-    public void ApplyRangeModifier(StatRange stat)
-    {
-        if (RangeModFlat == default) { return; }
-        stat.Current += RangeModFlat;
-    }
-
-    public void ApplySweepModifier(StatSweep stat)
-    {
-        if (SweepModFlat == default) { return; }
-        stat.Current += SweepModFlat;
     }
 
     public void ApplyAmmoModifier(StatAmmo maxAmmo)

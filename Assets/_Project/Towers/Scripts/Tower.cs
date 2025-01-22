@@ -29,8 +29,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
     [HideInInspector] public BasicAttack BasicAttack;
-    public StatRange Range;
-    public StatSweep Sweep;
     public bool Active;
     private BarUI _ammoBar;
     [HideInInspector] public ModifierProcessor ModifierProcessor;
@@ -46,8 +44,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
         sb.AppendLine(Name);
         sb.AppendLine($"Damage: {BasicAttack.Damage.Current}");
-        sb.AppendLine($"Range: {Range.Current}");
-        sb.AppendLine($"Sweep: {Sweep.Current}");
         sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.Current}");
         sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.Current}");
         sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.Current}");

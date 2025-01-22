@@ -1,29 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-[RequireComponent(typeof(LineRenderer)), RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(CompositeCollider2D)), RequireComponent(typeof(TowerRangeData))]
 public class RangeIndicator : MonoBehaviour, ISelectable
 {
+
     public List<Enemy> EnemiesInRange;
     private Tower _tower;
-    private LineRenderer _rangeIndicator;
-    private PolygonCollider2D _collider;
     private bool _isDragging;
     private float _initialAngleOffset;
     private bool _updateQueued;
+    // TODO: Don't need this anymore, because everything will adhere to grid?
     [SerializeField] private BoxCollider2D _towerHitbox;    // Tower hitbox needs to rotate with the range indicator and sprites
+    private TowerRangeData _towerRangeData;
+    private CompositeCollider2D _collider;
+    private List<GameObject> _rangeCells;
+    [SerializeField] private GameObject _rangeCellPrefab;
 
     public void Initialize(Tower tower)
     {
-        _rangeIndicator = GetComponent<LineRenderer>();
-        _collider = GetComponent<PolygonCollider2D>();
         _tower = tower;
-        _tower.Range.e_OnStatChanged += QueueUpdate;
-        _tower.Sweep.e_OnStatChanged += QueueUpdate;
+        _collider = GetComponent<CompositeCollider2D>();
+        _towerRangeData = GetComponent<TowerRangeData>();
         EnemiesInRange = new List<Enemy>();
+        _rangeCells = new List<GameObject>();
+        
         DrawRangeIndicator();
-        DrawCollider();
+
         PlayingState.e_OnPlayingStateEnter += EnableCollider;
         IdleState.e_OnIdleStateEnter += DisableCollider;
         IdleState.e_OnIdleStateEnter += ClearEnemiesList;
@@ -31,8 +36,6 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     public void OnDestroy()
     {
-        _tower.Range.e_OnStatChanged -= QueueUpdate;
-        _tower.Sweep.e_OnStatChanged -= QueueUpdate;
         PlayingState.e_OnPlayingStateEnter -= EnableCollider;
         IdleState.e_OnIdleStateEnter -= DisableCollider;
         IdleState.e_OnIdleStateEnter -= ClearEnemiesList;
@@ -43,7 +46,6 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         if (_updateQueued)
         {
             DrawRangeIndicator();
-            DrawCollider();
             _updateQueued = false;
         }
     }
@@ -60,9 +62,12 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         TooltipManager.s_Instance.HideTooltip();
     }
 
+    // TODO: Change this later so that players can grab the grid and drag it to rotate the tower. It would be cool if there was some kind of cool animation
+    // so that it feels like the tower is stuck in place until it kind of snaps and clicks over. Could be accomplished with some nice sound effects and
+    // messing with how much the tower rotates relative to the amount the player has "pulled". 
     public bool IsSelectable()
     {
-        return _rangeIndicator.enabled;
+        return false;
     }
 
     public void SetVisible(bool visible)
@@ -75,7 +80,10 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         {
             _collider.enabled = visible;
         }
-        _rangeIndicator.enabled = visible;
+        foreach (GameObject rangeCell in _rangeCells)
+        {
+            rangeCell.SetActive(visible);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -116,6 +124,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         _isDragging = true;
     }
 
+    // TODO: Change to snap to 90 degree increments
     private void OnMouseDrag() {
         if (StateController.CurrentState.Equals(StateType.Playing))
         {
@@ -137,41 +146,51 @@ public class RangeIndicator : MonoBehaviour, ISelectable
 
     private void DrawRangeIndicator()
     {
-        _rangeIndicator.useWorldSpace = false;
-        Vector3[] points = GetRangePoints();
-        _rangeIndicator.positionCount = points.Length;
-        _rangeIndicator.SetPositions(points);
-    }
-
-    private void DrawCollider()
-    {
-        Vector3[] points = GetRangePoints();
-        Vector2[] colliderPoints = new Vector2[points.Length];
-        for (int i = 0; i < points.Length; i++)
+        // Spawn RangeCell objects (cleanup previous ones if necessary)
+        // Find Tower Position from grid
+        Vector2 towerPosition = new Vector2(-1, -1);
+        bool found = false;
+        for (int i = 0; i < _towerRangeData.Width; i++)
         {
-            colliderPoints[i] = points[i];
+            for (int j = 0; j < _towerRangeData.Height; j++)
+            {
+                TowerCellState cellState = _towerRangeData.GetCellState(i, j);
+                if (cellState == TowerCellState.Tower)
+                {
+                    towerPosition = new Vector2(i, j);
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                break;
+            }
         }
-        _collider.points = colliderPoints;
-    }
 
-    private Vector3[] GetRangePoints()
-    {
-        int arcPointCount = 30;
-        Vector3[] points = new Vector3[arcPointCount + 2];
-        // First Point
-        points[0] = Vector2.zero;
-        float angle = _tower.Sweep.Current * Mathf.PI / 180f;
-        float startAngle = -angle / 2f;
-        float angleDelta = angle / (arcPointCount - 1);
-        for (int i = 0; i < arcPointCount; i++)
+        if (!found)
         {
-            float x = _tower.Range.Current * Mathf.Cos(startAngle + angleDelta * i);
-            float y = _tower.Range.Current * Mathf.Sin(startAngle + angleDelta * i);
-            points[i+1] = new Vector2(x, y);
+            Debug.LogError("Tower position not found in TowerRangeData");
         }
-        // Last Point
-        points[arcPointCount+1] = Vector2.zero;
-        return points;
+
+        // Make sure they are positioned properly
+        for (int i = 0; i < _towerRangeData.Width; i++)
+        {
+            for (int j = 0; j < _towerRangeData.Height; j++)
+            {
+                if (_towerRangeData.GetCellState(i, j) == TowerCellState.InRange)
+                {
+                    Debug.Log("Cell");
+                    GameObject rangeCell = Instantiate(_rangeCellPrefab);
+                    rangeCell.transform.parent = transform;
+                    rangeCell.transform.localPosition = (new Vector2(i, j) - towerPosition) * new Vector2(1, -1);
+                    _rangeCells.Add(rangeCell);
+                }
+            }
+        }
+
+        // Stitch together CompositeCollider2D using these boxes
+
     }
 
     public List<Enemy> GetEnemiesInRange()

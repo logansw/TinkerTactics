@@ -52,7 +52,7 @@ public abstract class Projectile : MonoBehaviour
     {
         transform.Translate(Vector2.right * Time.deltaTime * ProjectileSpeed);
         float distanceFromTower = Vector2.Distance(transform.position, SourceTower.transform.position);
-        if (distanceFromTower > SourceTower.Range.Current)
+        if (distanceFromTower > 20f)
         {
             Destroy(gameObject);
         }

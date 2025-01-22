@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 3019461107657056925, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4680738050290645818, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -135,6 +139,58 @@ PrefabInstance:
     - target: {fileID: 6870375024268909030, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_Color.r
       value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _width
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[11]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[12]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[13]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[17]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[22]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9092128278702182901, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_Color.b
