@@ -24,15 +24,19 @@ public class GameManager : Singleton<GameManager>
         CurrentLevelIndex++;
         _currentWarlord = Instantiate(_warlords[CurrentLevelIndex]);
         e_OnNextLevel?.Invoke();
+
         WaveSpawnerManager.s_Instance.NextLevel();
         PathDrawer.s_Instance.NextLevel();
+        BlockManager.s_Instance.ClearBlocks();
+        BlockManager.s_Instance.InstantiateBlocks();
         WaveSpawnerManager.s_Instance.UnassignSpawners();
+
         StateController.s_Instance.ChangeState(StateType.Idle);
         TowerManager.s_Instance.ClearTowers();
         MarketplaceManager.s_Instance.PopulateAvailableItems();
         MarketplaceManager.s_Instance.ShowShop(true);
         BattleManager.s_Instance.SetTimeScale(1f);
-        Player.s_Instance.SetEnergy(1);
+        Player.s_Instance.SetEnergy(2);
     }
 
     public string GetLevelName()

@@ -15,12 +15,20 @@ public class BlockManager : Singleton<BlockManager>
     {
         base.Initialize();
         InstantiateBlocks();
-        transform.localRotation = Quaternion.AngleAxis(45f, Vector3.back);
-        CalculateHeights();
-        CalculateShadows();
     }
 
-    private void InstantiateBlocks()
+    public void ClearBlocks()
+    {
+        for (int i = 0; i < _blocks.GetLength(0); i++)
+        {
+            for (int j = 0; j < _blocks.GetLength(1); j++)
+            {
+                Destroy(_blocks[i,j].gameObject);
+            }
+        }
+    }
+
+    public void InstantiateBlocks()
     {
         int m = _blocks.GetLength(0);
         int n = _blocks.GetLength(1);
@@ -28,10 +36,16 @@ public class BlockManager : Singleton<BlockManager>
         {
             for (int j = 0; j < n; j++)
             {
-                Block block = Instantiate(_blockPrefab, new Vector2(i, j) - new Vector2((m-1)/2f, (n-1)/2f), Quaternion.identity, transform);
+                Block block = Instantiate(_blockPrefab, transform);
+                block.transform.localPosition = new Vector2(i, j) - new Vector2((m-1)/2f, (n-1)/2f);
                 _blocks[i,j] = block;
             }
         }
+
+        transform.localRotation = Quaternion.AngleAxis(45f, Vector3.back);
+
+        CalculateHeights();
+        CalculateShadows();
     }
 
     private void CalculateHeights()

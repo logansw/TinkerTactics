@@ -4588,10 +4588,10 @@ MonoBehaviour:
   - {fileID: 9090826151856389642, guid: f6a290185ff264c49bd168cb8715b42f, type: 3}
   _levelNames:
   - LevelA
-  - Level2
-  - Level3
-  - Level4
-  - Level5
+  - LevelB
+  - LevelC
+  - LevelD
+  - LevelE
   CurrentLevelIndex: 0
 --- !u!4 &1829851285
 Transform:

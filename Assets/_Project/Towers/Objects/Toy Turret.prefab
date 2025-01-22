@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: Damage.baseValue
-      value: 2
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: -3645411596763830795, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: MaxAmmo.baseValue
@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: Range.baseValue
-      value: 1.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: Sweep.baseValue
