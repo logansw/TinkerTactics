@@ -27,7 +27,6 @@ public class GameManager : Singleton<GameManager>
 
         WaveSpawnerManager.s_Instance.NextLevel();
         PathDrawer.s_Instance.NextLevel();
-        BlockManager.s_Instance.ClearBlocks();
         BlockManager.s_Instance.InstantiateBlocks();
         WaveSpawnerManager.s_Instance.UnassignSpawners();
 

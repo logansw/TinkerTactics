@@ -86,9 +86,13 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     protected virtual void OnEnable()
     {
         IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Reset(); };
+        IdleState.e_OnIdleStateEnter += Recall;
     }
 
-    protected virtual void OnDisable() { }
+    protected virtual void OnDisable()
+    {
+        IdleState.e_OnIdleStateEnter -= Recall;
+    }
 
     public void OnSelect()
     {

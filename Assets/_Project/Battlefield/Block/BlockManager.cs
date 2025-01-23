@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class BlockManager : Singleton<BlockManager>
 {
-    public const float TILE_PLOT_PERCENTAGE = 0.25f;
+    public const float TILE_PLOT_PERCENTAGE = 0.4f;
     [SerializeField] private Block _blockPrefab;
     private Block[,] _blocks = new Block[9,9];
+    private bool _updateShadowsQueued;
 
     public override void Initialize()
     {
@@ -17,19 +19,32 @@ public class BlockManager : Singleton<BlockManager>
         InstantiateBlocks();
     }
 
-    public void ClearBlocks()
+    void Update()
+    {
+        if (_updateShadowsQueued)
+        {
+            CalculateShadows();
+            _updateShadowsQueued = false;
+        }
+    }
+
+    private void ClearBlocks()
     {
         for (int i = 0; i < _blocks.GetLength(0); i++)
         {
             for (int j = 0; j < _blocks.GetLength(1); j++)
             {
-                Destroy(_blocks[i,j].gameObject);
+                if (_blocks[i,j] != null)
+                {
+                    Destroy(_blocks[i,j].gameObject);
+                }
             }
         }
     }
 
     public void InstantiateBlocks()
     {
+        ClearBlocks();
         int m = _blocks.GetLength(0);
         int n = _blocks.GetLength(1);
         for (int i = 0; i < m; i++)
@@ -64,8 +79,7 @@ public class BlockManager : Singleton<BlockManager>
                     if (randomHeight < TILE_PLOT_PERCENTAGE)
                     {
                         block.Initialize(2);
-                        TilePlot tilePlot = block.AddComponent<TilePlot>();
-                        tilePlot.IsActivated = true;
+                        block.AddTilePlot();
                     }
                     else
                     {
@@ -92,5 +106,10 @@ public class BlockManager : Singleton<BlockManager>
                 _blocks[i,j].CalculateShadows(westHeight, northHeight, northwestHeight);
             }
         }
+    }
+
+    public void QueueRecalculateShadows()
+    {
+        _updateShadowsQueued = true;
     }
 }

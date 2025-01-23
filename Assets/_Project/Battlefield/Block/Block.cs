@@ -24,6 +24,16 @@ public class Block : MonoBehaviour
         SetColors(_height);
     }
 
+    void OnEnable()
+    {
+        OnEnableTilePlot();
+    }
+
+    void OnDisable()
+    {
+        OnDisableTilePlot();
+    }
+
 #region Rendering
     private const float SHADOW_STRENGTH = 0.2f;
     private string[] OutlineColors = {"377DA0", "B3446B", "C4A264"};
@@ -118,7 +128,53 @@ public class Block : MonoBehaviour
     }
 #endregion
 
-#region
+#region TilePlot
+    public TilePlot TilePlot;
+    private bool _queuedRemoveTilePlot;
 
+    private void OnEnableTilePlot()
+    {
+        IdleState.e_OnIdleStateEnter += TryRemoveTilePlot;
+        PlayingState.e_OnPlayingStateEnter += QueueRemoveTilePlot;
+    }
+
+    private void OnDisableTilePlot()
+    {
+        IdleState.e_OnIdleStateEnter -= TryRemoveTilePlot;
+        PlayingState.e_OnPlayingStateEnter -= QueueRemoveTilePlot;
+    }
+
+    public void AddTilePlot()
+    {
+        TilePlot = gameObject.AddComponent<TilePlot>();
+        TilePlot.IsActivated = true;
+    }
+    public void RemoveTilePlot()
+    {
+        if (TilePlot != null)
+        {
+            Destroy(TilePlot);
+        }
+        Height = 0;
+        SetColors(Height);
+        BlockManager.s_Instance.QueueRecalculateShadows();
+    }
+
+    private void QueueRemoveTilePlot()
+    {
+        if (TilePlot != null && TilePlot.IsOccupied())
+        {
+            _queuedRemoveTilePlot = true;
+        }
+    }
+
+    private void TryRemoveTilePlot()
+    {
+        if (_queuedRemoveTilePlot)
+        {
+            RemoveTilePlot();
+            _queuedRemoveTilePlot = false;
+        }
+    }
 #endregion
 }

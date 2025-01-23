@@ -52,6 +52,7 @@ public class Warlord : Enemy
     public void Retreat()
     {
         OnRemovedFromBoard();
+        BlockManager.s_Instance.InstantiateBlocks();
     }
 
     private void OnRemovedFromBoard()

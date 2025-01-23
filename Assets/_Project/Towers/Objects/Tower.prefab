@@ -359,9 +359,9 @@ MonoBehaviour:
   Damage:
     baseValue: 5
   AttackSpeed:
-    baseValue: 5
+    baseValue: 1
   ReloadSpeed:
-    baseValue: 5
+    baseValue: 0.5
   MaxAmmo:
     baseValue: 5
   CurrentAmmo:
