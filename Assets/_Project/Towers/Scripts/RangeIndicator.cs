@@ -16,8 +16,9 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     [SerializeField] private BoxCollider2D _towerHitbox;    // Tower hitbox needs to rotate with the range indicator and sprites
     private TowerRangeData _towerRangeData;
     private CompositeCollider2D _collider;
-    private List<GameObject> _rangeCells;
-    [SerializeField] private GameObject _rangeCellPrefab;
+    private List<SpriteRenderer> _rangeCells;
+    [SerializeField] private SpriteRenderer _rangeCellPrefab;
+    private bool _isVisible;
 
     public void Initialize(Tower tower)
     {
@@ -25,7 +26,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         _collider = GetComponent<CompositeCollider2D>();
         _towerRangeData = GetComponent<TowerRangeData>();
         EnemiesInRange = new List<Enemy>();
-        _rangeCells = new List<GameObject>();
+        _rangeCells = new List<SpriteRenderer>();
         
         DrawRangeIndicator();
 
@@ -67,23 +68,16 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     // messing with how much the tower rotates relative to the amount the player has "pulled". 
     public bool IsSelectable()
     {
-        return false;
+        return _isVisible;
     }
 
     public void SetVisible(bool visible)
     {
-        if (StateController.CurrentState.Equals(StateType.Playing))
+        foreach (SpriteRenderer rangeCell in _rangeCells)
         {
-            _collider.enabled = true;
+            rangeCell.enabled = visible;
         }
-        else
-        {
-            _collider.enabled = visible;
-        }
-        foreach (GameObject rangeCell in _rangeCells)
-        {
-            rangeCell.SetActive(visible);
-        }
+        _isVisible = visible;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -125,7 +119,8 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     }
 
     // TODO: Change to snap to 90 degree increments
-    private void OnMouseDrag() {
+    private void OnMouseDrag()
+    {
         if (StateController.CurrentState.Equals(StateType.Playing))
         {
             ToastManager.s_Instance.AddToast("Cannot rotate towers during battle");
@@ -141,6 +136,35 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         float finalAngle = angle - _initialAngleOffset;
         
         transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
+        _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
+    }
+
+    private void OnMouseUp()
+    {
+        // Calculate which 90 degree offset is the closest
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 towerPos = transform.position;
+        Vector3 difference = mousePos - towerPos;
+
+        float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        float finalAngle = angle - _initialAngleOffset;
+
+        switch (finalAngle)
+        {
+            case <= 90 and > 0:
+                finalAngle = 45f;
+                break;
+            case <= 0 and > -90:
+                finalAngle = -45f;
+                break;
+            case <= 90 and > -180:
+                finalAngle = -135f;
+                break;
+            default:
+                finalAngle = -225f;
+                break;
+        }
+        
         _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
     }
 
@@ -173,24 +197,19 @@ public class RangeIndicator : MonoBehaviour, ISelectable
             Debug.LogError("Tower position not found in TowerRangeData");
         }
 
-        // Make sure they are positioned properly
         for (int i = 0; i < _towerRangeData.Width; i++)
         {
             for (int j = 0; j < _towerRangeData.Height; j++)
             {
                 if (_towerRangeData.GetCellState(i, j) == TowerCellState.InRange)
                 {
-                    Debug.Log("Cell");
-                    GameObject rangeCell = Instantiate(_rangeCellPrefab);
+                    SpriteRenderer rangeCell = Instantiate<SpriteRenderer>(_rangeCellPrefab) as SpriteRenderer;
                     rangeCell.transform.parent = transform;
                     rangeCell.transform.localPosition = (new Vector2(i, j) - towerPosition) * new Vector2(1, -1);
                     _rangeCells.Add(rangeCell);
                 }
             }
         }
-
-        // Stitch together CompositeCollider2D using these boxes
-
     }
 
     public List<Enemy> GetEnemiesInRange()

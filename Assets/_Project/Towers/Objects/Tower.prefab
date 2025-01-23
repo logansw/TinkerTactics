@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesInRange: []
   _towerHitbox: {fileID: 7235066314296405638}
-  _rangeCellPrefab: {fileID: 5458772916493745178, guid: 17c0eff7fc9d24b68834060fbba187bd, type: 3}
+  _rangeCellPrefab: {fileID: 1635851791680217309, guid: 17c0eff7fc9d24b68834060fbba187bd, type: 3}
 --- !u!50 &3019461107657056925
 Rigidbody2D:
   serializedVersion: 4
@@ -195,7 +195,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []

@@ -112,6 +112,34 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.93333334
       objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _width
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795992830389070162, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9092128278702182901, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -153,10 +181,6 @@ MonoBehaviour:
   Name: Bubblegum Cannon
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
-  Range:
-    baseValue: 4
-  Sweep:
-    baseValue: 90
   Active: 0
   ModifierProcessor: {fileID: 6413803663834024915}
   TinkerLimit: 3
