@@ -35,7 +35,30 @@ public class GameManager : Singleton<GameManager>
         MarketplaceManager.s_Instance.PopulateAvailableItems();
         MarketplaceManager.s_Instance.ShowShop(true);
         BattleManager.s_Instance.SetTimeScale(1f);
-        Player.s_Instance.SetEnergy(2);
+
+        int newTowerLimit;
+        switch (CurrentLevelIndex)
+        {
+            case 1:
+                newTowerLimit = 2;
+                break;
+            case 2:
+                newTowerLimit = 3;
+                break;
+            case 3:
+                newTowerLimit = 4;
+                break;
+            case 4:
+                newTowerLimit = 5;
+                break;
+            case 5:
+                newTowerLimit = 6;
+                break;
+            default:
+                newTowerLimit = 7;
+                break;
+        }
+        TowerManager.s_Instance.TowerDeployLimit = newTowerLimit;
     }
 
     public string GetLevelName()

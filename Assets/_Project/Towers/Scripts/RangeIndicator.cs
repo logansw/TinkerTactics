@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(CompositeCollider2D)), RequireComponent(typeof(TowerRangeData))]
+[RequireComponent(typeof(CompositeCollider2D))]
 public class RangeIndicator : MonoBehaviour, ISelectable
 {
 
@@ -14,7 +14,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private bool _updateQueued;
     // TODO: Don't need this anymore, because everything will adhere to grid?
     [SerializeField] private BoxCollider2D _towerHitbox;    // Tower hitbox needs to rotate with the range indicator and sprites
-    private TowerRangeData _towerRangeData;
+    [SerializeField] private TowerRangeData _towerRangeData;
     private CompositeCollider2D _collider;
     private List<SpriteRenderer> _rangeCells;
     [SerializeField] private SpriteRenderer _rangeCellPrefab;
@@ -24,7 +24,6 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     {
         _tower = tower;
         _collider = GetComponent<CompositeCollider2D>();
-        _towerRangeData = GetComponent<TowerRangeData>();
         EnemiesInRange = new List<Enemy>();
         _rangeCells = new List<SpriteRenderer>();
         

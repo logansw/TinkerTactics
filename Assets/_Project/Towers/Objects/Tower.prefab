@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 1444625710060306312}
   - component: {fileID: 3019461107657056925}
   - component: {fileID: 6508858841186837197}
-  - component: {fileID: 7795992830389070162}
   m_Layer: 0
   m_Name: RangeIndicator
   m_TagString: Untagged
@@ -134,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesInRange: []
   _towerHitbox: {fileID: 7235066314296405638}
+  _towerRangeData: {fileID: 9116827572181703640}
   _rangeCellPrefab: {fileID: 1635851791680217309, guid: 17c0eff7fc9d24b68834060fbba187bd, type: 3}
 --- !u!50 &3019461107657056925
 Rigidbody2D:
@@ -205,21 +205,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 2103296243423742983}
---- !u!114 &7795992830389070162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103296243423742983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad681f28912104cbdac7045cb0e8a3f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _width: 5
-  _height: 5
-  grid: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &2701050758988644789
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +259,7 @@ GameObject:
   - component: {fileID: -3645411596763830795}
   - component: {fileID: 7235066314296405638}
   - component: {fileID: 7565618157165025108}
+  - component: {fileID: 9116827572181703640}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -427,6 +413,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLifted: 0
+--- !u!114 &9116827572181703640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836732011536462592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad681f28912104cbdac7045cb0e8a3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 5
+  _height: 5
+  grid: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &3023870986089983541
 GameObject:
   m_ObjectHideFlags: 0

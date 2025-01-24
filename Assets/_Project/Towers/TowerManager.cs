@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TowerManager : Singleton<TowerManager>
 {
     public List<Tower> Towers;
+    public int TowerDeployLimit;
+    [SerializeField] private TMP_Text _towersDeployedText;
+
 
     public override void Initialize()
     {
@@ -16,6 +20,7 @@ public class TowerManager : Singleton<TowerManager>
     {
         Tower newTower = Instantiate(tower, position, Quaternion.identity);
         Towers.Add(newTower);
+        RenderTowerCount();
         return newTower;
     }
 
@@ -24,6 +29,7 @@ public class TowerManager : Singleton<TowerManager>
         Towers.Remove(tower);
         tower.TilePlot.RemoveTower(tower);
         tower.gameObject.SetActive(false);
+        RenderTowerCount();
     }
 
     public void ClearTowers()
@@ -37,15 +43,11 @@ public class TowerManager : Singleton<TowerManager>
             }
         }
         Towers.Clear();
+        RenderTowerCount();
     }
 
-    public int GetTotalEnergyCost()
+    public void RenderTowerCount()
     {
-        int total = 0;
-        foreach (Tower tower in Towers)
-        {
-            total += tower.EnergyCost;
-        }
-        return total;
+        _towersDeployedText.text = $"Towers Deployed: {Towers.Count}/{TowerDeployLimit}";
     }
 }

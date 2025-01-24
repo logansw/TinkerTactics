@@ -152,6 +152,38 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.35686275
       objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: _height
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116827572181703640, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: grid.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
     m_RemovedGameObjects: []

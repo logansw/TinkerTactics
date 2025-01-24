@@ -185,7 +185,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         TowerManager.s_Instance.RemoveTower(this);
         DeckManager.s_Instance.RestoreCard(ParentCard);
-        Player.s_Instance.RenderEnergyText();
     }
 
     public IEnumerator AnimateBasicAttack(float animationDuration)

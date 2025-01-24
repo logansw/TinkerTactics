@@ -22,9 +22,9 @@ public class DeployTower : CardEffect
     public override bool CanPrepare()
     {
         bool result = !StateController.CurrentState.Equals(StateType.Playing) && base.CanPrepare();
-        if (TowerManager.s_Instance.GetTotalEnergyCost() + _parentCard.EnergyCost > Player.s_Instance.Energy)
+        if (TowerManager.s_Instance.Towers.Count == TowerManager.s_Instance.TowerDeployLimit)
         {
-            ToastManager.s_Instance.AddToast("Not enough energy to deploy tower.");
+            ToastManager.s_Instance.AddToast("Tower limit reached.");
             return false;
         }
         if (StateController.CurrentState.Equals(StateType.Playing))
@@ -64,7 +64,7 @@ public class DeployTower : CardEffect
             TowerManager.s_Instance.Towers.Add(_towerInstance);
         }
         _towerInstance.Initialize();
-        Player.s_Instance.RenderEnergyText();
+        TowerManager.s_Instance.RenderTowerCount();
     }
 
     public override void OnDrawn()
