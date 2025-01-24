@@ -13,6 +13,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1504792322831159299, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: m_Color.a
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504792322831159299, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Color.b
       value: 0.55092734
       objectReference: {fileID: 0}
@@ -45,6 +49,10 @@ PrefabInstance:
       value: "\U0001F916"
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: _color.a
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _color.b
       value: 0.55092734
       objectReference: {fileID: 0}
@@ -54,6 +62,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605736536670663823, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: _color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791368175466913447, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: m_Color.b
+      value: 0.54901963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791368175466913447, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: m_Color.g
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791368175466913447, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4904130481620134457, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
@@ -110,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259172787460783383, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7763406961363270800, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
       propertyPath: m_Name
@@ -160,7 +180,6 @@ MonoBehaviour:
   DistanceTraveled: 0
   EffectTracker: {fileID: 0}
   IsSpawned: 0
-  _collider: {fileID: 4912470934267653942}
   EndReached: 0
 --- !u!50 &-7493120411934559269
 Rigidbody2D:
@@ -381,8 +400,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &4912470934267653942 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2718904459053297639, guid: ae4ee1fec89af4af294271fb075d4987, type: 3}
-  m_PrefabInstance: {fileID: 7032343857327800529}
-  m_PrefabAsset: {fileID: 0}

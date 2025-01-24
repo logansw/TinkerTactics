@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemySO EnemySO;
     public Health Health;
-    private Healthbar _healthbar;
+    private IHealthIndicator _healthindicator;
     public float MovementSpeed { get; set; }
     [HideInInspector] public int BaseMovementSpeed { get; private set; }
     [HideInInspector] public float Armor;
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyAction(Enemy enemy);
     public EnemyAction e_OnEnemyDeath;
     public EnemyAction e_OnEnemyBreak;
-    [SerializeField] protected Collider2D _collider;
+    protected Collider2D _collider;
     public bool EndReached;
     private Vector3 _lastPosition;
     private InternalClock _internalClock;
@@ -30,12 +30,13 @@ public class Enemy : MonoBehaviour
     {
         float maxHealth = EnemySO.MaxHealth;
         int breakpointCount = EnemySO.SegmentCount;
+        _collider = GetComponent<Collider2D>();
         Health = new Health(EnemySO.MaxHealth);
         BaseMovementSpeed = EnemySO.MovementSpeed;
         MovementSpeed = BaseMovementSpeed;
         Armor = EnemySO.Armor;
-        _healthbar = GetComponentInChildren<Healthbar>();
-        _healthbar.Initialize(Health);
+        _healthindicator = GetComponentInChildren<IHealthIndicator>();
+        _healthindicator.Initialize(Health);
         EffectTracker = GetComponent<EffectTracker>();
     }
 
