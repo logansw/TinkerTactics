@@ -21,7 +21,6 @@ public class LaserPointerTower : Tower
     private void OnTowerAction(BasicAttackEvent e)
     {
         if (e.Tower != this) { return; }
-        Debug.Log($"Adding Pierce to {e.Projectile.name}");
         e.Projectile.ProjectileEffectTracker.AddEffect<PierceProjectileEffect>(Pierce);
     }
 }

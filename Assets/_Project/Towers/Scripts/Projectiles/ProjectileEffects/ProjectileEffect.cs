@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ProjectileEffect : MonoBehaviour
 {
     public int Stacks { get; set; }
-    public Projectile ParentProjectile;
+    public ProjectileBase ParentProjectile;
     /// <summary>
     /// 
     /// </summary>

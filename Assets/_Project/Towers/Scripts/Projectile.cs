@@ -27,7 +27,7 @@ public abstract class Projectile : MonoBehaviour
         SourceTower = source;
         _collider = GetComponent<Collider2D>();
         ProjectileEffectTracker = projectileEffectTracker;
-        ProjectileEffectTracker.ParentProjectile = this;
+        // ProjectileEffectTracker.ParentProjectile = this;
     }
 
     public virtual void Launch(Enemy target)
@@ -95,9 +95,9 @@ public abstract class Projectile : MonoBehaviour
     /// </remarks>
     public virtual void OnImpact(Enemy recipient)
     {
-        EventBus.RaiseEvent<PreEnemyImpactEvent>(new PreEnemyImpactEvent(recipient, this));
-        recipient.ReceiveDamage(Damage, this, SourceTower);
-        EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(recipient, this));
+        // EventBus.RaiseEvent<PreEnemyImpactEvent>(new PreEnemyImpactEvent(recipient, this));
+        // recipient.ReceiveDamage(Damage, this, SourceTower);
+        // EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(recipient, this));
         if (ProjectileEffectTracker.HasEffect<PierceProjectileEffect>(out PierceProjectileEffect pierceProjectileEffect))
         {
             if (pierceProjectileEffect.Stacks < 0)

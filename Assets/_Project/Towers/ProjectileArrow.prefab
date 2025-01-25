@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 471046110844507169}
   - component: {fileID: 4595026877543231167}
-  - component: {fileID: 4193782691126074514}
   - component: {fileID: 9077380257712852257}
   m_Layer: 0
   m_Name: ProjectileArrow
@@ -86,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4193782691126074514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2803087172549512459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3494552821394c8e85071e0c5d12d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SourceTower: {fileID: 0}
-  Damage: 0
-  ProjectileSpeed: 0
-  _renderer: {fileID: 4595026877543231167}
 --- !u!58 &9077380257712852257
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -217,4 +217,4 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 0}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
-  Pierce: 3
+  Pierce: 2

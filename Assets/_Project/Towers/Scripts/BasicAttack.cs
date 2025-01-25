@@ -14,7 +14,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     public StatReloadSpeed ReloadSpeed;
     public StatAmmo MaxAmmo;
     public StatInt CurrentAmmo;
-    [SerializeField] private Projectile _projectilePrefab;
+    [SerializeField] private GameObject _projectilePrefab;
     protected bool _canAttack;
     public string TooltipText;
     public float ProjectileSpeed;
@@ -35,14 +35,15 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     {
         OnActionStart();
         Enemy target = Tower.RangeIndicator.GetEnemiesInRange()[0];
-        Projectile projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity).gameObject;
         ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
-        projectile.Initialize(Damage.Current, ProjectileSpeed, Tower, projectileEffectTracker);
-        projectile.Launch(target);
+        ProjectileBallistic projectileBallistic = projectile.AddComponent<ProjectileBallistic>();
+        projectileBallistic.Initialize(Tower, projectileEffectTracker, Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
+        
         AttackClock.Reset();
         CurrentAmmo.Current -= 1;
         _canAttack = false;
-        EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectile, Tower, target));
+        EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectileBallistic, Tower, target));
     }
 
     public void OnActionStart()

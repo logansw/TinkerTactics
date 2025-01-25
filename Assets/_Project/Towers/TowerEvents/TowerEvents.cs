@@ -25,9 +25,9 @@ public class TinkerEquippedEvent : ITowerEvent
 public class PreEnemyImpactEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
-    public Projectile Projectile { get; private set; }
+    public ProjectileBase Projectile { get; private set; }
 
-    public PreEnemyImpactEvent(Enemy enemy, Projectile projectile)
+    public PreEnemyImpactEvent(Enemy enemy, ProjectileBase projectile)
     {
         Enemy = enemy;
         Projectile = projectile;
@@ -44,9 +44,9 @@ public class PreEnemyImpactEvent : ITowerEvent
 public class EnemyDamagedEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
-    public Projectile Projectile { get; private set; }
+    public ProjectileBase Projectile { get; private set; }
 
-    public EnemyDamagedEvent(Enemy enemy, Projectile projectile = null)
+    public EnemyDamagedEvent(Enemy enemy, ProjectileBase projectile = null)
     {
         Enemy = enemy;
         Projectile = projectile;
@@ -74,9 +74,9 @@ public class EnemyDeathEvent : ITowerEvent
 public class PostEnemyImpactEvent : ITowerEvent
 {
     public Enemy Enemy { get; private set; }
-    public Projectile Projectile { get; private set; }
+    public ProjectileBase Projectile { get; private set; }
 
-    public PostEnemyImpactEvent(Enemy enemy, Projectile projectile)
+    public PostEnemyImpactEvent(Enemy enemy, ProjectileBase projectile)
     {
         Enemy = enemy;
         Projectile = projectile;
@@ -114,11 +114,11 @@ public class TowerPositionEvent : ITowerEvent
 /// </summary>
 public class BasicAttackEvent : ITowerEvent
 {
-    public Projectile Projectile;
+    public ProjectileBase Projectile;
     public Tower Tower;
     public Enemy Target;
 
-    public BasicAttackEvent(Projectile projectile, Tower tower, Enemy target)
+    public BasicAttackEvent(ProjectileBase projectile, Tower tower, Enemy target)
     {
         Projectile = projectile;
         Tower = tower;

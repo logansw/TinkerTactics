@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileEffectTracker : MonoBehaviour
 {
-    public Projectile ParentProjectile;
+    public ProjectileBase ParentProjectile;
     private List<ProjectileEffect> _effectsApplied;
     public List<ProjectileEffect> EffectsApplied
     {

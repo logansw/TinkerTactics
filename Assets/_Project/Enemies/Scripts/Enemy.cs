@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     /// <param name="projectile">The projectile which dealt the damage, or null if none.</param>
     /// <param name="resonsibleTower">The Tower which should be credited with the damage, or null if none.</param>
     /// <remarks>Use ReceiveProjectile() for damage dealt by projectiles instead.</remarks>
-    public virtual void ReceiveDamage(float damage, Projectile projectile = null, Tower responsibleTower = null)
+    public virtual void ReceiveDamage(float damage, ProjectileBase projectile = null, Tower responsibleTower = null)
     {
         if (EffectTracker.HasEffect<EffectInvincible>(out EffectInvincible effectInvincible))
         {
