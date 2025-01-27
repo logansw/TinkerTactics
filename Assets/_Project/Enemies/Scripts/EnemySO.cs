@@ -10,4 +10,6 @@ public class EnemySO : ScriptableObject
     public int MovementSpeed;
     public float Armor;
     public int Damage;
+    public int Gold;
+    public int Bits;
 }

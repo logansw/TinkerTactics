@@ -17,3 +17,5 @@ MonoBehaviour:
   MovementSpeed: 10
   Armor: 0
   Damage: 1
+  Gold: 12
+  Bits: 36

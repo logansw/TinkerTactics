@@ -84,6 +84,8 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 1f);
         Render(false);
         Health.e_OnHealthDepleted -= OnDeath;
+        Player.s_Instance.Gold += EnemySO.Gold;
+        Player.s_Instance.Bits += EnemySO.Bits + UnityEngine.Random.Range(0, 3);
     }
 
     public virtual void OnBreak()
