@@ -8,10 +8,10 @@ public class SelectionManager : Singleton<SelectionManager>
     private bool _isSelecting;
     public bool IsSelecting
     {
-        get { return _currentSelectable != null; }
+        get { return CurrentSelectable != null; }
         set { _isSelecting = value;}
     }
-    private ISelectable _currentSelectable;
+    public ISelectable CurrentSelectable { get; private set; }
 
     void Update()
     {
@@ -44,16 +44,16 @@ public class SelectionManager : Singleton<SelectionManager>
 
     private void DeselectCurrentSelectable()
     {
-        if (_currentSelectable != null)
+        if (CurrentSelectable != null)
         {
-            _currentSelectable.OnDeselect();
-            _currentSelectable = null;
+            CurrentSelectable.OnDeselect();
+            CurrentSelectable = null;
         }
     }
 
     private void SelectNew(ISelectable newSelectable)
     {
         newSelectable.OnSelect();
-        _currentSelectable = newSelectable;
+        CurrentSelectable = newSelectable;
     }
 }

@@ -48,12 +48,60 @@ public class RangeIndicator : MonoBehaviour, ISelectable
             DrawRangeIndicator();
             _updateQueued = false;
         }
+        // Dragging
+        if (Input.GetMouseButton(0) && (object)SelectionManager.s_Instance.CurrentSelectable == this)
+        {
+            Drag();
+        }
+        // OnMouseUp
+        if (Input.GetMouseButtonUp(0) && (object)SelectionManager.s_Instance.CurrentSelectable == this)
+        {
+            // Calculate which 90 degree offset is the closest
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 towerPos = transform.position;
+            Vector3 difference = mousePos - towerPos;
+
+            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            float finalAngle = angle - _initialAngleOffset;
+
+            switch (finalAngle)
+            {
+                case <= 90 and > 0:
+                    finalAngle = 45f;
+                    break;
+                case <= 0 and > -90:
+                    finalAngle = -45f;
+                    break;
+                case <= 90 and > -180:
+                    finalAngle = -135f;
+                    break;
+                default:
+                    finalAngle = -225f;
+                    break;
+            }
+            
+            _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
+            transform.localRotation = Quaternion.AngleAxis(0, Vector3.forward);
+        }
     }
 
     public void OnSelect()
     {
         SetVisible(true);
         TooltipManager.s_Instance.DisplayTooltip(_tower.GetTooltipText());
+
+        if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
+
+        // Calculate and store the initial angle offset when the mouse is first clicked
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 towerPos = transform.position;
+        Vector3 difference = mousePos - towerPos;
+
+        float initialAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        float currentAngle = transform.eulerAngles.z;
+        
+        _initialAngleOffset = Mathf.DeltaAngle(currentAngle, initialAngle);
+        _isDragging = true;
     }
 
     public void OnDeselect()
@@ -101,24 +149,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         EnemiesInRange.Remove(enemy);
     }
 
-    private void OnMouseDown()
-    {
-        if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
-
-        // Calculate and store the initial angle offset when the mouse is first clicked
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 towerPos = transform.position;
-        Vector3 difference = mousePos - towerPos;
-
-        float initialAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        float currentAngle = transform.eulerAngles.z;
-        
-        _initialAngleOffset = Mathf.DeltaAngle(currentAngle, initialAngle);
-        _isDragging = true;
-    }
-
-    // TODO: Change to snap to 90 degree increments
-    private void OnMouseDrag()
+    private void Drag()
     {
         if (StateController.CurrentState.Equals(StateType.Playing))
         {
@@ -135,35 +166,6 @@ public class RangeIndicator : MonoBehaviour, ISelectable
         float finalAngle = angle - _initialAngleOffset;
         
         transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
-        _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
-    }
-
-    private void OnMouseUp()
-    {
-        // Calculate which 90 degree offset is the closest
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 towerPos = transform.position;
-        Vector3 difference = mousePos - towerPos;
-
-        float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        float finalAngle = angle - _initialAngleOffset;
-
-        switch (finalAngle)
-        {
-            case <= 90 and > 0:
-                finalAngle = 45f;
-                break;
-            case <= 0 and > -90:
-                finalAngle = -45f;
-                break;
-            case <= 90 and > -180:
-                finalAngle = -135f;
-                break;
-            default:
-                finalAngle = -225f;
-                break;
-        }
-        
         _towerHitbox.transform.rotation = Quaternion.AngleAxis(finalAngle, Vector3.forward);
     }
 
