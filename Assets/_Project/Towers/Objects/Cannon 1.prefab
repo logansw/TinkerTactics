@@ -188,6 +188,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3118270703261898787}
+    - targetCorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6028414341881901274}
   m_SourcePrefab: {fileID: 100100000, guid: dd463920a436843c0bf00692e57020d6, type: 3}
 --- !u!1 &1558868800322616768 stripped
 GameObject:
@@ -213,7 +216,34 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 6413803663834024915}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
+  _towerAbility: {fileID: 6028414341881901274}
+  AbilityCooldown: 5
+  Damage:
+    baseValue: 5
+  AttackSpeed:
+    baseValue: 1
+  ReloadSpeed:
+    baseValue: 0.5
+  MaxAmmo:
+    baseValue: 5
+  CurrentAmmo:
+    baseValue: 5
   ExplosionRadius: 2
+--- !u!114 &6028414341881901274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558868800322616768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdc433fe412a4d1d9697a02856d4099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileSpeed: 7
+  _cannon: {fileID: 3118270703261898787}
+  _projectilePrefab: {fileID: 2803087172549512459, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
 --- !u!114 &6413803663834024915 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7781734332646425875, guid: dd463920a436843c0bf00692e57020d6, type: 3}

@@ -6,26 +6,20 @@ public class BasicAttack : MonoBehaviour, ITowerAction
 {
     [HideInInspector] public Tower Tower;
     public string Name;
-    public StatDamage Damage;
     public InternalClock AttackClock;
     public InternalClock ReloadClock;
-    public StatAttackSpeed AttackSpeed;
-    public StatReloadSpeed ReloadSpeed;
-    public StatAmmo MaxAmmo;
-    public StatInt CurrentAmmo;
     [SerializeField] private GameObject _projectilePrefab;
     protected bool _canAttack;
     public string TooltipText;
     public float ProjectileSpeed;
     protected ModifierProcessor _modifierProcessor;
-    public List<string> Tags { get; }
 
     public void Initialize(Tower tower)
     {
         Tower = tower;
         _modifierProcessor = tower.ModifierProcessor;
-        AttackClock = new InternalClock(1f / AttackSpeed.Current, gameObject);
-        ReloadClock = new InternalClock(1f / ReloadSpeed.Current, gameObject);
+        AttackClock = new InternalClock(1f / Tower.AttackSpeed.Current, gameObject);
+        ReloadClock = new InternalClock(1f / Tower.ReloadSpeed.Current, gameObject);
         AttackClock.e_OnTimerDone += SetCanAttack;
         ReloadClock.e_OnTimerDone += ReloadAmmo;
     }
@@ -37,10 +31,10 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         GameObject projectile = Instantiate(_projectilePrefab, Tower.transform.position, Quaternion.identity).gameObject;
         ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
         ProjectileBallistic projectileBallistic = projectile.AddComponent<ProjectileBallistic>();
-        projectileBallistic.Initialize(Tower, projectileEffectTracker, Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
+        projectileBallistic.Initialize(Tower, projectileEffectTracker, Tower.Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
         
         AttackClock.Reset();
-        CurrentAmmo.Current -= 1;
+        Tower.CurrentAmmo.Current -= 1;
         _canAttack = false;
         EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectileBallistic, Tower, target));
     }
@@ -62,7 +56,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
 
     public bool CanActivate()
     {
-        return _canAttack && CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange();
+        return _canAttack && Tower.CurrentAmmo.Current > 0 && Tower.RangeIndicator.HasEnemyInRange();
     }
 
     private void SetCanAttack()
@@ -72,18 +66,18 @@ public class BasicAttack : MonoBehaviour, ITowerAction
 
     private void ReloadAmmo()
     {
-        if (CurrentAmmo.Current < MaxAmmo.Current)
+        if (Tower.CurrentAmmo.Current < Tower.MaxAmmo.Current)
         {
-            CurrentAmmo.Base = MaxAmmo.Current;
-            CurrentAmmo.Current += 1;
+            Tower.CurrentAmmo.Base = Tower.MaxAmmo.Current;
+            Tower.CurrentAmmo.Current += 1;
             ReloadClock.Reset();
         }
     }
 
     public void SetClocks()
     {
-        AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
-        ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
+        AttackClock.SetTimeToWait(1f / Tower.AttackSpeed.Current);
+        ReloadClock.SetTimeToWait(1f / Tower.ReloadSpeed.Current);
     }
 
     /// <summary>
@@ -92,6 +86,6 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     /// <param name="amount"></param>
     public void ChangeCurrentAmmo(int amount)
     {
-        CurrentAmmo.Current = Mathf.Clamp(CurrentAmmo.Current + amount, 0, MaxAmmo.Current);
+        Tower.CurrentAmmo.Current = Mathf.Clamp(Tower.CurrentAmmo.Current + amount, 0, Tower.MaxAmmo.Current);
     }
 }

@@ -11,11 +11,16 @@ public class InternalClock
     private float _timeElapsed;
     private float _timeToWait;
 
-    public InternalClock(float timeToWait, GameObject gameObject)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="timeToWait">Time until clock is complete</param>
+    /// <param name="parent">The parent game object that created clock</param>
+    public InternalClock(float timeToWait, GameObject parent)
     {
         _timeToWait = timeToWait;
         ClockManager.s_Instance.AddClock(this);
-        Parent = gameObject;
+        Parent = parent;
     }
 
     public void Reset()

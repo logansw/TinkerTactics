@@ -37,16 +37,23 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public Card ParentCard;
     public int EnergyCost => ParentCard.EnergyCost;
     private Transform _spriteTransform;
+    [SerializeField] protected TowerAbility _towerAbility;
+    public float AbilityCooldown;
+    public StatDamage Damage;
+    public StatAttackSpeed AttackSpeed;
+    public StatReloadSpeed ReloadSpeed;
+    public StatAmmo MaxAmmo;
+    public StatInt CurrentAmmo;
 
     public virtual string GetTooltipText()
     {
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine(Name);
-        sb.AppendLine($"Damage: {BasicAttack.Damage.Current}");
-        sb.AppendLine($"Ammo: {BasicAttack.CurrentAmmo.Current}/{BasicAttack.MaxAmmo.Current}");
-        sb.AppendLine($"Attack Speed: {BasicAttack.AttackSpeed.Current}");
-        sb.AppendLine($"Reload Speed: {BasicAttack.ReloadSpeed.Current}");
+        sb.AppendLine($"Damage: {Damage.Current}");
+        sb.AppendLine($"Ammo: {CurrentAmmo.Current}/{MaxAmmo.Current}");
+        sb.AppendLine($"Attack Speed: {AttackSpeed.Current}");
+        sb.AppendLine($"Reload Speed: {ReloadSpeed.Current}");
         sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
 
         return sb.ToString();
@@ -59,7 +66,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
         _ammoBar = GetComponentInChildren<BarUI>();
-        _ammoBar.RegisterStat(BasicAttack.CurrentAmmo);
+        _ammoBar.RegisterStat(CurrentAmmo);
         _liftable = GetComponent<Liftable>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
         _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");
@@ -69,6 +76,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         AssignTowerToTilePlot();
         SelectionManager.s_Instance.ForceNewSelectable(this);
+        _towerAbility.Initialize(this);
     }
 
     protected virtual void Update()
@@ -82,11 +90,15 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
             BasicAttack.Execute();
             StartCoroutine(AnimateBasicAttack(0.2f));
         }
+        if (_towerAbility.CanActivate())
+        {
+            _towerAbility.Execute();
+        }
     }
 
     protected virtual void OnEnable()
     {
-        IdleState.e_OnIdleStateEnter += () => { BasicAttack.CurrentAmmo.Reset(); };
+        IdleState.e_OnIdleStateEnter += () => { CurrentAmmo.Reset(); };
         IdleState.e_OnIdleStateEnter += Recall;
     }
 
