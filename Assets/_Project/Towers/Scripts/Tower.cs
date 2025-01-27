@@ -68,6 +68,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public void Initialize()
     {
         AssignTowerToTilePlot();
+        SelectionManager.s_Instance.ForceNewSelectable(this);
     }
 
     protected virtual void Update()

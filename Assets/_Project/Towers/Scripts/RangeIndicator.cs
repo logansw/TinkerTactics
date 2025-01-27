@@ -207,6 +207,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
                     SpriteRenderer rangeCell = Instantiate<SpriteRenderer>(_rangeCellPrefab) as SpriteRenderer;
                     rangeCell.transform.parent = transform;
                     rangeCell.transform.localPosition = (new Vector2(i, j) - towerPosition) * new Vector2(1, -1);
+                    rangeCell.transform.localRotation = Quaternion.identity;
                     _rangeCells.Add(rangeCell);
                 }
             }

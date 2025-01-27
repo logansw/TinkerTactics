@@ -56,4 +56,10 @@ public class SelectionManager : Singleton<SelectionManager>
         newSelectable.OnSelect();
         CurrentSelectable = newSelectable;
     }
+
+    public void ForceNewSelectable(ISelectable newSelectable)
+    {
+        DeselectCurrentSelectable();
+        SelectNew(newSelectable);
+    }
 }
