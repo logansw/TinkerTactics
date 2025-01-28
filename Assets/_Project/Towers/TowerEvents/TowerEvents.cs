@@ -110,7 +110,7 @@ public class TowerPositionEvent : ITowerEvent
 }
 
 /// <summary>
-/// Called when a Tower uses its basic attack or ability
+/// Called when a Tower uses its basic attack
 /// </summary>
 public class BasicAttackEvent : ITowerEvent
 {
@@ -123,5 +123,15 @@ public class BasicAttackEvent : ITowerEvent
         Projectile = projectile;
         Tower = tower;
         Target = target;
+    }
+}
+
+public class AbilityEvent : ITowerEvent
+{
+    public Tower Tower;
+
+    public AbilityEvent(Tower tower)
+    {
+        Tower = tower;
     }
 }

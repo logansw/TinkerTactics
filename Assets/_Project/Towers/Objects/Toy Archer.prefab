@@ -228,8 +228,50 @@ PrefabInstance:
       propertyPath: grid.Array.data[7]
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1485781680883843554}
   m_SourcePrefab: {fileID: 100100000, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+--- !u!1 &8468762565780258868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+  m_PrefabInstance: {fileID: 5969818256811848500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1485781680883843554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8468762565780258868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9072abe19d7324f35a38555d9515a1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Toy Archer
+  RangeIndicator: {fileID: 0}
+  BasicAttack: {fileID: 0}
+  Active: 0
+  ModifierProcessor: {fileID: 0}
+  TinkerLimit: 3
+  ParentCard: {fileID: 0}
+  Damage:
+    baseValue: 2
+  AttackSpeed:
+    baseValue: 2
+  ReloadSpeed:
+    baseValue: 1
+  MaxAmmo:
+    baseValue: 10
+  CurrentAmmo:
+    baseValue: 10
+  AttackSpeedMultiplier: 3
+  _projectilePrefab: {fileID: 2803087172549512459, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
+  ProjectileSpeed: 0
+  AbilityCooldown: 0

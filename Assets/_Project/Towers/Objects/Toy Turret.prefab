@@ -128,6 +128,26 @@ PrefabInstance:
       propertyPath: Sweep.baseValue
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: Damage.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: MaxAmmo.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: AttackSpeed.baseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: CurrentAmmo.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998741239361741625, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      propertyPath: ReloadSpeed.baseValue
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6870375024268909030, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       propertyPath: m_Color.b
       value: 0.75686276

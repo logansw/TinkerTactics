@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 /// <summary>
@@ -37,8 +38,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public Card ParentCard;
     public int EnergyCost => ParentCard.EnergyCost;
     private Transform _spriteTransform;
-    [SerializeField] protected TowerAbility _towerAbility;
-    public float AbilityCooldown;
     public StatDamage Damage;
     public StatAttackSpeed AttackSpeed;
     public StatReloadSpeed ReloadSpeed;
@@ -76,7 +75,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         AssignTowerToTilePlot();
         SelectionManager.s_Instance.ForceNewSelectable(this);
-        _towerAbility.Initialize(this);
     }
 
     protected virtual void Update()
@@ -89,10 +87,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         {
             BasicAttack.Execute();
             StartCoroutine(AnimateBasicAttack(0.2f));
-        }
-        if (_towerAbility.CanActivate())
-        {
-            _towerAbility.Execute();
         }
     }
 

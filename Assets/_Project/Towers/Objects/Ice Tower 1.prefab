@@ -177,3 +177,13 @@ MonoBehaviour:
   ModifierProcessor: {fileID: 0}
   TinkerLimit: 3
   ParentCard: {fileID: 0}
+  Damage:
+    baseValue: 5
+  AttackSpeed:
+    baseValue: 1
+  ReloadSpeed:
+    baseValue: 0.5
+  MaxAmmo:
+    baseValue: 5
+  CurrentAmmo:
+    baseValue: 5

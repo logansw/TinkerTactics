@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Tower
       value: 
-      objectReference: {fileID: 1695067319390818317, guid: d1ac243b990044208982afd776684a19, type: 3}
+      objectReference: {fileID: -1485781680883843554, guid: d1ac243b990044208982afd776684a19, type: 3}
     - target: {fileID: -4705125130567479054, guid: 33bf26d02ef4b4a77bb1dd657c93cc4e, type: 3}
       propertyPath: Consume
       value: 1
