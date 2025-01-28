@@ -19,6 +19,8 @@ public class BarUI : MonoBehaviour
     private Transform _fillWorld;
     [SerializeField] private GameObject _breakpointPrefab;
     private List<GameObject> _breakpoints;
+    private InternalClock _internalClock;
+    public bool Locked { get; set; }
 
     void Awake()
     {
@@ -41,11 +43,24 @@ public class BarUI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (!Locked && _internalClock != null)
+        {
+            UpdateBar();
+        }
+    }
+
     public void RegisterStat(StatInt stat)
     {
         _stat = stat;
         _stat.e_OnStatChanged += UpdateBar;
         StartCoroutine(DelayedInitialize());
+    }
+
+    public void RegisterClock(InternalClock internalClock)
+    {
+        _internalClock = internalClock;
     }
 
     private IEnumerator DelayedInitialize()
@@ -57,20 +72,43 @@ public class BarUI : MonoBehaviour
 
     private void UpdateBar()
     {
-        float statPercentage = (float)_stat.Current / _stat.Base;
-        if (ShowText)
+        if (Locked) { return; }
+
+        if (_internalClock == null)
         {
-            _statText.text = $"{_stat.Current}/{_stat.Base}";
-        }
-        if (IsScreenSpace)
-        {
-            _fillScreen.sizeDelta = new Vector2(_backgroundScreen.rect.width * statPercentage, _fillScreen.sizeDelta.y);
+            float statPercentage = (float)_stat.Current / _stat.Base;
+            if (ShowText)
+            {
+                _statText.text = $"{_stat.Current}/{_stat.Base}";
+            }
+            if (IsScreenSpace)
+            {
+                _fillScreen.sizeDelta = new Vector2(_backgroundScreen.rect.width * statPercentage, _fillScreen.sizeDelta.y);
+            }
+            else
+            {
+                if (_fillWorld == null) { return; }
+                _fillWorld.localScale = new Vector3(statPercentage, 1, 1);
+            }
         }
         else
         {
-            if (_fillWorld == null) { return; }
-            _fillWorld.localScale = new Vector3(statPercentage, 1, 1);
+            float statPercentage = _internalClock.TimeElapsed / _internalClock.TimeToWait;
+            if (ShowText)
+            {
+                _statText.text = $"{_stat.Current}/{_stat.Base}";
+            }
+            if (IsScreenSpace)
+            {
+                _fillScreen.sizeDelta = new Vector2(_backgroundScreen.rect.width * statPercentage, _fillScreen.sizeDelta.y);
+            }
+            else
+            {
+                if (_fillWorld == null) { return; }
+                _fillWorld.localScale = new Vector3(statPercentage, 1, 1);
+            }
         }
+        
     }
 
     public void UpdateBar(int current, int max)
@@ -119,6 +157,23 @@ public class BarUI : MonoBehaviour
                 breakpoint.transform.localPosition = new Vector3(xPosition, 0, 0);
                 _breakpoints.Add(breakpoint);
             }
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="fill">Value between 0.0 and 1.0</param>
+    public void SetFill(float fill)
+    {
+        if (IsScreenSpace)
+        {
+            _fillScreen.sizeDelta = new Vector2(_backgroundScreen.rect.width * fill, _fillScreen.sizeDelta.y);
+        }
+        else
+        {
+            if (_fillWorld == null) { return; }
+            _fillWorld.localScale = new Vector3(fill, 1, 1);
         }
     }
 }

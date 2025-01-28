@@ -32,6 +32,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     [HideInInspector] public BasicAttack BasicAttack;
     public bool Active;
     private BarUI _ammoBar;
+    protected BarUI _abilityBar;
     [HideInInspector] public ModifierProcessor ModifierProcessor;
     public int TinkerLimit;
     private Liftable _liftable;
@@ -64,8 +65,9 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         BasicAttack.Initialize(this);
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
-        _ammoBar = GetComponentInChildren<BarUI>();
+        _ammoBar = transform.Find("AmmoBar").GetComponent<BarUI>();
         _ammoBar.RegisterStat(CurrentAmmo);
+        _abilityBar = transform.Find("AbilityBar").GetComponent<BarUI>();
         _liftable = GetComponent<Liftable>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
         _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");

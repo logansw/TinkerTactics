@@ -25,6 +25,7 @@ public class Cannon : Tower
         EventBus.Subscribe<BasicAttackEvent>(OnTowerAction);
         _abilityClock = new InternalClock(AbilityCooldown, gameObject);
         _abilityClock.e_OnTimerDone += SetAbilityReady;
+        _abilityBar.RegisterClock(_abilityClock);
     }
 
     protected override void OnDisable()
@@ -49,11 +50,17 @@ public class Cannon : Tower
         projectileBallistic.Initialize(this, projectileEffectTracker, Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
         projectileEffectTracker.AddEffect<BlastProjectileEffect>(ExplosionRadius * 2);
         
+        _abilityClock.Paused = false;
         _abilityReady = false;
+        _abilityBar.Locked = false;
+        _abilityClock.Reset();
     }
 
     private void SetAbilityReady()
     {
+        _abilityBar.SetFill(1f);
+        _abilityBar.Locked = true;
+        _abilityClock.Paused = true;
         _abilityReady = true;
     }
 }

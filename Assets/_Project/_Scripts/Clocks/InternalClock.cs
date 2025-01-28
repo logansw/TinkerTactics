@@ -8,8 +8,9 @@ public class InternalClock
 {
     public GameObject Parent;
     public Action e_OnTimerDone;
-    private float _timeElapsed;
-    private float _timeToWait;
+    public float TimeElapsed { get; private set; }
+    public float TimeToWait { get; private set; }
+    public bool Paused { get; set; }
 
     /// <summary>
     /// 
@@ -18,35 +19,37 @@ public class InternalClock
     /// <param name="parent">The parent game object that created clock</param>
     public InternalClock(float timeToWait, GameObject parent)
     {
-        _timeToWait = timeToWait;
+        TimeToWait = timeToWait;
         ClockManager.s_Instance.AddClock(this);
         Parent = parent;
     }
 
     public void Reset()
     {
-        _timeElapsed = 0;
+        TimeElapsed = 0;
     }
 
     // Update is called once per frame
     public void Tick()
     {
-        _timeElapsed += Time.deltaTime;
-        if (_timeElapsed >= _timeToWait)
+        if (Paused) { return; }
+        
+        TimeElapsed += Time.deltaTime;
+        if (TimeElapsed >= TimeToWait)
         {
-            _timeElapsed = 0;
+            TimeElapsed = 0;
             e_OnTimerDone?.Invoke();
         }
     }
 
     public void SetTimeToWait(float timeToWait)
     {
-        _timeToWait = timeToWait;
+        TimeToWait = timeToWait;
     }
 
     public void IncreaseTime(float additionalTime)
     {
-        _timeToWait += additionalTime;
+        TimeToWait += additionalTime;
     }
 
     public void Delete()

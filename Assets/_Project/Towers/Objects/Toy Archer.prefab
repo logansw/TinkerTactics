@@ -273,5 +273,5 @@ MonoBehaviour:
     baseValue: 10
   AttackSpeedMultiplier: 3
   _projectilePrefab: {fileID: 2803087172549512459, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
-  ProjectileSpeed: 0
-  AbilityCooldown: 0
+  ProjectileSpeed: 10
+  AbilityCooldown: 10
