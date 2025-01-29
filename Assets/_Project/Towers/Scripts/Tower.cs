@@ -73,7 +73,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");
     }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         AssignTowerToTilePlot();
         SelectionManager.s_Instance.ForceNewSelectable(this);

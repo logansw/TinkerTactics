@@ -11,8 +11,12 @@ public class Archer : Tower
     private InternalClock _abilityClock;
     public float AbilityCooldown;
     private bool _abilityReady;
-    private bool _overclocked;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        SetAbilityReady();
+    }
 
     protected override void Update()
     {
@@ -28,6 +32,7 @@ public class Archer : Tower
         base.OnEnable();
         _abilityClock = new InternalClock(AbilityCooldown, gameObject);
         _abilityClock.e_OnTimerDone += SetAbilityReady;
+        _abilityBar.RegisterClock(_abilityClock);
     }
 
     protected override void OnDisable()
@@ -39,6 +44,8 @@ public class Archer : Tower
     public IEnumerator ExecuteAbility()
     {
         _abilityReady = false;
+        _abilityBar.SetFill(0f);
+        _abilityClock.Reset();
         CurrentAmmo.Current = MaxAmmo.Current;
         AttackSpeed.Current = AttackSpeed.Current * AttackSpeedMultiplier;
         ReloadSpeed.Current = ReloadSpeed.Current * AttackSpeedMultiplier;
@@ -49,10 +56,17 @@ public class Archer : Tower
         ReloadSpeed.Current = ReloadSpeed.Current / AttackSpeedMultiplier;
         BasicAttack.AttackClock.SetTimeToWait(1f / AttackSpeed.Current);
         BasicAttack.ReloadClock.SetTimeToWait(1f / ReloadSpeed.Current);
+
+        _abilityClock.Paused = false;
+        _abilityReady = false;
+        _abilityBar.Locked = false;
     }
 
     private void SetAbilityReady()
     {
+        _abilityBar.SetFill(1f);
+        _abilityBar.Locked = true;
+        _abilityClock.Paused = true;
         _abilityReady = true;
     }
 }

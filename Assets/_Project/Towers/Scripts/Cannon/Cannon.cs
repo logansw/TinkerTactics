@@ -9,6 +9,11 @@ public class Cannon : Tower
     public float AbilityCooldown;
     private bool _abilityReady;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        SetAbilityReady();
+    }
 
     protected override void Update()
     {
