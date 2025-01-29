@@ -38,7 +38,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private Liftable _liftable;
     public Card ParentCard;
     public int EnergyCost => ParentCard.EnergyCost;
-    private Transform _spriteTransform;
+
     public StatDamage Damage;
     public StatAttackSpeed AttackSpeed;
     public StatReloadSpeed ReloadSpeed;
@@ -70,7 +70,6 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         _abilityBar = transform.Find("AbilityBar").GetComponent<BarUI>();
         _liftable = GetComponent<Liftable>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
-        _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");
     }
 
     public virtual void Initialize()
@@ -85,11 +84,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         {
             return;
         }
-        if (BasicAttack.CanActivate())
-        {
-            BasicAttack.Execute();
-            StartCoroutine(AnimateBasicAttack(0.2f));
-        }
+        BasicAttack.Tick();
     }
 
     protected virtual void OnEnable()
@@ -194,32 +189,5 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         TowerManager.s_Instance.RemoveTower(this);
         DeckManager.s_Instance.RestoreCard(ParentCard);
-    }
-
-    public IEnumerator AnimateBasicAttack(float animationDuration)
-    {
-        float timeElapsed = 0;
-        while (timeElapsed < animationDuration)
-        {
-            timeElapsed += Time.deltaTime;
-            float t = timeElapsed / animationDuration;
-            if (t < 1f / 5f)
-            {
-                float x = t / (1f / 5f);
-                _spriteTransform.localScale = Vector3.one * (0.8f + (0.6f * x));
-            }
-            else if (t < (2f / 5f))
-            {
-                float x = (t - 1f / 5f) / (1f / 5f);
-                _spriteTransform.localScale = Vector3.one * (1.2f + (-0.3f * x));
-            }
-            else
-            {
-                float x = (t - 2f / 5f) / (3f / 5f);
-                _spriteTransform.localScale = Vector3.one * (0.9f + (0.1f * x));
-            }
-            yield return null;
-        }
-        _spriteTransform.localScale = Vector3.one;
     }
 }

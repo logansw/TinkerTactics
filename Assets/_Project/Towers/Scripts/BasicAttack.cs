@@ -13,6 +13,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     public string TooltipText;
     public float ProjectileSpeed;
     protected ModifierProcessor _modifierProcessor;
+    private Transform _spriteTransform;
 
     public void Initialize(Tower tower)
     {
@@ -22,6 +23,16 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         ReloadClock = new InternalClock(1f / Tower.ReloadSpeed.Current, gameObject);
         AttackClock.e_OnTimerDone += SetCanAttack;
         ReloadClock.e_OnTimerDone += ReloadAmmo;
+        _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");
+    }
+
+    public void Tick()
+    {
+        if (CanActivate())
+        {
+            Execute();
+            StartCoroutine(AnimateBasicAttack(0.2f));
+        }
     }
 
     public virtual void Execute()
@@ -87,5 +98,32 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     public void ChangeCurrentAmmo(int amount)
     {
         Tower.CurrentAmmo.Current = Mathf.Clamp(Tower.CurrentAmmo.Current + amount, 0, Tower.MaxAmmo.Current);
+    }
+
+    public IEnumerator AnimateBasicAttack(float animationDuration)
+    {
+        float timeElapsed = 0;
+        while (timeElapsed < animationDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / animationDuration;
+            if (t < 1f / 5f)
+            {
+                float x = t / (1f / 5f);
+                _spriteTransform.localScale = Vector3.one * (0.8f + (0.6f * x));
+            }
+            else if (t < (2f / 5f))
+            {
+                float x = (t - 1f / 5f) / (1f / 5f);
+                _spriteTransform.localScale = Vector3.one * (1.2f + (-0.3f * x));
+            }
+            else
+            {
+                float x = (t - 2f / 5f) / (3f / 5f);
+                _spriteTransform.localScale = Vector3.one * (0.9f + (0.1f * x));
+            }
+            yield return null;
+        }
+        _spriteTransform.localScale = Vector3.one;
     }
 }
