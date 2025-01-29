@@ -12,21 +12,9 @@ using UnityEngine;
 /// <summary>
 /// High-level component for a tower. Contains the core logic for attacking enemies.
 /// </summary>
+[RequireComponent(typeof(PlotAssigner))]
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
-    private TilePlot _tilePlot;
-    public TilePlot TilePlot
-    {
-        get
-        {
-            return _tilePlot;
-        }
-        private set
-        {
-            _tilePlot = value;
-            Active = _tilePlot.IsActivated;
-        }
-    }
     public string Name;
     [HideInInspector] public RangeIndicator RangeIndicator;
     [HideInInspector] public BasicAttack BasicAttack;
@@ -44,6 +32,8 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public StatReloadSpeed ReloadSpeed;
     public StatAmmo MaxAmmo;
     public StatInt CurrentAmmo;
+
+    public PlotAssigner PlotAssigner;
 
     public virtual string GetTooltipText()
     {
@@ -70,11 +60,12 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         _abilityBar = transform.Find("AbilityBar").GetComponent<BarUI>();
         _liftable = GetComponent<Liftable>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
+        PlotAssigner = GetComponent<PlotAssigner>();
     }
 
     public virtual void Initialize()
     {
-        AssignTowerToTilePlot();
+        PlotAssigner.AssignToPlotBelow();
         SelectionManager.s_Instance.ForceNewSelectable(this);
     }
 
@@ -115,49 +106,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         return true;
     }
 
-    /// <summary>
-    /// Assigns the tower to a tile plot by performing a raycast from the tower's position.
-    /// If an empty tile plot is found, the tower is assigned to it. 
-    /// If an occupied tile plot is found, the towers are swapped.
-    /// If no tile plot is found, the tower is returned to its previous position.
-    /// </summary>
-    public void AssignTowerToTilePlot()
-    {
-        TilePlot closestPlot = TilePlot.GetClosest(gameObject);
-        if (closestPlot == null)
-        {
-            // Return to plot if no tile plot is found
-            TilePlot.AddTower(this);
-            ReturnToPlot();
-        }
-        else if (closestPlot.AddTower(this))
-        {
-            TilePlot = closestPlot;
-        }
-        else
-        {
-            // Swap Towers
-            Tower otherTower = closestPlot.Towers[0];
-            TilePlot temp = TilePlot;
-            closestPlot.RemoveTower(otherTower);
-            closestPlot.AddTower(this);
-            TilePlot.RemoveTower(this);
-            TilePlot.AddTower(otherTower);
-            TilePlot = closestPlot;
-            otherTower.TilePlot = temp;
-        }
-    }
-
-    private void ReturnToPlot()
-    {
-        transform.position = TilePlot.transform.position;
-    }
-
     public void OnLift()
     {
-        if (TilePlot != null)
+        if (PlotAssigner.TilePlot != null)
         {
-            TilePlot.RemoveTower(this);
+            PlotAssigner.TilePlot.RemoveTower(this);
             DeckManager.s_Instance.ShowReturnTray(true);
         }
     }
@@ -170,7 +123,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         }
         else
         {
-            AssignTowerToTilePlot();
+            PlotAssigner.AssignToPlotBelow();
         }
         DeckManager.s_Instance.ShowReturnTray(false);
     }
