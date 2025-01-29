@@ -236,6 +236,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1485781680883843554}
+    - targetCorrespondingSourceObject: {fileID: 2836732011536462592, guid: dd463920a436843c0bf00692e57020d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6102009575334895303}
   m_SourcePrefab: {fileID: 100100000, guid: dd463920a436843c0bf00692e57020d6, type: 3}
 --- !u!1 &8468762565780258868 stripped
 GameObject:
@@ -254,13 +257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9072abe19d7324f35a38555d9515a1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Toy Archer
   RangeIndicator: {fileID: 0}
   BasicAttack: {fileID: 0}
-  Active: 0
   ModifierProcessor: {fileID: 0}
-  TinkerLimit: 3
   ParentCard: {fileID: 0}
+  PlotAssigner: {fileID: 0}
+  Name: Toy Archer
+  TinkerLimit: 3
   Damage:
     baseValue: 2
   AttackSpeed:
@@ -271,7 +274,20 @@ MonoBehaviour:
     baseValue: 10
   CurrentAmmo:
     baseValue: 10
+  AbiiltyCooldown: 12
+  _ability: {fileID: -6102009575334895303}
+--- !u!114 &-6102009575334895303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8468762565780258868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1441bcee33c6484fa09fddd6dce1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileSpeed: 10
   AttackSpeedMultiplier: 3
   _projectilePrefab: {fileID: 2803087172549512459, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
-  ProjectileSpeed: 10
-  AbilityCooldown: 10

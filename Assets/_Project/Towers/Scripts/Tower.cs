@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public StatAmmo MaxAmmo;
     public StatInt CurrentAmmo;
     public float AbiiltyCooldown;
-    [SerializeField] private Ability _ability;
+    private Ability _ability;
 
     public virtual string GetTooltipText()
     {

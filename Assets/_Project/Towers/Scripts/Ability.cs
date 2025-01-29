@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public abstract class Ability : MonoBehaviour, ITowerAction
@@ -45,7 +46,9 @@ public abstract class Ability : MonoBehaviour, ITowerAction
         {
             _abilityBar.SetFill(0.0f);
         }
+        _abilityReady = ready;
         _abilityBar.Locked = true;
+        _cooldownClock.Paused = true;
     }
 
     protected void ResumeAbilityCD()
@@ -53,6 +56,7 @@ public abstract class Ability : MonoBehaviour, ITowerAction
         _abilityBar.Locked = false;
         _abilityReady = false;
         _cooldownClock.Reset();
+        _cooldownClock.Paused = false;
     }
     private void SetAbilityReady()
     {
