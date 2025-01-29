@@ -5,18 +5,7 @@ using UnityEngine;
 public class PlotAssigner : MonoBehaviour
 {
     private TilePlot _tilePlot;
-    public TilePlot TilePlot
-    {
-        get
-        {
-            return _tilePlot;
-        }
-        private set
-        {
-            _tilePlot = value;
-            _tower.Active = _tilePlot.IsActivated;
-        }
-    }
+    public TilePlot TilePlot { get; private set; }
     private Tower _tower;
 
     void Awake()

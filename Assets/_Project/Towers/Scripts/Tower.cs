@@ -1,39 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-/// <summary>
-/// High-level component for a tower. Contains the core logic for attacking enemies.
-/// </summary>
 [RequireComponent(typeof(PlotAssigner))]
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
-    public string Name;
-    [HideInInspector] public RangeIndicator RangeIndicator;
-    [HideInInspector] public BasicAttack BasicAttack;
-    public bool Active;
     private BarUI _ammoBar;
     protected BarUI _abilityBar;
+    [HideInInspector] public RangeIndicator RangeIndicator;
+    [HideInInspector] public BasicAttack BasicAttack;
     [HideInInspector] public ModifierProcessor ModifierProcessor;
-    public int TinkerLimit;
-    private Liftable _liftable;
-    public Card ParentCard;
-    public int EnergyCost => ParentCard.EnergyCost;
+    [HideInInspector] public Card ParentCard;
+    [HideInInspector] public PlotAssigner PlotAssigner;
+    public bool Active => PlotAssigner.TilePlot.IsActivated;
 
+    [Header("Data")]
+    public string Name;
+    public int TinkerLimit;
     public StatDamage Damage;
     public StatAttackSpeed AttackSpeed;
     public StatReloadSpeed ReloadSpeed;
     public StatAmmo MaxAmmo;
     public StatInt CurrentAmmo;
-
-    public PlotAssigner PlotAssigner;
+    public float AbiiltyCooldown;
+    [SerializeField] private Ability _ability;
 
     public virtual string GetTooltipText()
     {
@@ -53,14 +42,17 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         BasicAttack = GetComponent<BasicAttack>();
         BasicAttack.Initialize(this);
+
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
         RangeIndicator.Initialize(this);
+
         _ammoBar = transform.Find("AmmoBar").GetComponent<BarUI>();
         _ammoBar.RegisterStat(CurrentAmmo);
+
         _abilityBar = transform.Find("AbilityBar").GetComponent<BarUI>();
-        _liftable = GetComponent<Liftable>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
         PlotAssigner = GetComponent<PlotAssigner>();
+        _ability = GetComponent<Ability>();
     }
 
     public virtual void Initialize()
@@ -71,11 +63,21 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     protected virtual void Update()
     {
-        if (!Active)
+        if (!Active) { return; }
+        if (BasicAttack.CanActivate())
         {
-            return;
+            if (_ability.CanActivate())
+            {
+                _ability.Execute();
+                BasicAttack.AnimateBasicAttack(0.2f);
+                BasicAttack.AttackClock.Reset();
+                BasicAttack.SetCannotAttack();
+            }
+            else
+            {
+                BasicAttack.Execute();
+            }
         }
-        BasicAttack.Tick();
     }
 
     protected virtual void OnEnable()
