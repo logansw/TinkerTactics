@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InitializationManager : Singleton<InitializationManager>
 {
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         StartCoroutine(DelayedInitialize());
     }
 
@@ -18,14 +20,25 @@ public class InitializationManager : Singleton<InitializationManager>
     public override void Initialize()
     {
         base.Initialize();
-        // Initialize all singletons
+        InitializeBaseScene();
+    }
+
+    public void InitializeBaseScene()
+    {
         GameManager.s_Instance.Initialize();
         DeckManager.s_Instance.Initialize();
+        SelectionManager.s_Instance.Initialize();
+        StateController.s_Instance.Initialize();
+    }
+
+    public void InitializeBattleScene()
+    {
+        EnemyManager.s_Instance.Initialize();
         PathDrawer.s_Instance.Initialize();
         BlockManager.s_Instance.Initialize();
         WaveSpawnerManager.s_Instance.Initialize();
         BattleManager.s_Instance.Initialize();
-        SelectionManager.s_Instance.Initialize();
-        StateController.s_Instance.Initialize();
+        Camera.main.AddComponent<CameraZoom>();
+        Camera.main.AddComponent<DragCamera>();
     }
 }

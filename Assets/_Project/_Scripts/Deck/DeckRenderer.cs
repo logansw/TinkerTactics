@@ -7,8 +7,8 @@ public class DeckRenderer : Singleton<DeckRenderer>
     [SerializeField] private RectTransform _drawPileTransform;
     [SerializeField] private RectTransform _handTransform;
     [SerializeField] private RectTransform _discardPileTransform;
-    [SerializeField] private RectTransform _exhaustPileTransform;
-    [SerializeField] private RectTransform _databaseTransform;
+    // [SerializeField] private RectTransform _exhaustPileTransform;
+    // [SerializeField] private RectTransform _databaseTransform;
     [SerializeField] private ReturnTray _returnTray;
     private bool _updateQueued;
 
@@ -19,7 +19,7 @@ public class DeckRenderer : Singleton<DeckRenderer>
             _updateQueued = false;
             RenderHand(DeckManager.s_Instance.Hand);
             RenderDiscardPile(DeckManager.s_Instance.DiscardPile);
-            RenderDatabase();
+            // RenderDatabase();
         }
     }
 
@@ -52,15 +52,15 @@ public class DeckRenderer : Singleton<DeckRenderer>
         }
     }
 
-    public void RenderDatabase()
-    {
-        foreach (Card card in DeckManager.s_Instance.Database)
-        {
-            card.transform.SetParent(_databaseTransform);
-            card.gameObject.SetActive(false);
-            card.transform.localPosition = Vector3.zero;
-        }
-    }
+    // public void RenderDatabase()
+    // {
+    //     foreach (Card card in DeckManager.s_Instance.Database)
+    //     {
+    //         card.transform.SetParent(_databaseTransform);
+    //         card.gameObject.SetActive(false);
+    //         card.transform.localPosition = Vector3.zero;
+    //     }
+    // }
 
     public void QueueUpdate()
     {

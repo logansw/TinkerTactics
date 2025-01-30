@@ -18,7 +18,7 @@ public class TowerManager : Singleton<TowerManager>
 
     public Tower AddTower(Tower tower, Vector3 position)
     {
-        Tower newTower = Instantiate(tower, position, Quaternion.AngleAxis(45f, Vector3.forward));
+        Tower newTower = Instantiate(tower, position, Quaternion.AngleAxis(45f, Vector3.forward), transform);
         Towers.Add(newTower);
         RenderTowerCount();
         return newTower;

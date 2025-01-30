@@ -28,7 +28,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     public virtual void Execute()
     {
         Enemy target = _tower.RangeIndicator.GetEnemiesInRange()[0];
-        GameObject projectile = Instantiate(_projectilePrefab, _tower.transform.position, Quaternion.identity).gameObject;
+        GameObject projectile = Instantiate(_projectilePrefab, _tower.transform.position, Quaternion.identity, _tower.transform).gameObject;
         ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
         ProjectileBallistic projectileBallistic = projectile.AddComponent<ProjectileBallistic>();
         projectileBallistic.Initialize(_tower, projectileEffectTracker, _tower.Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);

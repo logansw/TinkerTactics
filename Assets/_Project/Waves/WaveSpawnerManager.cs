@@ -12,7 +12,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
     public override void Initialize()
     {
         base.Initialize();
-        Warlord = GameManager.s_Instance.GetWarlord();
+        Warlord = EnemyManager.s_Instance.CurrentWarlord;
     }
 
     public void PrepareNextWave()
@@ -123,7 +123,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
     {
         CurrentWaveIndex = 0;
         ClearWaveSpawners();
-        Warlord = GameManager.s_Instance.GetWarlord();
+        Warlord = EnemyManager.s_Instance.CurrentWarlord;
     }
 
     private void ClearWaveSpawners()

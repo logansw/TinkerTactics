@@ -44,7 +44,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         StateController.s_Instance.ChangeState(StateType.Idle);
 
-        if (GameManager.s_Instance.GetWarlord().IsDead)
+        if (EnemyManager.s_Instance.CurrentWarlord.IsDead)
         {
             GameManager.s_Instance.NextLevel();
         }

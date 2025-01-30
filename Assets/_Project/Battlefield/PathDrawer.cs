@@ -33,7 +33,7 @@ public class PathDrawer : Singleton<PathDrawer>
         {
             foreach (PathPieceData pathPieceData in pathData.Path)
             {
-                TilePath path = Instantiate(_tilePathPrefab, pathPieceData.Position, Quaternion.identity);
+                TilePath path = Instantiate(_tilePathPrefab, pathPieceData.Position, Quaternion.identity, transform);
                 AllTiles.Add(path);
                 path.transform.position = new Vector3(path.transform.position.x, path.transform.position.y, 0);
                 if (CurrentPath.Count == 0)

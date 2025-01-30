@@ -9,7 +9,7 @@ public abstract class Singleton<T> : MonoBehaviour
     public static T s_Instance { get; private set; }
     public static bool s_Initialized { get; private set; }
 
-    void Awake()
+    protected virtual void Awake()
     {
         if (s_Instance == null) 
         {
@@ -19,6 +19,7 @@ public abstract class Singleton<T> : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        s_Initialized = false;
     }
 
     public virtual void Initialize()
