@@ -5,7 +5,6 @@ using UnityEngine;
 public class ArcherAbility : Ability
 {
     [Header("Stats")]
-    public float ProjectileSpeed;
     public float AttackSpeedMultiplier;
 
     [Header("References")]
