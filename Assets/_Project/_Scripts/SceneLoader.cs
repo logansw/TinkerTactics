@@ -5,35 +5,80 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
-    public void LoadScene(string sceneName)
+    public void LoadScene(SceneType sceneType)
     {
-        switch (sceneName)
+        switch (sceneType)
         {
-            case "Map":
-
+            case SceneType.Map:
+                StartCoroutine(LoadMapScene());
                 break;
-            case "Battle":
+            case SceneType.Battle:
                 StartCoroutine(LoadBattleScene());
                 break;
-            case "Shop":
-
+            case SceneType.Shop:
+                StartCoroutine(LoadShopScene());
                 break;
             default:
-                Debug.LogError($"{sceneName} is not a valid scene name.");
+                Debug.LogError($"{sceneType} is not a valid scene type.");
                 break;
         }
+    }
+
+    public void UnloadScene(SceneType sceneType)
+    {
+        switch (sceneType)
+        {
+            case SceneType.Map:
+                SceneManager.UnloadSceneAsync("Map");
+                break;
+            case SceneType.Battle:
+                Camera.main.GetComponent<CustomCamera>().RemoveControls();
+                SceneManager.UnloadSceneAsync("Battle");
+                break;
+            case SceneType.Shop:
+                SceneManager.UnloadSceneAsync("Shop");
+                break;
+            default:
+                break;
+        }
+    }
+
+    private IEnumerator LoadMapScene()
+    {
+        AsyncOperation handler = SceneManager.LoadSceneAsync("Map", LoadSceneMode.Additive);
+        while (!handler.isDone)
+        {
+            yield return null;
+        }
+        InitializationManager.s_Instance.InitializeMapScene();
     }
 
     private IEnumerator LoadBattleScene()
     {
-        Debug.Log("Battle");
         AsyncOperation handler = SceneManager.LoadSceneAsync("Battle", LoadSceneMode.Additive);
         while (!handler.isDone)
         {
             yield return null;
-            Debug.Log("Waiting");
         }
         InitializationManager.s_Instance.InitializeBattleScene();
-        Debug.Log("done");
     }
+
+    private IEnumerator LoadShopScene()
+    {
+        AsyncOperation handler = SceneManager.LoadSceneAsync("Shop", LoadSceneMode.Additive);
+        while (!handler.isDone)
+        {
+            yield return null;
+        }
+        InitializationManager.s_Instance.InitializeShopScene();
+    }
+}
+
+[System.Serializable]
+public enum SceneType
+{
+    Map,
+    Battle,
+    Shop,
+    Base
 }

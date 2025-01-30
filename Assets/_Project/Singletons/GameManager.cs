@@ -15,7 +15,14 @@ public class GameManager : Singleton<GameManager>
     {
         base.Initialize();
         CurrentLevelIndex = 0;
-        SceneLoader.s_Instance.LoadScene("Battle");
+        SceneLoader.s_Instance.LoadScene(SceneType.Battle);
+    }
+
+    public void FinishLevel()
+    {
+        TowerManager.s_Instance.ClearTowers();
+        BattleManager.s_Instance.SetTimeScale(1f);
+        SceneLoader.s_Instance.LoadScene(SceneType.Shop);
     }
 
     public void NextLevel()
@@ -30,10 +37,6 @@ public class GameManager : Singleton<GameManager>
         WaveSpawnerManager.s_Instance.UnassignSpawners();
 
         StateController.s_Instance.ChangeState(StateType.Idle);
-        TowerManager.s_Instance.ClearTowers();
-        MarketplaceManager.s_Instance.PopulateAvailableItems();
-        MarketplaceManager.s_Instance.ShowShop(true);
-        BattleManager.s_Instance.SetTimeScale(1f);
 
         int newTowerLimit;
         switch (CurrentLevelIndex)

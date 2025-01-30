@@ -38,7 +38,16 @@ public class InitializationManager : Singleton<InitializationManager>
         BlockManager.s_Instance.Initialize();
         WaveSpawnerManager.s_Instance.Initialize();
         BattleManager.s_Instance.Initialize();
-        Camera.main.AddComponent<CameraZoom>();
-        Camera.main.AddComponent<DragCamera>();
+        Camera.main.GetComponent<CustomCamera>().AddControls();
+    }
+
+    public void InitializeShopScene()
+    {
+        MarketplaceManager.s_Instance.Initialize();
+    }
+
+    public void InitializeMapScene()
+    {
+        throw new System.NotImplementedException();
     }
 }

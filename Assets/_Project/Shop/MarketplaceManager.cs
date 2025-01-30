@@ -10,11 +10,21 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
     public List<Card> AvailableCards;
 
     [SerializeField] private Transform cardsContainer;
-    [SerializeField] private GameObject canvas;
     private int _cardsSelected;
     private int _cardsToSelect;
     private int _cardOptionsCount;
-    private int _timesToRepeat;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        PopulateAvailableItems();
+    }
+
+    public void CloseShop()
+    {
+        GameManager.s_Instance.NextLevel();
+        SceneLoader.s_Instance.UnloadScene(SceneType.Shop);
+    }
 
     public void PopulateAvailableItems()
     {
@@ -27,11 +37,6 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         {
             PrepareTinkerShop();
         }
-    }
-
-    public void ShowShop(bool show)
-    {
-        canvas.gameObject.SetActive(show);
     }
 
     public void RenderNewItems(List<Card> chooseFromList)
@@ -89,9 +94,9 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         }
         else
         {
-            ShowShop(false);
             DeckRenderer.s_Instance.QueueUpdate();
             _cardsSelected = 0;
+            CloseShop();
         }
     }
 }

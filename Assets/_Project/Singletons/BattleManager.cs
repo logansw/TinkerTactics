@@ -46,7 +46,7 @@ public class BattleManager : Singleton<BattleManager>
 
         if (EnemyManager.s_Instance.CurrentWarlord.IsDead)
         {
-            GameManager.s_Instance.NextLevel();
+            GameManager.s_Instance.FinishLevel();
         }
     }
 
