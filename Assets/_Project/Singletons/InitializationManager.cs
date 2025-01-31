@@ -48,6 +48,6 @@ public class InitializationManager : Singleton<InitializationManager>
 
     public void InitializeMapScene()
     {
-        throw new System.NotImplementedException();
+        MapManager.s_Instance.Initialize();
     }
 }

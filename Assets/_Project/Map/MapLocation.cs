@@ -6,13 +6,21 @@ using UnityEngine.UI;
 public class MapLocation : MonoBehaviour
 {
     public List<MapLocation> NextLocations;
-    private Button _button;
-
-    public void Start()
+    protected Button _button;
+    private bool _initialized;
+    
+    public void Awake()
     {
+        Initialize();
+    }
+
+    public virtual void Initialize()
+    {
+        if (_initialized) { return; }
         _button = GetComponent<Button>();
         _button.interactable = false;
         _button.onClick.AddListener(SetAsCurrentLocation);
+        _initialized = true;
     }
 
     public void SetActive(bool active)
@@ -23,5 +31,6 @@ public class MapLocation : MonoBehaviour
     private void SetAsCurrentLocation()
     {
         MapManager.s_Instance.SetLocation(this);
+        MapManager.s_Instance.OpenNextLocations();
     }
 }

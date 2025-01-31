@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Initialize();
         CurrentLevelIndex = 0;
-        SceneLoader.s_Instance.LoadScene(SceneType.Battle);
+        SceneLoader.s_Instance.LoadScene(SceneType.Map);
     }
 
     public void FinishLevel()

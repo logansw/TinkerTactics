@@ -15,25 +15,21 @@ public class MapManager : Singleton<MapManager>
     public override void Initialize()
     {
         base.Initialize();
+        _startLocation.Initialize();
         _startLocation.SetActive(true);
         _currentLocation = _startLocation;
         _siblingLocations = new List<MapLocation>();
     }
 
-    void Start()
-    {
-        Initialize();
-    }
-
-    public void OpenNextLevels()
+    public void OpenNextLocations()
     {
         _siblingLocations = new List<MapLocation>();
-        _currentLocation.SetActive(false);
         foreach (MapLocation nextLocation in _currentLocation.NextLocations)
         {
             nextLocation.SetActive(true);
             _siblingLocations.Add(nextLocation);
         }
+        _currentLocation.SetActive(false);
     }
 
     public void SetLocation(MapLocation mapLocation)
