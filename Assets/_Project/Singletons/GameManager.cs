@@ -22,7 +22,8 @@ public class GameManager : Singleton<GameManager>
     {
         TowerManager.s_Instance.ClearTowers();
         BattleManager.s_Instance.SetTimeScale(1f);
-        SceneLoader.s_Instance.LoadScene(SceneType.Shop);
+        SceneLoader.s_Instance.LoadScene(SceneType.Map);
+        SceneLoader.s_Instance.UnloadScene(SceneType.Battle);
     }
 
     public void NextLevel()

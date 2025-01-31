@@ -10,7 +10,14 @@ public class SceneLoader : Singleton<SceneLoader>
         switch (sceneType)
         {
             case SceneType.Map:
-                StartCoroutine(LoadMapScene());
+                if (MapManager.s_Instance != null && MapManager.s_Instance.Loaded)
+                {
+                    MapManager.s_Instance.RestoreMapScene();
+                }
+                else
+                {
+                    StartCoroutine(LoadMapScene());
+                }
                 break;
             case SceneType.Battle:
                 StartCoroutine(LoadBattleScene());
@@ -29,7 +36,7 @@ public class SceneLoader : Singleton<SceneLoader>
         switch (sceneType)
         {
             case SceneType.Map:
-                SceneManager.UnloadSceneAsync("Map");
+                MapManager.s_Instance.MinimizeMapScene();
                 break;
             case SceneType.Battle:
                 Camera.main.GetComponent<CustomCamera>().RemoveControls();

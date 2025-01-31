@@ -37,17 +37,14 @@ public class ArcherAbility : Ability
         LockAbilityStatus(false);
         _abilityActive = true;
         _tower.BasicAttack.Execute();
-        Debug.Log(_tower.AttackSpeed.Current);
         _tower.CurrentAmmo.Current = _tower.MaxAmmo.Current;
         _tower.AttackSpeed.Current *= AttackSpeedMultiplier;
         _tower.ReloadSpeed.Current *= AttackSpeedMultiplier;
-        Debug.Log(_tower.AttackSpeed.Current);
         _tower.BasicAttack.SetClocks();
         yield return new WaitForSeconds(4f);
         _tower.AttackSpeed.Current /= AttackSpeedMultiplier;
         _tower.ReloadSpeed.Current /= AttackSpeedMultiplier;
         _tower.BasicAttack.SetClocks();
-        Debug.Log(_tower.AttackSpeed.Current);
         _abilityActive = false;
 
         ResumeAbilityCD();
