@@ -44,7 +44,7 @@ public class WaveSpawnerManager : Singleton<WaveSpawnerManager>
 
     public void GenerateWaveSpawner(TilePath startTile)
     {
-        WaveSpawner waveSpawner = Instantiate(_waveSpawnerPrefab, startTile.transform.position, Quaternion.identity);
+        WaveSpawner waveSpawner = Instantiate(_waveSpawnerPrefab, startTile.transform.position, Quaternion.identity, transform);
         waveSpawner.transform.position = new Vector3(waveSpawner.transform.position.x, waveSpawner.transform.position.y, -0.1f);
         WaveSpawners.Add(waveSpawner);
         waveSpawner.StartTile = startTile;
