@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914cba20f64a54728b47bb2a0a83ec32, type: 3}
+  m_Name: BossBotv1
+  m_EditorClassIdentifier: 
+  MaxHealth: 300
+  SegmentCount: 0
+  MovementSpeed: 6
+  Armor: 0
+  Damage: 5
+  Gold: 100
+  Bits: 300
