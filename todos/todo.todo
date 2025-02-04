@@ -1,0 +1,12 @@
+Map Scene:
+    Shop:
+        ☐ Remove Wave Spawner from Base scene @20m
+        ☐ Link map to shop start @20m
+        ☐ Link shop finish to map start @10m
+    Map Logic:
+        Build map procedurally:
+            ☐ Design map generation interface? @2h
+            ☐ 
+
+Tinker Shop Scene:
+    ☐ Incorporate Gold into Shop
