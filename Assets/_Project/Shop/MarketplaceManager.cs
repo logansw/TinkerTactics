@@ -22,8 +22,8 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
     public void CloseShop()
     {
-        GameManager.s_Instance.NextLevel();
         SceneLoader.s_Instance.UnloadScene(SceneType.Shop);        
+        SceneLoader.s_Instance.LoadScene(SceneType.Map);
     }
 
     public void PopulateAvailableItems()

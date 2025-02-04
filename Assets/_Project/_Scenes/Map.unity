@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Battle
+  m_text: Shop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1503,7 +1503,7 @@ GameObject:
   - component: {fileID: 1887650882}
   - component: {fileID: 1887650885}
   m_Layer: 5
-  m_Name: Battle Location (1)
+  m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887650879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ea39a5357db4987b047fff740f1e26, type: 3}
+  m_Script: {fileID: 11500000, guid: eb294741b71984d799e71e16e688c426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextLocations:
