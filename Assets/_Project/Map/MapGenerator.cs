@@ -87,7 +87,7 @@ public class MapGenerator : MonoBehaviour
         Queue<MapNode> queue = new Queue<MapNode>();
         HashSet<MapNode> seen = new HashSet<MapNode>();
         queue.Enqueue(_head);
-        float x = 0;
+        float x = -500;
         while (queue.Count > 0)
         {
             int nodesInLayer = queue.Count;
@@ -98,9 +98,9 @@ public class MapGenerator : MonoBehaviour
                 MapNode current = queue.Dequeue();
 
                 float y = ((nodesInLayer - 1) * 100f / 2) - (100f * i);
-                MapLocation newMapLocationObject = Instantiate(_mapLocationPrefab, new Vector2(x, y), Quaternion.identity, transform);
-                newMapLocationObject.Initialize(current.SceneType);
-                current.MapLocation = newMapLocationObject;
+                current.MapLocation = Instantiate(_mapLocationPrefab, transform);
+                current.MapLocation.transform.localPosition = new Vector2(x, y);
+                current.MapLocation.Initialize(current.SceneType);
                 
                 foreach (MapNode node in current.Next)
                 {
