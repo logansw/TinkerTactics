@@ -67,7 +67,7 @@ public class SceneLoader : Singleton<SceneLoader>
         {
             yield return null;
         }
-        InitializationManager.s_Instance.InitializeBattleScene();
+        InitializationManager.s_Instance.InitializeBattleScene(GameManager.s_Instance.CurrentLevelIndex);
     }
 
     private IEnumerator LoadShopScene()

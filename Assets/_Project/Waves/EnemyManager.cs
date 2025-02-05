@@ -10,15 +10,10 @@ public class EnemyManager : Singleton<EnemyManager>
     public Warlord CurrentWarlord { get; private set; }
     public static Action e_OnWaveCleared;
 
-    public override void Initialize()
+    public void Initialize(int level)
     {
         base.Initialize();
-        CurrentWarlord = Instantiate(_warlords[GameManager.s_Instance.CurrentLevelIndex], transform);
-    }
-
-    public void NextLevel()
-    {
-        CurrentWarlord = Instantiate(_warlords[GameManager.s_Instance.CurrentLevelIndex]);
+        CurrentWarlord = Instantiate(_warlords[level], transform);
     }
 
     public void AddEnemy(Enemy enemy)

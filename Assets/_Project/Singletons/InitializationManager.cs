@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class InitializationManager : Singleton<InitializationManager>
 {
+    private void DebugInitialize()
+    {
+        InitializeBattleScene(1);
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -31,9 +36,9 @@ public class InitializationManager : Singleton<InitializationManager>
         StateController.s_Instance.Initialize();
     }
 
-    public void InitializeBattleScene()
+    public void InitializeBattleScene(int level)
     {
-        EnemyManager.s_Instance.Initialize();
+        EnemyManager.s_Instance.Initialize(level);
         PathDrawer.s_Instance.Initialize();
         BlockManager.s_Instance.Initialize();
         WaveSpawnerManager.s_Instance.Initialize();

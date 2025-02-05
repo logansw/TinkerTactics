@@ -29,7 +29,6 @@ public class IdleState : State
 
     public override void OnExit(StateController stateController)
     {
-        WaveSpawnerManager.s_Instance.StartWaves();
         BattleManager.s_Instance.UndoTimeScale();
     }
 }

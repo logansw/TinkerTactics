@@ -15,6 +15,7 @@ public class PlayingState : State
     public override void OnEnter(StateController stateController)
     {
         e_OnPlayingStateEnter?.Invoke();
+        WaveSpawnerManager.s_Instance.StartWaves();
     }
 
     public override void UpdateState(StateController stateController)

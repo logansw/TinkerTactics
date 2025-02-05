@@ -19,6 +19,7 @@ public class PathDrawer : Singleton<PathDrawer>
     public override void Initialize()
     {
         base.Initialize();
+        ClearLevel();
         FileName = GameManager.s_Instance.GetLevelName();
         PathSetData = new PathSetData();
         PathSetData.Paths = new List<PathData>();
@@ -65,14 +66,6 @@ public class PathDrawer : Singleton<PathDrawer>
         {
             WaveSpawnerManager.s_Instance.GenerateWaveSpawner(startTile);
         }
-    }
-
-    public void NextLevel()
-    {
-        ClearLevel();
-        FileName = GameManager.s_Instance.GetLevelName();
-        LoadPathData();
-        GenerateWaveSpawners();
     }
 
     private void ClearLevel()

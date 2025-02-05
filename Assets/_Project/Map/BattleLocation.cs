@@ -16,6 +16,7 @@ public class BattleLocation : MapLocation
 
     private void StartBattle()
     {
+        
         SceneLoader.s_Instance.LoadScene(SceneType.Battle);
         SceneLoader.s_Instance.UnloadScene(SceneType.Map);
     }

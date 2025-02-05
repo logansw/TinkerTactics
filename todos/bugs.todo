@@ -1,1 +1,4 @@
-Map Scne:
+Map Secne:
+Battle Scene:
+    ☐ Battlefield doesn't reset tiles if Boss escapes unharmed
+    ☐ 

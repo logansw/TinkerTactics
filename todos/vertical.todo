@@ -1,0 +1,29 @@
+This is the mainline quest. Tasks here are progress towards the vertical slice.
+
+Battle Scene:
+
+Map Scene:
+    Shop:
+        ✔ Remove Wave Spawner from Base scene @20m @started(25-02-04 14:35) @done(25-02-04 14:41) @lasted(6m1s)
+        ✔ Link map to shop start @20m @started(25-02-04 14:51) @done(25-02-04 15:09) @lasted(18m9s)
+        ✔ Link shop finish to map start @10m @started(25-02-04 15:09) @done(25-02-04 15:26) @lasted(17m51s)
+        ☐ Make bespoke Tinker and Tower Locations @1h @today @started(25-02-05 06:31)
+    Map Logic:
+        Build map procedurally:
+            ☐ Design map generation interface? @2h @today
+        Battle Progression:
+        ✔ Battle doesn't advance between battles @30m @started(25-02-04 15:30) @done(25-02-04 16:23) @lasted(53m46s)
+
+Shop Scene:
+    ☐ Incorporate Gold into Shops
+
+Tinker Panel:
+    UI for applying Tinkers. Similar to Charm menu in Wildfrost
+    ☐ UI Design @1h
+    ☐ UI Implementation @1h
+    ☐ 
+
+Tower Upgrade System:
+    UI for upgrading Towers more classically.
+    ☐ Design proposal @1h
+    ☐ 

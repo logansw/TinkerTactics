@@ -22,22 +22,20 @@ public class GameManager : Singleton<GameManager>
     {
         TowerManager.s_Instance.ClearTowers();
         BattleManager.s_Instance.SetTimeScale(1f);
+
         SceneLoader.s_Instance.LoadScene(SceneType.Map);
         SceneLoader.s_Instance.UnloadScene(SceneType.Battle);
+
+        WaveSpawnerManager.s_Instance.UnassignSpawners();
+        WaveSpawnerManager.s_Instance.ClearWaveSpawners();
+        
+        NextLevel();
     }
 
     public void NextLevel()
     {
         CurrentLevelIndex++;
         e_OnNextLevel?.Invoke();
-
-        EnemyManager.s_Instance.NextLevel();
-        WaveSpawnerManager.s_Instance.NextLevel();
-        PathDrawer.s_Instance.NextLevel();
-        BlockManager.s_Instance.InstantiateBlocks();
-        WaveSpawnerManager.s_Instance.UnassignSpawners();
-
-        StateController.s_Instance.ChangeState(StateType.Idle);
 
         int newTowerLimit;
         switch (CurrentLevelIndex)
