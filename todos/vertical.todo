@@ -10,7 +10,15 @@ Map Scene:
         ✔ Make bespoke Tinker and Tower Locations @1h @today @started(25-02-05 06:31) @done(25-02-05 08:17) @lasted(1h46m4s)
     Map Logic:
         Build map procedurally:
-            ☐ Design map generation interface? @2h @today
+            ✔ Design map generation interface? @2h @today @started(25-02-05 10:23) @done(25-02-05 10:39) @lasted(16m28s)
+            Make a script to crawl the Locations and populate them:
+                ✔ Generate node objects @15m @started(25-02-05 10:39) @done(25-02-05 11:04) @lasted(25m48s)
+                ✔ Link them @30m @done(25-02-05 11:04)
+                ✔ Fill in the hard-coded ones (e.g. Boss Battle) @15m @done(25-02-05 11:05)
+                ☐ Distribute minimums @30m
+                ✔ Randomly assign remaining @15m @done(25-02-05 12:47)
+                ☐ Clean up any unwanted patterns @30m
+                ✔ Instantiate to Map Scene @15m @done(25-02-05 12:47)
         Battle Progression:
         ✔ Battle doesn't advance between battles @30m @started(25-02-04 15:30) @done(25-02-04 16:23) @lasted(53m46s)
 

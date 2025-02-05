@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MapManager : Singleton<MapManager>
 {
-    [SerializeField] private MapLocation _startLocation;
+    // [SerializeField] private MapLocation _startLocation;
     private MapLocation _currentLocation;
     // [SerializeField] private MapLocation _battlePrefab;
     // [SerializeField] private MapLocation _shopPrefab;
@@ -16,9 +16,8 @@ public class MapManager : Singleton<MapManager>
     public override void Initialize()
     {
         base.Initialize();
-        _startLocation.Initialize();
-        _startLocation.SetActive(true);
-        _currentLocation = _startLocation;
+        // _startLocation.SetActive(true);
+        // _currentLocation = _startLocation;
         _siblingLocations = new List<MapLocation>();
         Loaded = true;
     }
