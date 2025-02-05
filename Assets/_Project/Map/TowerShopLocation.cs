@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleLocation : MapLocation
+public class TowerShopLocation : MapLocation
 {
     private bool _initialized;
 
@@ -10,13 +10,12 @@ public class BattleLocation : MapLocation
     {
         if (_initialized) { return; }
         base.Initialize();
-        _button.onClick.AddListener(StartBattle);
+        _button.onClick.AddListener(StartShop);
         _initialized = true;
     }
 
-    private void StartBattle()
+    private void StartShop()
     {
-        
-        SceneLoader.s_Instance.LoadScene(SceneType.Battle);
+        SceneLoader.s_Instance.LoadScene(SceneType.TowerShop); 
     }
 }

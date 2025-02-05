@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopLocation : MapLocation
+public class TinkerShopLocation : MapLocation
 {
     private bool _initialized;
-
 
     public override void Initialize()
     {
@@ -17,7 +16,6 @@ public class ShopLocation : MapLocation
 
     private void StartShop()
     {
-        SceneLoader.s_Instance.LoadScene(SceneType.Shop); 
-        SceneLoader.s_Instance.UnloadScene(SceneType.Map);
+        SceneLoader.s_Instance.LoadScene(SceneType.TinkerShop); 
     }
 }

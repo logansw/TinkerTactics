@@ -5,14 +5,13 @@ using System.Linq;
 
 public class MarketplaceManager : Singleton<MarketplaceManager>
 {
-    public List<Card> AllTowers;
-    public List<Card> AllTinkers;
+    public List<Card> AllCards;
     public List<Card> AvailableCards;
 
     [SerializeField] private Transform cardsContainer;
     private int _cardsSelected;
-    private int _cardsToSelect;
-    private int _cardOptionsCount;
+    [SerializeField] private int _cardsToSelect;
+    [SerializeField] private int _cardOptionsCount;
 
     public override void Initialize()
     {
@@ -22,21 +21,14 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
 
     public void CloseShop()
     {
-        SceneLoader.s_Instance.UnloadScene(SceneType.Shop);        
         SceneLoader.s_Instance.LoadScene(SceneType.Map);
     }
 
     public void PopulateAvailableItems()
     {
-        ResetCards();
-        if (GameManager.s_Instance.CurrentLevelIndex % 2 == 0)
-        {
-            PrepareTowerShop();
-        }
-        else
-        {
-            PrepareTinkerShop();
-        }
+        ResetItems();
+        AllCards = AllCards.OrderBy(item => Guid.NewGuid()).ToList();
+        RenderNewItems(AllCards);
     }
 
     public void RenderNewItems(List<Card> chooseFromList)
@@ -58,29 +50,14 @@ public class MarketplaceManager : Singleton<MarketplaceManager>
         }
     }
 
-    private void PrepareTowerShop()
-    {
-        AllTowers = AllTowers.OrderBy(item => Guid.NewGuid()).ToList();
-        _cardOptionsCount = 3;
-        _cardsToSelect = 1;
-        RenderNewItems(AllTowers);
-    }
-
-    private void PrepareTinkerShop()
-    {
-        AllTinkers = AllTinkers.OrderBy(item => Guid.NewGuid()).ToList();
-        _cardOptionsCount = 3;
-        _cardsToSelect = 3;
-        RenderNewItems(AllTinkers);
-    }
-
-    public void ResetCards()
+    public void ResetItems()
     {
         for (int i = AvailableCards.Count - 1; i >= 0; i--)
         {
             Destroy(AvailableCards[i].gameObject);
         }
         AvailableCards.Clear();
+
     }
 
     public void RemoveFromAvailable(Card card)

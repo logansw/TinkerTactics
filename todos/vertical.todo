@@ -7,7 +7,7 @@ Map Scene:
         ✔ Remove Wave Spawner from Base scene @20m @started(25-02-04 14:35) @done(25-02-04 14:41) @lasted(6m1s)
         ✔ Link map to shop start @20m @started(25-02-04 14:51) @done(25-02-04 15:09) @lasted(18m9s)
         ✔ Link shop finish to map start @10m @started(25-02-04 15:09) @done(25-02-04 15:26) @lasted(17m51s)
-        ☐ Make bespoke Tinker and Tower Locations @1h @today @started(25-02-05 06:31)
+        ✔ Make bespoke Tinker and Tower Locations @1h @today @started(25-02-05 06:31) @done(25-02-05 08:17) @lasted(1h46m4s)
     Map Logic:
         Build map procedurally:
             ☐ Design map generation interface? @2h @today

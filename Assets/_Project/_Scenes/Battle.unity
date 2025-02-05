@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveSpawnerPrefab: {fileID: 5170298092095927069, guid: 45a8514cf602c42c983d9b21f6151d99, type: 3}
   WaveSpawners: []
-  CurrentWaveIndex: 0
+  CurrentWaveIndex: 2
   Warlord: {fileID: 0}
 --- !u!4 &1591208458
 Transform:

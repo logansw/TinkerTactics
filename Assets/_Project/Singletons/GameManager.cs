@@ -24,7 +24,6 @@ public class GameManager : Singleton<GameManager>
         BattleManager.s_Instance.SetTimeScale(1f);
 
         SceneLoader.s_Instance.LoadScene(SceneType.Map);
-        SceneLoader.s_Instance.UnloadScene(SceneType.Battle);
 
         WaveSpawnerManager.s_Instance.UnassignSpawners();
         WaveSpawnerManager.s_Instance.ClearWaveSpawners();

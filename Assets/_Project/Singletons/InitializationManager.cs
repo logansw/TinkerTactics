@@ -28,15 +28,46 @@ public class InitializationManager : Singleton<InitializationManager>
         InitializeBaseScene();
     }
 
-    public void InitializeBaseScene()
+    public void InitializeScene(SceneType sceneType)
     {
+        switch (sceneType)
+        {
+            case SceneType.Base:
+                InitializeBaseScene();
+                break;
+            case SceneType.Map:
+                InitializeMapScene();
+                break;
+            case SceneType.Battle:
+                InitializeBattleScene(GameManager.s_Instance.CurrentLevelIndex);
+                break;
+            case SceneType.TinkerShop:
+                InitializeTinkerShopScene();
+                break;
+            case SceneType.TowerShop:
+                InitializeTowerShopScene();
+                break;
+            default:
+                Debug.LogError($"Initialization for SceneType: {sceneType} not imlemented");
+                break;
+        }
+    }
+
+    private void InitializeBaseScene()
+    {
+        SceneLoader.s_Instance.Initialize();
         GameManager.s_Instance.Initialize();
         DeckManager.s_Instance.Initialize();
         SelectionManager.s_Instance.Initialize();
         StateController.s_Instance.Initialize();
     }
 
-    public void InitializeBattleScene(int level)
+    private void InitializeMapScene()
+    {
+        MapManager.s_Instance.Initialize();
+    }
+
+    private void InitializeBattleScene(int level)
     {
         EnemyManager.s_Instance.Initialize(level);
         PathDrawer.s_Instance.Initialize();
@@ -46,13 +77,13 @@ public class InitializationManager : Singleton<InitializationManager>
         Camera.main.GetComponent<CustomCamera>().AddControls();
     }
 
-    public void InitializeShopScene()
+    private void InitializeTinkerShopScene()
     {
         MarketplaceManager.s_Instance.Initialize();
     }
 
-    public void InitializeMapScene()
+    private void InitializeTowerShopScene()
     {
-        MapManager.s_Instance.Initialize();
+        MarketplaceManager.s_Instance.Initialize();        
     }
 }
