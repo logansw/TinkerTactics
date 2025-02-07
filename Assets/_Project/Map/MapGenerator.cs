@@ -128,9 +128,6 @@ public class MapGenerator : MonoBehaviour
             foreach (MapNode node in current.Next)
             {
                 queue.Enqueue(node);
-                Debug.Log(mapLocation == null); 
-                Debug.Log(mapLocation.NextLocations == null);
-                Debug.Log(current == null);
                 mapLocation.NextLocations.Add(node.MapLocation);
             }
         }
