@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ca2683074b643079098d0c0fb5d32d, type: 3}
   m_Name: BiggerGunUpgrade 1
   m_EditorClassIdentifier: 
-  UpgradeName: 
-  Description: 
-  Tier: 0
-  DamageBoost: 0
+  UpgradeName: Bigger Guns 1
+  Description: Increase damage by 3
+  Tier: 1
+  DamageBoost: 3

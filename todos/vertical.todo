@@ -48,6 +48,15 @@ Tower Upgrade System:
         // ☐ Update panel to show upgrades by new tier @10m
     // ☐ Logic to fetch upgrades randomly from SO pool @30m
     // ☐ reroll
+
+UI:
+    ☐ PopupManager.cs @today
+    ☐ Popup.cs @today
+    ☐ TowerDialog.cs @today
+        ☐ Open tower dialog tower click + deploy
+        ☐ 
+    ☐ TinkerDialogue.cs
+    ☐ Stat Chips
 Archive:
 
 
