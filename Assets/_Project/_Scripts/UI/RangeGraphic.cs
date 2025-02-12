@@ -4,15 +4,50 @@ using UnityEngine;
 
 public class RangeGraphic : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<RectTransform> _cells;
+    [SerializeField] private RectTransform _rangeCellPrefab;
+    [SerializeField] private RectTransform _towerCellPrefab;
+    [SerializeField] private RectTransform _supportCellPrefab;
+
+    public void DrawRangeIndicator(TowerRangeData towerRangeData)
     {
-        
+        _cells = new List<RectTransform>();
+        RectTransform parentTransform = GetComponent<RectTransform>();
+        parentTransform.sizeDelta = new Vector2(towerRangeData.Width, towerRangeData.Height) * _towerCellPrefab.sizeDelta.x;
+        for (int i = 0; i < towerRangeData.Width; i++)
+        {
+            for (int j = 0; j < towerRangeData.Height; j++)
+            {
+                RectTransform cell;
+                switch (towerRangeData.GetCellState(i, j))
+                {
+                    case TowerCellState.Tower:
+                        cell = Instantiate<RectTransform>(_towerCellPrefab);
+                        break;
+                    case TowerCellState.InRange:
+                        cell = Instantiate<RectTransform>(_rangeCellPrefab);
+                        break;
+                    default:
+                        cell = null;
+                        break;
+                }
+                if (cell != null)
+                {
+                    cell.transform.parent = transform;
+                    cell.transform.localPosition = new Vector2(i, j) * new Vector2(1, -1);
+                    cell.transform.localRotation = Quaternion.identity;
+                    _cells.Add(cell);
+                }
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DestroyRangeIndicator()
     {
-        
+        int count = _cells.Count;
+        for (int i = count - 1; i >= 0; i--)
+        {
+            Destroy(_cells[i].gameObject);
+        }
     }
 }

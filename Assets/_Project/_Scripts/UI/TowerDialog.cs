@@ -13,8 +13,8 @@ public class TowerDialog : Popup
     [SerializeField] private TMP_Text _name;
 
     // TooltipTriggers
-    [SerializeField] private TooltipTrigger _abilityTooltipTrigger;
-    [SerializeField] private TooltipTrigger _rangeTooltipTrigger;
+    [SerializeField] private AbilityTooltipTrigger _abilityTooltipTrigger;
+    [SerializeField] private RangeTooltipTrigger _rangeTooltipTrigger;
     [SerializeField] private IconTooltip _abilityTooltip;
     private RangeGraphic _rangeGraphic;
 
@@ -26,7 +26,7 @@ public class TowerDialog : Popup
     [SerializeField] private StatChip _abilityCooldownStatChip;
 
     // TinkerTooltipTriggers
-    [SerializeField] private List<TooltipTrigger> _tinkerTooltipTriggers;
+    [SerializeField] private List<AbilityTooltipTrigger> _tinkerTooltipTriggers;
 
     // Action Buttons
     private List<Button> _buttons;
@@ -42,6 +42,7 @@ public class TowerDialog : Popup
         _ammoStatChip.Initialize(tower.Ammo, true, "Ammo");
         _abilityCooldownStatChip.Initialize(tower.AbiiltyCooldown, true, "CD");
         _abilityTooltipTrigger.Initialize(tower.Ability);
+        _rangeTooltipTrigger.Initialize(tower.RangeIndicator.TowerRangeData);
     }
 
     // Positions activated buttons properly

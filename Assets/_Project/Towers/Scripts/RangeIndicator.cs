@@ -19,6 +19,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     private List<SpriteRenderer> _rangeCells;
     [SerializeField] private SpriteRenderer _rangeCellPrefab;
     private bool _isVisible;
+    public TowerRangeData TowerRangeData => _towerRangeData;
 
     public void Initialize(Tower tower)
     {

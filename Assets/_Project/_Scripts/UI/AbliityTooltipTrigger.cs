@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider2D))]
-public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class AbilityTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private ITooltipTargetable _tooltipTargetable;
 
