@@ -25,7 +25,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     [HideInInspector] public Stat ReloadSpeed;
     [HideInInspector] public Stat Ammo;
     [HideInInspector] public Stat AbiiltyCooldown;
-    private Ability _ability;
+    public Ability Ability { get; private set; }
 
     public virtual string GetTooltipText()
     {
@@ -51,7 +51,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
         ModifierProcessor = GetComponent<ModifierProcessor>();
         PlotAssigner = GetComponent<PlotAssigner>();
-        _ability = GetComponent<Ability>();
+        Ability = GetComponent<Ability>();
     }
 
     public virtual void Initialize()
@@ -67,7 +67,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         BasicAttack.Initialize(this);
         RangeIndicator.Initialize(this);
         _ammoBar.RegisterStat(Ammo);
-        _ability.Initialize();
+        Ability.Initialize();
         
         SelectionManager.s_Instance.ForceNewSelectable(this);
     }
@@ -77,9 +77,9 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         if (!Active) { return; }
         if (BasicAttack.CanActivate())
         {
-            if (_ability.CanActivate())
+            if (Ability.CanActivate())
             {
-                _ability.Execute();
+                Ability.Execute();
                 BasicAttack.AnimateBasicAttack(0.2f);
                 BasicAttack.AttackClock.Reset();
                 BasicAttack.SetCannotAttack();

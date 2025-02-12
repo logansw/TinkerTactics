@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class TooltipTrigger : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    private ITooltipTargetable _tooltipTargetable;
+
+    public void Initialize(ITooltipTargetable tooltipTargetable)
     {
-        
+        _tooltipTargetable = tooltipTargetable;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        PopupManager.s_Instance.ShowIconTooltip(_tooltipTargetable);
+    }
+    public void OnPointerExit(PointerEventData eventData)    
+    {
+        PopupManager.s_Instance.HideIconTooltip();
     }
 }

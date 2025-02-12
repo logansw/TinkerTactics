@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class PopupManager : Singleton<PopupManager>
 {
-    [SerializeField] private TowerDialog _towerDialogPrefab;
+    [SerializeField] private TowerDialog _towerDialog;
+    [SerializeField] private IconTooltip _iconTooltip;
 
     public void ShowTowerDialogBattle(Tower tower)
     {
-        _towerDialogPrefab.Initialize(tower);
-        _towerDialogPrefab.gameObject.SetActive(true);
+        _towerDialog.Initialize(tower);
+        _towerDialog.gameObject.SetActive(true);
     }
 
     public void HideTowerDialogBattle()
     {
-        _towerDialogPrefab.gameObject.SetActive(false);
+        _towerDialog.gameObject.SetActive(false);
+    }
+
+    public void ShowIconTooltip(ITooltipTargetable tooltipSource)
+    {
+        _iconTooltip.Initialize(tooltipSource);
+        _iconTooltip.gameObject.SetActive(true);
+    }
+
+    public void HideIconTooltip()
+    {
+        _iconTooltip.gameObject.SetActive(false);
     }
     // private List<Popup> _openPopups;
 

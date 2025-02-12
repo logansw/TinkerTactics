@@ -119,24 +119,14 @@ MonoBehaviour:
   _initialAbilityCD: 5
   Damage:
     InitialValue: 0
-    Max: 0
-    Min: 0
   AttackSpeed:
     InitialValue: 0
-    Max: 0
-    Min: 0
   ReloadSpeed:
     InitialValue: 0
-    Max: 0
-    Min: 0
   Ammo:
     InitialValue: 0
-    Max: 0
-    Min: 0
   AbiiltyCooldown:
     InitialValue: 0
-    Max: 0
-    Min: 0
 --- !u!114 &7229328826881444205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,4 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286890cc1bf234042b26c8e113839e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tooltipIcon: {fileID: 2043890779, guid: 833ce975cb8334bac882694de59f31b4, type: 3}
+  _abilityName: Ability
+  _abilityDescription: Increase Attack Speed by 2x for the rest of the wave
   AttackSpeedMultiplier: 2

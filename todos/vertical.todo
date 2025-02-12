@@ -50,13 +50,15 @@ Tower Upgrade System:
     // ☐ reroll
 
 UI:
-    ☐ PopupManager.cs @today
-    ☐ Popup.cs @today
+    ✔ PopupManager.cs @today @done(25-02-12 09:00)
+    ✔ Popup.cs @today @done(25-02-12 09:00)
     ☐ TowerDialog.cs @today
-        ☐ Open tower dialog tower click + deploy
-        ☐ 
+        ✔ Open tower dialog tower click + deploy @done(25-02-12 08:59)
+        ☐ Show equipped tinkers
+        ☐ Show tower range
+        ☐ Show ability description @started(25-02-12 10:03)
     ☐ TinkerDialogue.cs
-    ☐ Stat Chips
+    ✔ Stat Chips @done(25-02-12 08:59)
 Archive:
 
 

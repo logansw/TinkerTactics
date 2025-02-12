@@ -2,12 +2,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Ability : MonoBehaviour, ITowerAction
+public abstract class Ability : MonoBehaviour, ITowerAction, ITooltipTargetable
 {
     private AbilityBar _abilityBar;
     private InternalClock _cooldownClock;
     protected Tower _tower;
     protected bool _abilityReady;
+    [SerializeField] private Sprite _tooltipIcon;
+    [SerializeField] private string _abilityName;
+    [SerializeField] private string _abilityDescription;
 
     void Awake()
     {
@@ -74,5 +77,20 @@ public abstract class Ability : MonoBehaviour, ITowerAction
         _cooldownClock = new InternalClock(_tower.AbiiltyCooldown.Max, _tower.gameObject);
         _cooldownClock.e_OnTimerDone += SetAbilityReady;
         _abilityBar.RegisterClock(_cooldownClock);
+    }
+
+    public string GetTooltipName()
+    {
+        return _abilityName;
+    }
+
+    public string GetTooltipDescription()
+    {
+       return _abilityDescription; 
+    }
+
+    public Sprite GetIcon()
+    {
+        return _tooltipIcon;
     }
 }
