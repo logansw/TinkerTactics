@@ -14,6 +14,7 @@ public class ArcherAbility : Ability
 
     public override void Initialize()
     {
+        base.Initialize();
         _archerTower = GetComponent<Archer>();
     }
 
@@ -37,7 +38,7 @@ public class ArcherAbility : Ability
         LockAbilityStatus(false);
         _abilityActive = true;
         _tower.BasicAttack.Execute();
-        _tower.CurrentAmmo.Current = _tower.MaxAmmo.Current;
+        _tower.Ammo.Reset();
         _tower.AttackSpeed.Current *= AttackSpeedMultiplier;
         _tower.ReloadSpeed.Current *= AttackSpeedMultiplier;
         _tower.BasicAttack.SetClocks();

@@ -13,6 +13,7 @@ public class CannonAbility : Ability
 
     public override void Initialize()
     {
+        base.Initialize();
         _cannon = GetComponent<Cannon>();
     }
 

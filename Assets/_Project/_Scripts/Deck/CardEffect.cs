@@ -6,7 +6,7 @@ public abstract class CardEffect : MonoBehaviour
 {
     public Sprite PreviewSprite;
     protected Card _parentCard;
-    public StatInt Cost;
+    public Stat Cost;
     public string Name;
     public string Description;
 
@@ -18,7 +18,7 @@ public abstract class CardEffect : MonoBehaviour
     public abstract TargetPreview GetTargetPreview();
     public virtual int GetCost()
     {
-        return Cost.Current;
+        return Cost.CurrentInt;
     }
     public virtual string GetName()
     {

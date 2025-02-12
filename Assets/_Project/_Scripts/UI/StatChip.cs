@@ -7,38 +7,27 @@ public class StatChip : MonoBehaviour
 {
     [SerializeField] private TMP_Text _statTypeText;
     [SerializeField] private TMP_Text _valueText;
-    private StatBase _stat;
-
-    public void RegisterStat(StatBase<T> stat)
-    {
-        stat.e_OnStatChanged += Render;        
-    }
-    
-    public void RegisterStatCeiling(StatBase<U> stat)
-    {
-        stat.e_OnStatChanged += Render;
-    }
+    private Stat _stat;
+    private bool _showMax;
 
     private void Render()
     {
-
+        if (_showMax)
+        {
+            _valueText.text = $"{_stat.Current}/{_stat.Max}";
+        }
+        else
+        {
+            _valueText.text = _stat.Current.ToString();
+        }
     }
     
-    public void Initialize(string statTypeText, int value)
+    public void Initialize(Stat stat, bool showMax, string abbreviation)
     {
-        _statTypeText.text = statTypeText;
-        _valueText.text = value.ToString();
-    }
-
-    public void Initialize(string statTypeText, float value)
-    {
-        _statTypeText.text = statTypeText;
-        _valueText.text = value.ToString();
-    }
-
-    public void Initialize(string statTypeText, string valueText)
-    {
-        _statTypeText.text = statTypeText;
-        _valueText.text = valueText.ToString();
+       _stat = stat;
+       _showMax = showMax;
+       _statTypeText.text = abbreviation;
+       Render();
+       _stat.e_OnStatChanged += Render;
     }
 }

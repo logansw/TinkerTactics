@@ -317,17 +317,31 @@ MonoBehaviour:
   PlotAssigner: {fileID: 0}
   Name: Tower
   TinkerLimit: 3
+  _initalDamage: 5
+  _initialAttackSpeed: 1
+  _initialReloadSpeed: 0.5
+  _initialAmmo: 5
+  _initialAbilityCD: 5
   Damage:
-    baseValue: 5
+    InitialValue: 5
+    Max: 9999
+    Min: 0
   AttackSpeed:
-    baseValue: 1
+    InitialValue: 1
+    Max: 10
+    Min: 0
   ReloadSpeed:
-    baseValue: 0.5
-  MaxAmmo:
-    baseValue: 5
-  CurrentAmmo:
-    baseValue: 5
-  AbiiltyCooldown: 0
+    InitialValue: 0.5
+    Max: 10
+    Min: 0
+  Ammo:
+    InitialValue: 6
+    Max: 6
+    Min: 0
+  AbiiltyCooldown:
+    InitialValue: 0
+    Max: 5
+    Min: 0
 --- !u!114 &7781734332646425875
 MonoBehaviour:
   m_ObjectHideFlags: 0

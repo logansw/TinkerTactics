@@ -8,7 +8,7 @@ public class BarUI : MonoBehaviour
     public bool IsScreenSpace;
     public bool ShowText;
     public int BreakpointSize = 0;
-    private StatInt _stat;
+    private Stat _stat;
     private TMP_Text _statText;
     // Screen Space UI
     private RectTransform _backgroundScreen;
@@ -50,7 +50,7 @@ public class BarUI : MonoBehaviour
         }
     }
 
-    public void RegisterStat(StatInt stat)
+    public void RegisterStat(Stat stat)
     {
         _stat = stat;
         _stat.e_OnStatChanged += UpdateBar;
@@ -75,10 +75,10 @@ public class BarUI : MonoBehaviour
 
         if (_internalClock == null)
         {
-            float statPercentage = (float)_stat.Current / _stat.Base;
+            float statPercentage = (float)_stat.Current / _stat.Max;
             if (ShowText)
             {
-                _statText.text = $"{_stat.Current}/{_stat.Base}";
+                _statText.text = $"{_stat.Current}/{_stat.Max}";
             }
             if (IsScreenSpace)
             {
@@ -95,7 +95,7 @@ public class BarUI : MonoBehaviour
             float statPercentage = _internalClock.TimeElapsed / _internalClock.TimeToWait;
             if (ShowText)
             {
-                _statText.text = $"{_stat.Current}/{_stat.Base}";
+                _statText.text = $"{_stat.Current}/{_stat.Max}";
             }
             if (IsScreenSpace)
             {
@@ -147,7 +147,7 @@ public class BarUI : MonoBehaviour
         else
         {
             float barWidth = _backgroundWorld.bounds.size.x;
-            int segmentCount = _stat.Base / BreakpointSize;
+            int segmentCount = _breakpoints.Count - 1;
             float segmentSize = barWidth / segmentCount;
             for (int i = 1; i < segmentCount; i++)
             {

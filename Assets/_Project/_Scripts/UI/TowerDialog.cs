@@ -19,11 +19,11 @@ public class TowerDialog : Popup
     private RangeGraphic _rangeGraphic;
 
     // Stats
-    [SerializeField] private StatChip _powerStat;
-    [SerializeField] private StatChip _attackSpeedStat;
-    [SerializeField] private StatChip _ammoStat;
-    [SerializeField] private StatChip _reloadSpeedStat;
-    [SerializeField] private StatChip _abilityCooldownStat;
+    [SerializeField] private StatChip _powerStatChip;
+    [SerializeField] private StatChip _attackSpeedStatChip;
+    [SerializeField] private StatChip _ammoStatChip;
+    [SerializeField] private StatChip _reloadSpeedStatChip;
+    [SerializeField] private StatChip _abilityCooldownStatChip;
 
     // TinkerTooltipTriggers
     [SerializeField] private List<TooltipTrigger> _tinkerTooltipTriggers;
@@ -36,11 +36,11 @@ public class TowerDialog : Popup
     public void Initialize(Tower tower)
     {
         _name.text = tower.name;
-        _powerStat.Initialize("POW", tower.Damage.Current);
-        _powerStat.Initialize("AS", tower.AttackSpeed.Current);
-        _powerStat.Initialize();
-        _powerStat.Initialize();
-        _powerStat.Initialize();
+        _powerStatChip.Initialize(tower.Damage, false, "POW");
+        _attackSpeedStatChip.Initialize(tower.AttackSpeed, false, "AS");
+        _reloadSpeedStatChip.Initialize(tower.ReloadSpeed, false, "RS");
+        _ammoStatChip.Initialize(tower.Ammo, true, "Ammo");
+        _abilityCooldownStatChip.Initialize(tower.AbiiltyCooldown, true, "CD");
     }
 
     // Positions activated buttons properly

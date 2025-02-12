@@ -78,7 +78,7 @@ public class ReloadAmmo : CardEffect
     {
         foreach (Tower tower in _recipients)
         {
-            tower.BasicAttack.ChangeCurrentAmmo(ReloadAmount);
+            tower.Ammo.Current += ReloadAmount;
         }
     }
 

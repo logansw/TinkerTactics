@@ -12,6 +12,7 @@ public class DiskAbiilty : Ability
 
     public override void Initialize()
     {
+        base.Initialize();
         _diskTower = GetComponent<DiskTower>();
         _initialAttackSpeed = _tower.AttackSpeed.Current;
         _initialReloadSpeed = _tower.ReloadSpeed.Current;

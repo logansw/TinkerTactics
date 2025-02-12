@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 22
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7585368961762295393, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_LocalPosition.x
@@ -121,6 +121,5 @@ MonoBehaviour:
   Cost:
     baseValue: 1
   Name: Unlock
-  Consume: 1
   Description: Unlock a tower until the next wave. Cannot be used during battle.
   Tower: {fileID: 0}

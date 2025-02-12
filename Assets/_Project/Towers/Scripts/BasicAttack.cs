@@ -34,7 +34,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         projectileBallistic.Initialize(_tower, projectileEffectTracker, _tower.Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
         
         AttackClock.Reset();
-        _tower.CurrentAmmo.Current -= 1;
+        _tower.Ammo.Current -= 1;
         _canAttack = false;
         EventBus.RaiseEvent<BasicAttackEvent>(new BasicAttackEvent(projectileBallistic, _tower, target));
         StartCoroutine(AnimateBasicAttack(0.2f));
@@ -47,7 +47,7 @@ public class BasicAttack : MonoBehaviour, ITowerAction
 
     public bool CanActivate()
     {
-        return _canAttack && _tower.CurrentAmmo.Current > 0 && _tower.RangeIndicator.HasEnemyInRange();
+        return _canAttack && _tower.Ammo.Current > 0 && _tower.RangeIndicator.HasEnemyInRange();
     }
 
     private void SetCanAttack()
@@ -62,27 +62,14 @@ public class BasicAttack : MonoBehaviour, ITowerAction
 
     private void ReloadAmmo()
     {
-        if (_tower.CurrentAmmo.Current < _tower.MaxAmmo.Current)
-        {
-            _tower.CurrentAmmo.Base = _tower.MaxAmmo.Current;
-            _tower.CurrentAmmo.Current += 1;
-            ReloadClock.Reset();
-        }
+        _tower.Ammo.Current += 1;
+        ReloadClock.Reset();
     }
 
     public void SetClocks()
     {
         AttackClock.SetTimeToWait(1f / _tower.AttackSpeed.Current);
         ReloadClock.SetTimeToWait(1f / _tower.ReloadSpeed.Current);
-    }
-
-    /// <summary>
-    /// Changes the current ammo by the given amount, clamped between 0 and MaxAmmo. This is the preferred method for changing ammo outside.
-    /// </summary>
-    /// <param name="amount"></param>
-    public void ChangeCurrentAmmo(int amount)
-    {
-        _tower.CurrentAmmo.Current = Mathf.Clamp(_tower.CurrentAmmo.Current + amount, 0, _tower.MaxAmmo.Current);
     }
 
     public IEnumerator AnimateBasicAttack(float animationDuration)

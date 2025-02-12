@@ -19,6 +19,6 @@ public class TinkerKillReload : TinkerBase
     {
         if (e.Tower != _tower) { return; }
 
-        _tower.BasicAttack.ChangeCurrentAmmo(1);
+        _tower.Ammo.Current += 1;
     }
 }

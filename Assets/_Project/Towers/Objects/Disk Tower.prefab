@@ -112,17 +112,31 @@ MonoBehaviour:
   PlotAssigner: {fileID: 0}
   Name: Disk Launcher
   TinkerLimit: 3
+  _initialDamage: 1
+  _initialAttackSpeed: 1
+  _initialReloadSpeed: 0.5
+  _initialAmmo: 20
+  _initialAbilityCD: 5
   Damage:
-    baseValue: 1
+    InitialValue: 0
+    Max: 0
+    Min: 0
   AttackSpeed:
-    baseValue: 1
+    InitialValue: 0
+    Max: 0
+    Min: 0
   ReloadSpeed:
-    baseValue: 0.8
-  MaxAmmo:
-    baseValue: 50
-  CurrentAmmo:
-    baseValue: 50
-  AbiiltyCooldown: 3
+    InitialValue: 0
+    Max: 0
+    Min: 0
+  Ammo:
+    InitialValue: 0
+    Max: 0
+    Min: 0
+  AbiiltyCooldown:
+    InitialValue: 0
+    Max: 0
+    Min: 0
 --- !u!114 &7229328826881444205
 MonoBehaviour:
   m_ObjectHideFlags: 0

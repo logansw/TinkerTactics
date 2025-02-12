@@ -7,7 +7,7 @@ public class DamagingSpell : CardEffect
 {
     public int Damage;
     public float Range;
-    public StatAmmo Ammo;
+    public Stat Ammo;
 
     public override void Initialize(Card parentCard)
     {
@@ -82,7 +82,7 @@ public class DamagingSpell : CardEffect
     {
         Cost.Reset();
         _parentCard.Render(true);
-        Ammo.Current = Ammo.Base;
+        Ammo.Reset();
     }
 
     public override string GetCardType()

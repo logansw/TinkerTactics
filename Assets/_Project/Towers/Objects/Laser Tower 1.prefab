@@ -220,18 +220,31 @@ MonoBehaviour:
   PlotAssigner: {fileID: 0}
   Name: Laser Pointer Tower
   TinkerLimit: 3
+  _initialDamage: 5
+  _initialAttackSpeed: 1
+  _initialReloadSpeed: 0.5
+  _initialAmmo: 5
+  _initialAbilityCD: 12
   Damage:
-    baseValue: 5
+    InitialValue: 0
+    Max: 0
+    Min: 0
   AttackSpeed:
-    baseValue: 1
+    InitialValue: 0
+    Max: 0
+    Min: 0
   ReloadSpeed:
-    baseValue: 0.5
-  MaxAmmo:
-    baseValue: 5
-  CurrentAmmo:
-    baseValue: 5
-  AbiiltyCooldown: 10
-  _ability: {fileID: -7013969297647350481}
+    InitialValue: 0
+    Max: 0
+    Min: 0
+  Ammo:
+    InitialValue: 0
+    Max: 0
+    Min: 0
+  AbiiltyCooldown:
+    InitialValue: 0
+    Max: 0
+    Min: 0
   Pierce: 2
 --- !u!114 &-7013969297647350481
 MonoBehaviour:

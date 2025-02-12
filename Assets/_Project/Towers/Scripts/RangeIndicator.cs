@@ -88,7 +88,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     public void OnSelect()
     {
         SetVisible(true);
-        TooltipManager.s_Instance.DisplayTooltip(_tower.GetTooltipText());
+        PopupManager.s_Instance.ShowTowerDialogBattle(_tower);
 
         if (StateController.CurrentState.Equals(StateType.Playing)) { return; }
 
@@ -107,7 +107,7 @@ public class RangeIndicator : MonoBehaviour, ISelectable
     public void OnDeselect()
     {
         SetVisible(false);
-        TooltipManager.s_Instance.HideTooltip();
+        PopupManager.s_Instance.HideTowerDialogBattle();
     }
 
     // TODO: Change this later so that players can grab the grid and drag it to rotate the tower. It would be cool if there was some kind of cool animation

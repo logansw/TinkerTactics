@@ -13,6 +13,7 @@ public class LaserAbility : Ability
 
     public override void Initialize()
     {
+        base.Initialize();
         _laserTower = GetComponent<LaserPointerTower>();
     }
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tower : MonoBehaviour, ISelectable, ILiftable
 {
     private BarUI _ammoBar;
-    protected BarUI _abilityBar;
     [HideInInspector] public RangeIndicator RangeIndicator;
     [HideInInspector] public BasicAttack BasicAttack;
     [HideInInspector] public ModifierProcessor ModifierProcessor;
@@ -16,12 +15,16 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     [Header("Data")]
     public string Name;
     public int TinkerLimit;
-    public StatDamage Damage;
-    public StatAttackSpeed AttackSpeed;
-    public StatReloadSpeed ReloadSpeed;
-    public StatAmmo MaxAmmo;
-    public StatInt CurrentAmmo;
-    public float AbiiltyCooldown;
+    [SerializeField] private float _initialDamage;
+    [SerializeField] private float _initialAttackSpeed;
+    [SerializeField] private float _initialReloadSpeed;
+    [SerializeField] private float _initialAmmo;
+    [SerializeField] private float _initialAbilityCD;
+    [HideInInspector] public Stat Damage;
+    [HideInInspector] public Stat AttackSpeed;
+    [HideInInspector] public Stat ReloadSpeed;
+    [HideInInspector] public Stat Ammo;
+    [HideInInspector] public Stat AbiiltyCooldown;
     private Ability _ability;
 
     public virtual string GetTooltipText()
@@ -30,7 +33,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
         sb.AppendLine(Name);
         sb.AppendLine($"Damage: {Damage.Current}");
-        sb.AppendLine($"Ammo: {CurrentAmmo.Current}/{MaxAmmo.Current}");
+        sb.AppendLine($"Ammo: {Ammo.Current}/{Ammo.Max}");
         sb.AppendLine($"Attack Speed: {AttackSpeed.Current}");
         sb.AppendLine($"Reload Speed: {ReloadSpeed.Current}");
         sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
@@ -41,15 +44,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     protected virtual void Awake()
     {
         BasicAttack = GetComponent<BasicAttack>();
-        BasicAttack.Initialize(this);
 
         RangeIndicator = GetComponentInChildren<RangeIndicator>();
-        RangeIndicator.Initialize(this);
 
         _ammoBar = transform.Find("AmmoBar").GetComponent<BarUI>();
-        _ammoBar.RegisterStat(CurrentAmmo);
 
-        _abilityBar = transform.Find("AbilityBar").GetComponent<BarUI>();
         ModifierProcessor = GetComponent<ModifierProcessor>();
         PlotAssigner = GetComponent<PlotAssigner>();
         _ability = GetComponent<Ability>();
@@ -58,6 +57,18 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     public virtual void Initialize()
     {
         PlotAssigner.AssignToPlotBelow();
+
+        Damage = new Stat(0, 9999, _initialDamage);
+        AttackSpeed = new Stat(0, 5, _initialAttackSpeed);
+        ReloadSpeed = new Stat(0, 5, _initialReloadSpeed);
+        Ammo = new Stat(0, _initialAmmo, _initialAmmo);
+        AbiiltyCooldown = new Stat(0, _initialAbilityCD, 0);
+        
+        BasicAttack.Initialize(this);
+        RangeIndicator.Initialize(this);
+        _ammoBar.RegisterStat(Ammo);
+        _ability.Initialize();
+        
         SelectionManager.s_Instance.ForceNewSelectable(this);
     }
 
@@ -82,7 +93,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     protected virtual void OnEnable()
     {
-        IdleState.e_OnIdleStateEnter += () => { CurrentAmmo.Reset(); };
+        IdleState.e_OnIdleStateEnter += () => { Ammo.Reset(); };
         IdleState.e_OnIdleStateEnter += Recall;
     }
 
@@ -93,13 +104,13 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
     public void OnSelect()
     {
-        TooltipManager.s_Instance.DisplayTooltip(GetTooltipText());
+        PopupManager.s_Instance.ShowTowerDialogBattle(this);
         RangeIndicator.SetVisible(true);
     }
 
     public void OnDeselect()
     {
-        TooltipManager.s_Instance.HideTooltip();
+        PopupManager.s_Instance.HideTowerDialogBattle();
         RangeIndicator.SetVisible(false);
     }
 

@@ -63,33 +63,31 @@ public class TinkerGeneric : TinkerBase
         ApplyDamageModifier(recipient.Damage);
         ApplyReloadSpeedModifier(recipient.ReloadSpeed);
         ApplyAttackSpeedModifier(recipient.AttackSpeed);
-        ApplyAmmoModifier(recipient.MaxAmmo);
+        ApplyAmmoModifier(recipient.Ammo);
         ApplyCostModifier();
         recipient.BasicAttack.SetClocks();
     }
 
-    public void ApplyDamageModifier(StatDamage stat)
+    public void ApplyDamageModifier(Stat stat)
     {
         if (DamageModFlat == default) { return; }
 
         stat.Current += DamageModFlat;
     }
 
-    public void ApplyAmmoModifier(StatAmmo maxAmmo)
+    public void ApplyAmmoModifier(Stat ammo)
     {
-        if (AmmoModFlat == default) { return; }
-        maxAmmo.Current += AmmoModFlat;
-        _tower.CurrentAmmo.Base = maxAmmo.Current;
-        _tower.CurrentAmmo.Reset();
+        ammo.Max += AmmoModFlat;
+        ammo.Reset();
     }
 
-    public void ApplyReloadSpeedModifier(StatReloadSpeed stat)
+    public void ApplyReloadSpeedModifier(Stat stat)
     {
         if (ReloadSpeedModMult == default) { return; }
         stat.Current *= ReloadSpeedModMult;
     }
 
-    public void ApplyAttackSpeedModifier(StatAttackSpeed stat)
+    public void ApplyAttackSpeedModifier(Stat stat)
     {
         if (AttackSpeedModMult == default) { return; }
         stat.Current *= AttackSpeedModMult;
