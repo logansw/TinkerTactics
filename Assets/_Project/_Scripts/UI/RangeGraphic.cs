@@ -36,6 +36,8 @@ public class RangeGraphic : MonoBehaviour
                 {
                     cell.transform.parent = transform;
                     cell.transform.localPosition = new Vector2(i, j+1) * new Vector2(1, -1) * _towerCellPrefab.sizeDelta.x;
+                    Vector3 offset = new Vector3(-parentTransform.sizeDelta.x, parentTransform.sizeDelta.y / 2, 0);
+                    cell.transform.localPosition += offset;
                     cell.transform.localRotation = Quaternion.identity;
                     _cells.Add(cell);
                 }
