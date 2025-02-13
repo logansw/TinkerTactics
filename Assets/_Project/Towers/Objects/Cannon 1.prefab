@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2304c81948e42deb2bfcd8ea1a93f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tooltipIcon: {fileID: 2043890779, guid: 833ce975cb8334bac882694de59f31b4, type: 3}
+  _tooltipIcon: {fileID: 893185078, guid: a9298850ba1ce48c8888fac73c7f6df7, type: 3}
   _abilityName: Ability
   _abilityDescription: Launch a bubblegum ball that explodes with 2x Blast on impact!
   ProjectileSpeed: 5

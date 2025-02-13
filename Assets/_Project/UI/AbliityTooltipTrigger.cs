@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 public class AbilityTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -11,6 +12,7 @@ public class AbilityTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPoint
     public void Initialize(ITooltipTargetable tooltipTargetable)
     {
         _tooltipTargetable = tooltipTargetable;
+        GetComponent<Image>().sprite = tooltipTargetable.GetIcon();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
