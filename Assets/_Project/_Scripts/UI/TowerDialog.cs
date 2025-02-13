@@ -43,6 +43,13 @@ public class TowerDialog : Popup
         _abilityCooldownStatChip.Initialize(tower.AbiiltyCooldown, true, "CD");
         _abilityTooltipTrigger.Initialize(tower.Ability);
         _rangeTooltipTrigger.Initialize(tower.RangeIndicator.TowerRangeData);
+        ModifierProcessor modifierProcessor = tower.ModifierProcessor;
+        List<ModifierBase> modifiers = modifierProcessor.GetModifiers();
+        for (int i = 0; i < modifiers.Count; i++)
+        {
+            Debug.Log("Init");
+            _tinkerTooltipTriggers[i].Initialize(modifiers[i]);
+        }
     }
 
     // Positions activated buttons properly

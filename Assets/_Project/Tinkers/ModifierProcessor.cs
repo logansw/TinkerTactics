@@ -32,4 +32,9 @@ public class ModifierProcessor : MonoBehaviour
             ToastManager.s_Instance.AddToast($"{recipient.Name} has {TinkerCount}/{recipient.TinkerLimit} tinkers equipped.");
         }
     }
+
+    public List<ModifierBase> GetModifiers()
+    {
+        return Modifiers;
+    }
 }
