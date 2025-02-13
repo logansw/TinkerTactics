@@ -8,6 +8,7 @@ public class RangeGraphic : MonoBehaviour
     [SerializeField] private RectTransform _rangeCellPrefab;
     [SerializeField] private RectTransform _towerCellPrefab;
     [SerializeField] private RectTransform _supportCellPrefab;
+    [SerializeField] private RectTransform _emptyCellPrefab;
 
     public void DrawRangeIndicator(TowerRangeData towerRangeData)
     {
@@ -28,13 +29,13 @@ public class RangeGraphic : MonoBehaviour
                         cell = Instantiate<RectTransform>(_rangeCellPrefab);
                         break;
                     default:
-                        cell = null;
+                        cell = Instantiate<RectTransform>(_emptyCellPrefab);
                         break;
                 }
                 if (cell != null)
                 {
                     cell.transform.parent = transform;
-                    cell.transform.localPosition = new Vector2(i, j) * new Vector2(1, -1);
+                    cell.transform.localPosition = new Vector2(i, j+1) * new Vector2(1, -1) * _towerCellPrefab.sizeDelta.x;
                     cell.transform.localRotation = Quaternion.identity;
                     _cells.Add(cell);
                 }

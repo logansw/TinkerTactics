@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 833ce975cb8334bac882694de59f31b4
+guid: a9298850ba1ce48c8888fac73c7f6df7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IconSheet_0
+      name: IconSheet 2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d465b0554957458dbfb2819c8922263
-      internalID: -2119901584
+      spriteID: 7131370ea3b674e4d8cd644b77f30f34
+      internalID: -1597737369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IconSheet_1
+      name: IconSheet 2_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e08db1161a9184ef1afbdd139db88e04
-      internalID: 2043890779
+      spriteID: 07fde152a84044bd9be65bce97711251
+      internalID: 893185078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IconSheet_2
+      name: IconSheet 2_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,8 +179,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1476dcc92cf96473c8d0fcb87b774774
-      internalID: -1068866380
+      spriteID: 4700e6d62413c484a911ad0e22980536
+      internalID: 611710278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet 2_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26108122a2a0c4a93a46cdba93c904ea
+      internalID: -921073874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet 2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121daa3b5667e4ba4859af87c1c60fab
+      internalID: 1399521312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet 2_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d80eac1cf6d46498eee583bfc92d08
+      internalID: -689299743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet 2_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff70dadd8cc4e4d7780557f04948c7e7
+      internalID: 1428075916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet 2_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e98f706d43e435f96fbd9aa0638a95
+      internalID: 874462373
       vertices: []
       indices: 
       edges: []
@@ -196,9 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IconSheet_0: -2119901584
-      IconSheet_1: 2043890779
-      IconSheet_2: -1068866380
+      IconSheet 2_0: -1597737369
+      IconSheet 2_1: 893185078
+      IconSheet 2_2: 611710278
+      IconSheet 2_3: -921073874
+      IconSheet 2_4: 1399521312
+      IconSheet 2_5: -689299743
+      IconSheet 2_6: 1428075916
+      IconSheet 2_7: 874462373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
