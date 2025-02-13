@@ -15,17 +15,18 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     [Header("Data")]
     public string Name;
     public int TinkerLimit;
-    [SerializeField] private float _initialDamage;
-    [SerializeField] private float _initialAttackSpeed;
-    [SerializeField] private float _initialReloadSpeed;
-    [SerializeField] private float _initialAmmo;
-    [SerializeField] private float _initialAbilityCD;
+    public float InitialDamage;
+    public float InitialAttackSpeed;
+    public float InitialReloadSpeed;
+    public float InitialAmmo;
+    public float _initialAbilityCD;
     [HideInInspector] public Stat Damage;
     [HideInInspector] public Stat AttackSpeed;
     [HideInInspector] public Stat ReloadSpeed;
     [HideInInspector] public Stat Ammo;
     [HideInInspector] public Stat AbiiltyCooldown;
     public Ability Ability { get; private set; }
+    public float UpgradeCost;
 
     public virtual string GetTooltipText()
     {
@@ -58,10 +59,10 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     {
         PlotAssigner.AssignToPlotBelow();
 
-        Damage = new Stat(0, 9999, _initialDamage);
-        AttackSpeed = new Stat(0, 5, _initialAttackSpeed);
-        ReloadSpeed = new Stat(0, 5, _initialReloadSpeed);
-        Ammo = new Stat(0, _initialAmmo, _initialAmmo);
+        Damage = new Stat(0, 9999, InitialDamage);
+        AttackSpeed = new Stat(0, 5, InitialAttackSpeed);
+        ReloadSpeed = new Stat(0, 5, InitialReloadSpeed);
+        Ammo = new Stat(0, InitialAmmo, InitialAmmo);
         AbiiltyCooldown = new Stat(0, _initialAbilityCD, 0);
         
         BasicAttack.Initialize(this);

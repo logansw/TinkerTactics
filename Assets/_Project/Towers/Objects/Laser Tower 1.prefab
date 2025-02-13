@@ -220,10 +220,10 @@ MonoBehaviour:
   PlotAssigner: {fileID: 0}
   Name: Laser Pointer Tower
   TinkerLimit: 3
-  _initialDamage: 5
-  _initialAttackSpeed: 1
-  _initialReloadSpeed: 0.5
-  _initialAmmo: 5
+  InitialDamage: 5
+  InitialAttackSpeed: 1
+  InitialReloadSpeed: 0.5
+  InitialAmmo: 5
   _initialAbilityCD: 12
   Damage:
     InitialValue: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
     InitialValue: 0
   AbiiltyCooldown:
     InitialValue: 0
+  UpgradeCost: 0
   Pierce: 2
 --- !u!114 &-7013969297647350481
 MonoBehaviour:

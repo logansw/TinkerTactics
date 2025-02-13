@@ -34,8 +34,11 @@ public class TowerDialog : Popup
     [SerializeField] private Button _closeButton;
     [SerializeField] private Button _upgradeButton;
 
+    private Tower _tower;
+
     public void Initialize(Tower tower)
     {
+        _tower = tower;
         _name.text = tower.name;
         _powerStatChip.Initialize(tower.Damage, false, "POW");
         _attackSpeedStatChip.Initialize(tower.AttackSpeed, false, "AS");
@@ -55,6 +58,33 @@ public class TowerDialog : Popup
         {
             _tinkerTooltipTriggers[i].Initialize(modifiers[i]);
         }
+        
+        RenderUpgradeButton();
+    }
+
+    void OnEnable()
+    {
+        _upgradeButton.onClick.AddListener(UpgradeTower);
+    }
+
+    void OnDisable()
+    {
+        _upgradeButton.onClick.RemoveAllListeners();
+    }
+
+    private void UpgradeTower()
+    {
+        Player.s_Instance.Gold -= (int)_tower.UpgradeCost;
+        _tower.InitialDamage *= 1.2f;
+        _tower.Damage.Current = _tower.InitialDamage;
+        _tower.UpgradeCost += 10;
+        RenderUpgradeButton();
+    }
+
+    private void RenderUpgradeButton()
+    {
+        _upgradeButton.interactable = Player.s_Instance.Gold >= _tower.UpgradeCost;
+        _upgradeButton.GetComponentInChildren<TMP_Text>().text = $"Upgrade ({_tower.UpgradeCost}g)";
     }
 
     // Positions activated buttons properly

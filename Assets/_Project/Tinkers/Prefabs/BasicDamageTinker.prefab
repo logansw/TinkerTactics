@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3393b772632914947b71814980dc6189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Icon: {fileID: 1399521312, guid: a9298850ba1ce48c8888fac73c7f6df7, type: 3}
+  Name: Damage Tinker
   DamageModFlat: 5
-  RangeModFlat: 0
-  SweepModFlat: 0
   AmmoModFlat: 0
   ReloadSpeedModMult: 0
   AttackSpeedModMult: 0
+  CostModDelta: 0

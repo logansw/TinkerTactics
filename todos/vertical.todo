@@ -1,26 +1,11 @@
 This is the mainline quest. Tasks here are progress towards the vertical slice.
 
-Battle Scene:
-
 Map Scene:
-    Shop:
-        ✔ Remove Wave Spawner from Base scene @20m @started(25-02-04 14:35) @done(25-02-04 14:41) @lasted(6m1s)
-        ✔ Link map to shop start @20m @started(25-02-04 14:51) @done(25-02-04 15:09) @lasted(18m9s)
-        ✔ Link shop finish to map start @10m @started(25-02-04 15:09) @done(25-02-04 15:26) @lasted(17m51s)
-        ✔ Make bespoke Tinker and Tower Locations @1h @started(25-02-05 06:31) @done(25-02-05 08:17) @lasted(1h46m4s)
     Map Logic:
         Build map procedurally:
-            ✔ Design map generation interface? @2h @started(25-02-05 10:23) @done(25-02-05 10:39) @lasted(16m28s)
             Make a script to crawl the Locations and populate them:
-                ✔ Generate node objects @15m @started(25-02-05 10:39) @done(25-02-05 11:04) @lasted(25m48s)
-                ✔ Link them @30m @done(25-02-05 11:04)
-                ✔ Fill in the hard-coded ones (e.g. Boss Battle) @15m @done(25-02-05 11:05)
                 ☐ Distribute minimums @30m
-                ✔ Randomly assign remaining @15m @done(25-02-05 12:47)
                 ☐ Clean up any unwanted patterns @30m
-                ✔ Instantiate to Map Scene @15m @done(25-02-05 12:47)
-        Battle Progression:
-        ✔ Battle doesn't advance between battles @30m @started(25-02-04 15:30) @done(25-02-04 16:23) @lasted(53m46s)
 
 Shop Scene:
     ☐ Incorporate Gold into Shops
@@ -29,43 +14,54 @@ Tinker Panel:
     UI for applying Tinkers. Similar to Charm menu in Wildfrost
     ☐ UI Design @1h
     ☐ UI Implementation @1h
-    ☐ 
 
 Tower Upgrade System:
     UI for upgrading Towers more classically.
-    ✔ Design proposal @1h @done(25-02-06 14:29)
-    ✔ Class diagram @done(25-02-06 14:29)
-    ✔ UpgradeData Scriptable Object @started(25-02-06 14:31) @done(25-02-06 14:50) @lasted(19m27s)
     // ☐ Test content @10m
     UI:
-        ☐ Button to pay to upgrade tower @10m
-        Panel to show upgrade options:
-            // ☐ Create upgrade cards in Editor @20m
-            // ☐ Link data to text fields @30m
-        ☐ Click to apply upgrade @10m
+        ✔ Button to pay to upgrade tower @10m @done(25-02-13 10:35)
+        ✔ Click to apply upgrade @10m @done(25-02-13 10:35)
         // ☐ Implement tower tier on tower side @10m
         // ☐ Update button to react to current tier @10m
         // ☐ Update panel to show upgrades by new tier @10m
     // ☐ Logic to fetch upgrades randomly from SO pool @30m
     // ☐ reroll
 
-UI:
-    ✔ PopupManager.cs @today @done(25-02-12 09:00)
-    ✔ Popup.cs @today @done(25-02-12 09:00)
-    ✔ TowerDialog.cs @today @done(25-02-12 17:26)
-        ✔ Open tower dialog tower click + deploy @done(25-02-12 08:59)
-        ✔ Show equipped tinkers @done(25-02-12 17:26)
-        ✔ Show tower range @done(25-02-12 16:30)
-            ✔ Position Cells correctly @done(25-02-12 16:30)
-            ✔ Size bounding box correctly @done(25-02-12 16:30)
-        ✔ Show ability description @started(25-02-12 10:03) @done(25-02-12 11:09) @lasted(1h6m19s)
-    ✔ TinkerDialogue.cs @done(25-02-12 17:26)
-    ✔ Stat Chips @done(25-02-12 08:59)
-    Ability descriptions should be able to include parameters (e.g. Blast), both generic and tower-specific
-    Stat Chips should be automatically created on UI elements. For example, adding Pierce to a tower should create a corresponding Chip.
+Restructure Stat Calculations:
+    ☐ Make Modifiers the only way to modify stats
+        ☐ Make Upgrades apply modifiers
+        ☐ Make Abilities appli modifiers
+    ☐ Change Ammo to MaxAmmo
+    ☐ Make CurrentAmmo to track current ammo
+    ☐ Change ModifierProcessor to process all modifiers in order
+    ☐ Create a check to increment Tinker Count only if Modifier is of type TinkerBase
 
 Archive:
-
+  ✔ Remove Wave Spawner from Base scene @20m @started(25-02-04 14:35) @done(25-02-04 14:41) @lasted(6m1s) @project(Map Scene.Shop)
+  ✔ Link map to shop start @20m @started(25-02-04 14:51) @done(25-02-04 15:09) @lasted(18m9s) @project(Map Scene.Shop)
+  ✔ Link shop finish to map start @10m @started(25-02-04 15:09) @done(25-02-04 15:26) @lasted(17m51s) @project(Map Scene.Shop)
+  ✔ Make bespoke Tinker and Tower Locations @1h @started(25-02-05 06:31) @done(25-02-05 08:17) @lasted(1h46m4s) @project(Map Scene.Shop)
+  ✔ Design map generation interface? @2h @started(25-02-05 10:23) @done(25-02-05 10:39) @lasted(16m28s) @project(Map Scene.Map Logic.Build map procedurally)
+  ✔ Generate node objects @15m @started(25-02-05 10:39) @done(25-02-05 11:04) @lasted(25m48s) @project(Map Scene.Map Logic.Build map procedurally.Make a script to crawl the Locations and populate them)
+  ✔ Link them @30m @done(25-02-05 11:04) @project(Map Scene.Map Logic.Build map procedurally.Make a script to crawl the Locations and populate them)
+  ✔ Fill in the hard-coded ones (e.g. Boss Battle) @15m @done(25-02-05 11:05) @project(Map Scene.Map Logic.Build map procedurally.Make a script to crawl the Locations and populate them)
+  ✔ Randomly assign remaining @15m @done(25-02-05 12:47) @project(Map Scene.Map Logic.Build map procedurally.Make a script to crawl the Locations and populate them)
+  ✔ Instantiate to Map Scene @15m @done(25-02-05 12:47) @project(Map Scene.Map Logic.Build map procedurally.Make a script to crawl the Locations and populate them)
+  ✔ Battle doesn't advance between battles @30m @started(25-02-04 15:30) @done(25-02-04 16:23) @lasted(53m46s) @project(Map Scene.Map Logic)
+  ✔ Design proposal @1h @done(25-02-06 14:29) @project(Tower Upgrade System)
+  ✔ Class diagram @done(25-02-06 14:29) @project(Tower Upgrade System)
+  ✔ UpgradeData Scriptable Object @started(25-02-06 14:31) @done(25-02-06 14:50) @lasted(19m27s) @project(Tower Upgrade System)
+  ✔ PopupManager.cs @today @done(25-02-12 09:00) @project(UI)
+  ✔ Popup.cs @today @done(25-02-12 09:00) @project(UI)
+  ✔ TowerDialog.cs @today @done(25-02-12 17:26) @project(UI)
+  ✔ Open tower dialog tower click + deploy @done(25-02-12 08:59) @project(UI)
+  ✔ Show equipped tinkers @done(25-02-12 17:26) @project(UI)
+  ✔ Show tower range @done(25-02-12 16:30) @project(UI)
+  ✔ Position Cells correctly @done(25-02-12 16:30) @project(UI)
+  ✔ Size bounding box correctly @done(25-02-12 16:30) @project(UI)
+  ✔ Show ability description @started(25-02-12 10:03) @done(25-02-12 11:09) @lasted(1h6m19s) @project(UI)
+  ✔ TinkerDialogue.cs @done(25-02-12 17:26) @project(UI)
+  ✔ Stat Chips @done(25-02-12 08:59) @project(UI)
 
     MAP
     Upgrade

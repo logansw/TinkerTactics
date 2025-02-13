@@ -216,10 +216,10 @@ MonoBehaviour:
   PlotAssigner: {fileID: 0}
   Name: Bubblegum Cannon
   TinkerLimit: 3
-  _initialDamage: 5
-  _initialAttackSpeed: 1
-  _initialReloadSpeed: 0.5
-  _initialAmmo: 3
+  InitialDamage: 5
+  InitialAttackSpeed: 1
+  InitialReloadSpeed: 0.5
+  InitialAmmo: 5
   _initialAbilityCD: 5
   Damage:
     InitialValue: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
     InitialValue: 0
   AbiiltyCooldown:
     InitialValue: 0
+  UpgradeCost: 0
   ExplosionRadius: 2
   _projectilePrefab: {fileID: 2803087172549512459, guid: e4403a24e0d0e420e88badc59aecce3b, type: 3}
   ProjectileSpeed: 5

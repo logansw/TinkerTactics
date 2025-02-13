@@ -2,3 +2,12 @@ Map Secne:
 Battle Scene:
     ☐ Battlefield doesn't reset tiles if Boss escapes unharmed
     ☐ Tower lost Tinkers between battles 
+
+Upgrades:
+    ✔ Tower redeploy w/o remembering upgrades @done(25-02-13 11:01)
+    ✔ Tower seems to upgrade too many times at once @done(25-02-13 11:01)
+    ✔ Upgrade cost does not rerender properly at first @done(25-02-13 11:01)
+    ☐ Upgrades don't play well with tinkers
+
+SelectionManager:
+    ☐ Janky when clicking over UI elements. Hacked a temp solution.
