@@ -25,6 +25,12 @@ public class BasicAttack : MonoBehaviour, ITowerAction
         _spriteTransform = transform.Find("RangeIndicator").Find("Sprites");
     }
 
+    void OnDisable()
+    {
+        AttackClock.Delete();
+        ReloadClock.Delete();
+    }
+
     public virtual void Execute()
     {
         Enemy target = _tower.RangeIndicator.GetEnemiesInRange()[0];

@@ -52,14 +52,14 @@ Tower Upgrade System:
 UI:
     ✔ PopupManager.cs @today @done(25-02-12 09:00)
     ✔ Popup.cs @today @done(25-02-12 09:00)
-    ☐ TowerDialog.cs @today
+    ✔ TowerDialog.cs @today @done(25-02-12 17:26)
         ✔ Open tower dialog tower click + deploy @done(25-02-12 08:59)
-        ☐ Show equipped tinkers
+        ✔ Show equipped tinkers @done(25-02-12 17:26)
         ✔ Show tower range @done(25-02-12 16:30)
             ✔ Position Cells correctly @done(25-02-12 16:30)
             ✔ Size bounding box correctly @done(25-02-12 16:30)
         ✔ Show ability description @started(25-02-12 10:03) @done(25-02-12 11:09) @lasted(1h6m19s)
-    ☐ TinkerDialogue.cs
+    ✔ TinkerDialogue.cs @done(25-02-12 17:26)
     ✔ Stat Chips @done(25-02-12 08:59)
     Ability descriptions should be able to include parameters (e.g. Blast), both generic and tower-specific
     Stat Chips should be automatically created on UI elements. For example, adding Pierce to a tower should create a corresponding Chip.
