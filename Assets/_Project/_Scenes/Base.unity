@@ -1762,17 +1762,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788080456}
   m_CullTransparentMesh: 1
---- !u!114 &817348186 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3214367276290551610, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
-  m_PrefabInstance: {fileID: 1214323559009994444}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e8b8bb81d7643a4ac37d59ff1c9667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &836941997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,7 +4076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472829092280334793, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 552069052747921839, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
       propertyPath: m_Sprite
@@ -4400,7 +4389,7 @@ PrefabInstance:
     - target: {fileID: 7686666759753376412, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
       propertyPath: _abilityTooltipTrigger
       value: 
-      objectReference: {fileID: 817348186}
+      objectReference: {fileID: 1214323559009994445}
     - target: {fileID: 7686666759753376412, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
       propertyPath: _abilityCooldownStatChip
       value: 
@@ -4454,6 +4443,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1238331792}
   m_SourcePrefab: {fileID: 100100000, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
+--- !u!114 &1214323559009994445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3214367276290551610, guid: 89ddebc46d8204b3ba3ed878c7b03ec5, type: 3}
+  m_PrefabInstance: {fileID: 1214323559009994444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e8b8bb81d7643a4ac37d59ff1c9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

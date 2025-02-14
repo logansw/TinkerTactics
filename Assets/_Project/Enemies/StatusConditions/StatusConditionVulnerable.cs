@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectVulnerable : Effect, IDamageEffect
+public class StatusConditionVulnerable : StatusCondition, IDamageStatusCondition
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
+        base.Initialize(duration, stacks, statusConditionTracker);
         IconColor = new Color32(255, 128, 170, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;

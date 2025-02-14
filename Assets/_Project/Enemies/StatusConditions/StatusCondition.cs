@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Effect : MonoBehaviour
+public abstract class StatusCondition : MonoBehaviour
 {
     public Enemy Enemy;
     public Color32 IconColor;
     public int Stacks;
-    protected EffectTracker _effectTracker;
+    protected StatusConditionTracker _statusConditionTracker;
 
     public virtual void Awake()
     {
         Enemy = GetComponent<Enemy>();
     }
 
-    public virtual void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public virtual void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
         // Nothing by default
-        _effectTracker = effectTracker;
+        _statusConditionTracker = statusConditionTracker;
     }
 
     public abstract void AddStacks(int count);
@@ -33,7 +33,7 @@ public abstract class Effect : MonoBehaviour
 
     public virtual void Remove()
     {
-        Enemy.EffectTracker.RemoveEffect(this);
+        Enemy.StatusConditionTracker.RemoveStatusCondition(this);
         Destroy(this);
     }
 
@@ -47,17 +47,17 @@ public abstract class Effect : MonoBehaviour
     public abstract string GetDescriptionText();
 }
 
-public interface IMoveEffect
+public interface IMoveStatusCondition
 {
     public float OnMove(float moveSpeed);
 }
 
-public interface ITickEffect
+public interface ITickStatusCondition
 {
     public void OnTick(Enemy enemy);
 }
 
-public interface IDamageEffect
+public interface IDamageStatusCondition
 {
     public float OnDamage(float damage);
 }

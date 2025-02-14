@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectInvincible : Effect
+public class StatusConditionInvincible : StatusCondition
 {
     public override void AddStacks(int count)
     {

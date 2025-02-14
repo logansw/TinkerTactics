@@ -13,7 +13,7 @@ public class FreezeSpell : DamagingSpell
         foreach (Enemy enemy in enemies)
         {
             enemy.Health.TakeDamage(Damage);
-            enemy.EffectTracker.AddEffect<EffectStun>(StunDuration, 1);
+            enemy.StatusConditionTracker.AddStatusCondition<StatusConditionStun>(StunDuration, 1);
         }
         Ammo.Current -= 1;
         BattleManager.s_Instance.UndoTimeScale();

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EffectTracker))]
+[RequireComponent(typeof(StatusConditionTracker))]
 public class Enemy : MonoBehaviour
 {
     public EnemySO EnemySO;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public TilePath TileTarget { get; set; }
     public bool IsDead => Health.CurrentHealth <= 0;
     [HideInInspector] public float DistanceTraveled;
-    [HideInInspector] public EffectTracker EffectTracker;
+    [HideInInspector] public StatusConditionTracker StatusConditionTracker;
     public bool IsSpawned;
 
     public delegate void EnemyAction(Enemy enemy);
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         Armor = EnemySO.Armor;
         _healthindicator = GetComponentInChildren<IHealthIndicator>();
         _healthindicator.Initialize(Health);
-        EffectTracker = GetComponent<EffectTracker>();
+        StatusConditionTracker = GetComponent<StatusConditionTracker>();
     }
 
     public void Initialize(TilePath spawnPoint)
@@ -90,13 +90,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnBreak()
     {
-        if (EffectTracker.HasEffect<EffectBreak>(out EffectBreak effectBreak))
+        if (StatusConditionTracker.HasStatusCondition<StatusConditionBreak>(out StatusConditionBreak statusConditionBreak))
         {
-            effectBreak.Extend();
+            statusConditionBreak.Extend();
         }
         else
         {
-            EffectTracker.AddEffect<EffectBreak>(5f, 1);
+            StatusConditionTracker.AddStatusCondition<StatusConditionBreak>(5f, 1);
         }
         e_OnEnemyBreak?.Invoke(this);
     }
@@ -110,11 +110,11 @@ public class Enemy : MonoBehaviour
     /// <remarks>Use ReceiveProjectile() for damage dealt by projectiles instead.</remarks>
     public virtual void ReceiveDamage(float damage, ProjectileBase projectile = null, Tower responsibleTower = null)
     {
-        if (EffectTracker.HasEffect<EffectInvincible>(out EffectInvincible effectInvincible))
+        if (StatusConditionTracker.HasStatusCondition<StatusConditionInvincible>(out StatusConditionInvincible statusConditionInvincible))
         {
             return;
         }
-        damage = EffectTracker.ProcessDamageEffects(damage);
+        damage = StatusConditionTracker.ProcessDamageStatusConditions(damage);
         float physicalFactor = 100f / (100f + Armor);
         float postMitigationDamage = damage * physicalFactor;
         Health.TakeDamage((float)postMitigationDamage);
@@ -133,7 +133,7 @@ public class Enemy : MonoBehaviour
         }
         Vector3 destination = TileTarget.transform.position;
         Vector2 direction = (destination - transform.position).normalized;
-        float currentMovementSpeed = EffectTracker.ProcessMoveEffects(MovementSpeed);
+        float currentMovementSpeed = StatusConditionTracker.ProcessMoveStatusConditions(MovementSpeed);
         transform.Translate(direction * Time.deltaTime * currentMovementSpeed / 10);
         if (TileTarget.PathType.Equals(PathType.End) && Vector2.Distance(transform.position, destination) < 0.2f && !EndReached)
         {
@@ -165,6 +165,6 @@ public class Enemy : MonoBehaviour
 
     private void Tick()
     {
-        EffectTracker.ProcessTickEffects(this);
+        StatusConditionTracker.ProcessTickStatusConditions(this);
     }
 }

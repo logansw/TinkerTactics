@@ -16,7 +16,7 @@ public class BurnProjectileEffect : ProjectileEffect
 
     public override void OnEnemyDamaged(Enemy hit)
     {
-        hit.EffectTracker.AddEffect<EffectBurn>(3f, 1);
+        hit.StatusConditionTracker.AddStatusCondition<StatusConditionBurn>(3f, 1);
     }
 
     public override void OnProjectileLaunched(Enemy hit)

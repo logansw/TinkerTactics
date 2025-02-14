@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectBreak : Effect
+public class StatusConditionBreak : StatusCondition
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
-        Enemy.EffectTracker.AddEffect<EffectStun>(duration, stacks);
-        Enemy.EffectTracker.AddEffect<EffectVulnerable>(duration, stacks);
+        base.Initialize(duration, stacks, statusConditionTracker);
+        Enemy.StatusConditionTracker.AddStatusCondition<StatusConditionStun>(duration, stacks);
+        Enemy.StatusConditionTracker.AddStatusCondition<StatusConditionVulnerable>(duration, stacks);
         IconColor = new Color32(255, 158, 128, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
@@ -62,9 +62,9 @@ public class EffectBreak : Effect
     public void Extend()
     {
         _internalClock.Reset();
-        Enemy.EffectTracker.HasEffect<EffectStun>(out EffectStun effectStun);
-        effectStun.Extend();
-        Enemy.EffectTracker.HasEffect<EffectVulnerable>(out EffectVulnerable effectVulnerable);
-        effectVulnerable.Extend();
+        Enemy.StatusConditionTracker.HasStatusCondition<StatusConditionStun>(out StatusConditionStun statusConditionStun);
+        statusConditionStun.Extend();
+        Enemy.StatusConditionTracker.HasStatusCondition<StatusConditionVulnerable>(out StatusConditionVulnerable statusConditionVulnerable);
+        statusConditionVulnerable.Extend();
     }
 }

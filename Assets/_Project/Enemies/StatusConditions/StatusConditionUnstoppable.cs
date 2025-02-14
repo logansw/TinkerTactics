@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectUnstoppable : Effect
+public class StatusConditionUnstoppable : StatusCondition
 {
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
+        base.Initialize(duration, stacks, statusConditionTracker);
         IconColor = new Color32(201, 195, 177, 255);
     }
 

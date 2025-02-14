@@ -1,17 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectChill : Effect, IMoveEffect
+public class StatusConditionBurn : StatusCondition, ITickStatusCondition
 {
     private InternalClock _internalClock;
+    private bool _evenTick;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
+        base.Initialize(duration, stacks, statusConditionTracker);
         Stacks = 1;
-        IconColor = new Color32(128, 249, 255, 255);
+        IconColor = new Color32(255, 107, 65, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
@@ -34,9 +35,14 @@ public class EffectChill : Effect, IMoveEffect
         throw new System.NotImplementedException();
     }
 
-    public float OnMove(float moveSpeed)
+    public void OnTick(Enemy enemy)
     {
-        return moveSpeed * 0.5f;
+        _evenTick = !_evenTick;
+        if (_evenTick)
+        {
+            float burnDamage = Math.Max(enemy.Health.MaxHealth * 0.01f, 1f);
+            enemy.ReceiveDamage(burnDamage);
+        }
     }
 
     public override string GetStackText()
@@ -46,11 +52,11 @@ public class EffectChill : Effect, IMoveEffect
 
     public override string GetAbbreviationText()
     {
-        return "CHL";
+        return "BRN";
     }
 
     public override string GetDescriptionText()
     {
-        return $"Slows the enemy by 0.5x";
+        return $"Enemy takes 1% Max Health damage each second";
     }
 }

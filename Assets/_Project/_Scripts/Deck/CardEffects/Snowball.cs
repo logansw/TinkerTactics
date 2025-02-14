@@ -13,7 +13,7 @@ public class Snowball : DamagingSpell
         foreach (Enemy enemy in enemies)
         {
             enemy.Health.TakeDamage(Damage);
-            enemy.EffectTracker.AddEffect<EffectChill>(SlowDuration, 2);
+            enemy.StatusConditionTracker.AddStatusCondition<StatusConditionChill>(SlowDuration, 2);
         }
         Ammo.Current -= 1;
         BattleManager.s_Instance.UndoTimeScale();

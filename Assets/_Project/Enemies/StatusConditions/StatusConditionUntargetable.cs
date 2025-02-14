@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectUntargetable : Effect
+public class StatusConditionUntargetable : StatusCondition
 {
     public override void AddStacks(int count)
     {

@@ -16,7 +16,7 @@ public class ShockProjectileEffect : ProjectileEffect
 
     public override void OnEnemyDamaged(Enemy hit)
     {
-        hit.EffectTracker.AddEffect<EffectShock>(3f, 1);
+        hit.StatusConditionTracker.AddStatusCondition<StatusConditionShock>(3f, 1);
     }
 
     public override void OnProjectileLaunched(Enemy hit)

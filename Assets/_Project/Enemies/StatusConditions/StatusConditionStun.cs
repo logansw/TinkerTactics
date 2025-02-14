@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectStun : Effect, IMoveEffect
+public class StatusConditionStun : StatusCondition, IMoveStatusCondition
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
-        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+        base.Initialize(duration, stacks, statusConditionTracker);
+        if (Enemy.StatusConditionTracker.HasStatusCondition<StatusConditionUnstoppable>(out StatusConditionUnstoppable statusConditionUnstoppable))
         {
-            Enemy.EffectTracker.RemoveEffect(this);
+            Enemy.StatusConditionTracker.RemoveStatusCondition(this);
             return;
         }
         IconColor = new Color32(255, 240, 128, 255);
@@ -43,7 +43,7 @@ public class EffectStun : Effect, IMoveEffect
 
     public override bool CheckRules()
     {
-        if (Enemy.EffectTracker.HasEffect<EffectUnstoppable>(out EffectUnstoppable effectUnstoppable))
+        if (Enemy.StatusConditionTracker.HasStatusCondition<StatusConditionUnstoppable>(out StatusConditionUnstoppable statusConditionUnstoppable))
         {
             return false;
         }

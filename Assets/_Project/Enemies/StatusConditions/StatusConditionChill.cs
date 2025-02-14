@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class EffectShock : Effect, IDamageEffect
+public class StatusConditionChill : StatusCondition, IMoveStatusCondition
 {
     private InternalClock _internalClock;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
+        base.Initialize(duration, stacks, statusConditionTracker);
         Stacks = 1;
-        IconColor = new Color32(254, 230, 127, 255);
+        IconColor = new Color32(128, 249, 255, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
@@ -33,9 +34,9 @@ public class EffectShock : Effect, IDamageEffect
         throw new System.NotImplementedException();
     }
 
-    public float OnDamage(float damage)
+    public float OnMove(float moveSpeed)
     {
-        return damage * 1.25f;
+        return moveSpeed * 0.5f;
     }
 
     public override string GetStackText()
@@ -45,11 +46,11 @@ public class EffectShock : Effect, IDamageEffect
 
     public override string GetAbbreviationText()
     {
-        return "SHK";
+        return "CHL";
     }
 
     public override string GetDescriptionText()
     {
-        return $"Enemy takes 1.25x damage from all sources";
+        return $"Slows the enemy by 0.5x";
     }
 }

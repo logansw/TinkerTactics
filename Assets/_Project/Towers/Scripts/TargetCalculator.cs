@@ -15,7 +15,7 @@ public static class TargetCalculator
             if (!enemy.gameObject.activeInHierarchy) { continue; }
             if (Vector3.Distance(position, enemy.transform.position) <= range)
             {
-                if (enemy.EffectTracker.HasEffect<EffectUntargetable>(out _))
+                if (enemy.StatusConditionTracker.HasStatusCondition<StatusConditionUntargetable>(out _))
                 {
                     continue;
                 }
@@ -86,7 +86,7 @@ public static class TargetCalculator
         List<Enemy> targetableEnemies = new List<Enemy>();
         foreach (Enemy enemy in enemies)
         {
-            if (!enemy.EffectTracker.HasEffect<EffectUntargetable>(out _))
+            if (!enemy.StatusConditionTracker.HasStatusCondition<StatusConditionUntargetable>(out _))
             {
                 targetableEnemies.Add(enemy);
             }

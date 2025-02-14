@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectBurn : Effect, ITickEffect
+public class StatusConditionShock : StatusCondition, IDamageStatusCondition
 {
     private InternalClock _internalClock;
-    private bool _evenTick;
 
-    public override void Initialize(float duration, int stacks, EffectTracker effectTracker)
+    public override void Initialize(float duration, int stacks, StatusConditionTracker statusConditionTracker)
     {
-        base.Initialize(duration, stacks, effectTracker);
+        base.Initialize(duration, stacks, statusConditionTracker);
         Stacks = 1;
-        IconColor = new Color32(255, 107, 65, 255);
+        IconColor = new Color32(254, 230, 127, 255);
         _internalClock = new InternalClock(duration, gameObject);
         _internalClock.e_OnTimerDone += Remove;
     }
@@ -35,14 +33,9 @@ public class EffectBurn : Effect, ITickEffect
         throw new System.NotImplementedException();
     }
 
-    public void OnTick(Enemy enemy)
+    public float OnDamage(float damage)
     {
-        _evenTick = !_evenTick;
-        if (_evenTick)
-        {
-            float burnDamage = Math.Max(enemy.Health.MaxHealth * 0.01f, 1f);
-            enemy.ReceiveDamage(burnDamage);
-        }
+        return damage * 1.25f;
     }
 
     public override string GetStackText()
@@ -52,11 +45,11 @@ public class EffectBurn : Effect, ITickEffect
 
     public override string GetAbbreviationText()
     {
-        return "BRN";
+        return "SHK";
     }
 
     public override string GetDescriptionText()
     {
-        return $"Enemy takes 1% Max Health damage each second";
+        return $"Enemy takes 1.25x damage from all sources";
     }
 }

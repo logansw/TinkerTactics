@@ -15,7 +15,7 @@ public class Warlord : Enemy
     {
         Render(false);
         HealthbarUI.s_Instance.RegisterHealth(Health);
-        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
+        StatusConditionTracker.AddStatusCondition<StatusConditionUntargetable>(int.MaxValue, 1);
         _collider.enabled = false;
     }
 
@@ -26,7 +26,7 @@ public class Warlord : Enemy
         e_OnWarlordRemoved?.Invoke(this);
         Render(false);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
-        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
+        StatusConditionTracker.AddStatusCondition<StatusConditionUntargetable>(int.MaxValue, 1);
         IsSpawned = false;
         // Health.TakeDamage(Health.CurrentHealth);
     }
@@ -36,7 +36,7 @@ public class Warlord : Enemy
         Initialize(waveSpawner.StartTile);
         EndReached = false;
         Render(true);
-        EffectTracker.ClearEffects();
+        StatusConditionTracker.ClearStatusConditions();
         IsSpawned = true;
         _startPosition = waveSpawner.transform.position;
         _collider.enabled = true;
@@ -60,8 +60,8 @@ public class Warlord : Enemy
         e_OnWarlordRemoved?.Invoke(this);
         Render(true);
         EnemyManager.s_Instance.RemoveEnemyFromList(this);
-        EffectTracker.AddEffect<EffectUntargetable>(int.MaxValue, 1);
-        EffectTracker.AddEffect<EffectInvincible>(int.MaxValue, 1);
+        StatusConditionTracker.AddStatusCondition<StatusConditionUntargetable>(int.MaxValue, 1);
+        StatusConditionTracker.AddStatusCondition<StatusConditionInvincible>(int.MaxValue, 1);
         IsSpawned = false;
         StartCoroutine(AnimateRetreat());
         _collider.enabled = false;

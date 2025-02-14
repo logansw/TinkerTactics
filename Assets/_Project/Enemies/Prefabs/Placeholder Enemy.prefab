@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61ad91ee022c4c65a061194d4efba65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectIcons:
+  _statusConditionIcons:
   - {fileID: 7820798513871907835}
   - {fileID: 4222872748490512677}
   - {fileID: 8616912247929784463}

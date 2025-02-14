@@ -3,20 +3,20 @@ using UnityEngine.UI;
 using TMPro;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class EffectIcon : MonoBehaviour
+public class StatusConditionIcon : MonoBehaviour
 {
     [SerializeField] public SpriteRenderer _icon;
     [SerializeField] public TMP_Text _stackText;
     [SerializeField] public TMP_Text _abbreviationText;
     private string _description;
 
-    public void Render(Effect effect)
+    public void Render(StatusCondition statusCondition)
     {
         gameObject.SetActive(true);
-        _icon.color = effect.IconColor;
-        _stackText.text = effect.GetStackText();
-        _abbreviationText.text = effect.GetAbbreviationText();
-        _description = effect.GetDescriptionText();
+        _icon.color = statusCondition.IconColor;
+        _stackText.text = statusCondition.GetStackText();
+        _abbreviationText.text = statusCondition.GetAbbreviationText();
+        _description = statusCondition.GetDescriptionText();
     }
 
     public void Hide()
@@ -29,7 +29,7 @@ public class EffectIcon : MonoBehaviour
 
     void OnMouseEnter()
     {
-        DisplayEffectTooltip();
+        DisplayStatusConditionTooltip();
     }
 
     void OnMouseExit()
@@ -37,7 +37,7 @@ public class EffectIcon : MonoBehaviour
         HideToolTip();
     }
 
-    public void DisplayEffectTooltip()
+    public void DisplayStatusConditionTooltip()
     {
         TooltipManager.s_Instance.DisplayTooltip(_description);
     }
