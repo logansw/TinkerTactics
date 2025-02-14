@@ -74,7 +74,7 @@ public class ApplyModifier : CardEffect
         {
             recipient.ModifierProcessor.AddModifier(Modifier, recipient);
             Modifier.Initialize(recipient);
-            EventBus.RaiseEvent<TinkerEquippedEvent>(new TinkerEquippedEvent(recipient));
+            EventBus.RaiseEvent<ModifierEquippedEvent>(new ModifierEquippedEvent(recipient));
         }
     }
 

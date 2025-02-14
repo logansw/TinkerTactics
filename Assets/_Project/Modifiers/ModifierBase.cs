@@ -14,7 +14,7 @@ public abstract class ModifierBase : MonoBehaviour, ITooltipTargetable
     /// <param name="recipient"></param>
     public abstract void Initialize(Tower recipient);
     public abstract string GetDescription();
-    protected virtual void OnTinkerEquipped(TinkerEquippedEvent tinkerEquippedEvent) { Debug.LogError("Not Implemented");}
+    protected virtual void OnModifierEquipped(ModifierEquippedEvent modifierEquippedEvent) { Debug.LogError("Not Implemented");}
 
     public Sprite GetIcon()
     {

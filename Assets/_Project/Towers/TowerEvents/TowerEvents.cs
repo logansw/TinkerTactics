@@ -9,11 +9,11 @@ public interface ITowerEvent { }
 /// <summary>
 /// Called when the Tinker is equipped to a Tower
 /// </summary>
-public class TinkerEquippedEvent : ITowerEvent
+public class ModifierEquippedEvent : ITowerEvent
 {
     public Tower Tower { get; private set; }
 
-    public TinkerEquippedEvent(Tower tower)
+    public ModifierEquippedEvent(Tower tower)
     {
         Tower = tower;
     }

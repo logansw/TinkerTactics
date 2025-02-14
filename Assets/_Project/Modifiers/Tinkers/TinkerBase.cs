@@ -15,8 +15,8 @@ public abstract class TinkerBase : ModifierBase
         return result;
     }
 
-    protected override void OnTinkerEquipped(TinkerEquippedEvent tinkerEquippedEvent)
+    protected override void OnModifierEquipped(ModifierEquippedEvent modifierEquippedEvent)
     {
-        tinkerEquippedEvent.Tower.ModifierProcessor.TinkerCount++;
+        modifierEquippedEvent.Tower.ModifierProcessor.TinkerCount++;
     }
 }

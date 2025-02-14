@@ -8,7 +8,6 @@ public class TinkerBlast : TinkerBase
     public override string GetDescription()
     {
         return $"Give Tower +{_blastAmount} Blast";
-    
     }
 
     public override void Initialize(Tower recipient)
