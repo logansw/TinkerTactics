@@ -6,7 +6,7 @@ public abstract class ProjectileBase : MonoBehaviour
     [HideInInspector] public float Damage;
     private SpriteRenderer _renderer;
     private Collider2D _collider;
-    public ProjectileEffectTracker ProjectileEffectTracker { get; protected set; }
+    public ProjectileAttributeTracker ProjectileEffectTracker { get; protected set; }
     protected bool _isStale;
 
     void Awake()
@@ -37,7 +37,7 @@ public abstract class ProjectileBase : MonoBehaviour
         EventBus.RaiseEvent<PreEnemyImpactEvent>(new PreEnemyImpactEvent(recipient, this));
         recipient.ReceiveDamage(Damage, this, SourceTower);
         EventBus.RaiseEvent<PostEnemyImpactEvent>(new PostEnemyImpactEvent(recipient, this));
-        if (ProjectileEffectTracker.HasEffect<PierceProjectileEffect>(out PierceProjectileEffect pierceProjectileEffect))
+        if (ProjectileEffectTracker.HasAttribute<PierceProjectileAttribute>(out PierceProjectileAttribute pierceProjectileEffect))
         {
             if (pierceProjectileEffect.Stacks < 0)
             {

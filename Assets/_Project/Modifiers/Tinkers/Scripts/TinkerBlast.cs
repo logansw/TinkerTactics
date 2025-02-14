@@ -19,6 +19,6 @@ public class TinkerBlast : TinkerBase
     private void OnProjectileSpawned(BasicAttackEvent e)
     {
         if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddEffect<BlastProjectileEffect>(_blastAmount);
+        e.Projectile.ProjectileEffectTracker.AddAttribute<BlastProjectileAttribute>(_blastAmount);
     }
 }

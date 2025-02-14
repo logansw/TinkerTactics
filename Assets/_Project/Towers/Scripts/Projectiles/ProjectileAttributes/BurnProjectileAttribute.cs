@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurnProjectileEffect : ProjectileEffect
+public class BurnProjectileAttribute : ProjectileAttribute
 {
     public override void OnProjectileHitPreImpact(Enemy hit)
     {

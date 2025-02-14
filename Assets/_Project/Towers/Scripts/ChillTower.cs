@@ -25,7 +25,7 @@ public class ChillTower : Tower
         autoCount++;
         if (autoCount == 3)
         {
-            e.Projectile.ProjectileEffectTracker.AddEffect<ChillProjectileEffect>(1);
+            e.Projectile.ProjectileEffectTracker.AddAttribute<ChillProjectileAttribute>(1);
             autoCount = 0;
         }
     }

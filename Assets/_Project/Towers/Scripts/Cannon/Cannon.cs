@@ -24,6 +24,6 @@ public class Cannon : Tower
     public void OnTowerAction(BasicAttackEvent e)
     {
         if (e.Tower != this) { return; }
-        e.Projectile.ProjectileEffectTracker.AddEffect<BlastProjectileEffect>(ExplosionRadius);
+        e.Projectile.ProjectileEffectTracker.AddAttribute<BlastProjectileAttribute>(ExplosionRadius);
     }
 }

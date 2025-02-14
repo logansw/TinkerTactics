@@ -19,6 +19,6 @@ public class TinkerPierce : TinkerBase
     private void OnProjectileSpawned(BasicAttackEvent e)
     {
         if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddEffect<PierceProjectileEffect>(_pierceAmount);
+        e.Projectile.ProjectileEffectTracker.AddAttribute<PierceProjectileAttribute>(_pierceAmount);
     }
 }

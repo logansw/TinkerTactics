@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProjectileEffect : MonoBehaviour
+public abstract class ProjectileAttribute : MonoBehaviour
 {
     public int Stacks { get; set; }
     public ProjectileBase ParentProjectile;

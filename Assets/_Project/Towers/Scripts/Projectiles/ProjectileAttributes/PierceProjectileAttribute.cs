@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PierceProjectileEffect : ProjectileEffect
+public class PierceProjectileAttribute : ProjectileAttribute
 {
     /// <summary>
     /// 

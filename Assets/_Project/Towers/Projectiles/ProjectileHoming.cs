@@ -12,7 +12,7 @@ public class ProjectileHoming : ProjectileBase
     // TODO: When to set true?
     private bool _arrived;
 
-    public void Initialize(Tower source, ProjectileEffectTracker projectileEffectTracker, float damage, float projectileSpeed, Enemy target)
+    public void Initialize(Tower source, ProjectileAttributeTracker projectileEffectTracker, float damage, float projectileSpeed, Enemy target)
     {
         SourceTower = source;
         ProjectileEffectTracker = projectileEffectTracker;

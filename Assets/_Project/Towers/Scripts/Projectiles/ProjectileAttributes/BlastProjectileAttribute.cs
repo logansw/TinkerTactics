@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlastProjectileEffect : ProjectileEffect
+public class BlastProjectileAttribute : ProjectileAttribute
 {
     private bool _explodedThisFrame;
 

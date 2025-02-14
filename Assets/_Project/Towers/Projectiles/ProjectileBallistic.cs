@@ -8,7 +8,7 @@ public class ProjectileBallistic : ProjectileBase
     private float _projectileSpeed;
     private float _maxTravelDistance;
 
-    public void Initialize(Tower source, ProjectileEffectTracker projectileEffectTracker, float damage, float projectileSpeed, Vector2 direction, float maxTravelDistance)
+    public void Initialize(Tower source, ProjectileAttributeTracker projectileEffectTracker, float damage, float projectileSpeed, Vector2 direction, float maxTravelDistance)
     {
         SourceTower = source;
         ProjectileEffectTracker = projectileEffectTracker;
@@ -19,7 +19,7 @@ public class ProjectileBallistic : ProjectileBase
         _maxTravelDistance = maxTravelDistance;
 
         RotateTowards(direction);
-        projectileEffectTracker.AddEffect<PierceProjectileEffect>(0);
+        projectileEffectTracker.AddAttribute<PierceProjectileAttribute>(0);
 
         Destroy(gameObject, 3f);
     }

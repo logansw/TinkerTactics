@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShockProjectileEffect : ProjectileEffect
+public class ShockProjectileAttribute : ProjectileAttribute
 {
     public override void OnProjectileHitPreImpact(Enemy hit)
     {

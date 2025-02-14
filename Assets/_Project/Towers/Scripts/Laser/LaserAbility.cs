@@ -21,10 +21,10 @@ public class LaserAbility : Ability
     {
         Enemy target = _tower.RangeIndicator.GetEnemiesInRange()[0];
         GameObject projectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity).gameObject;
-        ProjectileEffectTracker projectileEffectTracker = projectile.AddComponent<ProjectileEffectTracker>();
+        ProjectileAttributeTracker projectileEffectTracker = projectile.AddComponent<ProjectileAttributeTracker>();
         ProjectileBallistic projectileBallistic = projectile.AddComponent<ProjectileBallistic>();
         projectileBallistic.Initialize(_tower, projectileEffectTracker, _tower.Damage.Current * 2, ProjectileSpeed, target.transform.position - transform.position, 10f);
-        projectileEffectTracker.AddEffect<PierceProjectileEffect>(_laserTower.Pierce * 2);
+        projectileEffectTracker.AddAttribute<PierceProjectileAttribute>(_laserTower.Pierce * 2);
         
         ResumeAbilityCD();
     }

@@ -19,6 +19,6 @@ public class TinkerExecute : TinkerBase
     private void OnProjectileSpawned(BasicAttackEvent e)
     {
         if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddEffect<ExecuteProjectileEffect>(_executeAmount);
+        e.Projectile.ProjectileEffectTracker.AddAttribute<ExecuteProjectileAttribute>(_executeAmount);
     }
 }

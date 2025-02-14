@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 5725490309491683461}
   - component: {fileID: 3909386601167476117}
   m_Layer: 0
-  m_Name: EffectIcon
+  m_Name: StatusConditionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
