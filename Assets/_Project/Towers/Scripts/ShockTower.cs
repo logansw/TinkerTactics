@@ -25,7 +25,7 @@ public class ShockTower : Tower
         autoCount++;
         if (autoCount == 3)
         {
-            e.Projectile.ProjectileEffectTracker.AddAttribute<ShockProjectileAttribute>(1);
+            e.Projectile.ProjectileAttributeTracker.AddAttribute<ShockProjectileAttribute>(1);
             autoCount = 0;
         }
     }

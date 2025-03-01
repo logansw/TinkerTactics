@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       propertyPath: m_Name
-      value: ApplyModifier
+      value: _ApplyTinker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98,14 +98,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8076268543736540461}
+      addedObject: {fileID: 6987249870626648519}
   m_SourcePrefab: {fileID: 100100000, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
 --- !u!1 &2976597196017871551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8134132668769822503, guid: ebfc3cb6175fe40498dedf182894c719, type: 3}
   m_PrefabInstance: {fileID: 6461752809858354584}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8076268543736540461
+--- !u!114 &6987249870626648519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,9 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db6de621ba75471d91f89e5829713a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PreviewSprite: {fileID: 21300000, guid: aa88e466ab8b549b0a173c3c103bb902, type: 3}
+  PreviewSprite: {fileID: 0}
   Cost:
-    baseValue: 0
-  Name: 
-  Consume: 0
-  Description: 
+    InitialValue: 0
+  Name: Apply Tinker
+  Description: Description

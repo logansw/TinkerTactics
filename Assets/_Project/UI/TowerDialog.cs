@@ -52,12 +52,6 @@ public class TowerDialog : Popup
         {
             tinkerSlot.Initialize(_tinkerEmpty);
         }
-        ModifierProcessor modifierProcessor = tower.ModifierProcessor;
-        List<ModifierBase> modifiers = modifierProcessor.GetModifiers();
-        for (int i = 0; i < modifiers.Count; i++)
-        {
-            _tinkerTooltipTriggers[i].Initialize(modifiers[i]);
-        }
         
         RenderUpgradeButton();
     }

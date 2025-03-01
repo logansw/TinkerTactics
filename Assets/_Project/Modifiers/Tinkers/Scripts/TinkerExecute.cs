@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerExecute : TinkerBase
+public class TinkerExecute : Tinker
 {
     [SerializeField] private int _executeAmount;
     public override string GetDescription()
@@ -10,15 +10,9 @@ public class TinkerExecute : TinkerBase
         return $"Give Tower +{_executeAmount} Execute";
     }
 
-    public override void Initialize(Tower recipient)
+    public override void ApplyEffects(EffectProcessor effectProcessor)
     {
-        _tower = recipient;
-        EventBus.Subscribe<BasicAttackEvent>(OnProjectileSpawned);
-    }
-
-    private void OnProjectileSpawned(BasicAttackEvent e)
-    {
-        if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddAttribute<ExecuteProjectileAttribute>(_executeAmount);
+        base.ApplyEffects(effectProcessor);
+        effectProcessor.AddEffect(new ChangeBasicAttackEffect<ExecuteProjectileAttribute>(_executeAmount));
     }
 }

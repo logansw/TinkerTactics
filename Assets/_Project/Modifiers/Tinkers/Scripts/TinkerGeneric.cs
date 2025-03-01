@@ -4,13 +4,12 @@ using UnityEngine;
 using System;
 using System.Text;
 
-public class TinkerGeneric : TinkerBase
+public class TinkerGeneric : Tinker
 {
     public int DamageModFlat;
     public int AmmoModFlat;
     public float ReloadSpeedModMult;
     public float AttackSpeedModMult;
-    public int CostModDelta;
 
     public override string GetDescription()
     {
@@ -31,70 +30,44 @@ public class TinkerGeneric : TinkerBase
         {
             sb.Append($"Attack Speed x{AttackSpeedModMult}\n");
         }
-        if (CostModDelta != 0)
-        {
-            if (CostModDelta > 0)
-            {
-                sb.Append($"+{CostModDelta} Energy Cost\n");
-            }
-            else
-            {
-                sb.Append($"-{CostModDelta} Energy Cost\n");
-            }
-        }
         return sb.ToString();
     }
 
-    public override void Initialize(Tower recipient)
+    public override void ApplyEffects(EffectProcessor effectProcessor)
     {
-        _tower = recipient;
-        EventBus.Subscribe<ModifierEquippedEvent>(OnModifierEquipped);
+        base.ApplyEffects(effectProcessor);
+        ApplyDamageModifier(effectProcessor);
+        ApplyReloadSpeedModifier(effectProcessor);
+        ApplyAttackSpeedModifier(effectProcessor);
+        ApplyAmmoModifier(effectProcessor);
+        _tower.BasicAttack.SetClocks();
     }
 
-    protected override void OnModifierEquipped(ModifierEquippedEvent tinkerEquippedEvent)
-    {
-        Tower recipient = tinkerEquippedEvent.Tower;
-        ApplyStatModifier(recipient);
-        EventBus.Unsubscribe<ModifierEquippedEvent>(OnModifierEquipped);
-    }
-
-    private void ApplyStatModifier(Tower recipient)
-    {
-        ApplyDamageModifier(recipient.Damage);
-        ApplyReloadSpeedModifier(recipient.ReloadSpeed);
-        ApplyAttackSpeedModifier(recipient.AttackSpeed);
-        ApplyAmmoModifier(recipient.Ammo);
-        ApplyCostModifier();
-        recipient.BasicAttack.SetClocks();
-    }
-
-    public void ApplyDamageModifier(Stat stat)
+    public void ApplyDamageModifier(EffectProcessor effectProcessor)
     {
         if (DamageModFlat == default) { return; }
-
-        stat.Current += DamageModFlat;
+        
+        effectProcessor.AddEffect(new ChangeStatEffect(_tower.Damage, StatChangeType.Additive, DamageModFlat));
     }
 
-    public void ApplyAmmoModifier(Stat ammo)
+    public void ApplyAmmoModifier(EffectProcessor effectProcessor)
     {
-        ammo.Max += AmmoModFlat;
-        ammo.Reset();
+        if (AmmoModFlat == default) { return; }
+        
+        effectProcessor.AddEffect(new ChangeStatEffect(_tower.Ammo, StatChangeType.Additive, AmmoModFlat));
     }
 
-    public void ApplyReloadSpeedModifier(Stat stat)
+    public void ApplyReloadSpeedModifier(EffectProcessor effectProcessor)
     {
         if (ReloadSpeedModMult == default) { return; }
-        stat.Current *= ReloadSpeedModMult;
+        
+        effectProcessor.AddEffect(new ChangeStatEffect(_tower.ReloadSpeed, StatChangeType.Multiplicative, ReloadSpeedModMult));
     }
 
-    public void ApplyAttackSpeedModifier(Stat stat)
+    public void ApplyAttackSpeedModifier(EffectProcessor effectProcessor)
     {
         if (AttackSpeedModMult == default) { return; }
-        stat.Current *= AttackSpeedModMult;
-    }
-
-    public void ApplyCostModifier()
-    {
-        _tower.ParentCard.EnergyCost += CostModDelta;
+        
+        effectProcessor.AddEffect(new ChangeStatEffect(_tower.AttackSpeed, StatChangeType.Multiplicative, AttackSpeedModMult));
     }
 }

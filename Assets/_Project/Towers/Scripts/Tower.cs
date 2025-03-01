@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     private BarUI _ammoBar;
     [HideInInspector] public RangeIndicator RangeIndicator;
     [HideInInspector] public BasicAttack BasicAttack;
-    [HideInInspector] public ModifierProcessor ModifierProcessor;
+    [HideInInspector] public EffectProcessor EffectProcessor;
     [HideInInspector] public Card ParentCard;
     [HideInInspector] public PlotAssigner PlotAssigner;
     public bool Active => PlotAssigner.TilePlot.IsActivated;
@@ -27,6 +28,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
     [HideInInspector] public Stat AbiiltyCooldown;
     public Ability Ability { get; private set; }
     public float UpgradeCost;
+    public int TinkerCount;
 
     public virtual string GetTooltipText()
     {
@@ -37,7 +39,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         sb.AppendLine($"Ammo: {Ammo.Current}/{Ammo.Max}");
         sb.AppendLine($"Attack Speed: {AttackSpeed.Current}");
         sb.AppendLine($"Reload Speed: {ReloadSpeed.Current}");
-        sb.AppendLine($"Tinkers Equipped: {ModifierProcessor.TinkerCount}/{TinkerLimit}");
+        sb.AppendLine($"Tinkers Equipped: {TinkerCount}/{TinkerLimit}");
 
         return sb.ToString();
     }
@@ -50,7 +52,7 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
 
         _ammoBar = transform.Find("AmmoBar").GetComponent<BarUI>();
 
-        ModifierProcessor = GetComponent<ModifierProcessor>();
+        EffectProcessor = GetComponent<EffectProcessor>();
         PlotAssigner = GetComponent<PlotAssigner>();
         Ability = GetComponent<Ability>();
     }
@@ -64,6 +66,11 @@ public class Tower : MonoBehaviour, ISelectable, ILiftable
         ReloadSpeed = new Stat(0, 5, InitialReloadSpeed);
         Ammo = new Stat(0, InitialAmmo, InitialAmmo);
         AbiiltyCooldown = new Stat(0, _initialAbilityCD, 0);
+        List<IStatChangerEffect> statChangerEffects = EffectProcessor.Query<IStatChangerEffect>();
+        foreach (IStatChangerEffect statChangerEffect in statChangerEffects)
+        {
+            statChangerEffect.ChangeStat();
+        }
         
         BasicAttack.Initialize(this);
         RangeIndicator.Initialize(this);

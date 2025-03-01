@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerKillReload : TinkerBase
+public class TinkerKillReload : Tinker
 {
     public override string GetDescription()
     {
         return "Killing an enemy reloads 1 ammo";   
     }
 
-    public override void Initialize(Tower recipient)
+    public override void ApplyEffects(EffectProcessor effectProcessor)
     {
-        _tower = recipient;
-        EventBus.Subscribe<EnemyDeathEvent>(OnEnemyDeath);
-    }
-
-    private void OnEnemyDeath(EnemyDeathEvent e)
-    {
-        if (e.Tower != _tower) { return; }
-
-        _tower.Ammo.Current += 1;
+        base.ApplyEffects(effectProcessor);
+        effectProcessor.AddEffect(new KillReloadEffect(1));
     }
 }

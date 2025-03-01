@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerPierce : TinkerBase
+public class TinkerPierce : Tinker
 {
     [SerializeField] private int _pierceAmount;
     public override string GetDescription()
@@ -10,15 +10,9 @@ public class TinkerPierce : TinkerBase
         return $"Give Tower +{_pierceAmount} Pierce";
     }
 
-    public override void Initialize(Tower recipient)
+    public override void ApplyEffects(EffectProcessor effectProcessor)
     {
-        _tower = recipient;
-        EventBus.Subscribe<BasicAttackEvent>(OnProjectileSpawned);
-    }
-
-    private void OnProjectileSpawned(BasicAttackEvent e)
-    {
-        if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddAttribute<PierceProjectileAttribute>(_pierceAmount);
+        base.ApplyEffects(effectProcessor);
+        effectProcessor.AddEffect(new ChangeBasicAttackEffect<PierceProjectileAttribute>(_pierceAmount));
     }
 }

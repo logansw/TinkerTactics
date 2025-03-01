@@ -25,7 +25,7 @@ public class FireTower : Tower
         autoCount++;
         if (autoCount == 3)
         {
-            e.Projectile.ProjectileEffectTracker.AddAttribute<BurnProjectileAttribute>(1);
+            e.Projectile.ProjectileAttributeTracker.AddAttribute<BurnProjectileAttribute>(1);
             autoCount = 0;
         }
     }

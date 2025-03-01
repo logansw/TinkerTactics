@@ -62,4 +62,10 @@ public class Stat
         Max = max;
         Current = current;
     }
+
+    public Stat Duplicate()
+    {
+        Stat statCopy = new Stat(Min, Max, Current);
+        return statCopy;
+    }
 }

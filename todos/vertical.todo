@@ -30,11 +30,13 @@ Tower Upgrade System:
 Restructure Stat Calculations:
     ☐ Make Modifiers the only way to modify stats
         ☐ Make Upgrades apply modifiers
-        ☐ Make Abilities appli modifiers
+        ☐ Make Abilities apply modifiers
     ☐ Change Ammo to MaxAmmo
     ☐ Make CurrentAmmo to track current ammo
     ☐ Change ModifierProcessor to process all modifiers in order
     ☐ Create a check to increment Tinker Count only if Modifier is of type TinkerBase
+    ☐ Change damage calculations to be a query that runs through the list of Modifiers for IStatChangerEffects
+    ☐ Change projectile firing to query for IBasicAttackChangerEffects
 
 Archive:
   ✔ Remove Wave Spawner from Base scene @20m @started(25-02-04 14:35) @done(25-02-04 14:41) @lasted(6m1s) @project(Map Scene.Shop)

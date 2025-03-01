@@ -11,13 +11,13 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     protected bool _canAttack;
     public string TooltipText;
     public float ProjectileSpeed;
-    protected ModifierProcessor _modifierProcessor;
+    protected EffectProcessor _effectProcessor;
     private Transform _spriteTransform;
 
     public void Initialize(Tower tower)
     {
         _tower = tower;
-        _modifierProcessor = tower.ModifierProcessor;
+        _effectProcessor = tower.EffectProcessor;
         AttackClock = new InternalClock(1f / _tower.AttackSpeed.Current, gameObject);
         ReloadClock = new InternalClock(1f / _tower.ReloadSpeed.Current, gameObject);
         AttackClock.e_OnTimerDone += SetCanAttack;
@@ -35,10 +35,16 @@ public class BasicAttack : MonoBehaviour, ITowerAction
     {
         Enemy target = _tower.RangeIndicator.GetEnemiesInRange()[0];
         GameObject projectile = Instantiate(_projectilePrefab, _tower.transform.position, Quaternion.identity, _tower.transform).gameObject;
-        ProjectileAttributeTracker projectileEffectTracker = projectile.AddComponent<ProjectileAttributeTracker>();
+        ProjectileAttributeTracker projectileAttributeTracker = projectile.AddComponent<ProjectileAttributeTracker>();
         ProjectileBallistic projectileBallistic = projectile.AddComponent<ProjectileBallistic>();
-        projectileBallistic.Initialize(_tower, projectileEffectTracker, _tower.Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
+        projectileBallistic.Initialize(_tower, projectileAttributeTracker, _tower.Damage.Current, ProjectileSpeed, target.transform.position - transform.position, 10f);
         
+        List<IBasicAttackChangerEffect> basicAttackChangerEffects = _effectProcessor.Query<IBasicAttackChangerEffect>();
+        foreach (IBasicAttackChangerEffect basicAttackChangerEffect in basicAttackChangerEffects)
+        {
+            basicAttackChangerEffect.ChangeBasicAttack(projectileBallistic);
+        }
+
         AttackClock.Reset();
         _tower.Ammo.Current -= 1;
         _canAttack = false;

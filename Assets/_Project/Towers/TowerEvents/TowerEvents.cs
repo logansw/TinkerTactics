@@ -7,19 +7,6 @@ using System.Collections.Generic;
 public interface ITowerEvent { }
 
 /// <summary>
-/// Called when the Tinker is equipped to a Tower
-/// </summary>
-public class ModifierEquippedEvent : ITowerEvent
-{
-    public Tower Tower { get; private set; }
-
-    public ModifierEquippedEvent(Tower tower)
-    {
-        Tower = tower;
-    }
-}
-
-/// <summary>
 /// Called when an enemy is hit by a Tower's attack before damage calculations
 /// </summary>
 public class PreEnemyImpactEvent : ITowerEvent

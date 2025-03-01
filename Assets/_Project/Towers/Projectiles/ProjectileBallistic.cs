@@ -11,9 +11,9 @@ public class ProjectileBallistic : ProjectileBase
     public void Initialize(Tower source, ProjectileAttributeTracker projectileEffectTracker, float damage, float projectileSpeed, Vector2 direction, float maxTravelDistance)
     {
         SourceTower = source;
-        ProjectileEffectTracker = projectileEffectTracker;
+        ProjectileAttributeTracker = projectileEffectTracker;
         Damage = damage;
-        ProjectileEffectTracker.ParentProjectile = this;
+        ProjectileAttributeTracker.ParentProjectile = this;
 
         _projectileSpeed = projectileSpeed;
         _maxTravelDistance = maxTravelDistance;

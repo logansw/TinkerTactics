@@ -21,6 +21,12 @@ public class ProjectileAttributeTracker : MonoBehaviour
             _attributesApplied = value;
         }    
     }
+    private EffectProcessor _effectProcessor;
+
+    void Start()
+    {
+        _effectProcessor = ParentProjectile.SourceTower.EffectProcessor;
+    }
 
     void OnEnable()
     {
@@ -104,6 +110,11 @@ public class ProjectileAttributeTracker : MonoBehaviour
         {
             projectileAttribute.OnProjectileHitPreImpact(e.Enemy);
         }
+        List<IOnHitEffect> onHitEffects = _effectProcessor.Query<IOnHitEffect>();
+        foreach (IOnHitEffect onHitEffect in onHitEffects)
+        {
+            onHitEffect.OnHit(e);
+        }
     }
 
     public void RaiseOnProjectileHitPostImpact(PostEnemyImpactEvent e)
@@ -131,6 +142,5 @@ public class ProjectileAttributeTracker : MonoBehaviour
         {
             projectileAttribute.OnProjectileLaunched(e.Target);
         }
-    
     }
 }

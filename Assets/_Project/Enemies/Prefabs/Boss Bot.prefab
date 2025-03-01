@@ -397,7 +397,7 @@ MonoBehaviour:
   EnemySO: {fileID: 11400000, guid: 3a37d2c56839c4ae1bc235aa8863cca1, type: 2}
   Armor: 0
   DistanceTraveled: 0
-  EffectTracker: {fileID: 0}
+  StatusConditionTracker: {fileID: 0}
   IsSpawned: 0
   EndReached: 0
   WaveHolder: {fileID: 0}

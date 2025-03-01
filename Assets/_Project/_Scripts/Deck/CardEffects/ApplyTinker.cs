@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplyModifier : CardEffect
+public class ApplyTinker : CardEffect
 {
-    private ModifierBase _modifier;
-    public ModifierBase Modifier
+    private Tinker _tinker;
+    public Tinker Tinker
     {
         get
         {
-            if (_modifier == null)
+            if (_tinker == null)
             {
-                _modifier = gameObject.GetComponent<ModifierBase>();
+                _tinker = gameObject.GetComponent<Tinker>();
             }
-            return _modifier;
+            return _tinker;
         }
         set
         {
-            _modifier = value;
+            _tinker = value;
         }
     }
     private Tower _recipient;
@@ -32,7 +32,7 @@ public class ApplyModifier : CardEffect
 
     public override string GetDescription()
     {
-        return Modifier.GetDescription();
+        return Tinker.GetDescription();
     }
     
     public override bool CanPrepare()
@@ -64,17 +64,16 @@ public class ApplyModifier : CardEffect
         }
 
         _recipient = _targetingRule.TargetTilePlot.Towers[0];
-        return Modifier.CanAddModifier(_recipient);
+        return Tinker.CanApply(_recipient);
     }
 
     public override void ActivateEffect()
     {
         Tower recipient = _targetingRule.TargetTilePlot.Towers[0];
-        if (Modifier.CanAddModifier(recipient))
+        if (Tinker.CanApply(recipient))
         {
-            recipient.ModifierProcessor.AddModifier(Modifier, recipient);
-            Modifier.Initialize(recipient);
-            EventBus.RaiseEvent<ModifierEquippedEvent>(new ModifierEquippedEvent(recipient));
+            Tinker.Initialize(recipient);
+            Tinker.ApplyEffects(recipient.EffectProcessor);
         }
     }
 
@@ -86,28 +85,12 @@ public class ApplyModifier : CardEffect
 
     public override string GetCardType()
     {
-        if (Modifier is TinkerBase)
-        {
-            return "TINKER";
-        }
-        else
-        {
-            Debug.LogError("No card type defined for modifier type.");
-            return "MODIFIER";
-        }
+        return "TINKER";
     }
 
     public override Color GetColor()
     {
-        if (Modifier is TinkerBase)
-        {
-            return new Color(0.4669811f, 0.6507807f, 1f, 1f);
-        }
-        else
-        {
-            Debug.LogError("No color defined for modifier type.");
-            return new Color(1f, 1f, 1f, 1f);
-        }
+        return new Color(0.4669811f, 0.6507807f, 1f, 1f);
     }
 
     public override void OnCardClicked()

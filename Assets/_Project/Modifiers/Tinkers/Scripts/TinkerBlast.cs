@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TinkerBlast : TinkerBase
+public class TinkerBlast : Tinker
 {
     [SerializeField] private int _blastAmount;
     public override string GetDescription()
@@ -10,15 +10,9 @@ public class TinkerBlast : TinkerBase
         return $"Give Tower +{_blastAmount} Blast";
     }
 
-    public override void Initialize(Tower recipient)
+    public override void ApplyEffects(EffectProcessor effectProcessor)
     {
-        _tower = recipient;
-        EventBus.Subscribe<BasicAttackEvent>(OnProjectileSpawned);   
-    }
-
-    private void OnProjectileSpawned(BasicAttackEvent e)
-    {
-        if (e.Tower != _tower) { return; }
-        e.Projectile.ProjectileEffectTracker.AddAttribute<BlastProjectileAttribute>(_blastAmount);
+        base.ApplyEffects(effectProcessor);
+        effectProcessor.AddEffect(new ChangeBasicAttackEffect<BlastProjectileAttribute>(_blastAmount));
     }
 }
